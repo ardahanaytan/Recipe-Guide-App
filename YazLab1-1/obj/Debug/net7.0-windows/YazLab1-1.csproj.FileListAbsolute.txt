@@ -66,3 +66,10 @@ C:\Users\ardah\Desktop\YazLab1-1\YazLab1-1\obj\Debug\net7.0-windows\refint\YazLa
 C:\Users\ardah\Desktop\YazLab1-1\YazLab1-1\obj\Debug\net7.0-windows\YazLab1-1.pdb
 C:\Users\ardah\Desktop\YazLab1-1\YazLab1-1\obj\Debug\net7.0-windows\YazLab1-1.genruntimeconfig.cache
 C:\Users\ardah\Desktop\YazLab1-1\YazLab1-1\obj\Debug\net7.0-windows\ref\YazLab1-1.dll
+C:\Users\ardah\Desktop\YazLab1-1\YazLab1-1\obj\Debug\net7.0-windows\YazLab1_1.Properties.Resources.resources
+C:\Users\ardah\Desktop\YazLab1-1\YazLab1-1\obj\Debug\net7.0-windows\YazLab1_1.FormArama.resources
+C:\Users\ardah\Desktop\YazLab1-1\YazLab1-1\obj\Debug\net7.0-windows\YazLab1_1.FormTarifOnerme.resources
+C:\Users\ardah\Desktop\YazLab1-1\YazLab1-1\obj\Debug\net7.0-windows\YazLab1_1.FormTarifListesi.resources
+C:\Users\ardah\Desktop\YazLab1-1\YazLab1-1\obj\Debug\net7.0-windows\YazLab1_1.FormMalzemeEkleme.resources
+C:\Users\ardah\Desktop\YazLab1-1\YazLab1-1\obj\Debug\net7.0-windows\YazLab1_1.FormMalzemeListesi.resources
+C:\Users\ardah\Desktop\YazLab1-1\YazLab1-1\obj\Debug\net7.0-windows\YazLab1_1.FormTarifEkleme.resources
