@@ -47,7 +47,7 @@ namespace YazLab1_1
                 string query2 = @"CREATE TABLE IF NOT EXISTS `yazlab1`.`malzemeler` (
                                 `MalzemeID` INT NOT NULL AUTO_INCREMENT,
                                 `MalzemeAdi` VARCHAR(255) NOT NULL,
-                                `ToplamMiktar` INT NOT NULL,
+                                `ToplamMiktar` VARCHAR(255) NOT NULL,
                                 `MalzemeBirim` VARCHAR(255) NOT NULL,
                                 `BirimFiyat` FLOAT NOT NULL,
                                  PRIMARY KEY (`MalzemeID`),
@@ -58,9 +58,9 @@ namespace YazLab1_1
                 //textBox1.Text = "basarili2";
 
 
-                string query3 = @"CREATE TABLE `iliski` (
-                                  `MalzemeIDr` char(10) NOT NULL,
-                                  `TarifIDr` char(10) NOT NULL,
+                string query3 = @"CREATE TABLE  IF NOT EXISTS `yazlab1`.`iliski` (
+                                  `MalzemeIDr` INT NOT NULL,
+                                  `TarifIDr` INT NOT NULL,
                                   `MalzemeMiktar` float NOT NULL,
                                   KEY `MalzemeID_idx` (`MalzemeIDr`),
                                   KEY `TarifID_idx` (`TarifIDr`),
@@ -71,7 +71,7 @@ namespace YazLab1_1
                 cmd = new MySqlCommand(query3, con);
                 cmd.ExecuteNonQuery();
                 textBox1.Text = "basarili3";
-                MessageBox.Show("Tablolar Baþarýyla Oluþturuldu!");
+                //MessageBox.Show("Tablolar Baþarýyla Oluþturuldu!");
 
 
 
@@ -81,8 +81,7 @@ namespace YazLab1_1
             }
             catch (Exception ex)
             {
-                textBox1.Text = "eyvah" + ex.Message;
-                Console.WriteLine("Tablo oluþturma hatasý: " + ex.Message);
+                MessageBox.Show("Tablo oluþturma hatasý: " + ex.Message);
             }
         }
 
@@ -95,9 +94,6 @@ namespace YazLab1_1
         private void Form1_Load(object sender, EventArgs e)
         {
             initDatabase();
-
-
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -200,7 +196,7 @@ namespace YazLab1_1
         {
             if (tarifEkleme == null)
             {
-                tarifEkleme = new FormTarifEkleme();
+                tarifEkleme = new FormTarifEkleme(this);
                 tarifEkleme.FormClosed += TarifEkleme_FormClosed;
                 tarifEkleme.MdiParent = this;
                 tarifEkleme.Dock = DockStyle.Fill;
@@ -258,6 +254,11 @@ namespace YazLab1_1
         private void malzemeEkleme_FormClosed(object? sender, FormClosedEventArgs e)
         {
             malzemeEkleme = null;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 

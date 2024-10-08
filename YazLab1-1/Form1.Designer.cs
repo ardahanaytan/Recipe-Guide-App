@@ -71,13 +71,14 @@
             button1.Size = new Size(37, 25);
             button1.TabIndex = 0;
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(995, 73);
+            textBox1.Location = new Point(0, 0);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(100, 21);
-            textBox1.TabIndex = 1;
+            textBox1.TabIndex = 4;
             // 
             // panel1
             // 
