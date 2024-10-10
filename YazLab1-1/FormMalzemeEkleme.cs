@@ -13,7 +13,7 @@ namespace YazLab1_1
 {
     public partial class FormMalzemeEkleme : Form
     {
-        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=2732.Han2001");
+        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
         MySqlCommand cmd;
         MySqlDataAdapter adapter;
         DataTable dt;
@@ -32,7 +32,7 @@ namespace YazLab1_1
             float miktar = 0.0f;
             float fiyat = 0.0f;
             //MessageBox.Show(str_malzemeAdi + " " + str_toplamMiktar + " " + str_malzemeBirim + " " + str_birimFiyat);
-            
+
             //kontroller - returnluler en son hata mesajı olarak döndürülüp ayarlanacak
             if ((str_malzemeAdi.Length <= 0 && str_malzemeAdi.Length > 255) || str_malzemeAdi == "")
             {
@@ -48,7 +48,7 @@ namespace YazLab1_1
             {
                 miktar = float.Parse(str_toplamMiktar);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Lütfen toplam miktar olarak float'a dönüştürülebilecek bir değer giriniz");
                 return; // float donmezse exception fırlatır
@@ -76,6 +76,29 @@ namespace YazLab1_1
 
             //MessageBox.Show(str_malzemeAdi + " " + miktar + " " + str_malzemeBirim + " " + fiyat);
 
+
+            //duplicate kontrolü
+            DataTable dt_malzemeKontrol = new DataTable();
+            try
+            {
+                con.Open();
+                string query_malzemeVarMi = @"select * from malzemeler where MalzemeAdi = @MalzemeAdi";
+                adapter = new MySqlDataAdapter(query_malzemeVarMi, con);
+                adapter.SelectCommand.Parameters.AddWithValue("@MalzemeAdi", str_malzemeAdi);
+                adapter.Fill(dt_malzemeKontrol);
+                con.Close();
+            }
+            catch (Exception ex3)
+            {
+                MessageBox.Show("Duplicate malzeme kontrol hatası: " + ex3.Message);
+            }
+
+            if (dt_malzemeKontrol.Rows.Count > 0)
+            {
+                MessageBox.Show("Zaten bu isimde bir malzeme bulunmakta!");
+                return;
+            }
+
             try
             {
                 con.Open();
@@ -88,12 +111,16 @@ namespace YazLab1_1
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
-            catch(Exception ex2)
+            catch (Exception ex2)
             {
                 MessageBox.Show("Malzeme ekleme hatası: " + ex2.Message);
             }
 
-
+            textBoxBirimFiyat.Text = null;
+            textBoxMalzemeAdi.Text = null;
+            textBoxToplamMiktar.Text = null;
+            comboBoxMalzemeBirimi.SelectedItem = null;
+            MessageBox.Show("Malzeme Başarıyla Eklendi.");
         }
     }
 }

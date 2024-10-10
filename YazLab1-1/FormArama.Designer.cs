@@ -44,7 +44,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1012, 620);
+            ClientSize = new Size(1020, 624);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormArama";

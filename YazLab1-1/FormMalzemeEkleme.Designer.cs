@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBoxMalzemeAdi = new TextBox();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             label1 = new Label();
             buttonMalzemeEkle = new Button();
             textBoxToplamMiktar = new TextBox();
@@ -37,15 +38,9 @@
             label3 = new Label();
             textBoxBirimFiyat = new TextBox();
             label4 = new Label();
+            textBoxMalzemeAdi = new TextBox();
+            guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             SuspendLayout();
-            // 
-            // textBoxMalzemeAdi
-            // 
-            textBoxMalzemeAdi.Location = new Point(155, 109);
-            textBoxMalzemeAdi.Name = "textBoxMalzemeAdi";
-            textBoxMalzemeAdi.PlaceholderText = "Malzeme Adı";
-            textBoxMalzemeAdi.Size = new Size(176, 23);
-            textBoxMalzemeAdi.TabIndex = 0;
             // 
             // label1
             // 
@@ -58,7 +53,7 @@
             // 
             // buttonMalzemeEkle
             // 
-            buttonMalzemeEkle.Location = new Point(261, 329);
+            buttonMalzemeEkle.Location = new Point(261, 411);
             buttonMalzemeEkle.Name = "buttonMalzemeEkle";
             buttonMalzemeEkle.Size = new Size(70, 22);
             buttonMalzemeEkle.TabIndex = 2;
@@ -68,7 +63,7 @@
             // 
             // textBoxToplamMiktar
             // 
-            textBoxToplamMiktar.Location = new Point(155, 168);
+            textBoxToplamMiktar.Location = new Point(155, 250);
             textBoxToplamMiktar.Name = "textBoxToplamMiktar";
             textBoxToplamMiktar.Size = new Size(176, 23);
             textBoxToplamMiktar.TabIndex = 3;
@@ -76,7 +71,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(155, 150);
+            label2.Location = new Point(155, 232);
             label2.Name = "label2";
             label2.Size = new Size(83, 15);
             label2.TabIndex = 5;
@@ -86,7 +81,7 @@
             // 
             comboBoxMalzemeBirimi.FormattingEnabled = true;
             comboBoxMalzemeBirimi.Items.AddRange(new object[] { "Kilogram", "Gram", "Litre", "Mililitre", "Tane" });
-            comboBoxMalzemeBirimi.Location = new Point(155, 229);
+            comboBoxMalzemeBirimi.Location = new Point(155, 311);
             comboBoxMalzemeBirimi.Name = "comboBoxMalzemeBirimi";
             comboBoxMalzemeBirimi.Size = new Size(176, 23);
             comboBoxMalzemeBirimi.TabIndex = 6;
@@ -94,7 +89,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(155, 211);
+            label3.Location = new Point(155, 293);
             label3.Name = "label3";
             label3.Size = new Size(89, 15);
             label3.TabIndex = 7;
@@ -102,7 +97,7 @@
             // 
             // textBoxBirimFiyat
             // 
-            textBoxBirimFiyat.Location = new Point(155, 289);
+            textBoxBirimFiyat.Location = new Point(155, 371);
             textBoxBirimFiyat.Name = "textBoxBirimFiyat";
             textBoxBirimFiyat.Size = new Size(176, 23);
             textBoxBirimFiyat.TabIndex = 8;
@@ -110,17 +105,47 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(155, 271);
+            label4.Location = new Point(155, 353);
             label4.Name = "label4";
             label4.Size = new Size(86, 15);
             label4.TabIndex = 9;
             label4.Text = "Birim Fiyat (TL)";
             // 
+            // textBoxMalzemeAdi
+            // 
+            textBoxMalzemeAdi.Location = new Point(155, 109);
+            textBoxMalzemeAdi.Name = "textBoxMalzemeAdi";
+            textBoxMalzemeAdi.Size = new Size(176, 23);
+            textBoxMalzemeAdi.TabIndex = 10;
+            // 
+            // guna2TextBox1
+            // 
+            guna2TextBox1.CustomizableEdges = customizableEdges1;
+            guna2TextBox1.DefaultText = "";
+            guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            guna2TextBox1.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            guna2TextBox1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            guna2TextBox1.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            guna2TextBox1.Location = new Point(546, 152);
+            guna2TextBox1.Name = "guna2TextBox1";
+            guna2TextBox1.PasswordChar = '\0';
+            guna2TextBox1.PlaceholderText = "";
+            guna2TextBox1.SelectedText = "";
+            guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            guna2TextBox1.Size = new Size(200, 36);
+            guna2TextBox1.TabIndex = 11;
+            // 
             // FormMalzemeEkleme
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(148, 132, 179);
             ClientSize = new Size(1012, 620);
+            Controls.Add(guna2TextBox1);
+            Controls.Add(textBoxMalzemeAdi);
             Controls.Add(label4);
             Controls.Add(textBoxBirimFiyat);
             Controls.Add(label3);
@@ -129,7 +154,6 @@
             Controls.Add(textBoxToplamMiktar);
             Controls.Add(buttonMalzemeEkle);
             Controls.Add(label1);
-            Controls.Add(textBoxMalzemeAdi);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormMalzemeEkleme";
             Text = "FormMalzemeEkleme";
@@ -138,8 +162,6 @@
         }
 
         #endregion
-
-        private TextBox textBoxMalzemeAdi;
         private Label label1;
         private Button buttonMalzemeEkle;
         private TextBox textBoxToplamMiktar;
@@ -148,5 +170,7 @@
         private Label label3;
         private TextBox textBoxBirimFiyat;
         private Label label4;
+        private TextBox textBoxMalzemeAdi;
+        private System.CodeDom.CodeTypeReference guna2TextBox1;
     }
 }

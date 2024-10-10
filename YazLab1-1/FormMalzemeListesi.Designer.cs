@@ -28,33 +28,108 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            dataGridViewMalzeme = new DataGridView();
+            MalzemeID = new DataGridViewTextBoxColumn();
+            MalzemeAdi = new DataGridViewTextBoxColumn();
+            malzemeToplamMiktar = new DataGridViewTextBoxColumn();
+            malzemeBirim = new DataGridViewTextBoxColumn();
+            malzemeBirimFiyat = new DataGridViewTextBoxColumn();
+            Düzenle = new DataGridViewButtonColumn();
+            Sil = new DataGridViewButtonColumn();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewMalzeme).BeginInit();
             SuspendLayout();
             // 
-            // label1
+            // dataGridViewMalzeme
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(447, 284);
-            label1.Name = "label1";
-            label1.Size = new Size(101, 15);
-            label1.TabIndex = 0;
-            label1.Text = "MALZEME LİSTESİ";
+            dataGridViewMalzeme.AllowUserToAddRows = false;
+            dataGridViewMalzeme.AllowUserToDeleteRows = false;
+            dataGridViewMalzeme.BorderStyle = BorderStyle.Fixed3D;
+            dataGridViewMalzeme.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewMalzeme.Columns.AddRange(new DataGridViewColumn[] { MalzemeID, MalzemeAdi, malzemeToplamMiktar, malzemeBirim, malzemeBirimFiyat, Düzenle, Sil });
+            dataGridViewMalzeme.Location = new Point(140, 107);
+            dataGridViewMalzeme.Name = "dataGridViewMalzeme";
+            dataGridViewMalzeme.ReadOnly = true;
+            dataGridViewMalzeme.RowHeadersVisible = false;
+            dataGridViewMalzeme.RowTemplate.Height = 25;
+            dataGridViewMalzeme.Size = new Size(704, 373);
+            dataGridViewMalzeme.TabIndex = 0;
+            dataGridViewMalzeme.CellContentClick += dataGridViewMalzeme_CellContentClick;
+            // 
+            // MalzemeID
+            // 
+            MalzemeID.HeaderText = "Malzeme ID";
+            MalzemeID.Name = "MalzemeID";
+            MalzemeID.ReadOnly = true;
+            // 
+            // MalzemeAdi
+            // 
+            MalzemeAdi.HeaderText = "Malzeme Adı";
+            MalzemeAdi.Name = "MalzemeAdi";
+            MalzemeAdi.ReadOnly = true;
+            // 
+            // malzemeToplamMiktar
+            // 
+            malzemeToplamMiktar.HeaderText = "Malzeme Toplam Miktar";
+            malzemeToplamMiktar.Name = "malzemeToplamMiktar";
+            malzemeToplamMiktar.ReadOnly = true;
+            // 
+            // malzemeBirim
+            // 
+            malzemeBirim.HeaderText = "Malzeme Birimi";
+            malzemeBirim.Name = "malzemeBirim";
+            malzemeBirim.ReadOnly = true;
+            // 
+            // malzemeBirimFiyat
+            // 
+            malzemeBirimFiyat.HeaderText = "Malzeme Birim Fiyatı";
+            malzemeBirimFiyat.Name = "malzemeBirimFiyat";
+            malzemeBirimFiyat.ReadOnly = true;
+            // 
+            // Düzenle
+            // 
+            Düzenle.HeaderText = "Düzenle";
+            Düzenle.Name = "Düzenle";
+            Düzenle.ReadOnly = true;
+            Düzenle.Resizable = DataGridViewTriState.True;
+            Düzenle.SortMode = DataGridViewColumnSortMode.Automatic;
+            Düzenle.Text = "Düzenle";
+            Düzenle.ToolTipText = "Düzenle";
+            Düzenle.UseColumnTextForButtonValue = true;
+            // 
+            // Sil
+            // 
+            Sil.HeaderText = "Sil";
+            Sil.Name = "Sil";
+            Sil.ReadOnly = true;
+            Sil.Resizable = DataGridViewTriState.True;
+            Sil.SortMode = DataGridViewColumnSortMode.Automatic;
+            Sil.Text = "Sil";
+            Sil.ToolTipText = "Sil";
+            Sil.UseColumnTextForButtonValue = true;
             // 
             // FormMalzemeListesi
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1012, 620);
-            Controls.Add(label1);
+            ClientSize = new Size(1020, 624);
+            Controls.Add(dataGridViewMalzeme);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormMalzemeListesi";
             Text = "FormMalzemeListesi";
+            Load += FormMalzemeListesi_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridViewMalzeme).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private Label label1;
+        private DataGridView dataGridViewMalzeme;
+        private DataGridViewTextBoxColumn MalzemeID;
+        private DataGridViewTextBoxColumn MalzemeAdi;
+        private DataGridViewTextBoxColumn malzemeToplamMiktar;
+        private DataGridViewTextBoxColumn malzemeBirim;
+        private DataGridViewTextBoxColumn malzemeBirimFiyat;
+        private DataGridViewButtonColumn Düzenle;
+        private DataGridViewButtonColumn Sil;
     }
 }

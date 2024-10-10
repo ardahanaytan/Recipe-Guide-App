@@ -8,7 +8,7 @@ namespace YazLab1_1
 
     public partial class Form1 : Form
     {
-        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=2732.Han2001");
+        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
         MySqlCommand cmd;
         MySqlDataAdapter adapter;
         DataTable dt;
@@ -143,6 +143,7 @@ namespace YazLab1_1
             {
                 arama.Activate();
             }
+            panelAnaManu.Visible = false;
         }
 
         private void Arama_FormClosed(object? sender, FormClosedEventArgs e)
@@ -164,6 +165,7 @@ namespace YazLab1_1
             {
                 tarifOnerme.Activate();
             }
+            panelAnaManu.Visible = false;
         }
 
         private void TarifOnerme_FormClosed(object? sender, FormClosedEventArgs e)
@@ -185,6 +187,7 @@ namespace YazLab1_1
             {
                 tarifListesi.Activate();
             }
+            panelAnaManu.Visible = false;
         }
 
         private void TarifListesi_FormClosed(object? sender, FormClosedEventArgs e)
@@ -206,6 +209,7 @@ namespace YazLab1_1
             {
                 tarifEkleme.Activate();
             }
+            tarifEkleme.panelMalzemeler.Visible = false;
         }
 
         private void TarifEkleme_FormClosed(object? sender, FormClosedEventArgs e)
@@ -227,7 +231,7 @@ namespace YazLab1_1
             {
                 malzemeListesi.Activate();
             }
-
+            panelAnaManu.Visible = false;
         }
 
         private void malzemeListesi_FormClosed(object? sender, FormClosedEventArgs e)
@@ -249,6 +253,7 @@ namespace YazLab1_1
             {
                 malzemeEkleme.Activate();
             }
+            panelAnaManu.Visible = false;
         }
 
         private void malzemeEkleme_FormClosed(object? sender, FormClosedEventArgs e)

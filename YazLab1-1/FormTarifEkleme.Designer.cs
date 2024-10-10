@@ -79,7 +79,7 @@
             // comboBoxKategori
             // 
             comboBoxKategori.FormattingEnabled = true;
-            comboBoxKategori.Items.AddRange(new object[] { "Kahvaltı", "Yemek", "Tatlı", "İçecek" });
+            comboBoxKategori.Items.AddRange(new object[] { "Kahvaltı", "Yemek", "Çorba", "Tatlı", "İçecek" });
             comboBoxKategori.Location = new Point(194, 114);
             comboBoxKategori.Name = "comboBoxKategori";
             comboBoxKategori.Size = new Size(164, 23);
@@ -219,7 +219,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1012, 620);
+            ClientSize = new Size(1020, 624);
             Controls.Add(panelMalzemeler);
             Controls.Add(Talimatlar);
             Controls.Add(richTextBoxTalimatlar);
@@ -233,6 +233,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormTarifEkleme";
             Text = "FormTarifEkleme";
+            Load += FormTarifEkleme_Load;
             ((System.ComponentModel.ISupportInitialize)numericUpDownSure).EndInit();
             panelMalzemeler.ResumeLayout(false);
             panelMalzemeler.PerformLayout();
@@ -256,7 +257,7 @@
         private TextBox textBoxMiktar;
         private Label label5;
         private Label label6;
-        private Panel panelMalzemeler;
+        public Panel panelMalzemeler;
         private Button button1;
         private Button button2;
         private Button button3;

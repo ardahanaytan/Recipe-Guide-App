@@ -51,6 +51,7 @@
             panelMalzemeEkle = new Panel();
             button8 = new Button();
             menuCubukTimer = new System.Windows.Forms.Timer(components);
+            panelAnaManu = new Panel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             menuCubuk.SuspendLayout();
@@ -82,14 +83,14 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.White;
+            panel1.BackColor = Color.FromArgb(108, 91, 123);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(button1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1218, 35);
+            panel1.Size = new Size(1231, 40);
             panel1.TabIndex = 2;
             // 
             // pictureBox1
@@ -106,16 +107,17 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(67, 9);
+            label1.Font = new Font("Bookman Old Style", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.ActiveCaptionText;
+            label1.Location = new Point(86, 11);
             label1.Name = "label1";
-            label1.Size = new Size(210, 17);
+            label1.Size = new Size(228, 19);
             label1.TabIndex = 0;
-            label1.Text = "SEFA YEMEK TARİFİ ÖNERİ SİSTEMİ";
+            label1.Text = "SEFA İLE FİT YEMEKLER";
             // 
             // menuCubuk
             // 
-            menuCubuk.BackColor = SystemColors.ActiveCaptionText;
+            menuCubuk.BackColor = Color.FromArgb(108, 91, 123);
             menuCubuk.Controls.Add(panelAnaEkran);
             menuCubuk.Controls.Add(panelArama);
             menuCubuk.Controls.Add(panelTarifOnerme);
@@ -124,10 +126,10 @@
             menuCubuk.Controls.Add(panelMalzemeListesi);
             menuCubuk.Controls.Add(panelMalzemeEkle);
             menuCubuk.Dock = DockStyle.Left;
-            menuCubuk.Location = new Point(0, 35);
+            menuCubuk.Location = new Point(0, 40);
             menuCubuk.Name = "menuCubuk";
             menuCubuk.Padding = new Padding(0, 30, 0, 0);
-            menuCubuk.Size = new Size(202, 624);
+            menuCubuk.Size = new Size(202, 619);
             menuCubuk.TabIndex = 3;
             // 
             // panelAnaEkran
@@ -140,7 +142,7 @@
             // 
             // button2
             // 
-            button2.BackColor = Color.Black;
+            button2.BackColor = Color.FromArgb(108, 91, 123);
             button2.FlatAppearance.BorderColor = Color.IndianRed;
             button2.FlatAppearance.BorderSize = 0;
             button2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
@@ -168,7 +170,7 @@
             // 
             // button7
             // 
-            button7.BackColor = Color.Black;
+            button7.BackColor = Color.FromArgb(108, 91, 123);
             button7.FlatAppearance.BorderColor = Color.IndianRed;
             button7.FlatAppearance.BorderSize = 0;
             button7.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
@@ -196,7 +198,7 @@
             // 
             // button3
             // 
-            button3.BackColor = Color.Black;
+            button3.BackColor = Color.FromArgb(108, 91, 123);
             button3.FlatAppearance.BorderColor = Color.IndianRed;
             button3.FlatAppearance.BorderSize = 0;
             button3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
@@ -224,7 +226,7 @@
             // 
             // button4
             // 
-            button4.BackColor = Color.Black;
+            button4.BackColor = Color.FromArgb(108, 91, 123);
             button4.FlatAppearance.BorderColor = Color.IndianRed;
             button4.FlatAppearance.BorderSize = 0;
             button4.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
@@ -252,7 +254,7 @@
             // 
             // button5
             // 
-            button5.BackColor = Color.Black;
+            button5.BackColor = Color.FromArgb(108, 91, 123);
             button5.FlatAppearance.BorderColor = Color.IndianRed;
             button5.FlatAppearance.BorderSize = 0;
             button5.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
@@ -280,7 +282,7 @@
             // 
             // button6
             // 
-            button6.BackColor = Color.Black;
+            button6.BackColor = Color.FromArgb(108, 91, 123);
             button6.FlatAppearance.BorderColor = Color.IndianRed;
             button6.FlatAppearance.BorderSize = 0;
             button6.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
@@ -308,7 +310,7 @@
             // 
             // button8
             // 
-            button8.BackColor = Color.Black;
+            button8.BackColor = Color.FromArgb(108, 91, 123);
             button8.FlatAppearance.BorderColor = Color.IndianRed;
             button8.FlatAppearance.BorderSize = 0;
             button8.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
@@ -331,15 +333,26 @@
             menuCubukTimer.Interval = 10;
             menuCubukTimer.Tick += menuCubukTimer_Tick;
             // 
+            // panelAnaManu
+            // 
+            panelAnaManu.Location = new Point(0, 38);
+            panelAnaManu.Name = "panelAnaManu";
+            panelAnaManu.Size = new Size(1240, 621);
+            panelAnaManu.TabIndex = 6;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1218, 659);
+            BackColor = Color.FromArgb(148, 132, 179);
+            BackgroundImageLayout = ImageLayout.None;
+            ClientSize = new Size(1231, 659);
             Controls.Add(menuCubuk);
             Controls.Add(panel1);
             Controls.Add(textBox1);
+            Controls.Add(panelAnaManu);
             Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ForeColor = SystemColors.ControlText;
             FormBorderStyle = FormBorderStyle.None;
             IsMdiContainer = true;
             Name = "Form1";
@@ -383,5 +396,6 @@
         private Panel panelMalzemeEkle;
         private Button button8;
         private System.Windows.Forms.Timer menuCubukTimer;
+        private Panel panelAnaManu;
     }
 }

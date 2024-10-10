@@ -73,3 +73,4 @@ C:\Users\ardah\Desktop\YazLab1-1\YazLab1-1\obj\Debug\net7.0-windows\YazLab1_1.Fo
 C:\Users\ardah\Desktop\YazLab1-1\YazLab1-1\obj\Debug\net7.0-windows\YazLab1_1.FormMalzemeEkleme.resources
 C:\Users\ardah\Desktop\YazLab1-1\YazLab1-1\obj\Debug\net7.0-windows\YazLab1_1.FormMalzemeListesi.resources
 C:\Users\ardah\Desktop\YazLab1-1\YazLab1-1\obj\Debug\net7.0-windows\YazLab1_1.FormTarifEkleme.resources
+C:\Users\ardah\Desktop\YazLab1-1\YazLab1-1\bin\Debug\net7.0-windows\MaterialSkin.dll
