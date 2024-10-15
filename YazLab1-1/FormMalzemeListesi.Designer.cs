@@ -54,6 +54,7 @@
             dataGridViewMalzeme.Size = new Size(704, 373);
             dataGridViewMalzeme.TabIndex = 0;
             dataGridViewMalzeme.CellContentClick += dataGridViewMalzeme_CellContentClick;
+            dataGridViewMalzeme.CellPainting += dataGridViewMalzeme_CellPainting;
             // 
             // MalzemeID
             // 

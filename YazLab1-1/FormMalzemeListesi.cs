@@ -146,5 +146,10 @@ namespace YazLab1_1
                 MessageBox.Show("Buton Hatası:", ex1.Message);
             }
         }
+
+        private void dataGridViewMalzeme_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+
+        }
     }
 }

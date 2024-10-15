@@ -34,6 +34,7 @@
             tarifKategori = new DataGridViewTextBoxColumn();
             tarifHazirlamaSuresi = new DataGridViewTextBoxColumn();
             Malzemeler = new DataGridViewTextBoxColumn();
+            YetersizMalzemeler = new DataGridViewTextBoxColumn();
             talimatlar = new DataGridViewTextBoxColumn();
             Düzenle = new DataGridViewButtonColumn();
             Sil = new DataGridViewButtonColumn();
@@ -44,13 +45,14 @@
             // 
             dataGridViewTarifler.AllowUserToAddRows = false;
             dataGridViewTarifler.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewTarifler.Columns.AddRange(new DataGridViewColumn[] { tarifID, tarifAdi, tarifKategori, tarifHazirlamaSuresi, Malzemeler, talimatlar, Düzenle, Sil });
-            dataGridViewTarifler.Location = new Point(41, 112);
+            dataGridViewTarifler.Columns.AddRange(new DataGridViewColumn[] { tarifID, tarifAdi, tarifKategori, tarifHazirlamaSuresi, Malzemeler, YetersizMalzemeler, talimatlar, Düzenle, Sil });
+            dataGridViewTarifler.Location = new Point(33, 102);
             dataGridViewTarifler.Name = "dataGridViewTarifler";
             dataGridViewTarifler.RowTemplate.Height = 25;
-            dataGridViewTarifler.Size = new Size(844, 372);
+            dataGridViewTarifler.Size = new Size(942, 372);
             dataGridViewTarifler.TabIndex = 0;
             dataGridViewTarifler.CellContentClick += dataGridView1_CellContentClick;
+            dataGridViewTarifler.CellPainting += dataGridViewTarifler_CellPainting;
             // 
             // tarifID
             // 
@@ -78,9 +80,15 @@
             // 
             // Malzemeler
             // 
-            Malzemeler.HeaderText = "Malzemeler";
+            Malzemeler.HeaderText = "Yeterli Malzemeler";
             Malzemeler.Name = "Malzemeler";
             Malzemeler.ReadOnly = true;
+            // 
+            // YetersizMalzemeler
+            // 
+            YetersizMalzemeler.HeaderText = "Yetersiz Malzemeler";
+            YetersizMalzemeler.Name = "YetersizMalzemeler";
+            YetersizMalzemeler.ReadOnly = true;
             // 
             // talimatlar
             // 
@@ -128,6 +136,7 @@
         private DataGridViewTextBoxColumn tarifKategori;
         private DataGridViewTextBoxColumn tarifHazirlamaSuresi;
         private DataGridViewTextBoxColumn Malzemeler;
+        private DataGridViewTextBoxColumn YetersizMalzemeler;
         private DataGridViewTextBoxColumn talimatlar;
         private DataGridViewButtonColumn Düzenle;
         private DataGridViewButtonColumn Sil;

@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             label1 = new Label();
             buttonMalzemeEkle = new Button();
             textBoxToplamMiktar = new TextBox();
@@ -39,13 +37,12 @@
             textBoxBirimFiyat = new TextBox();
             label4 = new Label();
             textBoxMalzemeAdi = new TextBox();
-            guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(155, 91);
+            label1.Location = new Point(155, 183);
             label1.Name = "label1";
             label1.Size = new Size(76, 15);
             label1.TabIndex = 1;
@@ -113,30 +110,11 @@
             // 
             // textBoxMalzemeAdi
             // 
-            textBoxMalzemeAdi.Location = new Point(155, 109);
+            textBoxMalzemeAdi.Location = new Point(155, 201);
+            textBoxMalzemeAdi.Multiline = true;
             textBoxMalzemeAdi.Name = "textBoxMalzemeAdi";
             textBoxMalzemeAdi.Size = new Size(176, 23);
             textBoxMalzemeAdi.TabIndex = 10;
-            // 
-            // guna2TextBox1
-            // 
-            guna2TextBox1.CustomizableEdges = customizableEdges1;
-            guna2TextBox1.DefaultText = "";
-            guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            guna2TextBox1.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2TextBox1.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Location = new Point(546, 152);
-            guna2TextBox1.Name = "guna2TextBox1";
-            guna2TextBox1.PasswordChar = '\0';
-            guna2TextBox1.PlaceholderText = "";
-            guna2TextBox1.SelectedText = "";
-            guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2TextBox1.Size = new Size(200, 36);
-            guna2TextBox1.TabIndex = 11;
             // 
             // FormMalzemeEkleme
             // 
@@ -144,7 +122,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(148, 132, 179);
             ClientSize = new Size(1012, 620);
-            Controls.Add(guna2TextBox1);
             Controls.Add(textBoxMalzemeAdi);
             Controls.Add(label4);
             Controls.Add(textBoxBirimFiyat);

@@ -102,6 +102,22 @@
           }
         }
       },
+      "Krypton.Toolkit/85.24.10.288": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-windows7.0/Krypton.Toolkit.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-windows7.0/Krypton.Toolkit.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WindowsForms"
+        ]
+      },
       "Microsoft.CSharp/4.7.0": {
         "type": "package",
         "compile": {
@@ -1134,6 +1150,38 @@
         "lib/netstandard2.0/K4os.Hash.xxHash.xml",
         "lib/netstandard2.1/K4os.Hash.xxHash.dll",
         "lib/netstandard2.1/K4os.Hash.xxHash.xml"
+      ]
+    },
+    "Krypton.Toolkit/85.24.10.288": {
+      "sha512": "aiR3QeeGiZu1OJGJPp0+ItXlsk8qtAPpT+LJ121Xo4j8cFxq5Fn9M7zqJu6WO5gBOtE1pa5qHoSkvu6etsXerw==",
+      "type": "package",
+      "path": "krypton.toolkit/85.24.10.288",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Krypton Stable.png",
+        "License.md",
+        "README.md",
+        "krypton.toolkit.85.24.10.288.nupkg.sha512",
+        "krypton.toolkit.nuspec",
+        "lib/net462/Krypton.Toolkit.dll",
+        "lib/net462/Krypton.Toolkit.xml",
+        "lib/net47/Krypton.Toolkit.dll",
+        "lib/net47/Krypton.Toolkit.xml",
+        "lib/net471/Krypton.Toolkit.dll",
+        "lib/net471/Krypton.Toolkit.xml",
+        "lib/net472/Krypton.Toolkit.dll",
+        "lib/net472/Krypton.Toolkit.xml",
+        "lib/net48/Krypton.Toolkit.dll",
+        "lib/net48/Krypton.Toolkit.xml",
+        "lib/net481/Krypton.Toolkit.dll",
+        "lib/net481/Krypton.Toolkit.xml",
+        "lib/net6.0-windows7.0/Krypton.Toolkit.dll",
+        "lib/net6.0-windows7.0/Krypton.Toolkit.xml",
+        "lib/net7.0-windows7.0/Krypton.Toolkit.dll",
+        "lib/net7.0-windows7.0/Krypton.Toolkit.xml",
+        "lib/net8.0-windows7.0/Krypton.Toolkit.dll",
+        "lib/net8.0-windows7.0/Krypton.Toolkit.xml"
       ]
     },
     "Microsoft.CSharp/4.7.0": {
@@ -3027,6 +3075,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0-windows7.0": [
+      "Krypton.Toolkit >= 85.24.10.288",
       "MySql.Data >= 9.0.0",
       "MySql.Data.EntityFramework >= 9.0.0",
       "MySql.EntityFrameworkCore >= 8.0.5",
@@ -3078,6 +3127,10 @@
       "net7.0-windows7.0": {
         "targetAlias": "net7.0-windows",
         "dependencies": {
+          "Krypton.Toolkit": {
+            "target": "Package",
+            "version": "[85.24.10.288, )"
+          },
           "MySql.Data": {
             "target": "Package",
             "version": "[9.0.0, )"

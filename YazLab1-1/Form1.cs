@@ -1,6 +1,8 @@
 using System.Data;
 using System.Diagnostics;
 using MySql.Data.MySqlClient;
+using System.Runtime.InteropServices;
+//using ComponentFactory.Krypton.Toolkit;
 
 namespace YazLab1_1
 {
@@ -90,6 +92,14 @@ namespace YazLab1_1
             InitializeComponent();
 
         }
+
+        [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+
+        [DllImport("user32.dll", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -265,6 +275,13 @@ namespace YazLab1_1
         {
             this.Close();
         }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
     }
 
 

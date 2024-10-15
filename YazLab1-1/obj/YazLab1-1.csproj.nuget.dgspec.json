@@ -45,6 +45,10 @@
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
           "dependencies": {
+            "Krypton.Toolkit": {
+              "target": "Package",
+              "version": "[85.24.10.288, )"
+            },
             "MySql.Data": {
               "target": "Package",
               "version": "[9.0.0, )"

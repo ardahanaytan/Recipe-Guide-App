@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Krypton.Toolkit" Version="85.24.10.288" />
     <PackageReference Include="MySql.Data" Version="9.0.0" />
     <PackageReference Include="MySql.Data.EntityFramework" Version="9.0.0" />
     <PackageReference Include="MySql.EntityFrameworkCore" Version="8.0.5" />

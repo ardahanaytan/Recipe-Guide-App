@@ -150,7 +150,7 @@ namespace YazLab1_1
             }
             else
             {
-                MessageBox.Show("Zaten bu isimde bir tarif bulunmakta!");
+                //MessageBox.Show("Zaten bu isimde bir tarif bulunmakta!");
             }
         }
 
@@ -335,6 +335,8 @@ namespace YazLab1_1
             numericUpDownSure.Value = 0;
             richTextBoxTalimatlar.Text = null;
             MessageBox.Show("Tarif Başarıyla Eklendi.");
+            panelMalzemeler.Visible = false;
+
         }
 
         private void FormTarifEkleme_Load(object sender, EventArgs e)

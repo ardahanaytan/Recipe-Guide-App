@@ -42,7 +42,7 @@ namespace YazLab1_1
                     try
                     {
                         con.Open();
-                        string query_malzemeleriAl = @"select MalzemeIDr from iliski where TarifIDR = @TarifIDR";
+                        string query_malzemeleriAl = @"select MalzemeIDr from iliski where TarifIDr = @TarifIDr";
                         adapter = new MySqlDataAdapter(query_malzemeleriAl, con);
                         adapter.SelectCommand.Parameters.AddWithValue("@TarifIDR", int.Parse(id));
                         adapter.Fill(malzemeler);
@@ -62,7 +62,7 @@ namespace YazLab1_1
                         try
                         {
                             con.Open();
-                            string query_MalzemeİsmiAl = @"SELECT MalzemeAdi from malzemeler where MalzemeID = @MalzemeID";
+                            string query_MalzemeİsmiAl = @"SELECT * from malzemeler where MalzemeID = @MalzemeID";
                             adapter = new MySqlDataAdapter(query_MalzemeİsmiAl, con);
                             adapter.SelectCommand.Parameters.AddWithValue("@MalzemeID", malzeme_id_);
                             adapter.Fill(malzeme_name);
@@ -72,11 +72,32 @@ namespace YazLab1_1
                         {
                             MessageBox.Show("Malzeme İsmi Alinirken Hata Oluştu:", ex3.Message);
                         }
+                        DataTable miktar_table = new DataTable();
                         if (malzeme_name.Rows.Count == 1)
                         {
+                            con.Open();
+                            string query_getMiktar = @"SELECT MalzemeMiktar from iliski where TarifIDR = @TarifIDR AND MalzemeIDr = @MalzemeIDr";
+                            adapter = new MySqlDataAdapter(query_getMiktar, con);
+                            adapter.SelectCommand.Parameters.AddWithValue("@MalzemeIDr", malzeme_id_);
+                            adapter.SelectCommand.Parameters.AddWithValue("@TarifIDR", int.Parse(id));
+                            adapter.Fill(miktar_table);
+                            con.Close();
+
+                            if (miktar_table.Rows.Count == 1)
+                            {
+                                foreach (DataRow row3 in miktar_table.Rows)
+                                {
+                                    str_malzemeler += row3["MalzemeMiktar"].ToString() + " ";
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Birden fazla aynı idli malzeme bulundu");
+                            }
+
                             foreach (DataRow row2 in malzeme_name.Rows)
                             {
-                                str_malzemeler += row2["MalzemeAdi"].ToString() + ", ";
+                                str_malzemeler += row2["MalzemeBirim"].ToString() + " " + row2["MalzemeAdi"].ToString() + ", ";
                             }
                         }
                         else
@@ -90,8 +111,111 @@ namespace YazLab1_1
                     string kategori = row["Kategori"].ToString();
                     string sure = row["HazirlamaSuresi"].ToString();
                     string talimatlar = row["Talimatlar"].ToString();
-                    dataGridViewTarifler.Rows.Add(id, ad, kategori, sure, str_malzemeler.Substring(0, str_malzemeler.Length-2), talimatlar);
-                    //dataGridViewTarifler.Rows.Add(id, ad, kategori, sure, str_malzemeler, talimatlar);
+
+                    string[] malzemeler_arr = str_malzemeler.Substring(0, str_malzemeler.Length - 2).Split(",").ToArray();
+                    string yeterli_malzemeler = "";
+                    string yetersiz_malzemeler = "";
+                    foreach (string malzeme in malzemeler_arr)
+                    {
+                        //MessageBox.Show("-" + malzeme + "-");
+                        string malzeme_trim = malzeme.Trim();
+                        string[] malzeme_kelime = malzeme_trim.Split(" ").Select(part => part.Trim()).ToArray();
+                        float malzeme_miktar = float.Parse(malzeme_kelime[0]);
+                        string malzeme_isim = "";
+                        int gezen = 2;
+                        while (gezen < malzeme_kelime.Length)
+                        {
+                            malzeme_isim += malzeme_kelime[gezen] + " ";
+                            gezen++;
+                        }
+                        malzeme_isim = malzeme_isim.Substring(0, malzeme_isim.Length - 1);
+                        DataTable dt_mik = new DataTable();
+                        try
+                        {
+                            con.Open();
+                            string query_sahipOlunaniAlma = @"select ToplamMiktar from malzemeler where MalzemeAdi = @MalzemeAdi";
+                            adapter = new MySqlDataAdapter(query_sahipOlunaniAlma, con);
+                            adapter.SelectCommand.Parameters.AddWithValue("@MalzemeAdi", malzeme_isim);
+                            adapter.Fill(dt_mik);
+                            con.Close();
+
+                        }
+                        catch (Exception ex1)
+                        {
+                            MessageBox.Show("Renklendirme hatası: " + ex1.Message);
+                            return;
+
+                        }
+
+
+
+
+                        if (dt_mik.Rows.Count == 1)
+                        {
+                            float neKadarVar = -1f;
+                            foreach (DataRow row_ in dt_mik.Rows)
+                            {
+                                neKadarVar = float.Parse(row_["ToplamMiktar"].ToString());
+                            }
+                            if (neKadarVar >= malzeme_miktar)
+                            {
+                                if (yeterli_malzemeler == "")
+                                {
+                                    yeterli_malzemeler += malzeme;
+                                }
+                                else
+                                {
+                                    yeterli_malzemeler += "," + malzeme;
+                                }
+
+                            }
+                            else
+                            {
+                                if (yetersiz_malzemeler == "")
+                                {
+                                    yetersiz_malzemeler += malzeme;
+                                }
+                                else
+                                {
+                                    yetersiz_malzemeler += "," + malzeme;
+                                }
+                            }
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Malzeme bulma hatasi!");
+                            return;
+                        }
+
+                    }
+
+                    if (yeterli_malzemeler == "")
+                    {
+                        yeterli_malzemeler = "Yok";
+                    }
+                    if (yetersiz_malzemeler == "")
+                    {
+                        yetersiz_malzemeler = "Yok";
+                    }
+
+
+
+
+                    int row_num = dataGridViewTarifler.Rows.Add(id, ad, kategori, sure, yeterli_malzemeler, yetersiz_malzemeler, talimatlar);
+                    if (yetersiz_malzemeler == "Yok")
+                    {
+                        dataGridViewTarifler.Rows[row_num].DefaultCellStyle.BackColor = Color.Green;
+                        dataGridViewTarifler.Rows[row_num].DefaultCellStyle.ForeColor = Color.White; // İsteğe bağlı yazı rengi
+                    }
+                    else
+                    {
+                        dataGridViewTarifler.Rows[row_num].DefaultCellStyle.BackColor = Color.Red;
+                        dataGridViewTarifler.Rows[row_num].DefaultCellStyle.ForeColor = Color.White; // İsteğe bağlı yazı rengi
+                    }
+
+
+                    //dataGridViewTarifler.Invalidate(); // tekrar boyama?????????
                 }
             }
             catch (Exception ex1)
@@ -100,6 +224,7 @@ namespace YazLab1_1
                 return;
             }
 
+            this.ayirma_methodu();
 
         }
 
@@ -108,7 +233,7 @@ namespace YazLab1_1
             this.tabloGuncelle("select * from tarifler");
         }
 
-        public void tarifSil(string id )
+        public void tarifSil(string id)
         {
             if (id == "")
             {
@@ -187,13 +312,24 @@ namespace YazLab1_1
                     else
                     {
 
-                    }                   
+                    }
                 }
             }
             catch (Exception ex1)
             {
                 MessageBox.Show("Buton Hatası:", ex1.Message);
             }
+        }
+
+        public void ayirma_methodu()
+        {
+
+        }
+
+
+        private void dataGridViewTarifler_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+
         }
     }
 }

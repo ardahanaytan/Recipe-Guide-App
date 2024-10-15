@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Text.RegularExpressions;
 
 namespace YazLab1_1
 {
@@ -26,6 +27,9 @@ namespace YazLab1_1
         private void buttonMalzemeEkle_Click(object sender, EventArgs e)
         {
             string str_malzemeAdi = textBoxMalzemeAdi.Text;
+            str_malzemeAdi = Regex.Replace(str_malzemeAdi, @"\s+", " ").Trim(); //birden fazla boşluğu temizleme
+
+
             string str_toplamMiktar = textBoxToplamMiktar.Text;
             int index_malzemeBirim = comboBoxMalzemeBirimi.SelectedIndex;
             string str_birimFiyat = textBoxBirimFiyat.Text;
