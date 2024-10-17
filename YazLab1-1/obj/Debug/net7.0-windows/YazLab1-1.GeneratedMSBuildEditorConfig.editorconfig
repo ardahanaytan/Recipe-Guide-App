@@ -14,4 +14,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = YazLab1_1
-build_property.ProjectDir = C:\Users\ardah\Desktop\YazLab1-1\YazLab1-1\
+build_property.ProjectDir = C:\Users\sefat\OneDrive\Masaüstü\Recipe-Guide-App\YazLab1-1\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 

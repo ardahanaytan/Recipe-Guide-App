@@ -10,7 +10,9 @@ namespace YazLab1_1
 
     public partial class Form1 : Form
     {
-        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
+        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
+
+        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
         MySqlCommand cmd;
         MySqlDataAdapter adapter;
         DataTable dt;
@@ -21,6 +23,147 @@ namespace YazLab1_1
         FormTarifEkleme tarifEkleme;
         FormMalzemeListesi malzemeListesi;
         FormMalzemeEkleme malzemeEkleme;
+
+        public void iliski_ekle(int malzemeID, int tarifID, float miktar_)
+        {
+            try
+            {
+                //kontrol
+                DataTable dt = new DataTable();
+                con.Open();
+                string query_iliskiVarMi = @"select * from iliski where MalzemeIDr = @MalzemeIDr AND TarifIDr = @TarifIDr";
+                adapter = new MySqlDataAdapter(query_iliskiVarMi, con);
+                adapter.SelectCommand.Parameters.AddWithValue("@MalzemeIDr", malzemeID);
+                adapter.SelectCommand.Parameters.AddWithValue("@TarifIDr", tarifID);
+                adapter.Fill(dt);
+                con.Close();
+                if (dt.Rows.Count > 0)
+                {
+                    //MessageBox.Show("Bu iliski zaten var!");
+                    return;
+                }
+
+                //ekle
+                con.Open();
+                string query_iliskiEkle = @"INSERT INTO iliski (MalzemeIDr, TarifIDr, MalzemeMiktar) VALUES (@MalzemeIDr, @TarifIDr, @MalzemeMiktar)";
+                cmd = new MySqlCommand(query_iliskiEkle, con);
+                cmd.Parameters.AddWithValue("@MalzemeIDr", malzemeID);
+                cmd.Parameters.AddWithValue("@TarifIDr", tarifID);
+                cmd.Parameters.AddWithValue("@MalzemeMiktar", miktar_);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ýliski ekleme hatasý: " + ex.Message);
+            }
+
+        }
+
+        public void malzeme_ekle(string malzeme_adi, string toplam_miktar, string malzeme_birim, float birimFiyat)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                con.Open();
+                string query_tarifVarMi = @"select * from malzemeler where MalzemeAdi = @MalzemeAdi";
+                adapter = new MySqlDataAdapter(query_tarifVarMi, con);
+                adapter.SelectCommand.Parameters.AddWithValue("@MalzemeAdi", malzeme_adi);
+                adapter.Fill(dt);
+                con.Close();
+                if (dt.Rows.Count > 0)
+                {
+                    //MessageBox.Show("Bu malzeme zaten var!");
+                    return;
+                }
+                con.Open();
+                string query_malzemeekleme = @"INSERT INTO malzemeler (MalzemeAdi, ToplamMiktar, MalzemeBirim, BirimFiyat) VALUES (@str_malzemeAdi, @str_toplamMiktar, @str_malzemeBirim, @fiyat);";
+                cmd = new MySqlCommand(query_malzemeekleme, con);
+                cmd.Parameters.AddWithValue("@str_malzemeAdi", malzeme_adi);
+                cmd.Parameters.AddWithValue("@str_toplamMiktar", toplam_miktar);
+                cmd.Parameters.AddWithValue("@str_malzemeBirim", malzeme_birim);
+                cmd.Parameters.AddWithValue("@fiyat", birimFiyat);
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Malzeme ekleme hatasý: " + ex.Message);
+            }
+
+        }
+
+        public void tarif_ekle(string tarif_adi, string kategori, int hazirlamaSuresi, string talimatlar)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                //var mi yok mu kontrol et
+                con.Open();
+                string query_tarifVarMi = @"select * from tarifler where TarifAdi = @TarifAdi";
+                adapter = new MySqlDataAdapter(query_tarifVarMi, con);
+                adapter.SelectCommand.Parameters.AddWithValue("@TarifAdi", tarif_adi);
+                adapter.Fill(dt);
+                con.Close();
+
+                if (dt.Rows.Count > 0)
+                {
+                    //MessageBox.Show("Bu tarif zaten var!");
+                    return;
+                }
+                //tarif ekle
+                con.Open();
+                string query_tarifEkle = @"insert into tarifler (TarifAdi, Kategori, HazirlamaSuresi, Talimatlar) values (@TarifAdi, @Kategori, @HazirlamaSuresi, @Talimatlar)";
+                cmd = new MySqlCommand(query_tarifEkle, con);
+                cmd.Parameters.AddWithValue("@TarifAdi", tarif_adi);
+                cmd.Parameters.AddWithValue("@Kategori", kategori);
+                cmd.Parameters.AddWithValue("@HazirlamaSuresi", hazirlamaSuresi);
+                cmd.Parameters.AddWithValue("@Talimatlar", talimatlar);
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Tarif ekleme hatasý: " + ex.Message);
+            }
+        }
+
+        public void databaseDoldur()
+        {
+            try
+            {
+                tarif_ekle("tarif1", "Yemek", 21, "asdkhjnadsjkhnajsdkhnasdh");
+                tarif_ekle("tarif2", "Çorba", 21241, "asdkhjnadsjasdhasdhkhnajsdkhnasdh");
+                tarif_ekle("tarif3", "Tatlý", 22141, "asdkhjnadasdhasdsjkhnajsdkhnasdh");
+                tarif_ekle("tarif4", "Çorba", 21241, "asdkhjnadsasdhasdhjkhnajsdkhnasdh");
+                tarif_ekle("tarif5", "Tatlý", 211, "asdkhjnadsjkasdhasdhhnajsdkhnasdh");
+
+                malzeme_ekle("malzeme1", "4212", "Gram", 1f);
+                malzeme_ekle("malzeme2", "4212", "Gram", 100f);
+                malzeme_ekle("malzeme3", "4212", "Gram", 1f);
+                malzeme_ekle("malzeme4", "4212", "Gram", 1f);
+
+                iliski_ekle(1, 1, 10);
+                iliski_ekle(2, 1, 10);
+                iliski_ekle(1, 3, 5);
+                iliski_ekle(1, 4, 3);
+                iliski_ekle(2, 4, 200);
+                iliski_ekle(3, 4, 4312);
+                iliski_ekle(1, 5, 7);
+                iliski_ekle(1, 2, 1110);
+                iliski_ekle(3, 1, 10);
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Database doldurma hatasý: " + ex.Message);
+            }
+        }
 
         public void initDatabase()
         {
@@ -104,12 +247,10 @@ namespace YazLab1_1
         private void Form1_Load(object sender, EventArgs e)
         {
             initDatabase();
+            databaseDoldur();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         bool menuCubukAktifMi = true;
 
@@ -188,6 +329,7 @@ namespace YazLab1_1
             if (tarifListesi == null)
             {
                 tarifListesi = new FormTarifListesi();
+                
                 tarifListesi.FormClosed += TarifListesi_FormClosed;
                 tarifListesi.MdiParent = this;
                 tarifListesi.Dock = DockStyle.Fill;
@@ -195,6 +337,7 @@ namespace YazLab1_1
             }
             else
             {
+                tarifListesi.tabloGuncelle("select * from tarifler");
                 tarifListesi.Activate();
             }
             panelAnaManu.Visible = false;
@@ -240,6 +383,7 @@ namespace YazLab1_1
             else
             {
                 malzemeListesi.Activate();
+                malzemeListesi.tabloGuncelle("select * from malzemeler");
             }
             panelAnaManu.Visible = false;
         }
@@ -282,6 +426,10 @@ namespace YazLab1_1
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 

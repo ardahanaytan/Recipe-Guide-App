@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("YazLab1-1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fed036d8aed1d92855a3ae061fc825fc7d636e0d")]
 [assembly: System.Reflection.AssemblyProductAttribute("YazLab1-1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("YazLab1-1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

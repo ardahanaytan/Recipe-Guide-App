@@ -29,15 +29,17 @@
         private void InitializeComponent()
         {
             dataGridViewTarifler = new DataGridView();
-            tarifID = new DataGridViewTextBoxColumn();
-            tarifAdi = new DataGridViewTextBoxColumn();
-            tarifKategori = new DataGridViewTextBoxColumn();
-            tarifHazirlamaSuresi = new DataGridViewTextBoxColumn();
-            Malzemeler = new DataGridViewTextBoxColumn();
-            YetersizMalzemeler = new DataGridViewTextBoxColumn();
-            talimatlar = new DataGridViewTextBoxColumn();
-            Düzenle = new DataGridViewButtonColumn();
             Sil = new DataGridViewButtonColumn();
+            Düzenle = new DataGridViewButtonColumn();
+            GerekenFiyat = new DataGridViewTextBoxColumn();
+            Maliyet = new DataGridViewTextBoxColumn();
+            talimatlar = new DataGridViewTextBoxColumn();
+            YetersizMalzemeler = new DataGridViewTextBoxColumn();
+            Malzemeler = new DataGridViewTextBoxColumn();
+            tarifHazirlamaSuresi = new DataGridViewTextBoxColumn();
+            tarifKategori = new DataGridViewTextBoxColumn();
+            tarifAdi = new DataGridViewTextBoxColumn();
+            tarifID = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTarifler).BeginInit();
             SuspendLayout();
             // 
@@ -45,74 +47,78 @@
             // 
             dataGridViewTarifler.AllowUserToAddRows = false;
             dataGridViewTarifler.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewTarifler.Columns.AddRange(new DataGridViewColumn[] { tarifID, tarifAdi, tarifKategori, tarifHazirlamaSuresi, Malzemeler, YetersizMalzemeler, talimatlar, Düzenle, Sil });
-            dataGridViewTarifler.Location = new Point(33, 102);
+            dataGridViewTarifler.Columns.AddRange(new DataGridViewColumn[] { tarifID, tarifAdi, tarifKategori, tarifHazirlamaSuresi, Malzemeler, YetersizMalzemeler, talimatlar, Maliyet, GerekenFiyat, Düzenle, Sil });
+            dataGridViewTarifler.Location = new Point(-40, 88);
             dataGridViewTarifler.Name = "dataGridViewTarifler";
             dataGridViewTarifler.RowTemplate.Height = 25;
-            dataGridViewTarifler.Size = new Size(942, 372);
+            dataGridViewTarifler.Size = new Size(1048, 372);
             dataGridViewTarifler.TabIndex = 0;
             dataGridViewTarifler.CellContentClick += dataGridView1_CellContentClick;
             dataGridViewTarifler.CellPainting += dataGridViewTarifler_CellPainting;
-            // 
-            // tarifID
-            // 
-            tarifID.HeaderText = "Tarif ID";
-            tarifID.Name = "tarifID";
-            tarifID.ReadOnly = true;
-            // 
-            // tarifAdi
-            // 
-            tarifAdi.HeaderText = "Tarif Adı";
-            tarifAdi.Name = "tarifAdi";
-            tarifAdi.ReadOnly = true;
-            // 
-            // tarifKategori
-            // 
-            tarifKategori.HeaderText = "Kategori";
-            tarifKategori.Name = "tarifKategori";
-            tarifKategori.ReadOnly = true;
-            // 
-            // tarifHazirlamaSuresi
-            // 
-            tarifHazirlamaSuresi.HeaderText = "Hazırlama Süresi";
-            tarifHazirlamaSuresi.Name = "tarifHazirlamaSuresi";
-            tarifHazirlamaSuresi.ReadOnly = true;
-            // 
-            // Malzemeler
-            // 
-            Malzemeler.HeaderText = "Yeterli Malzemeler";
-            Malzemeler.Name = "Malzemeler";
-            Malzemeler.ReadOnly = true;
-            // 
-            // YetersizMalzemeler
-            // 
-            YetersizMalzemeler.HeaderText = "Yetersiz Malzemeler";
-            YetersizMalzemeler.Name = "YetersizMalzemeler";
-            YetersizMalzemeler.ReadOnly = true;
-            // 
-            // talimatlar
-            // 
-            talimatlar.HeaderText = "Talimatlar";
-            talimatlar.Name = "talimatlar";
-            talimatlar.ReadOnly = true;
-            // 
-            // Düzenle
-            // 
-            Düzenle.HeaderText = "Düzenle";
-            Düzenle.Name = "Düzenle";
-            Düzenle.ReadOnly = true;
-            Düzenle.Text = "Düzenle";
-            Düzenle.ToolTipText = "Düzenle";
-            Düzenle.UseColumnTextForButtonValue = true;
             // 
             // Sil
             // 
             Sil.HeaderText = "Sil";
             Sil.Name = "Sil";
-            Sil.ReadOnly = true;
             Sil.Text = "Sil";
             Sil.ToolTipText = "Sil";
             Sil.UseColumnTextForButtonValue = true;
+            // 
+            // Düzenle
+            // 
+            Düzenle.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Düzenle.HeaderText = "Düzenle";
+            Düzenle.Name = "Düzenle";
+            Düzenle.Text = "Düzenle";
+            Düzenle.ToolTipText = "Düzenle";
+            Düzenle.UseColumnTextForButtonValue = true;
+            Düzenle.Width = 55;
+            // 
+            // GerekenFiyat
+            // 
+            GerekenFiyat.HeaderText = "Gereken Fiyat";
+            GerekenFiyat.Name = "GerekenFiyat";
+            // 
+            // Maliyet
+            // 
+            Maliyet.HeaderText = "Maliyet";
+            Maliyet.Name = "Maliyet";
+            Maliyet.ToolTipText = "Maliyet";
+            // 
+            // talimatlar
+            // 
+            talimatlar.HeaderText = "Talimatlar";
+            talimatlar.Name = "talimatlar";
+            // 
+            // YetersizMalzemeler
+            // 
+            YetersizMalzemeler.HeaderText = "Yetersiz Malzemeler";
+            YetersizMalzemeler.Name = "YetersizMalzemeler";
+            // 
+            // Malzemeler
+            // 
+            Malzemeler.HeaderText = "Yeterli Malzemeler";
+            Malzemeler.Name = "Malzemeler";
+            // 
+            // tarifHazirlamaSuresi
+            // 
+            tarifHazirlamaSuresi.HeaderText = "Hazırlama Süresi";
+            tarifHazirlamaSuresi.Name = "tarifHazirlamaSuresi";
+            // 
+            // tarifKategori
+            // 
+            tarifKategori.HeaderText = "Kategori";
+            tarifKategori.Name = "tarifKategori";
+            // 
+            // tarifAdi
+            // 
+            tarifAdi.HeaderText = "Tarif Adı";
+            tarifAdi.Name = "tarifAdi";
+            // 
+            // tarifID
+            // 
+            tarifID.HeaderText = "Tarif ID";
+            tarifID.Name = "tarifID";
             // 
             // FormTarifListesi
             // 
@@ -138,6 +144,8 @@
         private DataGridViewTextBoxColumn Malzemeler;
         private DataGridViewTextBoxColumn YetersizMalzemeler;
         private DataGridViewTextBoxColumn talimatlar;
+        private DataGridViewTextBoxColumn Maliyet;
+        private DataGridViewTextBoxColumn GerekenFiyat;
         private DataGridViewButtonColumn Düzenle;
         private DataGridViewButtonColumn Sil;
     }

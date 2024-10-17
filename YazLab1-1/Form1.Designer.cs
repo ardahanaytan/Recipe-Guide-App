@@ -52,22 +52,31 @@
             button8 = new Button();
             menuCubukTimer = new System.Windows.Forms.Timer(components);
             panelAnaManu = new Panel();
-            label11 = new Label();
-            label10 = new Label();
-            label9 = new Label();
-            label8 = new Label();
+            labelTalimat3 = new Label();
+            labelTalimat2 = new Label();
+            labelTalimat1 = new Label();
+            labelSure3 = new Label();
+            labelSure2 = new Label();
+            labelSure1 = new Label();
+            labelKategori3 = new Label();
             label7 = new Label();
-            label6 = new Label();
+            labelKategori1 = new Label();
             label5 = new Label();
-            label4 = new Label();
-            label3 = new Label();
-            label2 = new Label();
+            labelName3 = new Label();
+            labelName2 = new Label();
+            labelName1 = new Label();
             pictureBox4 = new PictureBox();
             pictureBox3 = new PictureBox();
             pictureBox2 = new PictureBox();
-            label12 = new Label();
-            label13 = new Label();
-            label14 = new Label();
+            richTextBox1 = new RichTextBox();
+            richTextBox2 = new RichTextBox();
+            richTextBox3 = new RichTextBox();
+            labelMaliyet1 = new Label();
+            labelMaliyet2 = new Label();
+            labelMaliyet3 = new Label();
+            labelGereken1 = new Label();
+            labelGereken2 = new Label();
+            labelGereken3 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             menuCubuk.SuspendLayout();
@@ -179,7 +188,6 @@
             button2.Text = "          Ana Ekran";
             button2.TextAlign = ContentAlignment.MiddleLeft;
             button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
             // 
             // panelArama
             // 
@@ -356,19 +364,28 @@
             // 
             // panelAnaManu
             // 
-            panelAnaManu.Controls.Add(label14);
-            panelAnaManu.Controls.Add(label13);
-            panelAnaManu.Controls.Add(label12);
-            panelAnaManu.Controls.Add(label11);
-            panelAnaManu.Controls.Add(label10);
-            panelAnaManu.Controls.Add(label9);
-            panelAnaManu.Controls.Add(label8);
+            panelAnaManu.Controls.Add(labelGereken3);
+            panelAnaManu.Controls.Add(labelGereken2);
+            panelAnaManu.Controls.Add(labelGereken1);
+            panelAnaManu.Controls.Add(labelMaliyet3);
+            panelAnaManu.Controls.Add(labelMaliyet2);
+            panelAnaManu.Controls.Add(labelMaliyet1);
+            panelAnaManu.Controls.Add(richTextBox3);
+            panelAnaManu.Controls.Add(richTextBox2);
+            panelAnaManu.Controls.Add(richTextBox1);
+            panelAnaManu.Controls.Add(labelTalimat3);
+            panelAnaManu.Controls.Add(labelTalimat2);
+            panelAnaManu.Controls.Add(labelTalimat1);
+            panelAnaManu.Controls.Add(labelSure3);
+            panelAnaManu.Controls.Add(labelSure2);
+            panelAnaManu.Controls.Add(labelSure1);
+            panelAnaManu.Controls.Add(labelKategori3);
             panelAnaManu.Controls.Add(label7);
-            panelAnaManu.Controls.Add(label6);
+            panelAnaManu.Controls.Add(labelKategori1);
             panelAnaManu.Controls.Add(label5);
-            panelAnaManu.Controls.Add(label4);
-            panelAnaManu.Controls.Add(label3);
-            panelAnaManu.Controls.Add(label2);
+            panelAnaManu.Controls.Add(labelName3);
+            panelAnaManu.Controls.Add(labelName2);
+            panelAnaManu.Controls.Add(labelName1);
             panelAnaManu.Controls.Add(pictureBox4);
             panelAnaManu.Controls.Add(pictureBox3);
             panelAnaManu.Controls.Add(pictureBox2);
@@ -377,57 +394,96 @@
             panelAnaManu.Size = new Size(1240, 621);
             panelAnaManu.TabIndex = 6;
             // 
-            // label11
+            // labelTalimat3
             // 
-            label11.AutoSize = true;
-            label11.BorderStyle = BorderStyle.FixedSingle;
-            label11.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label11.ForeColor = SystemColors.ControlLightLight;
-            label11.Location = new Point(1019, 251);
-            label11.Name = "label11";
-            label11.Size = new Size(157, 24);
-            label11.TabIndex = 11;
-            label11.Text = "Hazırlanma Süresi";
-            label11.TextAlign = ContentAlignment.MiddleCenter;
+            labelTalimat3.AutoSize = true;
+            labelTalimat3.BorderStyle = BorderStyle.FixedSingle;
+            labelTalimat3.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            labelTalimat3.ForeColor = SystemColors.ControlLightLight;
+            labelTalimat3.Location = new Point(998, 487);
+            labelTalimat3.Name = "labelTalimat3";
+            labelTalimat3.Size = new Size(91, 24);
+            labelTalimat3.TabIndex = 14;
+            labelTalimat3.Text = "Talimatlar";
+            labelTalimat3.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label10
+            // labelTalimat2
             // 
-            label10.AutoSize = true;
-            label10.BorderStyle = BorderStyle.FixedSingle;
-            label10.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.ForeColor = SystemColors.ControlLightLight;
-            label10.Location = new Point(672, 250);
-            label10.Name = "label10";
-            label10.Size = new Size(157, 24);
-            label10.TabIndex = 10;
-            label10.Text = "Hazırlanma Süresi";
-            label10.TextAlign = ContentAlignment.MiddleCenter;
+            labelTalimat2.AutoSize = true;
+            labelTalimat2.BorderStyle = BorderStyle.FixedSingle;
+            labelTalimat2.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            labelTalimat2.ForeColor = SystemColors.ControlLightLight;
+            labelTalimat2.Location = new Point(624, 487);
+            labelTalimat2.Name = "labelTalimat2";
+            labelTalimat2.Size = new Size(91, 24);
+            labelTalimat2.TabIndex = 13;
+            labelTalimat2.Text = "Talimatlar";
+            labelTalimat2.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label9
+            // labelTalimat1
             // 
-            label9.AutoSize = true;
-            label9.BorderStyle = BorderStyle.FixedSingle;
-            label9.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.ForeColor = SystemColors.ControlLightLight;
-            label9.Location = new Point(326, 251);
-            label9.Name = "label9";
-            label9.Size = new Size(157, 24);
-            label9.TabIndex = 9;
-            label9.Text = "Hazırlanma Süresi";
-            label9.TextAlign = ContentAlignment.MiddleCenter;
+            labelTalimat1.AutoSize = true;
+            labelTalimat1.BorderStyle = BorderStyle.FixedSingle;
+            labelTalimat1.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            labelTalimat1.ForeColor = SystemColors.ControlLightLight;
+            labelTalimat1.Location = new Point(288, 487);
+            labelTalimat1.Name = "labelTalimat1";
+            labelTalimat1.Size = new Size(91, 24);
+            labelTalimat1.TabIndex = 12;
+            labelTalimat1.Text = "Talimatlar";
+            labelTalimat1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label8
+            // labelSure3
             // 
-            label8.AutoSize = true;
-            label8.BorderStyle = BorderStyle.FixedSingle;
-            label8.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.ForeColor = SystemColors.ControlLightLight;
-            label8.Location = new Point(1019, 216);
-            label8.Name = "label8";
-            label8.Size = new Size(79, 24);
-            label8.TabIndex = 8;
-            label8.Text = "Kategori";
-            label8.TextAlign = ContentAlignment.MiddleCenter;
+            labelSure3.AutoSize = true;
+            labelSure3.BorderStyle = BorderStyle.FixedSingle;
+            labelSure3.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            labelSure3.ForeColor = SystemColors.ControlLightLight;
+            labelSure3.Location = new Point(998, 329);
+            labelSure3.Name = "labelSure3";
+            labelSure3.Size = new Size(157, 24);
+            labelSure3.TabIndex = 11;
+            labelSure3.Text = "Hazırlanma Süresi";
+            labelSure3.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // labelSure2
+            // 
+            labelSure2.AutoSize = true;
+            labelSure2.BorderStyle = BorderStyle.FixedSingle;
+            labelSure2.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            labelSure2.ForeColor = SystemColors.ControlLightLight;
+            labelSure2.Location = new Point(619, 329);
+            labelSure2.Name = "labelSure2";
+            labelSure2.Size = new Size(157, 24);
+            labelSure2.TabIndex = 10;
+            labelSure2.Text = "Hazırlanma Süresi";
+            labelSure2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // labelSure1
+            // 
+            labelSure1.AutoSize = true;
+            labelSure1.BorderStyle = BorderStyle.FixedSingle;
+            labelSure1.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            labelSure1.ForeColor = SystemColors.ControlLightLight;
+            labelSure1.Location = new Point(288, 326);
+            labelSure1.Name = "labelSure1";
+            labelSure1.Size = new Size(157, 24);
+            labelSure1.TabIndex = 9;
+            labelSure1.Text = "Hazırlanma Süresi";
+            labelSure1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // labelKategori3
+            // 
+            labelKategori3.AutoSize = true;
+            labelKategori3.BorderStyle = BorderStyle.FixedSingle;
+            labelKategori3.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            labelKategori3.ForeColor = SystemColors.ControlLightLight;
+            labelKategori3.Location = new Point(998, 277);
+            labelKategori3.Name = "labelKategori3";
+            labelKategori3.Size = new Size(79, 24);
+            labelKategori3.TabIndex = 8;
+            labelKategori3.Text = "Kategori";
+            labelKategori3.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label7
             // 
@@ -435,25 +491,26 @@
             label7.BorderStyle = BorderStyle.FixedSingle;
             label7.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
             label7.ForeColor = SystemColors.ControlLightLight;
-            label7.Location = new Point(672, 216);
+            label7.Location = new Point(619, 280);
             label7.Name = "label7";
             label7.Size = new Size(79, 24);
             label7.TabIndex = 7;
             label7.Text = "Kategori";
             label7.TextAlign = ContentAlignment.MiddleCenter;
+            label7.Click += label7_Click;
             // 
-            // label6
+            // labelKategori1
             // 
-            label6.AutoSize = true;
-            label6.BorderStyle = BorderStyle.FixedSingle;
-            label6.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.ForeColor = SystemColors.ControlLightLight;
-            label6.Location = new Point(326, 216);
-            label6.Name = "label6";
-            label6.Size = new Size(79, 24);
-            label6.TabIndex = 6;
-            label6.Text = "Kategori";
-            label6.TextAlign = ContentAlignment.MiddleCenter;
+            labelKategori1.AutoSize = true;
+            labelKategori1.BorderStyle = BorderStyle.FixedSingle;
+            labelKategori1.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            labelKategori1.ForeColor = SystemColors.ControlLightLight;
+            labelKategori1.Location = new Point(288, 280);
+            labelKategori1.Name = "labelKategori1";
+            labelKategori1.Size = new Size(79, 24);
+            labelKategori1.TabIndex = 6;
+            labelKategori1.Text = "Kategori";
+            labelKategori1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label5
             // 
@@ -462,44 +519,44 @@
             label5.Size = new Size(100, 23);
             label5.TabIndex = 0;
             // 
-            // label4
+            // labelName3
             // 
-            label4.AutoSize = true;
-            label4.BorderStyle = BorderStyle.FixedSingle;
-            label4.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.ForeColor = SystemColors.ControlLightLight;
-            label4.Location = new Point(1005, 174);
-            label4.Name = "label4";
-            label4.Size = new Size(105, 31);
-            label4.TabIndex = 5;
-            label4.Text = "Tarif Adı";
-            label4.TextAlign = ContentAlignment.MiddleCenter;
+            labelName3.AutoSize = true;
+            labelName3.BorderStyle = BorderStyle.FixedSingle;
+            labelName3.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            labelName3.ForeColor = SystemColors.ControlLightLight;
+            labelName3.Location = new Point(1005, 174);
+            labelName3.Name = "labelName3";
+            labelName3.Size = new Size(105, 31);
+            labelName3.TabIndex = 5;
+            labelName3.Text = "Tarif Adı";
+            labelName3.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label3
+            // labelName2
             // 
-            label3.AutoSize = true;
-            label3.BorderStyle = BorderStyle.FixedSingle;
-            label3.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.ForeColor = SystemColors.ControlLightLight;
-            label3.Location = new Point(658, 174);
-            label3.Name = "label3";
-            label3.Size = new Size(105, 31);
-            label3.TabIndex = 4;
-            label3.Text = "Tarif Adı";
-            label3.TextAlign = ContentAlignment.MiddleCenter;
+            labelName2.AutoSize = true;
+            labelName2.BorderStyle = BorderStyle.FixedSingle;
+            labelName2.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            labelName2.ForeColor = SystemColors.ControlLightLight;
+            labelName2.Location = new Point(624, 172);
+            labelName2.Name = "labelName2";
+            labelName2.Size = new Size(105, 31);
+            labelName2.TabIndex = 4;
+            labelName2.Text = "Tarif Adı";
+            labelName2.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // labelName1
             // 
-            label2.AutoSize = true;
-            label2.BorderStyle = BorderStyle.FixedSingle;
-            label2.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.ForeColor = SystemColors.ControlLightLight;
-            label2.Location = new Point(312, 174);
-            label2.Name = "label2";
-            label2.Size = new Size(105, 31);
-            label2.TabIndex = 3;
-            label2.Text = "Tarif Adı";
-            label2.TextAlign = ContentAlignment.MiddleCenter;
+            labelName1.AutoSize = true;
+            labelName1.BorderStyle = BorderStyle.FixedSingle;
+            labelName1.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            labelName1.ForeColor = SystemColors.ControlLightLight;
+            labelName1.Location = new Point(276, 174);
+            labelName1.Name = "labelName1";
+            labelName1.Size = new Size(105, 31);
+            labelName1.TabIndex = 3;
+            labelName1.Text = "Tarif Adı";
+            labelName1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // pictureBox4
             // 
@@ -525,44 +582,83 @@
             pictureBox2.TabIndex = 0;
             pictureBox2.TabStop = false;
             // 
-            // label12
+            // richTextBox1
             // 
-            label12.AutoSize = true;
-            label12.BorderStyle = BorderStyle.FixedSingle;
-            label12.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label12.ForeColor = SystemColors.ControlLightLight;
-            label12.Location = new Point(326, 288);
-            label12.Name = "label12";
-            label12.Size = new Size(91, 24);
-            label12.TabIndex = 12;
-            label12.Text = "Talimatlar";
-            label12.TextAlign = ContentAlignment.MiddleCenter;
+            richTextBox1.Location = new Point(288, 366);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(100, 96);
+            richTextBox1.TabIndex = 15;
+            richTextBox1.Text = "";
             // 
-            // label13
+            // richTextBox2
             // 
-            label13.AutoSize = true;
-            label13.BorderStyle = BorderStyle.FixedSingle;
-            label13.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label13.ForeColor = SystemColors.ControlLightLight;
-            label13.Location = new Point(672, 288);
-            label13.Name = "label13";
-            label13.Size = new Size(91, 24);
-            label13.TabIndex = 13;
-            label13.Text = "Talimatlar";
-            label13.TextAlign = ContentAlignment.MiddleCenter;
+            richTextBox2.Location = new Point(624, 366);
+            richTextBox2.Name = "richTextBox2";
+            richTextBox2.Size = new Size(100, 96);
+            richTextBox2.TabIndex = 16;
+            richTextBox2.Text = "";
             // 
-            // label14
+            // richTextBox3
             // 
-            label14.AutoSize = true;
-            label14.BorderStyle = BorderStyle.FixedSingle;
-            label14.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label14.ForeColor = SystemColors.ControlLightLight;
-            label14.Location = new Point(1019, 288);
-            label14.Name = "label14";
-            label14.Size = new Size(91, 24);
-            label14.TabIndex = 14;
-            label14.Text = "Talimatlar";
-            label14.TextAlign = ContentAlignment.MiddleCenter;
+            richTextBox3.Location = new Point(998, 366);
+            richTextBox3.Name = "richTextBox3";
+            richTextBox3.Size = new Size(100, 96);
+            richTextBox3.TabIndex = 17;
+            richTextBox3.Text = "";
+            // 
+            // labelMaliyet1
+            // 
+            labelMaliyet1.AutoSize = true;
+            labelMaliyet1.Location = new Point(288, 225);
+            labelMaliyet1.Name = "labelMaliyet1";
+            labelMaliyet1.Size = new Size(41, 15);
+            labelMaliyet1.TabIndex = 18;
+            labelMaliyet1.Text = "label2";
+            // 
+            // labelMaliyet2
+            // 
+            labelMaliyet2.AutoSize = true;
+            labelMaliyet2.Location = new Point(633, 225);
+            labelMaliyet2.Name = "labelMaliyet2";
+            labelMaliyet2.Size = new Size(41, 15);
+            labelMaliyet2.TabIndex = 19;
+            labelMaliyet2.Text = "label3";
+            // 
+            // labelMaliyet3
+            // 
+            labelMaliyet3.AutoSize = true;
+            labelMaliyet3.Location = new Point(1005, 231);
+            labelMaliyet3.Name = "labelMaliyet3";
+            labelMaliyet3.Size = new Size(41, 15);
+            labelMaliyet3.TabIndex = 20;
+            labelMaliyet3.Text = "label4";
+            // 
+            // labelGereken1
+            // 
+            labelGereken1.AutoSize = true;
+            labelGereken1.Location = new Point(362, 225);
+            labelGereken1.Name = "labelGereken1";
+            labelGereken1.Size = new Size(41, 15);
+            labelGereken1.TabIndex = 21;
+            labelGereken1.Text = "label6";
+            // 
+            // labelGereken2
+            // 
+            labelGereken2.AutoSize = true;
+            labelGereken2.Location = new Point(688, 225);
+            labelGereken2.Name = "labelGereken2";
+            labelGereken2.Size = new Size(41, 15);
+            labelGereken2.TabIndex = 22;
+            labelGereken2.Text = "label8";
+            // 
+            // labelGereken3
+            // 
+            labelGereken3.AutoSize = true;
+            labelGereken3.Location = new Point(1069, 231);
+            labelGereken3.Name = "labelGereken3";
+            labelGereken3.Size = new Size(41, 15);
+            labelGereken3.TabIndex = 23;
+            labelGereken3.Text = "label9";
             // 
             // Form1
             // 
@@ -630,17 +726,26 @@
         private PictureBox pictureBox3;
         private PictureBox pictureBox2;
         private Label label5;
-        private Label label4;
-        private Label label3;
-        private Label label2;
-        private Label label11;
-        private Label label10;
-        private Label label9;
-        private Label label8;
+        private Label labelName3;
+        private Label labelName2;
+        private Label labelName1;
+        private Label labelSure3;
+        private Label labelSure2;
+        private Label labelSure1;
+        private Label labelKategori3;
         private Label label7;
-        private Label label6;
-        private Label label14;
-        private Label label13;
-        private Label label12;
+        private Label labelKategori1;
+        private Label labelTalimat3;
+        private Label labelTalimat2;
+        private Label labelTalimat1;
+        private Label labelMaliyet2;
+        private Label labelMaliyet1;
+        private RichTextBox richTextBox3;
+        private RichTextBox richTextBox2;
+        private RichTextBox richTextBox1;
+        private Label labelGereken3;
+        private Label labelGereken2;
+        private Label labelGereken1;
+        private Label labelMaliyet3;
     }
 }

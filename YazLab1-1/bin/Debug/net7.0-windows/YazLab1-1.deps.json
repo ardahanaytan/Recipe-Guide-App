@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v7.0": {
       "YazLab1-1/1.0.0": {
         "dependencies": {
+          "Krypton.Toolkit": "85.24.10.288",
           "MySql.Data": "9.0.0",
           "MySql.Data.EntityFramework": "9.0.0",
           "MySql.EntityFrameworkCore": "8.0.5",
@@ -78,6 +79,14 @@
           "lib/net6.0/K4os.Hash.xxHash.dll": {
             "assemblyVersion": "1.0.8.0",
             "fileVersion": "1.0.8.0"
+          }
+        }
+      },
+      "Krypton.Toolkit/85.24.10.288": {
+        "runtime": {
+          "lib/net7.0-windows7.0/Krypton.Toolkit.dll": {
+            "assemblyVersion": "85.24.10.288",
+            "fileVersion": "85.24.10.288"
           }
         }
       },
@@ -632,6 +641,13 @@
       "sha512": "sha512-Wp2F7BamQ2Q/7Hk834nV9vRQapgcr8kgv9Jvfm8J3D0IhDqZMMl+a2yxUq5ltJitvXvQfB8W6K4F4fCbw/P6YQ==",
       "path": "k4os.hash.xxhash/1.0.8",
       "hashPath": "k4os.hash.xxhash.1.0.8.nupkg.sha512"
+    },
+    "Krypton.Toolkit/85.24.10.288": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aiR3QeeGiZu1OJGJPp0+ItXlsk8qtAPpT+LJ121Xo4j8cFxq5Fn9M7zqJu6WO5gBOtE1pa5qHoSkvu6etsXerw==",
+      "path": "krypton.toolkit/85.24.10.288",
+      "hashPath": "krypton.toolkit.85.24.10.288.nupkg.sha512"
     },
     "Microsoft.CSharp/4.7.0": {
       "type": "package",
