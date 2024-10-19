@@ -1,7 +1,8 @@
-using System.Data;
+ï»¿using System.Data;
 using System.Diagnostics;
 using MySql.Data.MySqlClient;
 using System.Runtime.InteropServices;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 //using ComponentFactory.Krypton.Toolkit;
 
 namespace YazLab1_1
@@ -10,9 +11,9 @@ namespace YazLab1_1
 
     public partial class Form1 : Form
     {
-        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
+        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
 
-        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
+        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
 
         MySqlCommand cmd;
         MySqlDataAdapter adapter;
@@ -56,7 +57,7 @@ namespace YazLab1_1
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ýliski ekleme hatasý: " + ex.Message);
+                MessageBox.Show("Ä°liski ekleme hatasÄ±: " + ex.Message);
             }
 
         }
@@ -90,7 +91,7 @@ namespace YazLab1_1
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Malzeme ekleme hatasý: " + ex.Message);
+                MessageBox.Show("Malzeme ekleme hatasÄ±: " + ex.Message);
             }
 
         }
@@ -130,7 +131,7 @@ namespace YazLab1_1
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Tarif ekleme hatasý: " + ex.Message);
+                MessageBox.Show("Tarif ekleme hatasÄ±: " + ex.Message);
             }
         }
 
@@ -139,11 +140,11 @@ namespace YazLab1_1
             try
             {
                 //string tarif_adi, string kategori, int hazirlamaSuresi, string talimatlar
-                tarif_ekle("tarif1", "Yemek", 21, "asdkhjnadsjkhnajsdkhnasdh", "./");
-                tarif_ekle("tarif2", "Çorba", 21241, "asdkhjnadsjasdhasdhkhnajsdkhnasdh", "");
-                tarif_ekle("tarif3", "Tatlý", 22141, "asdkhjnadasdhasdsjkhnajsdkhnasdh", "");
-                tarif_ekle("tarif4", "Çorba", 21241, "asdkhjnadsasdhasdhjkhnajsdkhnasdh", "");
-                tarif_ekle("tarif5", "Tatlý", 211, "asdkhjnadsjkasdhasdhhnajsdkhnasdh", "");
+                tarif_ekle("tarif1", "Yemek", 21, "asdkhjnadsjkhnajsdkhnasdh", "");
+                tarif_ekle("tarif2", "Ã‡orba", 21241, "asdkhjnadsjasdhasdhkhnajsdkhnasdh", "");
+                tarif_ekle("tarif3", "TatlÄ±", 22141, "asdkhjnadasdhasdsjkhnajsdkhnasdh", "");
+                tarif_ekle("tarif4", "Ã‡orba", 21241, "asdkhjnadsasdhasdhjkhnajsdkhnasdh", "");
+                tarif_ekle("tarif5", "TatlÄ±", 211, "asdkhjnadsjkasdhasdhhnajsdkhnasdh", "");
 
                 //string malzeme_adi, string toplam_miktar, string malzeme_birim, float birimFiyat
                 malzeme_ekle("malzeme1", "4212", "Gram", 1f);
@@ -166,7 +167,7 @@ namespace YazLab1_1
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Database doldurma hatasý: " + ex.Message);
+                MessageBox.Show("Database doldurma hatasÄ±: " + ex.Message);
             }
         }
 
@@ -177,7 +178,7 @@ namespace YazLab1_1
                 dt = new DataTable();
                 con.Open();
                 //adapter = new MySqlDataAdapter(""); 
-                //adapter.Fill(dt); //DataAdapter, SQL sorgusunu çalýþtýrýr ve sonuçlarý DataTable'a doldurur.
+                //adapter.Fill(dt); //DataAdapter, SQL sorgusunu Ã§alÄ±ÅŸtÄ±rÄ±r ve sonuÃ§larÄ± DataTable'a doldurur.
 
 
                 string query1 = @"CREATE TABLE IF NOT EXISTS `yazlab1`.`tarifler` (
@@ -222,7 +223,7 @@ namespace YazLab1_1
                 cmd = new MySqlCommand(query3, con);
                 cmd.ExecuteNonQuery();
                 textBox1.Text = "basarili3";
-                //MessageBox.Show("Tablolar Baþarýyla Oluþturuldu!");
+                //MessageBox.Show("Tablolar BaÅŸarÄ±yla OluÅŸturuldu!");
 
 
 
@@ -232,7 +233,7 @@ namespace YazLab1_1
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Tablo oluþturma hatasý: " + ex.Message);
+                MessageBox.Show("Tablo oluÅŸturma hatasÄ±: " + ex.Message);
             }
         }
 
@@ -272,22 +273,394 @@ namespace YazLab1_1
             }
             catch (Exception ex1)
             {
-                MessageBox.Show("Sayfa doldurma query hatasý: " + ex1.Message);
+                MessageBox.Show("Sayfa doldurma query hatasÄ±: " + ex1.Message);
             }
 
             return dt_tarif;
         }
 
 
-        public void sayfayiDoldur()
+        public void elementDoldurma(DataTable table)
+        {
+            int num = 1;
+            foreach (DataRow row in table.Rows)
+            {
+                //resim
+                //string default_path = "C:/Users/ardah/Desktop/proje21/images/404.png";
+                string default_path = "C:\\Users\\sefat\\OneDrive\\MasaÃ¼stÃ¼\\Recipe-Guide-App\\images/404.png";
+
+                string pictureBoxName = "pictureBoxTarif" + num.ToString();
+                PictureBox pic_name = this.Controls.Find(pictureBoxName, true).FirstOrDefault() as PictureBox;
+                pic_name.SizeMode = PictureBoxSizeMode.StretchImage;
+                if (pic_name != null)
+                {
+                    string path = row["Path"].ToString();
+                    if (!string.IsNullOrEmpty(path) && System.IO.File.Exists(path))
+                    {
+                        pic_name.Image = Image.FromFile(path);
+                    }
+                    else
+                    {
+                        pic_name.Image = Image.FromFile(default_path);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("picturebox name hatasi!");
+                }
+
+
+
+
+                //name
+                string labelName = "labelName" + num.ToString();
+                Label lbl_name = this.Controls.Find(labelName, true).FirstOrDefault() as Label;
+                if (lbl_name != null)
+                {
+                    lbl_name.Text = row["TarifAdi"].ToString();
+                }
+                else
+                {
+                    MessageBox.Show("label name hatasi!");
+
+                }
+
+                //maliyet - eksik varsa miktar - malzemeler
+
+                float maliyet = 0f;
+                float gereken = 0f;
+                string id = row["TarifID"].ToString();
+
+                DataTable malzemeler = new DataTable();
+                try
+                {
+                    con.Open();
+                    string query_malzemeleriAl = @"select MalzemeIDr from iliski where TarifIDr = @TarifIDr";
+                    adapter = new MySqlDataAdapter(query_malzemeleriAl, con);
+                    adapter.SelectCommand.Parameters.AddWithValue("@TarifIDR", int.Parse(id));
+                    adapter.Fill(malzemeler);
+                    con.Close();
+                }
+                catch (Exception ex2)
+                {
+                    MessageBox.Show("Malzemeleri Idleri Alinirken Hata:", ex2.Message);
+                    return;
+                }
+
+                string str_malzemeler = "";
+                foreach (DataRow row1 in malzemeler.Rows)
+                {
+                    string malzeme_id_ = row1["MalzemeIDr"].ToString();
+                    DataTable malzeme_name = new DataTable();
+                    try
+                    {
+                        con.Open();
+                        string query_MalzemeÄ°smiAl = @"SELECT * from malzemeler where MalzemeID = @MalzemeID";
+                        adapter = new MySqlDataAdapter(query_MalzemeÄ°smiAl, con);
+                        adapter.SelectCommand.Parameters.AddWithValue("@MalzemeID", malzeme_id_);
+                        adapter.Fill(malzeme_name);
+                        con.Close();
+                    }
+                    catch (Exception ex3)
+                    {
+                        MessageBox.Show("Malzeme Ä°smi Alinirken Hata OluÅŸtu:", ex3.Message);
+                    }
+                    DataTable miktar_table = new DataTable();
+                    if (malzeme_name.Rows.Count == 1)
+                    {
+                        con.Open();
+                        string query_getMiktar = @"SELECT MalzemeMiktar from iliski where TarifIDR = @TarifIDR AND MalzemeIDr = @MalzemeIDr";
+                        adapter = new MySqlDataAdapter(query_getMiktar, con);
+                        adapter.SelectCommand.Parameters.AddWithValue("@MalzemeIDr", malzeme_id_);
+                        adapter.SelectCommand.Parameters.AddWithValue("@TarifIDR", int.Parse(id));
+                        adapter.Fill(miktar_table);
+                        con.Close();
+
+                        if (miktar_table.Rows.Count == 1)
+                        {
+                            foreach (DataRow row3 in miktar_table.Rows)
+                            {
+                                str_malzemeler += row3["MalzemeMiktar"].ToString() + " ";
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Birden fazla aynÄ± idli malzeme bulundu");
+                        }
+
+                        foreach (DataRow row2 in malzeme_name.Rows)
+                        {
+                            str_malzemeler += row2["MalzemeBirim"].ToString() + " " + row2["MalzemeAdi"].ToString() + ", ";
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Birden fazla ayni isimde malzeme bulundu!");
+                        return;
+                    }
+                }
+
+                if (row["TarifAdi"] != DBNull.Value && row["Kategori"] != DBNull.Value && row["HazirlamaSuresi"] != DBNull.Value && row["Talimatlar"] != DBNull.Value)
+                {
+                    string ad = row["TarifAdi"]?.ToString() ?? string.Empty;
+                    string kategori = row["Kategori"]?.ToString() ?? string.Empty;
+                    string sure = row["HazirlamaSuresi"]?.ToString() ?? string.Empty;
+                    string talimatlar = row["Talimatlar"]?.ToString() ?? string.Empty;
+
+                    if (str_malzemeler.Length > 2)
+                    {
+                        string[] malzemeler_arr = str_malzemeler.Substring(0, str_malzemeler.Length - 2).Split(",").ToArray();
+                        string yeterli_malzemeler = "";
+                        string yetersiz_malzemeler = "";
+                        foreach (string malzeme in malzemeler_arr)
+                        {
+                            //MessageBox.Show("-" + malzeme + "-");
+                            string malzeme_trim = malzeme.Trim();
+                            string[] malzeme_kelime = malzeme_trim.Split(" ").Select(part => part.Trim()).ToArray();
+                            float malzeme_miktar = float.Parse(malzeme_kelime[0]);
+                            string malzeme_isim = "";
+                            int gezen = 2;
+                            while (gezen < malzeme_kelime.Length)
+                            {
+                                if (gezen == 2)
+                                {
+                                    malzeme_isim += malzeme_kelime[gezen];
+                                }
+                                else
+                                {
+                                    malzeme_isim += " " + malzeme_kelime[gezen];
+                                }
+
+                                gezen++;
+                            }
+                            //malzeme_isim = malzeme_isim.Substring(0, malzeme_isim.Length - 1);
+                            //MessageBox.Show("malzeme kontrol:" + malzeme_isim);
+                            DataTable dt_mik = new DataTable();
+                            try
+                            {
+                                con.Open();
+                                string query_sahipOlunaniAlma = @"select * from malzemeler where MalzemeAdi = @MalzemeAdi";
+                                adapter = new MySqlDataAdapter(query_sahipOlunaniAlma, con);
+                                adapter.SelectCommand.Parameters.AddWithValue("@MalzemeAdi", malzeme_isim);
+                                adapter.Fill(dt_mik);
+                                con.Close();
+
+                            }
+                            catch (Exception ex1)
+                            {
+                                MessageBox.Show("Renklendirme hatasÄ±: " + ex1.Message);
+                                return;
+
+                            }
+
+
+
+                            if (dt_mik.Rows.Count == 1)
+                            {
+                                float neKadarVar = -1f;
+                                float birimFiyat = -1f;
+                                foreach (DataRow row_ in dt_mik.Rows)
+                                {
+                                    neKadarVar = float.Parse(row_["ToplamMiktar"]?.ToString() ?? string.Empty);
+                                    birimFiyat = float.Parse(row_["BirimFiyat"]?.ToString() ?? string.Empty);
+                                    maliyet += birimFiyat * malzeme_miktar;
+                                }
+                                if (neKadarVar >= malzeme_miktar)
+                                {
+                                    if (yeterli_malzemeler == "")
+                                    {
+                                        yeterli_malzemeler += malzeme;
+                                    }
+                                    else
+                                    {
+                                        yeterli_malzemeler += "," + malzeme;
+
+
+
+                                    }
+
+                                }
+                                else
+                                {
+                                    gereken -= (malzeme_miktar - neKadarVar) * birimFiyat;
+                                    gezen = 1;
+                                    string eklenecek = "";
+                                    if (yetersiz_malzemeler == "")
+                                    {
+                                        eklenecek += (malzeme_miktar - neKadarVar).ToString();
+                                        while (gezen < malzeme_kelime.Length)
+                                        {
+                                            eklenecek += " " + malzeme_kelime[gezen];
+                                            gezen++;
+                                        }
+
+                                        yetersiz_malzemeler += eklenecek;
+                                    }
+                                    else
+                                    {
+                                        eklenecek += (malzeme_miktar - neKadarVar).ToString();
+                                        while (gezen < malzeme_kelime.Length)
+                                        {
+                                            eklenecek += " " + malzeme_kelime[gezen];
+                                            gezen++;
+                                        }
+
+                                        yetersiz_malzemeler += "," + eklenecek;
+                                    }
+                                }
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("Malzeme bulma hatasi!");
+                                return;
+                            }
+
+                        }
+
+                        if (yeterli_malzemeler == "")
+                        {
+                            yeterli_malzemeler = "Yok";
+                        }
+                        if (yetersiz_malzemeler == "")
+                        {
+                            yetersiz_malzemeler = "Yok";
+                        }
+
+
+                        //richboxes
+                        string richLeftName = "richTextBoxTam" + num.ToString();
+                        RichTextBox rich_left = this.Controls.Find(richLeftName, true).FirstOrDefault() as RichTextBox;
+                        if (rich_left != null)
+                        {
+                            rich_left.Text = yeterli_malzemeler;
+                            rich_left.SelectAll();
+                            rich_left.SelectionColor = Color.Green;
+                            rich_left.BackColor = Color.FromArgb(148, 132, 179);
+                            //rich_left.BorderStyle = BorderStyle.None;
+                        }
+                        else
+                        {
+                            MessageBox.Show("left richtextbox hatasi!");
+                        }
+
+                        string richRightName = "richTextBoxEksik" + num.ToString();
+                        RichTextBox rich_right = this.Controls.Find(richRightName, true).FirstOrDefault() as RichTextBox;
+                        if (rich_right != null)
+                        {
+                            rich_right.Text = yetersiz_malzemeler;
+                            rich_right.SelectAll();
+                            rich_right.SelectionColor = Color.Red;
+                            rich_right.BackColor = Color.FromArgb(148, 132, 179);
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("left richtextbox hatasi!");
+                        }
+
+
+                        //maliyet
+                        string labelMaliyetName = "labelMaliyet" + num.ToString();
+                        Label maliyetLabel = this.Controls.Find(labelMaliyetName, true).FirstOrDefault() as Label;
+                        if (maliyetLabel != null)
+                        {
+                            maliyetLabel.Text = maliyet.ToString() + "â‚º";
+                        }
+                        else
+                        {
+                            MessageBox.Show("Maliyet label hatasi!");
+                        }
+
+
+                        //eksik
+                        string labelEksikName = "labelGereken" + num.ToString();
+                        Label eksikLabel = this.Controls.Find(labelEksikName, true).FirstOrDefault() as Label;
+                        if (eksikLabel != null)
+                        {
+                            eksikLabel.Text = "Gerekli Fiyat: " + gereken.ToString() + "â‚º";
+                        }
+                        else
+                        {
+                            MessageBox.Show("eksik bilgi label hatasi!");
+                        }
+
+
+
+
+                    }
+
+                }
+
+
+
+
+
+
+
+                //kategori
+                string kategoriLabelName = "labelKategori" + num.ToString();
+                Label lbl_kategori = this.Controls.Find(kategoriLabelName, true).FirstOrDefault() as Label;
+                if (lbl_kategori != null)
+                {
+                    lbl_kategori.Text = row["Kategori"].ToString();
+                }
+                else
+                {
+                    MessageBox.Show("label kategori hatasi!");
+                }
+
+                //hazirlanma suresi
+                string sureLabelName = "labelSure" + num.ToString();
+                Label lbl_sure = this.Controls.Find(sureLabelName, true).FirstOrDefault() as Label;
+                if (lbl_sure != null)
+                {
+                    lbl_sure.Text = row["HazirlamaSuresi"].ToString() + " Dakika";
+                }
+                else
+                {
+                    MessageBox.Show("label hazirlanma suresi hatasi!");
+                }
+
+
+
+
+
+
+                //talimatlar
+                string talimatlarRTBName = "richTextBoxTalimat" + num.ToString();
+                //Label lbl_talimatlar = this.Controls.Find(talimatlarLabelName, true).FirstOrDefault() as Label;
+                RichTextBox richTextBox_talimatlar = this.Controls.Find(talimatlarRTBName, true).FirstOrDefault() as RichTextBox;
+                //lbl_talimatlar.AutoSize = true;
+                //lbl_talimatlar.MaximumSize = new Size(250, 0);
+                //lbl_talimatlar.Font = new Font(lbl_talimatlar.Font.FontFamily, 8);
+
+
+                if (richTextBox_talimatlar != null)
+                {
+                    richTextBox_talimatlar.Text = row["Talimatlar"].ToString();
+                    richTextBox_talimatlar.BackColor = Color.FromArgb(148, 132, 179);
+                    richTextBox_talimatlar.BorderStyle = BorderStyle.None;
+                }
+                else
+                {
+                    MessageBox.Show("label talimatlar hatasi!");
+                }
+
+
+                num++;
+            }
+        }
+
+        public void sayfayiDoldur(string query)
         {
             DataTable dt_tarif_num = new DataTable();
-            //combobox'ý doldur
+            //combobox'Ä± doldur
             try
             {
                 con.Open();
-                string query_tarif = @"select * from tarifler";
-                adapter = new MySqlDataAdapter(query_tarif, con);
+                //string query_tarif = @"select * from tarifler";
+                adapter = new MySqlDataAdapter(query, con);
                 adapter.Fill(dt_tarif_num);
                 con.Close();
 
@@ -307,7 +680,7 @@ namespace YazLab1_1
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ComboBox doldurma hatasý: " + ex.Message);
+                MessageBox.Show("ComboBox doldurma hatasÄ±: " + ex.Message);
             }
 
             DataTable dt_tarif = new DataTable();
@@ -316,103 +689,14 @@ namespace YazLab1_1
                 dt_tarif = queryTarif();
                 //MessageBox.Show("sayi:" + dt_tarif.Rows.Count);
 
-                //panel gözükme olayý burada ayarlanacak
-
-                int num = 1;
-
-                foreach (DataRow row in dt_tarif.Rows)
-                {
-                    //resim
-                    string default_path = "C:/Users/ardah/Desktop/proje21/images/404.png";
-                    string pictureBoxName = "pictureBoxTarif" + num.ToString();
-                    PictureBox pic_name = this.Controls.Find(pictureBoxName, true).FirstOrDefault() as PictureBox;
-                    if (pic_name != null)
-                    {
-                        string path = row["Path"].ToString();
-                        if (!string.IsNullOrEmpty(path) && System.IO.File.Exists(path))
-                        {
-                            pic_name.Image = Image.FromFile(path);
-                        }
-                        else
-                        {
-                            pic_name.Image = Image.FromFile(default_path);
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("picturebox name hatasi!");
-                    }
-
-                    
-
-
-                    //name
-                    string labelName = "labelName" + num.ToString();
-                    Label lbl_name = this.Controls.Find(labelName, true).FirstOrDefault() as Label;
-                    if (lbl_name != null)
-                    {
-                        lbl_name.Text = row["TarifAdi"].ToString();
-                    }
-                    else
-                    {
-                        MessageBox.Show("label name hatasi!");
-
-                    }
-
-                    //maliyet
-
-                    //eksik varsa miktar
-
-
-                    //kategori
-                    string kategoriLabelName = "labelKategori" + num.ToString();
-                    Label lbl_kategori = this.Controls.Find(kategoriLabelName, true).FirstOrDefault() as Label;
-                    if (lbl_kategori != null)
-                    {
-                        lbl_kategori.Text = row["Kategori"].ToString();
-                    }
-                    else
-                    {
-                        MessageBox.Show("label kategori hatasi!");
-                    }
-
-                    //hazirlanma suresi
-                    string sureLabelName = "labelSure" + num.ToString();
-                    Label lbl_sure = this.Controls.Find(sureLabelName, true).FirstOrDefault() as Label;
-                    if (lbl_sure != null)
-                    {
-                        lbl_sure.Text = row["HazirlamaSuresi"].ToString();
-                    }
-                    else
-                    {
-                        MessageBox.Show("label hazirlanma suresi hatasi!");
-                    }
-
-                    //malzemeler
-
-
-
-                    //talimatlar
-                    string talimatlarLabelName = "labelTalimat" + num.ToString();
-                    Label lbl_talimatlar = this.Controls.Find(talimatlarLabelName, true).FirstOrDefault() as Label;
-                    if (lbl_talimatlar != null)
-                    {
-                        lbl_talimatlar.Text = row["Talimatlar"].ToString();
-                    }
-                    else
-                    {
-                        MessageBox.Show("label talimatlar hatasi!");
-                    }
-
-
-                    num++;
-                }
+                //panel gÃ¶zÃ¼kme olayÄ± burada ayarlanacak
+                this.elementDoldurma(dt_tarif);
 
 
             }
             catch (Exception ex1)
             {
-                MessageBox.Show("Sayfa doldurma hatasý: " + ex1.Message);
+                MessageBox.Show("Sayfa doldurma hatasÄ±: " + ex1.Message);
             }
         }
 
@@ -420,7 +704,7 @@ namespace YazLab1_1
         {
             initDatabase();
             databaseDoldur();
-            sayfayiDoldur();
+            sayfayiDoldur(@"select * from tarifler");
         }
 
 
@@ -535,6 +819,7 @@ namespace YazLab1_1
             {
                 tarifEkleme.Activate();
             }
+            panelAnaManu.Visible = false;
         }
 
         private void TarifEkleme_FormClosed(object? sender, FormClosedEventArgs e)
@@ -605,8 +890,122 @@ namespace YazLab1_1
 
         private void button9_Click(object sender, EventArgs e)
         {
+            //sayfa sec
+            DataTable dt_tarif = new DataTable();
+            try
+            {
+                dt_tarif = queryTarif();
+                this.elementDoldurma(dt_tarif);
+            }
+            catch (Exception ex1)
+            {
+                MessageBox.Show("Sayfa doldurma hatasÄ±: " + ex1.Message);
+            }
 
         }
+
+        private void labelGereken1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelGereken2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelMaliyet3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelName3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            //sol
+
+
+            //en sol mu kontrol - return
+            int ComboBoxNum = comboBoxSayfa.SelectedIndex + 1;
+            if (ComboBoxNum <= 1)
+            {
+                return;
+            }
+
+            //bir azaltma
+            comboBoxSayfa.SelectedIndex -= 1;
+
+            DataTable dt_tarif = new DataTable();
+            try
+            {
+                dt_tarif = queryTarif();
+                this.elementDoldurma(dt_tarif);
+            }
+            catch (Exception ex1)
+            {
+                MessageBox.Show("Sayfa doldurma hatasÄ±: " + ex1.Message);
+            }
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            //sag
+
+            //en sag mi kontrol - return
+            int ComboBoxNum = comboBoxSayfa.SelectedIndex + 1;
+            int combo_lenEleman = comboBoxSayfa.Items.Count;
+            if (ComboBoxNum == combo_lenEleman)
+            {
+                return;
+            }
+
+
+            //bir arttirma
+            comboBoxSayfa.SelectedIndex += 1;
+
+            DataTable dt_tarif = new DataTable();
+            try
+            {
+                dt_tarif = queryTarif();
+                this.elementDoldurma(dt_tarif);
+            }
+            catch (Exception ex1)
+            {
+                MessageBox.Show("Sayfa doldurma hatasÄ±: " + ex1.Message);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            panelAnaManu.Visible = true;
+            FormArama arama = null;
+            FormTarifOnerme tarifOnerme = null;
+            FormTarifListesi tarifListesi = null;
+            FormTarifEkleme tarifEkleme = null;
+            FormMalzemeListesi malzemeListesi = null;
+            FormMalzemeEkleme malzemeEkleme = null;
+        }
+
+        
     }
 
 

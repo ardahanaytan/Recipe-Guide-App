@@ -13,8 +13,8 @@ namespace YazLab1_1
 {
     public partial class FormTarifListesi : Form
     {
-        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
-        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
+        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
+        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
         MySqlCommand cmd;
         MySqlDataAdapter adapter;
         DataTable dt;
@@ -112,133 +112,153 @@ namespace YazLab1_1
                         }
                     }
 
-                    string ad = row["TarifAdi"].ToString();
-                    string kategori = row["Kategori"].ToString();
-                    string sure = row["HazirlamaSuresi"].ToString();
-                    string talimatlar = row["Talimatlar"].ToString();
-                    //MessageBox.Show("Kontrol:" + str_malzemeler + "-");
-                    //MessageBox.Show("Kontrol2:" + str_malzemeler.Substring(0, str_malzemeler.Length - 2) + "-");
-
-                    if (str_malzemeler.Length > 2) 
+                    if (row["TarifAdi"] != DBNull.Value && row["Kategori"] != DBNull.Value && row["HazirlamaSuresi"] != DBNull.Value && row["Talimatlar"] != DBNull.Value)
                     {
-                        string[] malzemeler_arr = str_malzemeler.Substring(0, str_malzemeler.Length - 2).Split(",").ToArray();
-                        string yeterli_malzemeler = "";
-                        string yetersiz_malzemeler = "";
-                        foreach (string malzeme in malzemeler_arr)
+                        string ad = row["TarifAdi"]?.ToString() ?? string.Empty;
+                        string kategori = row["Kategori"]?.ToString() ?? string.Empty;
+                        string sure = row["HazirlamaSuresi"]?.ToString() ?? string.Empty;
+                        string talimatlar = row["Talimatlar"]?.ToString() ?? string.Empty;
+                        //MessageBox.Show("Kontrol:" + str_malzemeler + "-");
+                        //MessageBox.Show("Kontrol2:" + str_malzemeler.Substring(0, str_malzemeler.Length - 2) + "-");
+
+                        if (str_malzemeler.Length > 2)
                         {
-                            //MessageBox.Show("-" + malzeme + "-");
-                            string malzeme_trim = malzeme.Trim();
-                            string[] malzeme_kelime = malzeme_trim.Split(" ").Select(part => part.Trim()).ToArray();
-                            float malzeme_miktar = float.Parse(malzeme_kelime[0]);
-                            string malzeme_isim = "";
-                            int gezen = 2;
-                            while (gezen < malzeme_kelime.Length)
+                            string[] malzemeler_arr = str_malzemeler.Substring(0, str_malzemeler.Length - 2).Split(",").ToArray();
+                            string yeterli_malzemeler = "";
+                            string yetersiz_malzemeler = "";
+                            foreach (string malzeme in malzemeler_arr)
                             {
-                                if(gezen == 2)
+                                //MessageBox.Show("-" + malzeme + "-");
+                                string malzeme_trim = malzeme.Trim();
+                                string[] malzeme_kelime = malzeme_trim.Split(" ").Select(part => part.Trim()).ToArray();
+                                float malzeme_miktar = float.Parse(malzeme_kelime[0]);
+                                string malzeme_isim = "";
+                                int gezen = 2;
+                                while (gezen < malzeme_kelime.Length)
                                 {
-                                    malzeme_isim += malzeme_kelime[gezen];
-                                }
-                                else
-                                {
-                                    malzeme_isim += " " + malzeme_kelime[gezen];
-                                }
-                                
-                                gezen++;
-                            }
-                            //malzeme_isim = malzeme_isim.Substring(0, malzeme_isim.Length - 1);
-                            //MessageBox.Show("malzeme kontrol:" + malzeme_isim);
-                            DataTable dt_mik = new DataTable();
-                            try
-                            {
-                                con.Open();
-                                string query_sahipOlunaniAlma = @"select * from malzemeler where MalzemeAdi = @MalzemeAdi";
-                                adapter = new MySqlDataAdapter(query_sahipOlunaniAlma, con);
-                                adapter.SelectCommand.Parameters.AddWithValue("@MalzemeAdi", malzeme_isim);
-                                adapter.Fill(dt_mik);
-                                con.Close();
-
-                            }
-                            catch (Exception ex1)
-                            {
-                                MessageBox.Show("Renklendirme hatası: " + ex1.Message);
-                                return;
-
-                            }
-
-
-
-
-                            if (dt_mik.Rows.Count == 1)
-                            {
-                                float neKadarVar = -1f;
-                                float birimFiyat = -1f;
-                                foreach (DataRow row_ in dt_mik.Rows)
-                                {
-                                    neKadarVar = float.Parse(row_["ToplamMiktar"].ToString());
-                                    birimFiyat = float.Parse(row_["BirimFiyat"].ToString());
-                                    maliyet += birimFiyat * malzeme_miktar;
-                                }
-                                if (neKadarVar >= malzeme_miktar)
-                                {
-                                    if (yeterli_malzemeler == "")
+                                    if (gezen == 2)
                                     {
-                                        yeterli_malzemeler += malzeme;
+                                        malzeme_isim += malzeme_kelime[gezen];
                                     }
                                     else
                                     {
-                                        yeterli_malzemeler += "," + malzeme;
-                                        
+                                        malzeme_isim += " " + malzeme_kelime[gezen];
+                                    }
+
+                                    gezen++;
+                                }
+                                //malzeme_isim = malzeme_isim.Substring(0, malzeme_isim.Length - 1);
+                                //MessageBox.Show("malzeme kontrol:" + malzeme_isim);
+                                DataTable dt_mik = new DataTable();
+                                try
+                                {
+                                    con.Open();
+                                    string query_sahipOlunaniAlma = @"select * from malzemeler where MalzemeAdi = @MalzemeAdi";
+                                    adapter = new MySqlDataAdapter(query_sahipOlunaniAlma, con);
+                                    adapter.SelectCommand.Parameters.AddWithValue("@MalzemeAdi", malzeme_isim);
+                                    adapter.Fill(dt_mik);
+                                    con.Close();
+
+                                }
+                                catch (Exception ex1)
+                                {
+                                    MessageBox.Show("Renklendirme hatası: " + ex1.Message);
+                                    return;
+
+                                }
 
 
+
+
+                                if (dt_mik.Rows.Count == 1)
+                                {
+                                    float neKadarVar = -1f;
+                                    float birimFiyat = -1f;
+                                    foreach (DataRow row_ in dt_mik.Rows)
+                                    {
+                                        neKadarVar = float.Parse(row_["ToplamMiktar"]?.ToString() ?? string.Empty);
+                                        birimFiyat = float.Parse(row_["BirimFiyat"]?.ToString() ?? string.Empty);
+                                        maliyet += birimFiyat * malzeme_miktar;
+                                    }
+                                    if (neKadarVar >= malzeme_miktar)
+                                    {
+                                        if (yeterli_malzemeler == "")
+                                        {
+                                            yeterli_malzemeler += malzeme;
+                                        }
+                                        else
+                                        {
+                                            yeterli_malzemeler += "," + malzeme;
+
+
+
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        gereken -= (malzeme_miktar - neKadarVar) * birimFiyat;
+                                        gezen = 1;
+                                        string eklenecek = "";
+                                        if (yetersiz_malzemeler == "")
+                                        {
+                                            eklenecek += (malzeme_miktar - neKadarVar).ToString();
+                                            while (gezen < malzeme_kelime.Length)
+                                            {
+                                                eklenecek += " " + malzeme_kelime[gezen];
+                                                gezen++;
+                                            }
+                                            yetersiz_malzemeler += eklenecek;
+                                        }
+                                        else
+                                        {
+                                            eklenecek += (malzeme_miktar - neKadarVar).ToString();
+                                            while (gezen < malzeme_kelime.Length)
+                                            {
+                                                eklenecek += " " + malzeme_kelime[gezen];
+                                                gezen++;
+                                            }
+
+                                            yetersiz_malzemeler += "," + eklenecek;
+                                        }
                                     }
 
                                 }
                                 else
                                 {
-                                    gereken -= (malzeme_miktar - neKadarVar) * birimFiyat;
-                                    if (yetersiz_malzemeler == "")
-                                    {
-                                        yetersiz_malzemeler += malzeme;
-                                    }
-                                    else
-                                    {
-                                        yetersiz_malzemeler += "," + malzeme;
-                                    }
+                                    MessageBox.Show("Malzeme bulma hatasi!");
+                                    return;
                                 }
 
+                            }
+
+                            if (yeterli_malzemeler == "")
+                            {
+                                yeterli_malzemeler = "Yok";
+                            }
+                            if (yetersiz_malzemeler == "")
+                            {
+                                yetersiz_malzemeler = "Yok";
+                            }
+
+
+
+
+                            int row_num = dataGridViewTarifler.Rows.Add(id, ad, kategori, sure, yeterli_malzemeler, yetersiz_malzemeler, talimatlar, maliyet, gereken);
+                            if (yetersiz_malzemeler == "Yok")
+                            {
+                                dataGridViewTarifler.Rows[row_num].DefaultCellStyle.BackColor = Color.Green;
+                                dataGridViewTarifler.Rows[row_num].DefaultCellStyle.ForeColor = Color.White; // İsteğe bağlı yazı rengi
                             }
                             else
                             {
-                                MessageBox.Show("Malzeme bulma hatasi!");
-                                return;
+                                dataGridViewTarifler.Rows[row_num].DefaultCellStyle.BackColor = Color.Red;
+                                dataGridViewTarifler.Rows[row_num].DefaultCellStyle.ForeColor = Color.White; // İsteğe bağlı yazı rengi
                             }
-
-                        }
-
-                        if (yeterli_malzemeler == "")
-                        {
-                            yeterli_malzemeler = "Yok";
-                        }
-                        if (yetersiz_malzemeler == "")
-                        {
-                            yetersiz_malzemeler = "Yok";
-                        }
-
-
-
-
-                        int row_num = dataGridViewTarifler.Rows.Add(id, ad, kategori, sure, yeterli_malzemeler, yetersiz_malzemeler, talimatlar, maliyet, gereken);
-                        if (yetersiz_malzemeler == "Yok")
-                        {
-                            dataGridViewTarifler.Rows[row_num].DefaultCellStyle.BackColor = Color.Green;
-                            dataGridViewTarifler.Rows[row_num].DefaultCellStyle.ForeColor = Color.White; // İsteğe bağlı yazı rengi
-                        }
-                        else
-                        {
-                            dataGridViewTarifler.Rows[row_num].DefaultCellStyle.BackColor = Color.Red;
-                            dataGridViewTarifler.Rows[row_num].DefaultCellStyle.ForeColor = Color.White; // İsteğe bağlı yazı rengi
                         }
                     }
+
+                    
 
                     
 
