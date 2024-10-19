@@ -8,14 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using Krypton.Toolkit;
 
 namespace YazLab1_1
 {
     public partial class FormTarifEkleme : Form
     {
-        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
+        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
 
-        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
+        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
         MySqlCommand cmd;
         MySqlDataAdapter adapter;
         DataTable dt;
@@ -23,6 +24,7 @@ namespace YazLab1_1
         FormMalzemeEkleme malzemeEkleme;
         Form1 form1_;
 
+        string photoPath = "";
 
         public FormTarifEkleme(Form1 form1)
         {
@@ -30,65 +32,7 @@ namespace YazLab1_1
             form1_ = form1;
         }
 
-        private void buttonTarifEkle_Click(object sender, EventArgs e)
-        {
-
-            string str_tarifAdi = textBoxTarifAdi.Text;
-            int kategori_index = comboBoxKategori.SelectedIndex;
-            NumericUpDown sure = numericUpDownSure;
-            int sure_int = 0;
-            string talimatlar = richTextBoxTalimatlar.Text;
-
-            if ((str_tarifAdi.Length <= 0 && str_tarifAdi.Length > 255) || str_tarifAdi == "")
-            {
-                MessageBox.Show("Tarif adı uzunluğu 0'dan büyük 256'dan küçük olmalı!");
-                return;
-            }
-            if (kategori_index == -1)
-            {
-                MessageBox.Show("Lütfen uygun bir kategori seçiniz.");
-                return;
-            }
-            string str_kategori = comboBoxKategori.Items[kategori_index].ToString();
-            if (((int)sure.Value) > 0)
-            {
-                sure_int = (int)sure.Value;
-            }
-            else
-            {
-                MessageBox.Show("Süre negatif veya 0 olamaz.");
-                return;
-            }
-            if ((talimatlar.Length <= 0 && talimatlar.Length > 5000) || talimatlar == "")
-            {
-                MessageBox.Show("Talimatlar uzunluğu 0'dan büyük 5001'den küçük olmalı!");
-                return;
-            }
-
-            try
-            {
-                DataTable dt = new DataTable();
-                con.Open();
-                string query_comboDoldur = @"SELECT MalzemeAdi from malzemeler";
-                adapter = new MySqlDataAdapter(query_comboDoldur, con);
-                adapter.Fill(dt);
-                con.Close();
-
-                comboBoxMalzemeSecimi.Items.Clear(); //temizleme
-                foreach (DataRow row in dt.Rows)
-                {
-                    comboBoxMalzemeSecimi.Items.Add(row["MalzemeAdi"].ToString());
-                }
-
-            }
-            catch (Exception ex2)
-            {
-                MessageBox.Show("Combobox malzeme ekleme hatası: " + ex2.Message);
-            }
-            panelMalzemeler.Visible = true;
-        }
-
-        private void button3_Click(object sender, EventArgs e)
+        private void button31_Click(object sender, EventArgs e)
         {
             if (malzemeEkleme == null)
             {
@@ -102,6 +46,7 @@ namespace YazLab1_1
             {
                 malzemeEkleme.Activate();
             }
+            panel1.Width = 530;
         }
 
         private void malzemeEkleme_FormClosed(object? sender, FormClosedEventArgs e)
@@ -111,7 +56,7 @@ namespace YazLab1_1
 
         public void tarifOlusmaKontrol()
         {
-            string str_tarifAdi = textBoxTarifAdi.Text;
+            string str_tarifAdi = textBoxTarifAdi1.Text;
             DataTable dt = new DataTable();
             try
             {
@@ -130,17 +75,18 @@ namespace YazLab1_1
             if (dt.Rows.Count <= 0)
             {
 
-                string str_kategori = comboBoxKategori.Items[comboBoxKategori.SelectedIndex].ToString();
-                string talimatlar = richTextBoxTalimatlar.Text;
+                string str_kategori = comboBoxKategori1.Items[comboBoxKategori1.SelectedIndex].ToString();
+                string talimatlar = richTextBoxTalimatlar1.Text;
                 try
                 {
                     con.Open();
-                    string query_tarifekle = @"INSERT INTO tarifler (TarifAdi, Kategori, HazirlamaSuresi, Talimatlar) VALUES (@str_tarifAdi, @str_kategori, @sure_int, @talimatlar)";
+                    string query_tarifekle = @"INSERT INTO tarifler (TarifAdi, Kategori, HazirlamaSuresi, Talimatlar, Path) VALUES (@str_tarifAdi, @str_kategori, @sure_int, @talimatlar, @path)";
                     cmd = new MySqlCommand(query_tarifekle, con);
                     cmd.Parameters.AddWithValue("@str_tarifAdi", str_tarifAdi);
                     cmd.Parameters.AddWithValue("@str_kategori", str_kategori);
-                    cmd.Parameters.AddWithValue("@sure_int", (int)numericUpDownSure.Value);
+                    cmd.Parameters.AddWithValue("@sure_int", (int)numericUpDownSure1.Value);
                     cmd.Parameters.AddWithValue("@talimatlar", talimatlar);
+                    cmd.Parameters.AddWithValue("@path", photoPath);
                     cmd.ExecuteNonQuery();
                     con.Close();
                 }
@@ -161,7 +107,7 @@ namespace YazLab1_1
             int tarifID = -1;
             int malzemeID = -1;
 
-            string str_tarifAdi = textBoxTarifAdi.Text;
+            string str_tarifAdi = textBoxTarifAdi1.Text;
             try
             {
                 DataTable dt = new DataTable();
@@ -184,13 +130,13 @@ namespace YazLab1_1
                 return -41;
             }
 
-            int malzeme_index = comboBoxMalzemeSecimi.SelectedIndex;
+            int malzeme_index = comboBoxMalzemeSecimi1.SelectedIndex;
             if (malzeme_index == -1)
             {
                 return -2;
             }
 
-            string str_malzeme = comboBoxMalzemeSecimi.Items[malzeme_index].ToString();
+            string str_malzeme = comboBoxMalzemeSecimi1.Items[malzeme_index].ToString();
             try
             {
                 DataTable dt1 = new DataTable();
@@ -216,7 +162,7 @@ namespace YazLab1_1
             //MessageBox.Show(malzemeID.ToString());
 
             //miktari al
-            string str_miktar = textBoxMiktar.Text;
+            string str_miktar = textBoxMiktar1.Text;
             if (str_miktar == "") // boş ise
             {
                 return -4;
@@ -278,7 +224,7 @@ namespace YazLab1_1
             return 41;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button11_Click(object sender, EventArgs e)
         {
             this.tarifOlusmaKontrol();
 
@@ -301,11 +247,10 @@ namespace YazLab1_1
                 MessageBox.Show("Miktar alınamadı.");
             }
 
-            comboBoxMalzemeSecimi.SelectedItem = null;
-            textBoxMiktar.Text = null;
+            comboBoxMalzemeSecimi1.SelectedItem = null;
+            textBoxMiktar1.Text = null;
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void button21_Click(object sender, EventArgs e)
         {
             this.tarifOlusmaKontrol();
 
@@ -330,20 +275,116 @@ namespace YazLab1_1
             }
 
             //ana ekrana donus
-            textBoxMiktar.Text = null;
-            textBoxTarifAdi.Text = null;
-            comboBoxKategori.SelectedItem = null;
-            comboBoxMalzemeSecimi.SelectedItem = null;
-            numericUpDownSure.Value = 0;
-            richTextBoxTalimatlar.Text = null;
+            textBoxMiktar1.Text = null;
+            textBoxTarifAdi1.Text = null;
+            comboBoxKategori1.SelectedItem = null;
+            comboBoxMalzemeSecimi1.SelectedItem = null;
+            numericUpDownSure1.Value = 0;
+            richTextBoxTalimatlar1.Text = null;
             MessageBox.Show("Tarif Başarıyla Eklendi.");
-            panelMalzemeler.Visible = false;
-
         }
 
         private void FormTarifEkleme_Load(object sender, EventArgs e)
         {
-            panelMalzemeler.Visible = false;
+            //panelMalzemeler.Visible = false;
         }
+
+        private void resimEkle_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDiaglog = new OpenFileDialog();
+            openFileDiaglog.Filter = "Image Files|*.jpg;*.jpeg;*.png;";
+            if (openFileDiaglog.ShowDialog() == DialogResult.OK)
+            {
+                photoPath = openFileDiaglog.FileName;
+                MessageBox.Show("Resim Başarıyla seçildi!");
+            }
+        }
+
+        private void buttonMalzemeEkle1_Click(object sender, EventArgs e)
+        {
+            string str_tarifAdi = textBoxTarifAdi1.Text;
+            int kategori_index = comboBoxKategori1.SelectedIndex;
+            KryptonNumericUpDown sure = numericUpDownSure1;
+            int sure_int = 0;
+            string talimatlar = richTextBoxTalimatlar1.Text;
+
+            if ((str_tarifAdi.Length <= 0 && str_tarifAdi.Length > 255) || str_tarifAdi == "")
+            {
+                MessageBox.Show("Tarif adı uzunluğu 0'dan büyük 256'dan küçük olmalı!");
+                return;
+            }
+            if (kategori_index == -1)
+            {
+                MessageBox.Show("Lütfen uygun bir kategori seçiniz.");
+                return;
+            }
+            string str_kategori = comboBoxKategori1.Items[kategori_index].ToString();
+            if (((int)sure.Value) > 0)
+            {
+                sure_int = (int)sure.Value;
+            }
+            else
+            {
+                MessageBox.Show("Süre negatif veya 0 olamaz.");
+                return;
+            }
+            if ((talimatlar.Length <= 0 && talimatlar.Length > 5000) || talimatlar == "")
+            {
+                MessageBox.Show("Talimatlar uzunluğu 0'dan büyük 5001'den küçük olmalı!");
+                return;
+            }
+
+            try
+            {
+                DataTable dt = new DataTable();
+                con.Open();
+                string query_comboDoldur = @"SELECT MalzemeAdi from malzemeler";
+                adapter = new MySqlDataAdapter(query_comboDoldur, con);
+                adapter.Fill(dt);
+                con.Close();
+
+                comboBoxMalzemeSecimi1.Items.Clear(); //temizleme
+                foreach (DataRow row in dt.Rows)
+                {
+                    comboBoxMalzemeSecimi1.Items.Add(row["MalzemeAdi"].ToString());
+                }
+
+            }
+            catch (Exception ex2)
+            {
+                MessageBox.Show("Combobox malzeme ekleme hatası: " + ex2.Message);
+            }
+            timerMalzeme.Start();
+            labelMalzemeAdi.Text = str_tarifAdi;
+        }
+
+        private void buttonFotografEkle_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDiaglog = new OpenFileDialog();
+            openFileDiaglog.Filter = "Image Files|*.jpg;*.jpeg;*.png;";
+            if (openFileDiaglog.ShowDialog() == DialogResult.OK)
+            {
+                photoPath = openFileDiaglog.FileName;
+                MessageBox.Show("Resim Başarıyla seçildi!");
+            }
+
+            checkBoxFotograf.Text = photoPath;
+            checkBoxFotograf.Checked = true;
+        }
+
+        bool malzemeExpand = true;
+        private void timerMalzeme_Tick(object sender, EventArgs e)
+        {
+            if (malzemeExpand)
+            {
+                panel1.Width -= 10;
+                if (panel1.Width <= 530)
+                {
+                    malzemeExpand = false;
+                    timerMalzeme.Stop();
+                }
+            }
+        }
+
     }
 }

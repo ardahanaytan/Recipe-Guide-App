@@ -14,8 +14,8 @@ namespace YazLab1_1
 {
     public partial class FormMalzemeEkleme : Form
     {
-        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
-        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
+        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
+        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
         MySqlCommand cmd;
         MySqlDataAdapter adapter;
         DataTable dt;
@@ -25,15 +25,15 @@ namespace YazLab1_1
             InitializeComponent();
         }
 
-        private void buttonMalzemeEkle_Click(object sender, EventArgs e)
+        private void buttonMalzemeEkle1_Click(object sender, EventArgs e)
         {
-            string str_malzemeAdi = textBoxMalzemeAdi.Text;
+            string str_malzemeAdi = textBoxMalzemeAdi1.Text;
             str_malzemeAdi = Regex.Replace(str_malzemeAdi, @"\s+", " ").Trim(); //birden fazla boşluğu temizleme
 
 
-            string str_toplamMiktar = textBoxToplamMiktar.Text;
-            int index_malzemeBirim = comboBoxMalzemeBirimi.SelectedIndex;
-            string str_birimFiyat = textBoxBirimFiyat.Text;
+            string str_toplamMiktar = textBoxToplamMiktar1.Text;
+            int index_malzemeBirim = comboBoxMalzemeBirimi1.SelectedIndex;
+            string str_birimFiyat = textBoxBirimFiyat1.Text;
             float miktar = 0.0f;
             float fiyat = 0.0f;
             //MessageBox.Show(str_malzemeAdi + " " + str_toplamMiktar + " " + str_malzemeBirim + " " + str_birimFiyat);
@@ -63,7 +63,7 @@ namespace YazLab1_1
                 MessageBox.Show("Lütfen uygun bir malzeme seçiniz.");
                 return;
             }
-            string str_malzemeBirim = comboBoxMalzemeBirimi.Items[index_malzemeBirim].ToString();
+            string str_malzemeBirim = comboBoxMalzemeBirimi1.Items[index_malzemeBirim].ToString();
             if ((str_birimFiyat.Length <= 0 && str_birimFiyat.Length > 255) || str_birimFiyat == "")
             {
                 MessageBox.Show("Birim Fiyat uzunluğu 0'dan büyük 256'dan küçük olmalı!");
@@ -121,10 +121,10 @@ namespace YazLab1_1
                 MessageBox.Show("Malzeme ekleme hatası: " + ex2.Message);
             }
 
-            textBoxBirimFiyat.Text = null;
-            textBoxMalzemeAdi.Text = null;
-            textBoxToplamMiktar.Text = null;
-            comboBoxMalzemeBirimi.SelectedItem = null;
+            textBoxBirimFiyat1.Text = null;
+            textBoxMalzemeAdi1.Text = null;
+            textBoxToplamMiktar1.Text = null;
+            comboBoxMalzemeBirimi1.SelectedItem = null;
             MessageBox.Show("Malzeme Başarıyla Eklendi.");
         }
     }

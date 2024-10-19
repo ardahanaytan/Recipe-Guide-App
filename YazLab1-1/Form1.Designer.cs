@@ -52,6 +52,17 @@
             button8 = new Button();
             menuCubukTimer = new System.Windows.Forms.Timer(components);
             panelAnaManu = new Panel();
+            buttonSayfa = new Button();
+            comboBoxSayfa = new ComboBox();
+            labelGereken3 = new Label();
+            labelGereken2 = new Label();
+            labelGereken1 = new Label();
+            labelMaliyet3 = new Label();
+            labelMaliyet2 = new Label();
+            labelMaliyet1 = new Label();
+            richTextBox3 = new RichTextBox();
+            richTextBox2 = new RichTextBox();
+            richTextBox1 = new RichTextBox();
             labelTalimat3 = new Label();
             labelTalimat2 = new Label();
             labelTalimat1 = new Label();
@@ -59,24 +70,15 @@
             labelSure2 = new Label();
             labelSure1 = new Label();
             labelKategori3 = new Label();
-            label7 = new Label();
+            labelKategori2 = new Label();
             labelKategori1 = new Label();
             label5 = new Label();
             labelName3 = new Label();
             labelName2 = new Label();
             labelName1 = new Label();
-            pictureBox4 = new PictureBox();
-            pictureBox3 = new PictureBox();
-            pictureBox2 = new PictureBox();
-            richTextBox1 = new RichTextBox();
-            richTextBox2 = new RichTextBox();
-            richTextBox3 = new RichTextBox();
-            labelMaliyet1 = new Label();
-            labelMaliyet2 = new Label();
-            labelMaliyet3 = new Label();
-            labelGereken1 = new Label();
-            labelGereken2 = new Label();
-            labelGereken3 = new Label();
+            pictureBoxTarif3 = new PictureBox();
+            pictureBoxTarif2 = new PictureBox();
+            pictureBoxTarif1 = new PictureBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             menuCubuk.SuspendLayout();
@@ -88,9 +90,9 @@
             panelMalzemeListesi.SuspendLayout();
             panelMalzemeEkle.SuspendLayout();
             panelAnaManu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxTarif3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxTarif2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxTarif1).BeginInit();
             SuspendLayout();
             // 
             // button1
@@ -364,6 +366,8 @@
             // 
             // panelAnaManu
             // 
+            panelAnaManu.Controls.Add(buttonSayfa);
+            panelAnaManu.Controls.Add(comboBoxSayfa);
             panelAnaManu.Controls.Add(labelGereken3);
             panelAnaManu.Controls.Add(labelGereken2);
             panelAnaManu.Controls.Add(labelGereken1);
@@ -380,19 +384,115 @@
             panelAnaManu.Controls.Add(labelSure2);
             panelAnaManu.Controls.Add(labelSure1);
             panelAnaManu.Controls.Add(labelKategori3);
-            panelAnaManu.Controls.Add(label7);
+            panelAnaManu.Controls.Add(labelKategori2);
             panelAnaManu.Controls.Add(labelKategori1);
             panelAnaManu.Controls.Add(label5);
             panelAnaManu.Controls.Add(labelName3);
             panelAnaManu.Controls.Add(labelName2);
             panelAnaManu.Controls.Add(labelName1);
-            panelAnaManu.Controls.Add(pictureBox4);
-            panelAnaManu.Controls.Add(pictureBox3);
-            panelAnaManu.Controls.Add(pictureBox2);
+            panelAnaManu.Controls.Add(pictureBoxTarif3);
+            panelAnaManu.Controls.Add(pictureBoxTarif2);
+            panelAnaManu.Controls.Add(pictureBoxTarif1);
             panelAnaManu.Location = new Point(0, 38);
             panelAnaManu.Name = "panelAnaManu";
             panelAnaManu.Size = new Size(1240, 621);
             panelAnaManu.TabIndex = 6;
+            // 
+            // buttonSayfa
+            // 
+            buttonSayfa.Location = new Point(762, 540);
+            buttonSayfa.Name = "buttonSayfa";
+            buttonSayfa.Size = new Size(75, 23);
+            buttonSayfa.TabIndex = 25;
+            buttonSayfa.Text = "button9";
+            buttonSayfa.UseVisualStyleBackColor = true;
+            buttonSayfa.Click += button9_Click;
+            // 
+            // comboBoxSayfa
+            // 
+            comboBoxSayfa.FormattingEnabled = true;
+            comboBoxSayfa.Location = new Point(619, 541);
+            comboBoxSayfa.Name = "comboBoxSayfa";
+            comboBoxSayfa.Size = new Size(121, 23);
+            comboBoxSayfa.TabIndex = 24;
+            // 
+            // labelGereken3
+            // 
+            labelGereken3.AutoSize = true;
+            labelGereken3.Location = new Point(1069, 231);
+            labelGereken3.Name = "labelGereken3";
+            labelGereken3.Size = new Size(41, 15);
+            labelGereken3.TabIndex = 23;
+            labelGereken3.Text = "label9";
+            // 
+            // labelGereken2
+            // 
+            labelGereken2.AutoSize = true;
+            labelGereken2.Location = new Point(688, 225);
+            labelGereken2.Name = "labelGereken2";
+            labelGereken2.Size = new Size(41, 15);
+            labelGereken2.TabIndex = 22;
+            labelGereken2.Text = "label8";
+            // 
+            // labelGereken1
+            // 
+            labelGereken1.AutoSize = true;
+            labelGereken1.Location = new Point(362, 225);
+            labelGereken1.Name = "labelGereken1";
+            labelGereken1.Size = new Size(41, 15);
+            labelGereken1.TabIndex = 21;
+            labelGereken1.Text = "label6";
+            // 
+            // labelMaliyet3
+            // 
+            labelMaliyet3.AutoSize = true;
+            labelMaliyet3.Location = new Point(1005, 231);
+            labelMaliyet3.Name = "labelMaliyet3";
+            labelMaliyet3.Size = new Size(41, 15);
+            labelMaliyet3.TabIndex = 20;
+            labelMaliyet3.Text = "label4";
+            // 
+            // labelMaliyet2
+            // 
+            labelMaliyet2.AutoSize = true;
+            labelMaliyet2.Location = new Point(633, 225);
+            labelMaliyet2.Name = "labelMaliyet2";
+            labelMaliyet2.Size = new Size(41, 15);
+            labelMaliyet2.TabIndex = 19;
+            labelMaliyet2.Text = "label3";
+            // 
+            // labelMaliyet1
+            // 
+            labelMaliyet1.AutoSize = true;
+            labelMaliyet1.Location = new Point(288, 225);
+            labelMaliyet1.Name = "labelMaliyet1";
+            labelMaliyet1.Size = new Size(41, 15);
+            labelMaliyet1.TabIndex = 18;
+            labelMaliyet1.Text = "label2";
+            // 
+            // richTextBox3
+            // 
+            richTextBox3.Location = new Point(998, 366);
+            richTextBox3.Name = "richTextBox3";
+            richTextBox3.Size = new Size(100, 96);
+            richTextBox3.TabIndex = 17;
+            richTextBox3.Text = "";
+            // 
+            // richTextBox2
+            // 
+            richTextBox2.Location = new Point(624, 366);
+            richTextBox2.Name = "richTextBox2";
+            richTextBox2.Size = new Size(100, 96);
+            richTextBox2.TabIndex = 16;
+            richTextBox2.Text = "";
+            // 
+            // richTextBox1
+            // 
+            richTextBox1.Location = new Point(288, 366);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(100, 96);
+            richTextBox1.TabIndex = 15;
+            richTextBox1.Text = "";
             // 
             // labelTalimat3
             // 
@@ -485,19 +585,19 @@
             labelKategori3.Text = "Kategori";
             labelKategori3.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label7
+            // labelKategori2
             // 
-            label7.AutoSize = true;
-            label7.BorderStyle = BorderStyle.FixedSingle;
-            label7.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.ForeColor = SystemColors.ControlLightLight;
-            label7.Location = new Point(619, 280);
-            label7.Name = "label7";
-            label7.Size = new Size(79, 24);
-            label7.TabIndex = 7;
-            label7.Text = "Kategori";
-            label7.TextAlign = ContentAlignment.MiddleCenter;
-            label7.Click += label7_Click;
+            labelKategori2.AutoSize = true;
+            labelKategori2.BorderStyle = BorderStyle.FixedSingle;
+            labelKategori2.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            labelKategori2.ForeColor = SystemColors.ControlLightLight;
+            labelKategori2.Location = new Point(619, 280);
+            labelKategori2.Name = "labelKategori2";
+            labelKategori2.Size = new Size(79, 24);
+            labelKategori2.TabIndex = 7;
+            labelKategori2.Text = "Kategori";
+            labelKategori2.TextAlign = ContentAlignment.MiddleCenter;
+            labelKategori2.Click += label7_Click;
             // 
             // labelKategori1
             // 
@@ -558,107 +658,29 @@
             labelName1.Text = "Tarif Adı";
             labelName1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // pictureBox4
+            // pictureBoxTarif3
             // 
-            pictureBox4.Location = new Point(944, 35);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(223, 127);
-            pictureBox4.TabIndex = 2;
-            pictureBox4.TabStop = false;
+            pictureBoxTarif3.Location = new Point(944, 35);
+            pictureBoxTarif3.Name = "pictureBoxTarif3";
+            pictureBoxTarif3.Size = new Size(223, 127);
+            pictureBoxTarif3.TabIndex = 2;
+            pictureBoxTarif3.TabStop = false;
             // 
-            // pictureBox3
+            // pictureBoxTarif2
             // 
-            pictureBox3.Location = new Point(599, 35);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(223, 127);
-            pictureBox3.TabIndex = 1;
-            pictureBox3.TabStop = false;
+            pictureBoxTarif2.Location = new Point(599, 35);
+            pictureBoxTarif2.Name = "pictureBoxTarif2";
+            pictureBoxTarif2.Size = new Size(223, 127);
+            pictureBoxTarif2.TabIndex = 1;
+            pictureBoxTarif2.TabStop = false;
             // 
-            // pictureBox2
+            // pictureBoxTarif1
             // 
-            pictureBox2.Location = new Point(254, 35);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(223, 127);
-            pictureBox2.TabIndex = 0;
-            pictureBox2.TabStop = false;
-            // 
-            // richTextBox1
-            // 
-            richTextBox1.Location = new Point(288, 366);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(100, 96);
-            richTextBox1.TabIndex = 15;
-            richTextBox1.Text = "";
-            // 
-            // richTextBox2
-            // 
-            richTextBox2.Location = new Point(624, 366);
-            richTextBox2.Name = "richTextBox2";
-            richTextBox2.Size = new Size(100, 96);
-            richTextBox2.TabIndex = 16;
-            richTextBox2.Text = "";
-            // 
-            // richTextBox3
-            // 
-            richTextBox3.Location = new Point(998, 366);
-            richTextBox3.Name = "richTextBox3";
-            richTextBox3.Size = new Size(100, 96);
-            richTextBox3.TabIndex = 17;
-            richTextBox3.Text = "";
-            // 
-            // labelMaliyet1
-            // 
-            labelMaliyet1.AutoSize = true;
-            labelMaliyet1.Location = new Point(288, 225);
-            labelMaliyet1.Name = "labelMaliyet1";
-            labelMaliyet1.Size = new Size(41, 15);
-            labelMaliyet1.TabIndex = 18;
-            labelMaliyet1.Text = "label2";
-            // 
-            // labelMaliyet2
-            // 
-            labelMaliyet2.AutoSize = true;
-            labelMaliyet2.Location = new Point(633, 225);
-            labelMaliyet2.Name = "labelMaliyet2";
-            labelMaliyet2.Size = new Size(41, 15);
-            labelMaliyet2.TabIndex = 19;
-            labelMaliyet2.Text = "label3";
-            // 
-            // labelMaliyet3
-            // 
-            labelMaliyet3.AutoSize = true;
-            labelMaliyet3.Location = new Point(1005, 231);
-            labelMaliyet3.Name = "labelMaliyet3";
-            labelMaliyet3.Size = new Size(41, 15);
-            labelMaliyet3.TabIndex = 20;
-            labelMaliyet3.Text = "label4";
-            // 
-            // labelGereken1
-            // 
-            labelGereken1.AutoSize = true;
-            labelGereken1.Location = new Point(362, 225);
-            labelGereken1.Name = "labelGereken1";
-            labelGereken1.Size = new Size(41, 15);
-            labelGereken1.TabIndex = 21;
-            labelGereken1.Text = "label6";
-            // 
-            // labelGereken2
-            // 
-            labelGereken2.AutoSize = true;
-            labelGereken2.Location = new Point(688, 225);
-            labelGereken2.Name = "labelGereken2";
-            labelGereken2.Size = new Size(41, 15);
-            labelGereken2.TabIndex = 22;
-            labelGereken2.Text = "label8";
-            // 
-            // labelGereken3
-            // 
-            labelGereken3.AutoSize = true;
-            labelGereken3.Location = new Point(1069, 231);
-            labelGereken3.Name = "labelGereken3";
-            labelGereken3.Size = new Size(41, 15);
-            labelGereken3.TabIndex = 23;
-            labelGereken3.Text = "label9";
+            pictureBoxTarif1.Location = new Point(254, 35);
+            pictureBoxTarif1.Name = "pictureBoxTarif1";
+            pictureBoxTarif1.Size = new Size(223, 127);
+            pictureBoxTarif1.TabIndex = 0;
+            pictureBoxTarif1.TabStop = false;
             // 
             // Form1
             // 
@@ -691,9 +713,9 @@
             panelMalzemeEkle.ResumeLayout(false);
             panelAnaManu.ResumeLayout(false);
             panelAnaManu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxTarif3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxTarif2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxTarif1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -722,9 +744,9 @@
         private Button button8;
         private System.Windows.Forms.Timer menuCubukTimer;
         private Panel panelAnaManu;
-        private PictureBox pictureBox4;
-        private PictureBox pictureBox3;
-        private PictureBox pictureBox2;
+        private PictureBox pictureBoxTarif3;
+        private PictureBox pictureBoxTarif2;
+        private PictureBox pictureBoxTarif1;
         private Label label5;
         private Label labelName3;
         private Label labelName2;
@@ -733,7 +755,7 @@
         private Label labelSure2;
         private Label labelSure1;
         private Label labelKategori3;
-        private Label label7;
+        private Label labelKategori2;
         private Label labelKategori1;
         private Label labelTalimat3;
         private Label labelTalimat2;
@@ -747,5 +769,7 @@
         private Label labelGereken2;
         private Label labelGereken1;
         private Label labelMaliyet3;
+        private Button buttonSayfa;
+        private ComboBox comboBoxSayfa;
     }
 }
