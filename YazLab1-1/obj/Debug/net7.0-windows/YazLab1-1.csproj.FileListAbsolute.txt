@@ -226,3 +226,6 @@ C:\Users\ardah\Desktop\proje21\YazLab1-1\obj\Debug\net7.0-windows\refint\YazLab1
 C:\Users\ardah\Desktop\proje21\YazLab1-1\obj\Debug\net7.0-windows\YazLab1-1.pdb
 C:\Users\ardah\Desktop\proje21\YazLab1-1\obj\Debug\net7.0-windows\YazLab1-1.genruntimeconfig.cache
 C:\Users\ardah\Desktop\proje21\YazLab1-1\obj\Debug\net7.0-windows\ref\YazLab1-1.dll
+C:\Users\sefat\OneDrive\Masaüstü\Recipe-Guide-App\YazLab1-1\obj\Debug\net7.0-windows\YazLab1_1.TarifEkrani.resources
+C:\Users\sefat\OneDrive\Masaüstü\Recipe-Guide-App\YazLab1-1\obj\Debug\net7.0-windows\YazLab1_1.FormMalzemeDuzenle.resources
+C:\Users\sefat\OneDrive\Masaüstü\Recipe-Guide-App\YazLab1-1\obj\Debug\net7.0-windows\YazLab1_1.FormTarifDuzenle.resources

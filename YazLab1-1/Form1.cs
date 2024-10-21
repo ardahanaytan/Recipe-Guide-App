@@ -25,6 +25,7 @@ namespace YazLab1_1
         FormTarifEkleme tarifEkleme;
         FormMalzemeListesi malzemeListesi;
         FormMalzemeEkleme malzemeEkleme;
+        TarifEkrani tarifEkrani;
 
         public void iliski_ekle(int malzemeID, int tarifID, float miktar_)
         {
@@ -785,7 +786,7 @@ namespace YazLab1_1
         {
             if (tarifListesi == null)
             {
-                tarifListesi = new FormTarifListesi();
+                tarifListesi = new FormTarifListesi(this);
 
                 tarifListesi.FormClosed += TarifListesi_FormClosed;
                 tarifListesi.MdiParent = this;
@@ -929,10 +930,7 @@ namespace YazLab1_1
 
         }
 
-        private void labelName3_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void label3_Click(object sender, EventArgs e)
         {
@@ -1005,7 +1003,102 @@ namespace YazLab1_1
             FormMalzemeEkleme malzemeEkleme = null;
         }
 
-        
+        public void nameToForm(string name)
+        {
+            DataTable tarif = new DataTable();
+            int id = -1;
+            try
+            {
+                //MessageBox.Show(name.ToString());
+                con.Open();
+                string query_nameToTarif = @"select * from tarifler where TarifAdi = @TarifAdi";
+                adapter = new MySqlDataAdapter(query_nameToTarif, con);
+                adapter.SelectCommand.Parameters.AddWithValue("@TarifAdi", name);
+                adapter.Fill(tarif);
+                con.Close();
+
+
+
+                if (tarif.Rows.Count != 1)
+                {
+                    MessageBox.Show("tarif bulunurken hata!");
+                    return;
+                }
+
+                foreach (DataRow row in tarif.Rows)
+                {
+                    id = int.Parse(row["TarifID"].ToString());
+                }
+
+                if (tarifEkrani == null)
+                {
+                    tarifEkrani = new TarifEkrani(id);
+                    tarifEkrani.FormClosed += tarifEkrani_FormClosed;
+                    tarifEkrani.MdiParent = this;
+                    tarifEkrani.Dock = DockStyle.Fill;
+                    tarifEkrani.Show();
+                }
+                else
+                {
+                    tarifEkrani.Activate();
+                }
+                panelAnaManu.Visible = false;
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("İsimden forma geçilirken hata: ", ex.Message);
+            }
+        }
+
+        private void tarifEkrani_FormClosed(object? sender, FormClosedEventArgs e)
+        {
+            tarifEkrani = null;
+        }
+
+
+        private void pictureBoxTarif1_Click(object sender, EventArgs e)
+        {
+            string name = labelName1.Text;
+            this.nameToForm(name);
+        }
+
+        private void pictureBoxTarif2_Click(object sender, EventArgs e)
+        {
+            string name = labelName2.Text;
+            this.nameToForm(name);
+        }
+
+        private void pictureBoxTarif3_Click(object sender, EventArgs e)
+        {
+            string name = labelName3.Text;
+            this.nameToForm(name);
+        }
+
+        private void labelName1_Click(object sender, EventArgs e)
+        {
+            string name = labelName1.Text;
+            this.nameToForm(name);
+        }
+
+        private void labelName2_Click(object sender, EventArgs e)
+        {
+            string name = labelName2.Text;
+            this.nameToForm(name);
+        }
+
+        private void labelName3_Click(object sender, EventArgs e)
+        {
+            string name = labelName3.Text;
+            this.nameToForm(name);
+        }
+
+        private void pictureBox13_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 

@@ -52,6 +52,12 @@
             button8 = new Button();
             menuCubukTimer = new System.Windows.Forms.Timer(components);
             panelAnaManu = new Panel();
+            pictureBox18 = new PictureBox();
+            pictureBox17 = new PictureBox();
+            pictureBox16 = new PictureBox();
+            pictureBox15 = new PictureBox();
+            pictureBox14 = new PictureBox();
+            pictureBox13 = new PictureBox();
             pictureBox12 = new PictureBox();
             pictureBox11 = new PictureBox();
             pictureBox10 = new PictureBox();
@@ -113,6 +119,12 @@
             panelMalzemeListesi.SuspendLayout();
             panelMalzemeEkle.SuspendLayout();
             panelAnaManu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox18).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox17).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox16).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox15).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox14).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox12).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
@@ -401,6 +413,12 @@
             // 
             // panelAnaManu
             // 
+            panelAnaManu.Controls.Add(pictureBox18);
+            panelAnaManu.Controls.Add(pictureBox17);
+            panelAnaManu.Controls.Add(pictureBox16);
+            panelAnaManu.Controls.Add(pictureBox15);
+            panelAnaManu.Controls.Add(pictureBox14);
+            panelAnaManu.Controls.Add(pictureBox13);
             panelAnaManu.Controls.Add(pictureBox12);
             panelAnaManu.Controls.Add(pictureBox11);
             panelAnaManu.Controls.Add(pictureBox10);
@@ -456,10 +474,65 @@
             panelAnaManu.Size = new Size(1240, 621);
             panelAnaManu.TabIndex = 6;
             // 
+            // pictureBox18
+            // 
+            pictureBox18.Image = (Image)resources.GetObject("pictureBox18.Image");
+            pictureBox18.Location = new Point(1052, 14);
+            pictureBox18.Name = "pictureBox18";
+            pictureBox18.Size = new Size(32, 32);
+            pictureBox18.TabIndex = 57;
+            pictureBox18.TabStop = false;
+            // 
+            // pictureBox17
+            // 
+            pictureBox17.Image = (Image)resources.GetObject("pictureBox17.Image");
+            pictureBox17.Location = new Point(1095, 14);
+            pictureBox17.Name = "pictureBox17";
+            pictureBox17.Size = new Size(32, 32);
+            pictureBox17.TabIndex = 56;
+            pictureBox17.TabStop = false;
+            // 
+            // pictureBox16
+            // 
+            pictureBox16.Image = (Image)resources.GetObject("pictureBox16.Image");
+            pictureBox16.Location = new Point(762, 14);
+            pictureBox16.Name = "pictureBox16";
+            pictureBox16.Size = new Size(32, 32);
+            pictureBox16.TabIndex = 55;
+            pictureBox16.TabStop = false;
+            // 
+            // pictureBox15
+            // 
+            pictureBox15.Image = (Image)resources.GetObject("pictureBox15.Image");
+            pictureBox15.Location = new Point(805, 14);
+            pictureBox15.Name = "pictureBox15";
+            pictureBox15.Size = new Size(32, 32);
+            pictureBox15.TabIndex = 54;
+            pictureBox15.TabStop = false;
+            // 
+            // pictureBox14
+            // 
+            pictureBox14.Image = (Image)resources.GetObject("pictureBox14.Image");
+            pictureBox14.Location = new Point(513, 14);
+            pictureBox14.Name = "pictureBox14";
+            pictureBox14.Size = new Size(32, 32);
+            pictureBox14.TabIndex = 53;
+            pictureBox14.TabStop = false;
+            // 
+            // pictureBox13
+            // 
+            pictureBox13.Image = (Image)resources.GetObject("pictureBox13.Image");
+            pictureBox13.Location = new Point(470, 14);
+            pictureBox13.Name = "pictureBox13";
+            pictureBox13.Size = new Size(32, 32);
+            pictureBox13.TabIndex = 52;
+            pictureBox13.TabStop = false;
+            pictureBox13.Click += pictureBox13_Click;
+            // 
             // pictureBox12
             // 
             pictureBox12.Image = (Image)resources.GetObject("pictureBox12.Image");
-            pictureBox12.Location = new Point(877, 242);
+            pictureBox12.Location = new Point(877, 257);
             pictureBox12.Name = "pictureBox12";
             pictureBox12.Size = new Size(32, 32);
             pictureBox12.TabIndex = 51;
@@ -468,7 +541,7 @@
             // pictureBox11
             // 
             pictureBox11.Image = (Image)resources.GetObject("pictureBox11.Image");
-            pictureBox11.Location = new Point(587, 242);
+            pictureBox11.Location = new Point(587, 257);
             pictureBox11.Name = "pictureBox11";
             pictureBox11.Size = new Size(32, 32);
             pictureBox11.TabIndex = 50;
@@ -477,7 +550,7 @@
             // pictureBox10
             // 
             pictureBox10.Image = (Image)resources.GetObject("pictureBox10.Image");
-            pictureBox10.Location = new Point(295, 242);
+            pictureBox10.Location = new Point(295, 257);
             pictureBox10.Name = "pictureBox10";
             pictureBox10.Size = new Size(32, 32);
             pictureBox10.TabIndex = 49;
@@ -486,7 +559,7 @@
             // pictureBox9
             // 
             pictureBox9.Image = (Image)resources.GetObject("pictureBox9.Image");
-            pictureBox9.Location = new Point(1007, 202);
+            pictureBox9.Location = new Point(1007, 221);
             pictureBox9.Name = "pictureBox9";
             pictureBox9.Size = new Size(32, 32);
             pictureBox9.TabIndex = 48;
@@ -495,7 +568,7 @@
             // pictureBox8
             // 
             pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
-            pictureBox8.Location = new Point(877, 202);
+            pictureBox8.Location = new Point(877, 219);
             pictureBox8.Name = "pictureBox8";
             pictureBox8.Size = new Size(32, 32);
             pictureBox8.TabIndex = 47;
@@ -504,7 +577,7 @@
             // pictureBox7
             // 
             pictureBox7.Image = (Image)resources.GetObject("pictureBox7.Image");
-            pictureBox7.Location = new Point(717, 202);
+            pictureBox7.Location = new Point(717, 219);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(32, 32);
             pictureBox7.TabIndex = 46;
@@ -513,7 +586,7 @@
             // pictureBox6
             // 
             pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
-            pictureBox6.Location = new Point(587, 202);
+            pictureBox6.Location = new Point(587, 219);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(32, 32);
             pictureBox6.TabIndex = 45;
@@ -522,7 +595,7 @@
             // pictureBox5
             // 
             pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
-            pictureBox5.Location = new Point(425, 202);
+            pictureBox5.Location = new Point(425, 219);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(32, 32);
             pictureBox5.TabIndex = 44;
@@ -531,7 +604,7 @@
             // pictureBox4
             // 
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(295, 201);
+            pictureBox4.Location = new Point(295, 219);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(32, 32);
             pictureBox4.TabIndex = 43;
@@ -539,7 +612,7 @@
             // 
             // richTextBoxTalimat3
             // 
-            richTextBoxTalimat3.Location = new Point(877, 434);
+            richTextBoxTalimat3.Location = new Point(877, 448);
             richTextBoxTalimat3.Name = "richTextBoxTalimat3";
             richTextBoxTalimat3.Size = new Size(250, 109);
             richTextBoxTalimat3.TabIndex = 42;
@@ -547,7 +620,7 @@
             // 
             // richTextBoxTalimat2
             // 
-            richTextBoxTalimat2.Location = new Point(587, 434);
+            richTextBoxTalimat2.Location = new Point(587, 448);
             richTextBoxTalimat2.Name = "richTextBoxTalimat2";
             richTextBoxTalimat2.Size = new Size(250, 109);
             richTextBoxTalimat2.TabIndex = 41;
@@ -555,7 +628,7 @@
             // 
             // richTextBoxTalimat1
             // 
-            richTextBoxTalimat1.Location = new Point(295, 434);
+            richTextBoxTalimat1.Location = new Point(295, 448);
             richTextBoxTalimat1.Name = "richTextBoxTalimat1";
             richTextBoxTalimat1.Size = new Size(250, 109);
             richTextBoxTalimat1.TabIndex = 40;
@@ -564,7 +637,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(877, 416);
+            label11.Location = new Point(877, 430);
             label11.Name = "label11";
             label11.Size = new Size(62, 15);
             label11.TabIndex = 39;
@@ -573,7 +646,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(587, 416);
+            label10.Location = new Point(587, 430);
             label10.Name = "label10";
             label10.Size = new Size(62, 15);
             label10.TabIndex = 38;
@@ -582,7 +655,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(295, 416);
+            label9.Location = new Point(295, 430);
             label9.Name = "label9";
             label9.Size = new Size(62, 15);
             label9.TabIndex = 37;
@@ -591,7 +664,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(1007, 280);
+            label8.Location = new Point(1007, 298);
             label8.Name = "label8";
             label8.Size = new Size(105, 15);
             label8.TabIndex = 36;
@@ -600,7 +673,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(717, 280);
+            label7.Location = new Point(717, 298);
             label7.Name = "label7";
             label7.Size = new Size(105, 15);
             label7.TabIndex = 35;
@@ -609,7 +682,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(425, 280);
+            label6.Location = new Point(425, 292);
             label6.Name = "label6";
             label6.Size = new Size(105, 15);
             label6.TabIndex = 34;
@@ -617,7 +690,7 @@
             // 
             // richTextBoxEksik3
             // 
-            richTextBoxEksik3.Location = new Point(1007, 298);
+            richTextBoxEksik3.Location = new Point(1007, 318);
             richTextBoxEksik3.Name = "richTextBoxEksik3";
             richTextBoxEksik3.Size = new Size(120, 100);
             richTextBoxEksik3.TabIndex = 33;
@@ -625,7 +698,7 @@
             // 
             // richTextBoxEksik2
             // 
-            richTextBoxEksik2.Location = new Point(717, 295);
+            richTextBoxEksik2.Location = new Point(717, 318);
             richTextBoxEksik2.Name = "richTextBoxEksik2";
             richTextBoxEksik2.Size = new Size(120, 100);
             richTextBoxEksik2.TabIndex = 32;
@@ -633,7 +706,7 @@
             // 
             // richTextBoxEksik1
             // 
-            richTextBoxEksik1.Location = new Point(425, 298);
+            richTextBoxEksik1.Location = new Point(425, 316);
             richTextBoxEksik1.Name = "richTextBoxEksik1";
             richTextBoxEksik1.Size = new Size(120, 100);
             richTextBoxEksik1.TabIndex = 31;
@@ -662,7 +735,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(877, 280);
+            label4.Location = new Point(877, 298);
             label4.Name = "label4";
             label4.Size = new Size(101, 15);
             label4.TabIndex = 28;
@@ -671,7 +744,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(587, 280);
+            label3.Location = new Point(587, 298);
             label3.Name = "label3";
             label3.Size = new Size(101, 15);
             label3.TabIndex = 27;
@@ -681,7 +754,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(295, 280);
+            label2.Location = new Point(299, 292);
             label2.Name = "label2";
             label2.Size = new Size(101, 15);
             label2.TabIndex = 26;
@@ -709,7 +782,7 @@
             // labelGereken3
             // 
             labelGereken3.AutoSize = true;
-            labelGereken3.Location = new Point(1007, 401);
+            labelGereken3.Location = new Point(1007, 421);
             labelGereken3.Name = "labelGereken3";
             labelGereken3.Size = new Size(77, 15);
             labelGereken3.TabIndex = 23;
@@ -718,7 +791,7 @@
             // labelGereken2
             // 
             labelGereken2.AutoSize = true;
-            labelGereken2.Location = new Point(717, 401);
+            labelGereken2.Location = new Point(717, 421);
             labelGereken2.Name = "labelGereken2";
             labelGereken2.Size = new Size(77, 15);
             labelGereken2.TabIndex = 22;
@@ -728,7 +801,7 @@
             // labelGereken1
             // 
             labelGereken1.AutoSize = true;
-            labelGereken1.Location = new Point(425, 401);
+            labelGereken1.Location = new Point(425, 421);
             labelGereken1.Name = "labelGereken1";
             labelGereken1.Size = new Size(77, 15);
             labelGereken1.TabIndex = 21;
@@ -738,7 +811,7 @@
             // labelMaliyet3
             // 
             labelMaliyet3.AutoSize = true;
-            labelMaliyet3.Location = new Point(918, 251);
+            labelMaliyet3.Location = new Point(915, 274);
             labelMaliyet3.Name = "labelMaliyet3";
             labelMaliyet3.Size = new Size(49, 15);
             labelMaliyet3.TabIndex = 20;
@@ -748,7 +821,7 @@
             // labelMaliyet2
             // 
             labelMaliyet2.AutoSize = true;
-            labelMaliyet2.Location = new Point(628, 251);
+            labelMaliyet2.Location = new Point(625, 274);
             labelMaliyet2.Name = "labelMaliyet2";
             labelMaliyet2.Size = new Size(49, 15);
             labelMaliyet2.TabIndex = 19;
@@ -757,7 +830,7 @@
             // labelMaliyet1
             // 
             labelMaliyet1.AutoSize = true;
-            labelMaliyet1.Location = new Point(336, 251);
+            labelMaliyet1.Location = new Point(336, 274);
             labelMaliyet1.Name = "labelMaliyet1";
             labelMaliyet1.Size = new Size(49, 15);
             labelMaliyet1.TabIndex = 18;
@@ -765,7 +838,7 @@
             // 
             // richTextBoxTam3
             // 
-            richTextBoxTam3.Location = new Point(877, 298);
+            richTextBoxTam3.Location = new Point(877, 318);
             richTextBoxTam3.Name = "richTextBoxTam3";
             richTextBoxTam3.Size = new Size(120, 100);
             richTextBoxTam3.TabIndex = 17;
@@ -774,7 +847,7 @@
             // 
             // richTextBoxTam2
             // 
-            richTextBoxTam2.Location = new Point(587, 295);
+            richTextBoxTam2.Location = new Point(587, 316);
             richTextBoxTam2.Name = "richTextBoxTam2";
             richTextBoxTam2.Size = new Size(120, 100);
             richTextBoxTam2.TabIndex = 16;
@@ -782,7 +855,7 @@
             // 
             // richTextBoxTam1
             // 
-            richTextBoxTam1.Location = new Point(295, 298);
+            richTextBoxTam1.Location = new Point(299, 316);
             richTextBoxTam1.Name = "richTextBoxTam1";
             richTextBoxTam1.Size = new Size(120, 100);
             richTextBoxTam1.TabIndex = 15;
@@ -794,7 +867,7 @@
             labelSure3.BorderStyle = BorderStyle.FixedSingle;
             labelSure3.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
             labelSure3.ForeColor = SystemColors.ControlLightLight;
-            labelSure3.Location = new Point(1045, 207);
+            labelSure3.Location = new Point(1045, 231);
             labelSure3.Name = "labelSure3";
             labelSure3.Size = new Size(41, 24);
             labelSure3.TabIndex = 11;
@@ -807,7 +880,7 @@
             labelSure2.BorderStyle = BorderStyle.FixedSingle;
             labelSure2.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
             labelSure2.ForeColor = SystemColors.ControlLightLight;
-            labelSure2.Location = new Point(755, 207);
+            labelSure2.Location = new Point(755, 227);
             labelSure2.Name = "labelSure2";
             labelSure2.Size = new Size(51, 24);
             labelSure2.TabIndex = 10;
@@ -820,7 +893,7 @@
             labelSure1.BorderStyle = BorderStyle.FixedSingle;
             labelSure1.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
             labelSure1.ForeColor = SystemColors.ControlLightLight;
-            labelSure1.Location = new Point(463, 207);
+            labelSure1.Location = new Point(463, 227);
             labelSure1.Name = "labelSure1";
             labelSure1.Size = new Size(51, 24);
             labelSure1.TabIndex = 9;
@@ -833,7 +906,7 @@
             labelKategori3.BorderStyle = BorderStyle.FixedSingle;
             labelKategori3.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
             labelKategori3.ForeColor = SystemColors.ControlLightLight;
-            labelKategori3.Location = new Point(918, 207);
+            labelKategori3.Location = new Point(915, 228);
             labelKategori3.Name = "labelKategori3";
             labelKategori3.Size = new Size(79, 24);
             labelKategori3.TabIndex = 8;
@@ -846,7 +919,7 @@
             labelKategori2.BorderStyle = BorderStyle.FixedSingle;
             labelKategori2.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
             labelKategori2.ForeColor = SystemColors.ControlLightLight;
-            labelKategori2.Location = new Point(625, 207);
+            labelKategori2.Location = new Point(625, 227);
             labelKategori2.Name = "labelKategori2";
             labelKategori2.Size = new Size(79, 24);
             labelKategori2.TabIndex = 7;
@@ -860,7 +933,7 @@
             labelKategori1.BorderStyle = BorderStyle.FixedSingle;
             labelKategori1.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
             labelKategori1.ForeColor = SystemColors.ControlLightLight;
-            labelKategori1.Location = new Point(336, 207);
+            labelKategori1.Location = new Point(336, 227);
             labelKategori1.Name = "labelKategori1";
             labelKategori1.Size = new Size(79, 24);
             labelKategori1.TabIndex = 6;
@@ -880,7 +953,7 @@
             labelName3.BorderStyle = BorderStyle.FixedSingle;
             labelName3.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point);
             labelName3.ForeColor = SystemColors.ControlLightLight;
-            labelName3.Location = new Point(877, 157);
+            labelName3.Location = new Point(877, 184);
             labelName3.Name = "labelName3";
             labelName3.Size = new Size(105, 31);
             labelName3.TabIndex = 5;
@@ -894,12 +967,13 @@
             labelName2.BorderStyle = BorderStyle.FixedSingle;
             labelName2.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point);
             labelName2.ForeColor = SystemColors.ControlLightLight;
-            labelName2.Location = new Point(587, 157);
+            labelName2.Location = new Point(587, 184);
             labelName2.Name = "labelName2";
             labelName2.Size = new Size(105, 31);
             labelName2.TabIndex = 4;
             labelName2.Text = "Tarif Adı";
             labelName2.TextAlign = ContentAlignment.MiddleCenter;
+            labelName2.Click += labelName2_Click;
             // 
             // labelName1
             // 
@@ -907,36 +981,40 @@
             labelName1.BorderStyle = BorderStyle.FixedSingle;
             labelName1.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point);
             labelName1.ForeColor = SystemColors.ControlLightLight;
-            labelName1.Location = new Point(295, 157);
+            labelName1.Location = new Point(295, 185);
             labelName1.Name = "labelName1";
             labelName1.Size = new Size(105, 31);
             labelName1.TabIndex = 3;
             labelName1.Text = "Tarif Adı";
             labelName1.TextAlign = ContentAlignment.MiddleCenter;
+            labelName1.Click += labelName1_Click;
             // 
             // pictureBoxTarif3
             // 
-            pictureBoxTarif3.Location = new Point(877, 24);
+            pictureBoxTarif3.Location = new Point(877, 52);
             pictureBoxTarif3.Name = "pictureBoxTarif3";
             pictureBoxTarif3.Size = new Size(250, 130);
             pictureBoxTarif3.TabIndex = 2;
             pictureBoxTarif3.TabStop = false;
+            pictureBoxTarif3.Click += pictureBoxTarif3_Click;
             // 
             // pictureBoxTarif2
             // 
-            pictureBoxTarif2.Location = new Point(587, 24);
+            pictureBoxTarif2.Location = new Point(587, 52);
             pictureBoxTarif2.Name = "pictureBoxTarif2";
             pictureBoxTarif2.Size = new Size(250, 130);
             pictureBoxTarif2.TabIndex = 1;
             pictureBoxTarif2.TabStop = false;
+            pictureBoxTarif2.Click += pictureBoxTarif2_Click;
             // 
             // pictureBoxTarif1
             // 
-            pictureBoxTarif1.Location = new Point(295, 24);
+            pictureBoxTarif1.Location = new Point(295, 52);
             pictureBoxTarif1.Name = "pictureBoxTarif1";
             pictureBoxTarif1.Size = new Size(250, 130);
             pictureBoxTarif1.TabIndex = 0;
             pictureBoxTarif1.TabStop = false;
+            pictureBoxTarif1.Click += pictureBoxTarif1_Click;
             // 
             // Form1
             // 
@@ -969,6 +1047,12 @@
             panelMalzemeEkle.ResumeLayout(false);
             panelAnaManu.ResumeLayout(false);
             panelAnaManu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox18).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox17).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox16).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox15).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox14).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox12).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
@@ -1061,5 +1145,11 @@
         private PictureBox pictureBox12;
         private PictureBox pictureBox11;
         private PictureBox pictureBox10;
+        private PictureBox pictureBox16;
+        private PictureBox pictureBox15;
+        private PictureBox pictureBox14;
+        private PictureBox pictureBox13;
+        private PictureBox pictureBox18;
+        private PictureBox pictureBox17;
     }
 }

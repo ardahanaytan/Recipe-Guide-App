@@ -3,54 +3,84 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Google.Protobuf.WellKnownTypes;
 using MySql.Data.MySqlClient;
 
 namespace YazLab1_1
 {
-    public partial class FormTarifListesi : Form
+    public partial class TarifEkrani : Form
     {
-        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
         MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
         MySqlCommand cmd;
         MySqlDataAdapter adapter;
         DataTable dt;
+        string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
 
-        TarifEkrani tarifEkrani;
-        Form1 form1_;
+        public int tarifId;
 
-        public FormTarifListesi()
+        public TarifEkrani()
         {
             InitializeComponent();
         }
 
-        public FormTarifListesi(Form1 form1)
+        public TarifEkrani(int id)
         {
             InitializeComponent();
-            form1_ = form1;
+            this.tarifId = id;
+
         }
 
-        public void tabloGuncelle(string query)
-        {
-            dataGridViewTarifler.Rows.Clear();
-            
 
-            DataTable dt_tarifler = new DataTable();
+        private void kryptonLabel5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TarifEkrani_Load(object sender, EventArgs e)
+        {
+            DataTable tarif = new DataTable();
             try
             {
                 con.Open();
-                adapter = new MySqlDataAdapter(query, con);
-                adapter.Fill(dt_tarifler);
+                string query_idSorgu = @"select * from tarifler where TarifID = @TarifID";
+                adapter = new MySqlDataAdapter(query_idSorgu, con);
+                adapter.SelectCommand.Parameters.AddWithValue("@TarifID", this.tarifId);
+                adapter.Fill(tarif);
                 con.Close();
-                foreach (DataRow row in dt_tarifler.Rows)
+
+
+                if (tarif.Rows.Count != 1)
                 {
+                    MessageBox.Show("tarif alinamadi");
+                    return;
+                }
+                foreach (DataRow row in tarif.Rows)
+                {
+                    //picture
+                    string path = row["Path"].ToString();
+                    kryptonPictureBoxTarif.SizeMode = PictureBoxSizeMode.StretchImage;
+                    if (!string.IsNullOrEmpty(path) && System.IO.File.Exists(path))
+                    {
+                        kryptonPictureBoxTarif.Image = Image.FromFile(path);
+                    }
+                    else
+                    {
+                        kryptonPictureBoxTarif.Image = Image.FromFile(default_path);
+                    }
+
+                    //name 
+                    kryptonLabelName.Text = row["TarifAdi"].ToString();
+
+                    //maaliyet-eksik-malzeme
                     float maliyet = 0f;
                     float gereken = 0f;
+
                     string id = row["TarifID"].ToString();
-                    //MessageBox.Show("id:" + id.ToString());
 
                     DataTable malzemeler = new DataTable();
                     try
@@ -127,8 +157,6 @@ namespace YazLab1_1
                         string kategori = row["Kategori"]?.ToString() ?? string.Empty;
                         string sure = row["HazirlamaSuresi"]?.ToString() ?? string.Empty;
                         string talimatlar = row["Talimatlar"]?.ToString() ?? string.Empty;
-                        //MessageBox.Show("Kontrol:" + str_malzemeler + "-");
-                        //MessageBox.Show("Kontrol2:" + str_malzemeler.Substring(0, str_malzemeler.Length - 2) + "-");
 
                         if (str_malzemeler.Length > 2)
                         {
@@ -178,7 +206,6 @@ namespace YazLab1_1
 
 
 
-
                                 if (dt_mik.Rows.Count == 1)
                                 {
                                     float neKadarVar = -1f;
@@ -217,6 +244,7 @@ namespace YazLab1_1
                                                 eklenecek += " " + malzeme_kelime[gezen];
                                                 gezen++;
                                             }
+
                                             yetersiz_malzemeler += eklenecek;
                                         }
                                         else
@@ -250,262 +278,58 @@ namespace YazLab1_1
                                 yetersiz_malzemeler = "Yok";
                             }
 
+                            richTextBoxTamMalzemeler.Text = yeterli_malzemeler;
+                            richTextBoxTamMalzemeler.SelectAll();
+                            richTextBoxTamMalzemeler.SelectionColor = Color.Green;
+                            richTextBoxTamMalzemeler.BackColor = Color.FromArgb(148, 132, 179);
+
+                            richTextBoxEksikMalzemeler.Text = yetersiz_malzemeler;
+                            richTextBoxEksikMalzemeler.SelectAll();
+                            richTextBoxEksikMalzemeler.SelectionColor = Color.Red;
+                            richTextBoxEksikMalzemeler.BackColor = Color.FromArgb(148, 132, 179);
+
+                            //maliyet
+                            kryptonLabelMaliyet.Text = maliyet.ToString() + "₺";
+
+
+                            //gerekli
+                            kryptonLabelGerekliFiyat.Text = "Gerekli Fiyat: " + gereken.ToString() + "₺";
+
+
+                            
 
 
 
-                            int row_num = dataGridViewTarifler.Rows.Add(id, ad, kategori, sure, yeterli_malzemeler, yetersiz_malzemeler, talimatlar, maliyet, gereken);
-                            if (yetersiz_malzemeler == "Yok")
-                            {
-                                dataGridViewTarifler.Rows[row_num].DefaultCellStyle.BackColor = Color.Green;
-                                dataGridViewTarifler.Rows[row_num].DefaultCellStyle.ForeColor = Color.White; // İsteğe bağlı yazı rengi
-                            }
-                            else
-                            {
-                                dataGridViewTarifler.Rows[row_num].DefaultCellStyle.BackColor = Color.Red;
-                                dataGridViewTarifler.Rows[row_num].DefaultCellStyle.ForeColor = Color.White; // İsteğe bağlı yazı rengi
-                            }
+
                         }
+
                     }
 
-                    
 
-                    
+                    //kategori
+                    kryptonLabelKategori.Text = row["Kategori"].ToString();
 
+                    //sure
+                    kryptonLabelSure.Text = row["HazirlamaSuresi"].ToString() + " Dakika";
 
-                    //dataGridViewTarifler.Invalidate(); // tekrar boyama?????????
-                }
-            }
-            catch (Exception ex1)
-            {
-                MessageBox.Show("Tablo Güncellemede Hata:", ex1.Message);
-                return;
-            }
+                    //talimatlar
+                    richTextBoxTalimatlar.Text = row["Talimatlar"].ToString();
+                    richTextBoxTalimatlar.BackColor = Color.FromArgb(148, 132, 179);
+                    richTextBoxTalimatlar.BorderStyle = BorderStyle.None;
 
-            this.ayirma_methodu();
-
-        }
-
-        public void FormTarifListesi_Load(object sender, EventArgs e)
-        {
-            this.tabloGuncelle("select * from tarifler");
-        }
-
-        public void tarifSil(string id)
-        {
-            if (id == "")
-            {
-                MessageBox.Show("Id Alinamadi.");
-                return;
-            }
-            int id_ = -1;
-            try
-            {
-                id_ = int.Parse(id);
-            }
-            catch (Exception ex3)
-            {
-                MessageBox.Show("Id Int'e Çevirilemedi.");
-                return;
-            }
-
-            //tarif var mi
-            DataTable dt = new DataTable();
-            try
-            {
-                con.Open();
-                string query_idKontrol = @"SELECT * from tarifler where TarifID = @TarifID";
-                adapter = new MySqlDataAdapter(query_idKontrol, con);
-                adapter.SelectCommand.Parameters.AddWithValue("@TarifID", id_);
-                adapter.Fill(dt);
-                con.Close();
-
-            }
-            catch (Exception ex1)
-            {
-                MessageBox.Show("Malzeme Bulma Hatası:", ex1.Message);
-                return;
-            }
-            if (dt.Rows.Count <= 0)
-            {
-                MessageBox.Show("Tarif Bulunamadı!");
-                return;
-            }
-
-            //tarifi sil
-            try
-            {
-                con.Open();
-                string query_tarifSil = @"DELETE from tarifler where TarifID = @TarifID";
-                cmd = new MySqlCommand(query_tarifSil, con);
-                cmd.Parameters.AddWithValue("@TarifID", id_);
-                cmd.ExecuteNonQuery();
-                con.Close();
-            }
-            catch (Exception ex2)
-            {
-                MessageBox.Show("Tarif Silme Hatasi:" + ex2.Message);
-                return;
-            }
-
-        }
-
-        public void malzemeSil(string id)
-        {
-            if (id == "")
-            {
-                MessageBox.Show("Id Alinamadi.");
-                return;
-            }
-            int id_ = -1;
-            try
-            {
-                id_ = int.Parse(id);
-            }
-            catch (Exception ex3)
-            {
-                MessageBox.Show("Id Int'e Çevirilemedi.");
-                return;
-            }
-
-            //malzeme var mi
-            DataTable dt = new DataTable();
-            try
-            {
-                con.Open();
-                string query_idKontrol = @"SELECT * from malzemeler where MalzemeID = @MalzemeID";
-                adapter = new MySqlDataAdapter(query_idKontrol, con);
-                adapter.SelectCommand.Parameters.AddWithValue("@MalzemeID", id_);
-                adapter.Fill(dt);
-                con.Close();
-
-            }
-            catch (Exception ex1)
-            {
-                MessageBox.Show("Malzeme Bulma Hatası:", ex1.Message);
-                return;
-            }
-            if (dt.Rows.Count <= 0)
-            {
-                MessageBox.Show("Malzeme Bulunamadı!");
-                return;
-            }
-
-            //malzemeyi sil
-            try
-            {
-                con.Open();
-                string query_malzemeSil = @"DELETE from malzemeler where MalzemeID = @MalzemeID";
-                cmd = new MySqlCommand(query_malzemeSil, con);
-                cmd.Parameters.AddWithValue("@MalzemeID", id_);
-                cmd.ExecuteNonQuery();
-                con.Close();
-            }
-            catch (Exception ex2)
-            {
-                MessageBox.Show("Malzeme Silme Hatasi:" + ex2.Message);
-                return;
-            }
-        }
-
-        public void nameToForm(string name)
-        {
-            DataTable tarif = new DataTable();
-            int id = -1;
-            try
-            {
-                //MessageBox.Show(name.ToString());
-                con.Open();
-                string query_nameToTarif = @"select * from tarifler where TarifAdi = @TarifAdi";
-                adapter = new MySqlDataAdapter(query_nameToTarif, con);
-                adapter.SelectCommand.Parameters.AddWithValue("@TarifAdi", name);
-                adapter.Fill(tarif);
-                con.Close();
-
-
-
-                if (tarif.Rows.Count != 1)
-                {
-                    MessageBox.Show("tarif bulunurken hata!");
-                    return;
                 }
 
-                foreach (DataRow row in tarif.Rows)
-                {
-                    id = int.Parse(row["TarifID"].ToString());
-                }
-
-                if (tarifEkrani == null)
-                {
-                    tarifEkrani = new TarifEkrani(id);
-                    tarifEkrani.FormClosed += tarifEkrani_FormClosed;
-                    tarifEkrani.MdiParent = form1_;
-                    tarifEkrani.Dock = DockStyle.Fill;
-                    tarifEkrani.Show();
-                }
-                else
-                {
-                    tarifEkrani.Activate();
-                }
-                //panelAnaManu.Visible = false;
 
 
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("İsimden forma geçilirken hata: ", ex.Message);
+                MessageBox.Show("Tarif ekranı yüklenirken hata: " + ex.Message);
             }
         }
 
-        private void tarifEkrani_FormClosed(object? sender, FormClosedEventArgs e)
-        {
-            tarifEkrani = null;
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-            try
-            {
-                if (dataGridViewTarifler.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
-                {
-                    string buttonVal = dataGridViewTarifler.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-                    MessageBox.Show(buttonVal);
-                    string malzemeID_ = dataGridViewTarifler.Rows[e.RowIndex].Cells["TarifID"].Value.ToString();
-                    if (malzemeID_ == null || buttonVal == null)
-                    {
-                        return;
-                    }
-                    if (buttonVal == "Sil")
-                    {
-                        this.tarifSil(malzemeID_);
-                        this.tabloGuncelle("select * from tarifler");
-                    }
-                    else
-                    {
-                        
-                    }
-                }
-                else if(e.RowIndex >= 0)
-                {
-                    string name = dataGridViewTarifler.Rows[e.RowIndex].Cells["tarifAdi"].Value.ToString();
-                    MessageBox.Show("name:" + name);
-                    this.nameToForm(name);
-                }
-            }
-            catch (Exception ex1)
-            {
-                MessageBox.Show("Buton Hatası:", ex1.Message);
-            }
-        }
-
-        public void ayirma_methodu()
-        {
-
-        }
-
-
-        private void dataGridViewTarifler_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        private void kryptonLabel2_Click(object sender, EventArgs e)
         {
 
         }
