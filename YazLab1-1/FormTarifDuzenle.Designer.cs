@@ -44,13 +44,17 @@
             buttonDüzenle = new Button();
             kryptonLabel6 = new Krypton.Toolkit.KryptonLabel();
             kryptonComboBox1 = new Krypton.Toolkit.KryptonComboBox();
-            kryptonTextBox2 = new Krypton.Toolkit.KryptonTextBox();
+            kryptonTextBoxMalzemeMiktarı1 = new Krypton.Toolkit.KryptonTextBox();
             kryptonButtonMalzemeMiktarDuzenleme = new Krypton.Toolkit.KryptonButton();
             kryptonButtonMalzemeSil = new Krypton.Toolkit.KryptonButton();
             kryptonLabel7 = new Krypton.Toolkit.KryptonLabel();
+            kryptonComboBoxMalzemeler2 = new Krypton.Toolkit.KryptonComboBox();
+            kryptonTextBoxMalzemeMiktarı2 = new Krypton.Toolkit.KryptonTextBox();
+            kryptonButtonMalzemeEkle = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)kryptonPictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)kryptonComboBoxKategori).BeginInit();
             ((System.ComponentModel.ISupportInitialize)kryptonComboBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)kryptonComboBoxMalzemeler2).BeginInit();
             SuspendLayout();
             // 
             // kryptonLabel1
@@ -138,7 +142,6 @@
             kryptonLabel4.Size = new Size(64, 20);
             kryptonLabel4.TabIndex = 9;
             kryptonLabel4.Values.Text = "Talimatlar";
-            
             // 
             // richTextBoxTalimatlar
             // 
@@ -189,14 +192,13 @@
             kryptonComboBox1.Size = new Size(133, 22);
             kryptonComboBox1.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             kryptonComboBox1.TabIndex = 15;
-            kryptonComboBox1.Text = "kryptonComboBox1";
             // 
-            // kryptonTextBox2
+            // kryptonTextBoxMalzemeMiktarı1
             // 
-            kryptonTextBox2.Location = new Point(558, 128);
-            kryptonTextBox2.Name = "kryptonTextBox2";
-            kryptonTextBox2.Size = new Size(133, 23);
-            kryptonTextBox2.TabIndex = 16;
+            kryptonTextBoxMalzemeMiktarı1.Location = new Point(558, 128);
+            kryptonTextBoxMalzemeMiktarı1.Name = "kryptonTextBoxMalzemeMiktarı1";
+            kryptonTextBoxMalzemeMiktarı1.Size = new Size(133, 23);
+            kryptonTextBoxMalzemeMiktarı1.TabIndex = 16;
             // 
             // kryptonButtonMalzemeMiktarDuzenleme
             // 
@@ -222,16 +224,44 @@
             kryptonLabel7.TabIndex = 19;
             kryptonLabel7.Values.Text = "Malzeme Ekle";
             // 
+            // kryptonComboBoxMalzemeler2
+            // 
+            kryptonComboBoxMalzemeler2.DropDownWidth = 133;
+            kryptonComboBoxMalzemeler2.IntegralHeight = false;
+            kryptonComboBoxMalzemeler2.Location = new Point(558, 260);
+            kryptonComboBoxMalzemeler2.Name = "kryptonComboBoxMalzemeler2";
+            kryptonComboBoxMalzemeler2.Size = new Size(133, 22);
+            kryptonComboBoxMalzemeler2.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            kryptonComboBoxMalzemeler2.TabIndex = 20;
+            // 
+            // kryptonTextBoxMalzemeMiktarı2
+            // 
+            kryptonTextBoxMalzemeMiktarı2.Location = new Point(558, 304);
+            kryptonTextBoxMalzemeMiktarı2.Name = "kryptonTextBoxMalzemeMiktarı2";
+            kryptonTextBoxMalzemeMiktarı2.Size = new Size(133, 23);
+            kryptonTextBoxMalzemeMiktarı2.TabIndex = 21;
+            // 
+            // kryptonButtonMalzemeEkle
+            // 
+            kryptonButtonMalzemeEkle.Location = new Point(558, 343);
+            kryptonButtonMalzemeEkle.Name = "kryptonButtonMalzemeEkle";
+            kryptonButtonMalzemeEkle.Size = new Size(90, 25);
+            kryptonButtonMalzemeEkle.TabIndex = 22;
+            kryptonButtonMalzemeEkle.Values.Text = "Malzeme Ekle";
+            // 
             // FormTarifDuzenle
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(148, 132, 179);
             ClientSize = new Size(1020, 624);
+            Controls.Add(kryptonButtonMalzemeEkle);
+            Controls.Add(kryptonTextBoxMalzemeMiktarı2);
+            Controls.Add(kryptonComboBoxMalzemeler2);
             Controls.Add(kryptonLabel7);
             Controls.Add(kryptonButtonMalzemeSil);
             Controls.Add(kryptonButtonMalzemeMiktarDuzenleme);
-            Controls.Add(kryptonTextBox2);
+            Controls.Add(kryptonTextBoxMalzemeMiktarı1);
             Controls.Add(kryptonComboBox1);
             Controls.Add(kryptonLabel6);
             Controls.Add(buttonDüzenle);
@@ -254,6 +284,7 @@
             ((System.ComponentModel.ISupportInitialize)kryptonPictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)kryptonComboBoxKategori).EndInit();
             ((System.ComponentModel.ISupportInitialize)kryptonComboBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)kryptonComboBoxMalzemeler2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -276,9 +307,12 @@
         private Button buttonDüzenle;
         private Krypton.Toolkit.KryptonLabel kryptonLabel6;
         private Krypton.Toolkit.KryptonComboBox kryptonComboBox1;
-        private Krypton.Toolkit.KryptonTextBox kryptonTextBox2;
+        private Krypton.Toolkit.KryptonTextBox kryptonTextBoxMalzemeMiktarı1;
         private Krypton.Toolkit.KryptonButton kryptonButtonMalzemeMiktarDuzenleme;
         private Krypton.Toolkit.KryptonButton kryptonButtonMalzemeSil;
         private Krypton.Toolkit.KryptonLabel kryptonLabel7;
+        private Krypton.Toolkit.KryptonComboBox kryptonComboBoxMalzemeler2;
+        private Krypton.Toolkit.KryptonTextBox kryptonTextBoxMalzemeMiktarı2;
+        private Krypton.Toolkit.KryptonButton kryptonButtonMalzemeEkle;
     }
 }
