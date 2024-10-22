@@ -14,7 +14,6 @@ namespace YazLab1_1
         //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
 
         MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
-
         MySqlCommand cmd;
         MySqlDataAdapter adapter;
         DataTable dt;
@@ -26,6 +25,7 @@ namespace YazLab1_1
         FormMalzemeListesi malzemeListesi;
         FormMalzemeEkleme malzemeEkleme;
         TarifEkrani tarifEkrani;
+        FormTarifDuzenle formTarifDuzenle;
 
         public void iliski_ekle(int malzemeID, int tarifID, float miktar_)
         {
@@ -668,6 +668,9 @@ namespace YazLab1_1
                 int len_tarif = dt_tarif_num.Rows.Count;
                 int sayfa_sayisi = (int)Math.Ceiling((double)len_tarif / 3);
 
+                //combobox temizle
+                comboBoxSayfa.Items.Clear();
+
                 for (int i = 1; i <= sayfa_sayisi; i++)
                 {
                     comboBoxSayfa.Items.Add(i.ToString());
@@ -1095,9 +1098,130 @@ namespace YazLab1_1
             this.nameToForm(name);
         }
 
+        
+
+        public void tarifTemizle(string name)
+        {
+            //tarif kontrol
+            DataTable tarif = new DataTable();
+            try
+            {
+                con.Open();
+                string query_tarifKontrol = @"select * from tarifler where TarifAdi = @TarifAdi";
+                adapter = new MySqlDataAdapter(query_tarifKontrol, con);
+                adapter.SelectCommand.Parameters.AddWithValue("@TarifAdi", name);
+                adapter.Fill(tarif);
+                con.Close();
+
+                if (tarif.Rows.Count != 1)
+                {
+                    MessageBox.Show("İstenilen tarif bulunamadi");
+                    return;
+                }
+
+                //tarifi sil
+                con.Open();
+                string query_tarifSil = @"DELETE from tarifler where TarifAdi = @TarifAdi";
+                cmd = new MySqlCommand(query_tarifSil, con);
+                cmd.Parameters.AddWithValue("@TarifAdi", name);
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+                //sayfayi tekrar doldur
+                this.sayfayiDoldur(@"select * from tarifler");
+
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("tarif silme hatasi: ", e.Message);
+            }
+        }
+
+        private void pictureBox14_Click(object sender, EventArgs e)
+        {
+            string name = labelName1.Text;
+            this.tarifTemizle(name);
+        }
+
+        private void pictureBox15_Click(object sender, EventArgs e)
+        {
+            string name = labelName2.Text;
+            this.tarifTemizle(name);
+        }
+
+        private void pictureBox17_Click(object sender, EventArgs e)
+        {
+            string name = labelName3.Text;
+            this.tarifTemizle(name);
+        }
+
+        public void tarifDuzenleEkraniGecis(string name)
+        {
+            DataTable tarif = new DataTable();
+            try
+            {
+                //tarif var mi kontrol
+                con.Open();
+                string query_tarifKontrol = @"select * from tarifler where TarifAdi = @TarifAdi";
+                adapter = new MySqlDataAdapter(query_tarifKontrol, con);
+                adapter.SelectCommand.Parameters.AddWithValue("@TarifAdi", name);
+                adapter.Fill(tarif);
+                con.Close();
+
+                if (tarif.Rows.Count != 1)
+                {
+                    MessageBox.Show("İstenilen tarif bulunamadi");
+                    return;
+                }
+
+
+                //sayfaya gecis
+                if (formTarifDuzenle == null)
+                {
+                    formTarifDuzenle = new FormTarifDuzenle(name);
+                    formTarifDuzenle.FormClosed += FormTarifDuzenle_FormClosed;
+                    formTarifDuzenle.MdiParent = this;
+                    formTarifDuzenle.Dock = DockStyle.Fill;
+                    formTarifDuzenle.Show();
+                }
+                else
+                {
+                    formTarifDuzenle.Activate();
+                }
+                panelAnaManu.Visible = false;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("tarif güncelleme hatasi: ", e.Message);
+            }
+
+
+
+        }
+
+        private void FormTarifDuzenle_FormClosed(object? sender, FormClosedEventArgs e)
+        {
+            formTarifDuzenle = null;
+        }
+       
+
         private void pictureBox13_Click(object sender, EventArgs e)
         {
+            string name = labelName1.Text;
+            this.tarifDuzenleEkraniGecis(name);
+        }
 
+        private void pictureBox16_Click(object sender, EventArgs e)
+        {
+            string name = labelName2.Text;
+            this.tarifDuzenleEkraniGecis(name);
+        }
+
+        private void pictureBox18_Click(object sender, EventArgs e)
+        {
+            string name = labelName3.Text;
+            this.tarifDuzenleEkraniGecis(name);
         }
     }
 

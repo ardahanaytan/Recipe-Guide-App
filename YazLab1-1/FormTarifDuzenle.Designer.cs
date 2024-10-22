@@ -95,7 +95,6 @@
             kryptonTextBox1.Name = "kryptonTextBox1";
             kryptonTextBox1.Size = new Size(276, 23);
             kryptonTextBox1.TabIndex = 4;
-            kryptonTextBox1.Text = "kryptonTextBox1";
             // 
             // kryptonLabel3
             // 

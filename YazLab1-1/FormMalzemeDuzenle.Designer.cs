@@ -56,7 +56,6 @@
             kryptonLabel2.Size = new Size(82, 20);
             kryptonLabel2.TabIndex = 1;
             kryptonLabel2.Values.Text = "Malzeme Adı";
-            kryptonLabel2.Click += this.kryptonLabel2_Click;
             // 
             // kryptonTextBoxMalzemeAdı
             // 
@@ -112,7 +111,6 @@
             kryptonTextBox1.Name = "kryptonTextBox1";
             kryptonTextBox1.Size = new Size(176, 23);
             kryptonTextBox1.TabIndex = 8;
-            kryptonTextBox1.Text = "kryptonTextBox1";
             // 
             // kryptonButtonMalzemeDuzenle
             // 

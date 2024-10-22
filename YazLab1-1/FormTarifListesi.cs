@@ -325,7 +325,7 @@ namespace YazLab1_1
                 MessageBox.Show("Malzeme Bulma Hatası:", ex1.Message);
                 return;
             }
-            if (dt.Rows.Count <= 0)
+            if (dt.Rows.Count != 1)
             {
                 MessageBox.Show("Tarif Bulunamadı!");
                 return;

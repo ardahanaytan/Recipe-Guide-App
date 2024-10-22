@@ -482,6 +482,7 @@
             pictureBox18.Size = new Size(32, 32);
             pictureBox18.TabIndex = 57;
             pictureBox18.TabStop = false;
+            pictureBox18.Click += pictureBox18_Click;
             // 
             // pictureBox17
             // 
@@ -491,6 +492,7 @@
             pictureBox17.Size = new Size(32, 32);
             pictureBox17.TabIndex = 56;
             pictureBox17.TabStop = false;
+            pictureBox17.Click += pictureBox17_Click;
             // 
             // pictureBox16
             // 
@@ -500,6 +502,7 @@
             pictureBox16.Size = new Size(32, 32);
             pictureBox16.TabIndex = 55;
             pictureBox16.TabStop = false;
+            pictureBox16.Click += pictureBox16_Click;
             // 
             // pictureBox15
             // 
@@ -509,6 +512,7 @@
             pictureBox15.Size = new Size(32, 32);
             pictureBox15.TabIndex = 54;
             pictureBox15.TabStop = false;
+            pictureBox15.Click += pictureBox15_Click;
             // 
             // pictureBox14
             // 
@@ -518,6 +522,7 @@
             pictureBox14.Size = new Size(32, 32);
             pictureBox14.TabIndex = 53;
             pictureBox14.TabStop = false;
+            pictureBox14.Click += pictureBox14_Click;
             // 
             // pictureBox13
             // 
