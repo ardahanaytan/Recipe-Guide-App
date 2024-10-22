@@ -3,6 +3,7 @@ using System.Diagnostics;
 using MySql.Data.MySqlClient;
 using System.Runtime.InteropServices;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using Krypton.Toolkit;
 //using ComponentFactory.Krypton.Toolkit;
 
 namespace YazLab1_1
@@ -11,9 +12,9 @@ namespace YazLab1_1
 
     public partial class Form1 : Form
     {
-        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
+        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
 
-        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
+        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
         MySqlCommand cmd;
         MySqlDataAdapter adapter;
         DataTable dt;
@@ -254,7 +255,7 @@ namespace YazLab1_1
         {
             DataTable dt_tarif = new DataTable();
             int sayfaBasinaTarif = 3;
-            int ComboBoxNum = comboBoxSayfa.SelectedIndex + 1;
+            int ComboBoxNum = comboBoxSayfa1.SelectedIndex + 1;
             /*
             if (ComboBoxNum < 1)
             {
@@ -280,15 +281,46 @@ namespace YazLab1_1
             return dt_tarif;
         }
 
+        public void panelGorunurlukAyarlama(DataTable tarif)
+        {
+            int len = tarif.Rows.Count;
+            //MessageBox.Show("len" + len.ToString());
+            if (len == 1)
+            {
+                panel11.Visible = true;
+
+                panel12.Visible = false;
+                panel13.Visible = false;
+
+            }
+            else if (len == 2)
+            {
+                panel11.Visible = true;
+                panel12.Visible = true;
+
+                panel13.Visible = false;
+
+                //3. paneli unvisable yap
+            }
+            else if (len == 3)
+            {
+                panel11.Visible = true;
+                panel12.Visible = true;
+                panel13.Visible = true;
+            }
+        }
+
 
         public void elementDoldurma(DataTable table)
         {
+
+            this.panelGorunurlukAyarlama(table);
             int num = 1;
             foreach (DataRow row in table.Rows)
             {
                 //resim
-                //string default_path = "C:/Users/ardah/Desktop/proje21/images/404.png";
-                string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
+                string default_path = "C:/Users/ardah/Desktop/proje22/images/404.png";
+                //string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
 
                 string pictureBoxName = "pictureBoxTarif" + num.ToString();
                 PictureBox pic_name = this.Controls.Find(pictureBoxName, true).FirstOrDefault() as PictureBox;
@@ -530,14 +562,12 @@ namespace YazLab1_1
 
 
                         //richboxes
-                        string richLeftName = "richTextBoxTam" + num.ToString();
-                        RichTextBox rich_left = this.Controls.Find(richLeftName, true).FirstOrDefault() as RichTextBox;
+                        string richLeftName = "richTextBoxTam1" + num.ToString();
+                        KryptonRichTextBox rich_left = this.Controls.Find(richLeftName, true).FirstOrDefault() as KryptonRichTextBox;
                         if (rich_left != null)
                         {
                             rich_left.Text = yeterli_malzemeler;
                             rich_left.SelectAll();
-                            rich_left.SelectionColor = Color.Green;
-                            rich_left.BackColor = Color.FromArgb(148, 132, 179);
                             //rich_left.BorderStyle = BorderStyle.None;
                         }
                         else
@@ -545,14 +575,12 @@ namespace YazLab1_1
                             MessageBox.Show("left richtextbox hatasi!");
                         }
 
-                        string richRightName = "richTextBoxEksik" + num.ToString();
-                        RichTextBox rich_right = this.Controls.Find(richRightName, true).FirstOrDefault() as RichTextBox;
+                        string richRightName = "richTextBoxEksik1" + num.ToString();
+                        KryptonRichTextBox rich_right = this.Controls.Find(richRightName, true).FirstOrDefault() as KryptonRichTextBox;
                         if (rich_right != null)
                         {
                             rich_right.Text = yetersiz_malzemeler;
                             rich_right.SelectAll();
-                            rich_right.SelectionColor = Color.Red;
-                            rich_right.BackColor = Color.FromArgb(148, 132, 179);
 
                         }
                         else
@@ -629,9 +657,9 @@ namespace YazLab1_1
 
 
                 //talimatlar
-                string talimatlarRTBName = "richTextBoxTalimat" + num.ToString();
+                string talimatlarRTBName = "richTextBoxTalimat1" + num.ToString();
                 //Label lbl_talimatlar = this.Controls.Find(talimatlarLabelName, true).FirstOrDefault() as Label;
-                RichTextBox richTextBox_talimatlar = this.Controls.Find(talimatlarRTBName, true).FirstOrDefault() as RichTextBox;
+                KryptonRichTextBox richTextBox_talimatlar = this.Controls.Find(talimatlarRTBName, true).FirstOrDefault() as KryptonRichTextBox;
                 //lbl_talimatlar.AutoSize = true;
                 //lbl_talimatlar.MaximumSize = new Size(250, 0);
                 //lbl_talimatlar.Font = new Font(lbl_talimatlar.Font.FontFamily, 8);
@@ -640,8 +668,6 @@ namespace YazLab1_1
                 if (richTextBox_talimatlar != null)
                 {
                     richTextBox_talimatlar.Text = row["Talimatlar"].ToString();
-                    richTextBox_talimatlar.BackColor = Color.FromArgb(148, 132, 179);
-                    richTextBox_talimatlar.BorderStyle = BorderStyle.None;
                 }
                 else
                 {
@@ -669,16 +695,16 @@ namespace YazLab1_1
                 int sayfa_sayisi = (int)Math.Ceiling((double)len_tarif / 3);
 
                 //combobox temizle
-                comboBoxSayfa.Items.Clear();
+                comboBoxSayfa1.Items.Clear();
 
                 for (int i = 1; i <= sayfa_sayisi; i++)
                 {
-                    comboBoxSayfa.Items.Add(i.ToString());
+                    comboBoxSayfa1.Items.Add(i.ToString());
                 }
                 //default 1 secili olsun
-                if (comboBoxSayfa.Items.Count > 0)
+                if (comboBoxSayfa1.Items.Count > 0)
                 {
-                    comboBoxSayfa.SelectedIndex = 0;
+                    comboBoxSayfa1.SelectedIndex = 0;
                 }
 
             }
@@ -694,6 +720,8 @@ namespace YazLab1_1
                 //MessageBox.Show("sayi:" + dt_tarif.Rows.Count);
 
                 //panel gözükme olayı burada ayarlanacak
+
+
                 this.elementDoldurma(dt_tarif);
 
 
@@ -946,14 +974,14 @@ namespace YazLab1_1
 
 
             //en sol mu kontrol - return
-            int ComboBoxNum = comboBoxSayfa.SelectedIndex + 1;
+            int ComboBoxNum = comboBoxSayfa1.SelectedIndex + 1;
             if (ComboBoxNum <= 1)
             {
                 return;
             }
 
             //bir azaltma
-            comboBoxSayfa.SelectedIndex -= 1;
+            comboBoxSayfa1.SelectedIndex -= 1;
 
             DataTable dt_tarif = new DataTable();
             try
@@ -972,8 +1000,8 @@ namespace YazLab1_1
             //sag
 
             //en sag mi kontrol - return
-            int ComboBoxNum = comboBoxSayfa.SelectedIndex + 1;
-            int combo_lenEleman = comboBoxSayfa.Items.Count;
+            int ComboBoxNum = comboBoxSayfa1.SelectedIndex + 1;
+            int combo_lenEleman = comboBoxSayfa1.Items.Count;
             if (ComboBoxNum == combo_lenEleman)
             {
                 return;
@@ -981,7 +1009,7 @@ namespace YazLab1_1
 
 
             //bir arttirma
-            comboBoxSayfa.SelectedIndex += 1;
+            comboBoxSayfa1.SelectedIndex += 1;
 
             DataTable dt_tarif = new DataTable();
             try
@@ -1098,7 +1126,7 @@ namespace YazLab1_1
             this.nameToForm(name);
         }
 
-        
+
 
         public void tarifTemizle(string name)
         {
@@ -1136,24 +1164,6 @@ namespace YazLab1_1
             {
                 MessageBox.Show("tarif silme hatasi: ", e.Message);
             }
-        }
-
-        private void pictureBox14_Click(object sender, EventArgs e)
-        {
-            string name = labelName1.Text;
-            this.tarifTemizle(name);
-        }
-
-        private void pictureBox15_Click(object sender, EventArgs e)
-        {
-            string name = labelName2.Text;
-            this.tarifTemizle(name);
-        }
-
-        private void pictureBox17_Click(object sender, EventArgs e)
-        {
-            string name = labelName3.Text;
-            this.tarifTemizle(name);
         }
 
         public void tarifDuzenleEkraniGecis(string name)
@@ -1204,24 +1214,57 @@ namespace YazLab1_1
         {
             formTarifDuzenle = null;
         }
-       
 
-        private void pictureBox13_Click(object sender, EventArgs e)
+        private void buttonSayfa1_Click(object sender, EventArgs e)
+        {
+            DataTable dt_tarif = new DataTable();
+            try
+            {
+                dt_tarif = queryTarif();
+                //MessageBox.Show("sayi:" + dt_tarif.Rows.Count);
+
+                this.elementDoldurma(dt_tarif);
+            }
+            catch (Exception ex1)
+            {
+                MessageBox.Show("Sayfa doldurma hatası: " + ex1.Message);
+            }
+        }
+
+        private void pictureBox13_Click_1(object sender, EventArgs e)
         {
             string name = labelName1.Text;
             this.tarifDuzenleEkraniGecis(name);
         }
 
-        private void pictureBox16_Click(object sender, EventArgs e)
+        private void pictureBox16_Click_1(object sender, EventArgs e)
         {
             string name = labelName2.Text;
             this.tarifDuzenleEkraniGecis(name);
         }
 
-        private void pictureBox18_Click(object sender, EventArgs e)
+        private void pictureBox18_Click_1(object sender, EventArgs e)
         {
             string name = labelName3.Text;
             this.tarifDuzenleEkraniGecis(name);
+        }
+
+        private void pictureBox14_Click_1(object sender, EventArgs e)
+        {
+            string name = labelName1.Text;
+            this.tarifTemizle(name);
+        }
+
+        private void pictureBox15_Click_1(object sender, EventArgs e)
+        {
+            string name = labelName2.Text;
+            this.tarifTemizle(name);
+        }
+
+        private void pictureBox17_Click_1(object sender, EventArgs e)
+        {
+            string name = labelName3.Text;
+            this.tarifTemizle(name);
         }
     }
 
