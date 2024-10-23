@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             dataGridViewMalzeme = new DataGridView();
             MalzemeID = new DataGridViewTextBoxColumn();
             MalzemeAdi = new DataGridViewTextBoxColumn();
@@ -42,16 +46,48 @@
             // 
             // dataGridViewMalzeme
             // 
+            dataGridViewMalzeme.AllowUserToAddRows = false;
             dataGridViewMalzeme.AllowUserToDeleteRows = false;
             dataGridViewMalzeme.BackgroundColor = Color.FromArgb(148, 132, 179);
             dataGridViewMalzeme.BorderStyle = BorderStyle.Fixed3D;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(108, 91, 123);
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewMalzeme.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewMalzeme.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewMalzeme.Columns.AddRange(new DataGridViewColumn[] { MalzemeID, MalzemeAdi, malzemeToplamMiktar, malzemeBirim, malzemeBirimFiyat, Düzenle, Sil });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(108, 91, 123);
+            dataGridViewCellStyle2.Font = new Font("Poppins Light", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle2.SelectionBackColor = Color.Thistle;
+            dataGridViewCellStyle2.SelectionForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridViewMalzeme.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewMalzeme.GridColor = Color.DimGray;
             dataGridViewMalzeme.Location = new Point(165, 138);
             dataGridViewMalzeme.Name = "dataGridViewMalzeme";
             dataGridViewMalzeme.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(108, 91, 123);
+            dataGridViewCellStyle3.Font = new Font("Poppins Light", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle3.SelectionBackColor = Color.Thistle;
+            dataGridViewCellStyle3.SelectionForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridViewMalzeme.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewMalzeme.RowHeadersVisible = false;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(108, 91, 123);
+            dataGridViewCellStyle4.Font = new Font("Poppins Light", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle4.SelectionBackColor = Color.Thistle;
+            dataGridViewCellStyle4.SelectionForeColor = Color.WhiteSmoke;
+            dataGridViewMalzeme.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewMalzeme.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(108, 91, 123);
+            dataGridViewMalzeme.RowTemplate.DefaultCellStyle.Font = new Font("Poppins Light", 12F, FontStyle.Italic, GraphicsUnit.Point);
             dataGridViewMalzeme.RowTemplate.Height = 25;
             dataGridViewMalzeme.Size = new Size(703, 373);
             dataGridViewMalzeme.TabIndex = 0;
@@ -140,6 +176,7 @@
         #endregion
 
         private DataGridView dataGridViewMalzeme;
+        private Label label1;
         private DataGridViewTextBoxColumn MalzemeID;
         private DataGridViewTextBoxColumn MalzemeAdi;
         private DataGridViewTextBoxColumn malzemeToplamMiktar;
@@ -147,6 +184,5 @@
         private DataGridViewTextBoxColumn malzemeBirimFiyat;
         private DataGridViewButtonColumn Düzenle;
         private DataGridViewButtonColumn Sil;
-        private Label label1;
     }
 }

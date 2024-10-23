@@ -20,7 +20,11 @@ namespace YazLab1_1
         MySqlCommand cmd;
         MySqlDataAdapter adapter;
         DataTable dt;
-        string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
+        FormTarifDuzenle formTarifDuzenle;
+        Form1 form1_;
+
+        //string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
+        string default_path = "C:/Users/ardah/Desktop/proje22/images/404.png";
 
         public int tarifId;
 
@@ -32,6 +36,14 @@ namespace YazLab1_1
         public TarifEkrani(int id)
         {
             InitializeComponent();
+            this.tarifId = id;
+
+        }
+
+        public TarifEkrani(Form1 form1, int id)
+        {
+            InitializeComponent();
+            this.form1_ = form1;
             this.tarifId = id;
 
         }
@@ -75,7 +87,7 @@ namespace YazLab1_1
                     }
 
                     //name 
-                    kryptonLabelName.Text = row["TarifAdi"].ToString();
+                    kryptonLabelName1a.Text = row["TarifAdi"].ToString();
 
                     //maaliyet-eksik-malzeme
                     float maliyet = 0f;
@@ -279,25 +291,21 @@ namespace YazLab1_1
                                 yetersiz_malzemeler = "Yok";
                             }
 
-                            richTextBoxTamMalzemeler.Text = yeterli_malzemeler;
-                            richTextBoxTamMalzemeler.SelectAll();
-                            richTextBoxTamMalzemeler.SelectionColor = Color.Green;
-                            richTextBoxTamMalzemeler.BackColor = Color.FromArgb(148, 132, 179);
+                            richTextBoxTamMalzemeler1.Text = yeterli_malzemeler;
+                            richTextBoxTamMalzemeler1.SelectAll();
 
-                            richTextBoxEksikMalzemeler.Text = yetersiz_malzemeler;
-                            richTextBoxEksikMalzemeler.SelectAll();
-                            richTextBoxEksikMalzemeler.SelectionColor = Color.Red;
-                            richTextBoxEksikMalzemeler.BackColor = Color.FromArgb(148, 132, 179);
+                            richTextBoxEksikMalzemeler1.Text = yetersiz_malzemeler;
+                            richTextBoxEksikMalzemeler1.SelectAll();
 
                             //maliyet
-                            kryptonLabelMaliyet.Text = maliyet.ToString() + "₺";
+                            kryptonLabelMaliyet1.Text = maliyet.ToString() + "₺";
 
 
                             //gerekli
-                            kryptonLabelGerekliFiyat.Text = "Gerekli Fiyat: " + gereken.ToString() + "₺";
+                            kryptonLabelGerekliFiyat1.Text = "Gerekli Fiyat: " + gereken.ToString() + "₺";
 
 
-                            
+
 
 
 
@@ -308,15 +316,13 @@ namespace YazLab1_1
 
 
                     //kategori
-                    kryptonLabelKategori.Text = row["Kategori"].ToString();
+                    kryptonLabelKategori1.Text = row["Kategori"].ToString();
 
                     //sure
-                    kryptonLabelSure.Text = row["HazirlamaSuresi"].ToString() + " Dakika";
+                    kryptonLabelSure1.Text = row["HazirlamaSuresi"].ToString() + " Dakika";
 
                     //talimatlar
-                    richTextBoxTalimatlar.Text = row["Talimatlar"].ToString();
-                    richTextBoxTalimatlar.BackColor = Color.FromArgb(148, 132, 179);
-                    richTextBoxTalimatlar.BorderStyle = BorderStyle.None;
+                    richTextBoxTalimatlar1.Text = row["Talimatlar"].ToString();
 
                 }
 
@@ -331,6 +337,65 @@ namespace YazLab1_1
         }
 
         private void kryptonLabel2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormTarifDuzenle_FormClosed(object? sender, FormClosedEventArgs e)
+        {
+            formTarifDuzenle = null;
+        }
+
+        public void tarifDuzenleEkraniGecis(string name)
+        {
+            DataTable tarif = new DataTable();
+            try
+            {
+                //tarif var mi kontrol
+                con.Open();
+                string query_tarifKontrol = @"select * from tarifler where TarifAdi = @TarifAdi";
+                adapter = new MySqlDataAdapter(query_tarifKontrol, con);
+                adapter.SelectCommand.Parameters.AddWithValue("@TarifAdi", name);
+                adapter.Fill(tarif);
+                con.Close();
+
+                if (tarif.Rows.Count != 1)
+                {
+                    MessageBox.Show("İstenilen tarif bulunamadi");
+                    return;
+                }
+
+
+                //sayfaya gecis
+                if (formTarifDuzenle == null)
+                {
+                    formTarifDuzenle = new FormTarifDuzenle(name);
+                    formTarifDuzenle.FormClosed += FormTarifDuzenle_FormClosed;
+                    formTarifDuzenle.MdiParent = this.form1_;
+                    formTarifDuzenle.Dock = DockStyle.Fill;
+                    formTarifDuzenle.Show();
+                }
+                else
+                {
+                    formTarifDuzenle.Activate();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("tarif güncelleme hatasi: ", e.Message);
+            }
+
+
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            string name = kryptonLabelName1a.Text;
+            this.tarifDuzenleEkraniGecis(name);
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
 
         }

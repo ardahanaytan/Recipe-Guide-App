@@ -1031,7 +1031,7 @@
             richTextBoxTam11.StateCommon.Content.Color1 = Color.YellowGreen;
             richTextBoxTam11.StateCommon.Content.Font = new Font("Poppins Light", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             richTextBoxTam11.TabIndex = 71;
-            richTextBoxTam11.Text = "";
+            richTextBoxTam11.Text = "nmnm";
             // 
             // pictureBox14
             // 

@@ -80,6 +80,7 @@
             kryptonButtonFotoGuncelle.Size = new Size(109, 25);
             kryptonButtonFotoGuncelle.TabIndex = 2;
             kryptonButtonFotoGuncelle.Values.Text = "Fotoğrafı Güncelle";
+            kryptonButtonFotoGuncelle.Click += kryptonButtonFotoGuncelle_Click;
             // 
             // kryptonLabel2
             // 
@@ -173,6 +174,7 @@
             buttonDüzenle.TabIndex = 13;
             buttonDüzenle.Text = "Düzenle";
             buttonDüzenle.UseVisualStyleBackColor = true;
+            buttonDüzenle.Click += buttonDüzenle_Click;
             // 
             // kryptonLabel6
             // 
@@ -191,6 +193,7 @@
             kryptonComboBox1.Size = new Size(133, 22);
             kryptonComboBox1.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             kryptonComboBox1.TabIndex = 15;
+            kryptonComboBox1.SelectedIndexChanged += kryptonComboBox1_SelectedIndexChanged;
             // 
             // kryptonTextBoxMalzemeMiktarı1
             // 
@@ -206,6 +209,7 @@
             kryptonButtonMalzemeMiktarDuzenleme.Size = new Size(96, 23);
             kryptonButtonMalzemeMiktarDuzenleme.TabIndex = 17;
             kryptonButtonMalzemeMiktarDuzenleme.Values.Text = "Miktar Güncelle";
+            kryptonButtonMalzemeMiktarDuzenleme.Click += kryptonButtonMalzemeMiktarDuzenleme_Click;
             // 
             // kryptonButtonMalzemeSil
             // 
@@ -214,6 +218,7 @@
             kryptonButtonMalzemeSil.Size = new Size(90, 22);
             kryptonButtonMalzemeSil.TabIndex = 18;
             kryptonButtonMalzemeSil.Values.Text = "Malzeme Sil";
+            kryptonButtonMalzemeSil.Click += kryptonButtonMalzemeSil_Click;
             // 
             // kryptonLabel7
             // 
@@ -247,6 +252,7 @@
             kryptonButtonMalzemeEkle.Size = new Size(90, 25);
             kryptonButtonMalzemeEkle.TabIndex = 22;
             kryptonButtonMalzemeEkle.Values.Text = "Malzeme Ekle";
+            kryptonButtonMalzemeEkle.Click += kryptonButtonMalzemeEkle_Click;
             // 
             // FormTarifDuzenle
             // 

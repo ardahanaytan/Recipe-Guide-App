@@ -30,13 +30,13 @@ namespace YazLab1_1
         public FormTarifListesi(Form1 form1)
         {
             InitializeComponent();
-            form1_ = form1;
+            this.form1_ = form1;
         }
 
         public void tabloGuncelle(string query)
         {
             dataGridViewTarifler.Rows.Clear();
-            
+
 
             DataTable dt_tarifler = new DataTable();
             try
@@ -267,9 +267,9 @@ namespace YazLab1_1
                         }
                     }
 
-                    
 
-                    
+
+
 
 
                     //dataGridViewTarifler.Invalidate(); // tekrar boyama?????????
@@ -436,7 +436,7 @@ namespace YazLab1_1
 
                 if (tarifEkrani == null)
                 {
-                    tarifEkrani = new TarifEkrani(id);
+                    tarifEkrani = new TarifEkrani(this.form1_, id);
                     tarifEkrani.FormClosed += tarifEkrani_FormClosed;
                     tarifEkrani.MdiParent = form1_;
                     tarifEkrani.Dock = DockStyle.Fill;
@@ -464,7 +464,7 @@ namespace YazLab1_1
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
             try
             {
                 if (dataGridViewTarifler.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
@@ -483,10 +483,10 @@ namespace YazLab1_1
                     }
                     else
                     {
-                        
+
                     }
                 }
-                else if(e.RowIndex >= 0)
+                else if (e.RowIndex >= 0)
                 {
                     string name = dataGridViewTarifler.Rows[e.RowIndex].Cells["tarifAdi"].Value.ToString();
                     MessageBox.Show("name:" + name);
