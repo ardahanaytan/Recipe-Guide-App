@@ -454,7 +454,7 @@
             buttonSayfa1.StateCommon.Border.Width = 4;
             buttonSayfa1.StateCommon.Content.ShortText.Color1 = Color.WhiteSmoke;
             buttonSayfa1.StateCommon.Content.ShortText.Color2 = Color.WhiteSmoke;
-            buttonSayfa1.StateCommon.Content.ShortText.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonSayfa1.StateCommon.Content.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttonSayfa1.StatePressed.Back.Color1 = Color.Thistle;
             buttonSayfa1.StatePressed.Back.Color2 = Color.Thistle;
             buttonSayfa1.StatePressed.Border.Color1 = Color.Thistle;
@@ -466,7 +466,7 @@
             buttonSayfa1.StatePressed.Border.Width = 4;
             buttonSayfa1.StatePressed.Content.ShortText.Color1 = Color.WhiteSmoke;
             buttonSayfa1.StatePressed.Content.ShortText.Color2 = Color.WhiteSmoke;
-            buttonSayfa1.StatePressed.Content.ShortText.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonSayfa1.StatePressed.Content.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttonSayfa1.StateTracking.Back.Color1 = Color.FromArgb(108, 91, 123);
             buttonSayfa1.StateTracking.Back.Color2 = Color.FromArgb(108, 91, 123);
             buttonSayfa1.StateTracking.Border.Color1 = Color.Thistle;
@@ -478,7 +478,7 @@
             buttonSayfa1.StateTracking.Border.Width = 4;
             buttonSayfa1.StateTracking.Content.ShortText.Color1 = Color.WhiteSmoke;
             buttonSayfa1.StateTracking.Content.ShortText.Color2 = Color.WhiteSmoke;
-            buttonSayfa1.StateTracking.Content.ShortText.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonSayfa1.StateTracking.Content.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttonSayfa1.TabIndex = 66;
             buttonSayfa1.Values.Text = "Seç";
             buttonSayfa1.Click += buttonSayfa1_Click;
@@ -491,7 +491,7 @@
             comboBoxSayfa1.Items.AddRange(new object[] { "Kahvaltı", "Yemek", "Çorba", "Tatlı", "İçecek" });
             comboBoxSayfa1.Location = new Point(606, 570);
             comboBoxSayfa1.Name = "comboBoxSayfa1";
-            comboBoxSayfa1.Size = new Size(142, 42);
+            comboBoxSayfa1.Size = new Size(142, 38);
             comboBoxSayfa1.StateCommon.ComboBox.Back.Color1 = Color.FromArgb(108, 91, 123);
             comboBoxSayfa1.StateCommon.ComboBox.Border.Color1 = Color.Thistle;
             comboBoxSayfa1.StateCommon.ComboBox.Border.Color2 = Color.SlateBlue;
@@ -501,7 +501,7 @@
             comboBoxSayfa1.StateCommon.ComboBox.Border.Rounding = 20F;
             comboBoxSayfa1.StateCommon.ComboBox.Border.Width = 4;
             comboBoxSayfa1.StateCommon.ComboBox.Content.Color1 = Color.WhiteSmoke;
-            comboBoxSayfa1.StateCommon.ComboBox.Content.Font = new Font("Poppins Light", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBoxSayfa1.StateCommon.ComboBox.Content.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxSayfa1.StateCommon.ComboBox.Content.Padding = new Padding(10, 0, 10, 0);
             comboBoxSayfa1.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             comboBoxSayfa1.StateCommon.DropBack.Color1 = Color.FromArgb(108, 91, 123);
@@ -511,7 +511,7 @@
             comboBoxSayfa1.StateCommon.Item.Border.ColorStyle = Krypton.Toolkit.PaletteColorStyle.RoundedTopLight;
             comboBoxSayfa1.StateCommon.Item.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             comboBoxSayfa1.StateCommon.Item.Content.ShortText.Color1 = Color.WhiteSmoke;
-            comboBoxSayfa1.StateCommon.Item.Content.ShortText.Font = new Font("Poppins Light", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBoxSayfa1.StateCommon.Item.Content.ShortText.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxSayfa1.StateTracking.Item.Back.Color1 = Color.SlateBlue;
             comboBoxSayfa1.TabIndex = 65;
             // 
@@ -553,7 +553,7 @@
             richTextBoxTalimat13.StateCommon.Border.Rounding = 20F;
             richTextBoxTalimat13.StateCommon.Border.Width = 4;
             richTextBoxTalimat13.StateCommon.Content.Color1 = Color.WhiteSmoke;
-            richTextBoxTalimat13.StateCommon.Content.Font = new Font("Poppins Light", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            richTextBoxTalimat13.StateCommon.Content.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             richTextBoxTalimat13.TabIndex = 76;
             richTextBoxTalimat13.Text = "";
             // 
@@ -571,7 +571,7 @@
             richTextBoxEksik13.StateCommon.Border.Rounding = 20F;
             richTextBoxEksik13.StateCommon.Border.Width = 4;
             richTextBoxEksik13.StateCommon.Content.Color1 = Color.LightCoral;
-            richTextBoxEksik13.StateCommon.Content.Font = new Font("Poppins Light", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            richTextBoxEksik13.StateCommon.Content.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             richTextBoxEksik13.TabIndex = 75;
             richTextBoxEksik13.Text = "";
             // 
@@ -625,20 +625,20 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Font = new Font("Poppins Light", 9F, FontStyle.Italic, GraphicsUnit.Point);
+            label11.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Italic, GraphicsUnit.Point);
             label11.Location = new Point(19, 427);
             label11.Name = "label11";
-            label11.Size = new Size(69, 22);
+            label11.Size = new Size(62, 15);
             label11.TabIndex = 68;
             label11.Text = "Talimatlar";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("Poppins Light", 9F, FontStyle.Italic, GraphicsUnit.Point);
+            label8.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Italic, GraphicsUnit.Point);
             label8.Location = new Point(149, 295);
             label8.Name = "label8";
-            label8.Size = new Size(106, 22);
+            label8.Size = new Size(105, 15);
             label8.TabIndex = 67;
             label8.Text = "Eksik Malzemeler";
             // 
@@ -656,48 +656,48 @@
             richTextBoxTam13.StateCommon.Border.Rounding = 20F;
             richTextBoxTam13.StateCommon.Border.Width = 4;
             richTextBoxTam13.StateCommon.Content.Color1 = Color.YellowGreen;
-            richTextBoxTam13.StateCommon.Content.Font = new Font("Poppins Light", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            richTextBoxTam13.StateCommon.Content.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             richTextBoxTam13.TabIndex = 72;
             richTextBoxTam13.Text = "";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Poppins Light", 9F, FontStyle.Italic, GraphicsUnit.Point);
+            label4.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Italic, GraphicsUnit.Point);
             label4.Location = new Point(19, 295);
             label4.Name = "label4";
-            label4.Size = new Size(105, 22);
+            label4.Size = new Size(101, 15);
             label4.TabIndex = 65;
             label4.Text = "Tam Malzemeler";
             // 
             // labelGereken3
             // 
             labelGereken3.AutoSize = true;
-            labelGereken3.Font = new Font("Poppins Light", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelGereken3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             labelGereken3.Location = new Point(149, 418);
             labelGereken3.Name = "labelGereken3";
-            labelGereken3.Size = new Size(82, 22);
+            labelGereken3.Size = new Size(77, 15);
             labelGereken3.TabIndex = 64;
             labelGereken3.Text = "Gerekli Fiyat:";
             // 
             // labelMaliyet3
             // 
             labelMaliyet3.AutoSize = true;
-            labelMaliyet3.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelMaliyet3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             labelMaliyet3.Location = new Point(54, 257);
             labelMaliyet3.Name = "labelMaliyet3";
-            labelMaliyet3.Size = new Size(72, 28);
+            labelMaliyet3.Size = new Size(62, 20);
             labelMaliyet3.TabIndex = 63;
             labelMaliyet3.Text = "Maliyet:";
             // 
             // labelSure3
             // 
             labelSure3.AutoSize = true;
-            labelSure3.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelSure3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             labelSure3.ForeColor = SystemColors.ControlLightLight;
             labelSure3.Location = new Point(184, 224);
             labelSure3.Name = "labelSure3";
-            labelSure3.Size = new Size(41, 28);
+            labelSure3.Size = new Size(34, 20);
             labelSure3.TabIndex = 61;
             labelSure3.Text = "xdd";
             labelSure3.TextAlign = ContentAlignment.MiddleCenter;
@@ -705,11 +705,11 @@
             // labelKategori3
             // 
             labelKategori3.AutoSize = true;
-            labelKategori3.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelKategori3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             labelKategori3.ForeColor = SystemColors.ControlLightLight;
             labelKategori3.Location = new Point(54, 224);
             labelKategori3.Name = "labelKategori3";
-            labelKategori3.Size = new Size(79, 28);
+            labelKategori3.Size = new Size(68, 20);
             labelKategori3.TabIndex = 60;
             labelKategori3.Text = "Kategori";
             labelKategori3.TextAlign = ContentAlignment.MiddleCenter;
@@ -718,14 +718,15 @@
             // 
             labelName3.AutoSize = true;
             labelName3.BorderStyle = BorderStyle.FixedSingle;
-            labelName3.Font = new Font("Poppins Light", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            labelName3.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             labelName3.ForeColor = SystemColors.ControlLightLight;
             labelName3.Location = new Point(19, 179);
             labelName3.Name = "labelName3";
-            labelName3.Size = new Size(103, 39);
+            labelName3.Size = new Size(94, 27);
             labelName3.TabIndex = 59;
             labelName3.Text = "Tarif Adı";
             labelName3.TextAlign = ContentAlignment.MiddleCenter;
+            labelName3.Click += labelName3_Click_1;
             // 
             // pictureBoxTarif3
             // 
@@ -734,6 +735,7 @@
             pictureBoxTarif3.Size = new Size(254, 130);
             pictureBoxTarif3.TabIndex = 58;
             pictureBoxTarif3.TabStop = false;
+            pictureBoxTarif3.Click += pictureBoxTarif3_Click_1;
             // 
             // panel12
             // 
@@ -773,7 +775,7 @@
             richTextBoxTalimat12.StateCommon.Border.Rounding = 20F;
             richTextBoxTalimat12.StateCommon.Border.Width = 4;
             richTextBoxTalimat12.StateCommon.Content.Color1 = Color.WhiteSmoke;
-            richTextBoxTalimat12.StateCommon.Content.Font = new Font("Poppins Light", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            richTextBoxTalimat12.StateCommon.Content.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             richTextBoxTalimat12.TabIndex = 76;
             richTextBoxTalimat12.Text = "";
             // 
@@ -791,7 +793,7 @@
             richTextBoxEksik12.StateCommon.Border.Rounding = 20F;
             richTextBoxEksik12.StateCommon.Border.Width = 4;
             richTextBoxEksik12.StateCommon.Content.Color1 = Color.LightCoral;
-            richTextBoxEksik12.StateCommon.Content.Font = new Font("Poppins Light", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            richTextBoxEksik12.StateCommon.Content.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             richTextBoxEksik12.TabIndex = 75;
             richTextBoxEksik12.Text = "";
             // 
@@ -845,20 +847,20 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Font = new Font("Poppins Light", 9F, FontStyle.Italic, GraphicsUnit.Point);
+            label10.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Italic, GraphicsUnit.Point);
             label10.Location = new Point(19, 427);
             label10.Name = "label10";
-            label10.Size = new Size(69, 22);
+            label10.Size = new Size(62, 15);
             label10.TabIndex = 68;
             label10.Text = "Talimatlar";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Poppins Light", 9F, FontStyle.Italic, GraphicsUnit.Point);
+            label7.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Italic, GraphicsUnit.Point);
             label7.Location = new Point(149, 295);
             label7.Name = "label7";
-            label7.Size = new Size(106, 22);
+            label7.Size = new Size(105, 15);
             label7.TabIndex = 67;
             label7.Text = "Eksik Malzemeler";
             // 
@@ -876,48 +878,48 @@
             richTextBoxTam12.StateCommon.Border.Rounding = 20F;
             richTextBoxTam12.StateCommon.Border.Width = 4;
             richTextBoxTam12.StateCommon.Content.Color1 = Color.YellowGreen;
-            richTextBoxTam12.StateCommon.Content.Font = new Font("Poppins Light", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            richTextBoxTam12.StateCommon.Content.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             richTextBoxTam12.TabIndex = 72;
             richTextBoxTam12.Text = "";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Poppins Light", 9F, FontStyle.Italic, GraphicsUnit.Point);
+            label3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Italic, GraphicsUnit.Point);
             label3.Location = new Point(19, 295);
             label3.Name = "label3";
-            label3.Size = new Size(105, 22);
+            label3.Size = new Size(101, 15);
             label3.TabIndex = 65;
             label3.Text = "Tam Malzemeler";
             // 
             // labelGereken2
             // 
             labelGereken2.AutoSize = true;
-            labelGereken2.Font = new Font("Poppins Light", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelGereken2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             labelGereken2.Location = new Point(149, 418);
             labelGereken2.Name = "labelGereken2";
-            labelGereken2.Size = new Size(82, 22);
+            labelGereken2.Size = new Size(77, 15);
             labelGereken2.TabIndex = 62;
             labelGereken2.Text = "Gerekli Fiyat:";
             // 
             // labelMaliyet2
             // 
             labelMaliyet2.AutoSize = true;
-            labelMaliyet2.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelMaliyet2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             labelMaliyet2.Location = new Point(54, 257);
             labelMaliyet2.Name = "labelMaliyet2";
-            labelMaliyet2.Size = new Size(72, 28);
+            labelMaliyet2.Size = new Size(62, 20);
             labelMaliyet2.TabIndex = 61;
             labelMaliyet2.Text = "Maliyet:";
             // 
             // labelSure2
             // 
             labelSure2.AutoSize = true;
-            labelSure2.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelSure2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             labelSure2.ForeColor = SystemColors.ControlLightLight;
             labelSure2.Location = new Point(184, 224);
             labelSure2.Name = "labelSure2";
-            labelSure2.Size = new Size(52, 28);
+            labelSure2.Size = new Size(43, 20);
             labelSure2.TabIndex = 59;
             labelSure2.Text = "xddd";
             labelSure2.TextAlign = ContentAlignment.MiddleCenter;
@@ -925,11 +927,11 @@
             // labelKategori2
             // 
             labelKategori2.AutoSize = true;
-            labelKategori2.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelKategori2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             labelKategori2.ForeColor = SystemColors.ControlLightLight;
             labelKategori2.Location = new Point(54, 224);
             labelKategori2.Name = "labelKategori2";
-            labelKategori2.Size = new Size(79, 28);
+            labelKategori2.Size = new Size(68, 20);
             labelKategori2.TabIndex = 58;
             labelKategori2.Text = "Kategori";
             labelKategori2.TextAlign = ContentAlignment.MiddleCenter;
@@ -938,14 +940,15 @@
             // 
             labelName2.AutoSize = true;
             labelName2.BorderStyle = BorderStyle.FixedSingle;
-            labelName2.Font = new Font("Poppins Light", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            labelName2.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             labelName2.ForeColor = SystemColors.ControlLightLight;
             labelName2.Location = new Point(19, 181);
             labelName2.Name = "labelName2";
-            labelName2.Size = new Size(103, 39);
+            labelName2.Size = new Size(94, 27);
             labelName2.TabIndex = 57;
             labelName2.Text = "Tarif Adı";
             labelName2.TextAlign = ContentAlignment.MiddleCenter;
+            labelName2.Click += labelName2_Click_1;
             // 
             // pictureBoxTarif2
             // 
@@ -954,6 +957,7 @@
             pictureBoxTarif2.Size = new Size(254, 130);
             pictureBoxTarif2.TabIndex = 56;
             pictureBoxTarif2.TabStop = false;
+            pictureBoxTarif2.Click += pictureBoxTarif2_Click_1;
             // 
             // panel11
             // 
@@ -993,7 +997,7 @@
             richTextBoxEksik11.StateCommon.Border.Rounding = 20F;
             richTextBoxEksik11.StateCommon.Border.Width = 4;
             richTextBoxEksik11.StateCommon.Content.Color1 = Color.LightCoral;
-            richTextBoxEksik11.StateCommon.Content.Font = new Font("Poppins Light", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            richTextBoxEksik11.StateCommon.Content.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             richTextBoxEksik11.TabIndex = 72;
             richTextBoxEksik11.Text = "";
             // 
@@ -1011,7 +1015,7 @@
             richTextBoxTalimat11.StateCommon.Border.Rounding = 20F;
             richTextBoxTalimat11.StateCommon.Border.Width = 4;
             richTextBoxTalimat11.StateCommon.Content.Color1 = Color.WhiteSmoke;
-            richTextBoxTalimat11.StateCommon.Content.Font = new Font("Poppins Light", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            richTextBoxTalimat11.StateCommon.Content.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             richTextBoxTalimat11.TabIndex = 73;
             richTextBoxTalimat11.Text = "";
             // 
@@ -1029,7 +1033,7 @@
             richTextBoxTam11.StateCommon.Border.Rounding = 20F;
             richTextBoxTam11.StateCommon.Border.Width = 4;
             richTextBoxTam11.StateCommon.Content.Color1 = Color.YellowGreen;
-            richTextBoxTam11.StateCommon.Content.Font = new Font("Poppins Light", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            richTextBoxTam11.StateCommon.Content.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             richTextBoxTam11.TabIndex = 71;
             richTextBoxTam11.Text = "nmnm";
             // 
@@ -1083,61 +1087,61 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new Font("Poppins Light", 9F, FontStyle.Italic, GraphicsUnit.Point);
+            label9.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Italic, GraphicsUnit.Point);
             label9.Location = new Point(8, 427);
             label9.Name = "label9";
-            label9.Size = new Size(69, 22);
+            label9.Size = new Size(62, 15);
             label9.TabIndex = 64;
             label9.Text = "Talimatlar";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Poppins Light", 9F, FontStyle.Italic, GraphicsUnit.Point);
+            label6.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Italic, GraphicsUnit.Point);
             label6.Location = new Point(138, 295);
             label6.Name = "label6";
-            label6.Size = new Size(106, 22);
+            label6.Size = new Size(105, 15);
             label6.TabIndex = 63;
             label6.Text = "Eksik Malzemeler";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Poppins Light", 9F, FontStyle.Italic, GraphicsUnit.Point);
+            label2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Italic, GraphicsUnit.Point);
             label2.Location = new Point(8, 295);
             label2.Name = "label2";
-            label2.Size = new Size(105, 22);
+            label2.Size = new Size(101, 15);
             label2.TabIndex = 61;
             label2.Text = "Tam Malzemeler";
             // 
             // labelGereken1
             // 
             labelGereken1.AutoSize = true;
-            labelGereken1.Font = new Font("Poppins Light", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            labelGereken1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             labelGereken1.Location = new Point(138, 418);
             labelGereken1.Name = "labelGereken1";
-            labelGereken1.Size = new Size(82, 22);
+            labelGereken1.Size = new Size(77, 15);
             labelGereken1.TabIndex = 60;
             labelGereken1.Text = "Gerekli Fiyat:";
             // 
             // labelMaliyet1
             // 
             labelMaliyet1.AutoSize = true;
-            labelMaliyet1.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelMaliyet1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             labelMaliyet1.Location = new Point(43, 257);
             labelMaliyet1.Name = "labelMaliyet1";
-            labelMaliyet1.Size = new Size(72, 28);
+            labelMaliyet1.Size = new Size(62, 20);
             labelMaliyet1.TabIndex = 59;
             labelMaliyet1.Text = "Maliyet:";
             // 
             // labelSure1
             // 
             labelSure1.AutoSize = true;
-            labelSure1.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelSure1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             labelSure1.ForeColor = SystemColors.ControlLightLight;
             labelSure1.Location = new Point(173, 224);
             labelSure1.Name = "labelSure1";
-            labelSure1.Size = new Size(52, 28);
+            labelSure1.Size = new Size(43, 20);
             labelSure1.TabIndex = 57;
             labelSure1.Text = "xddd";
             labelSure1.TextAlign = ContentAlignment.MiddleCenter;
@@ -1145,11 +1149,11 @@
             // labelKategori1
             // 
             labelKategori1.AutoSize = true;
-            labelKategori1.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelKategori1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             labelKategori1.ForeColor = SystemColors.ControlLightLight;
             labelKategori1.Location = new Point(43, 224);
             labelKategori1.Name = "labelKategori1";
-            labelKategori1.Size = new Size(79, 28);
+            labelKategori1.Size = new Size(68, 20);
             labelKategori1.TabIndex = 56;
             labelKategori1.Text = "Kategori";
             labelKategori1.TextAlign = ContentAlignment.MiddleCenter;
@@ -1158,14 +1162,15 @@
             // 
             labelName1.AutoSize = true;
             labelName1.BorderStyle = BorderStyle.FixedSingle;
-            labelName1.Font = new Font("Poppins Light", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            labelName1.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             labelName1.ForeColor = SystemColors.ControlLightLight;
             labelName1.Location = new Point(8, 182);
             labelName1.Name = "labelName1";
-            labelName1.Size = new Size(103, 39);
+            labelName1.Size = new Size(94, 27);
             labelName1.TabIndex = 55;
             labelName1.Text = "Tarif Adı";
             labelName1.TextAlign = ContentAlignment.MiddleCenter;
+            labelName1.Click += labelName1_Click_1;
             // 
             // pictureBoxTarif1
             // 
@@ -1174,6 +1179,7 @@
             pictureBoxTarif1.Size = new Size(254, 130);
             pictureBoxTarif1.TabIndex = 54;
             pictureBoxTarif1.TabStop = false;
+            pictureBoxTarif1.Click += pictureBoxTarif1_Click_1;
             // 
             // pictureBox3
             // 

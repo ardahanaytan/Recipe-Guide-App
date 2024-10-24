@@ -10,21 +10,22 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Google.Protobuf.WellKnownTypes;
 using MySql.Data.MySqlClient;
+using Mysqlx.Notice;
 
 namespace YazLab1_1
 {
     public partial class TarifEkrani : Form
     {
-        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
-        ///MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
+        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
+        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
         MySqlCommand cmd;
         MySqlDataAdapter adapter;
         DataTable dt;
         FormTarifDuzenle formTarifDuzenle;
         Form1 form1_;
 
-        //string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
-        string default_path = "C:/Users/ardah/Desktop/proje22/images/404.png";
+        string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
+        //string default_path = "C:/Users/ardah/Desktop/proje22/images/404.png";
 
         public int tarifId;
 
@@ -40,21 +41,7 @@ namespace YazLab1_1
 
         }
 
-        public TarifEkrani(Form1 form1, int id)
-        {
-            InitializeComponent();
-            this.form1_ = form1;
-            this.tarifId = id;
-
-        }
-
-
-        private void kryptonLabel5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TarifEkrani_Load(object sender, EventArgs e)
+        public void yukle()
         {
             DataTable tarif = new DataTable();
             try
@@ -336,6 +323,27 @@ namespace YazLab1_1
             }
         }
 
+        public TarifEkrani(Form1 form1, int id)
+        {
+            //MessageBox.Show("new");
+            InitializeComponent();
+            this.form1_ = form1;
+            this.tarifId = id;
+            this.yukle();
+
+        }
+
+
+        private void kryptonLabel5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TarifEkrani_Load(object sender, EventArgs e)
+        {
+            this.yukle();
+        }
+
         private void kryptonLabel2_Click(object sender, EventArgs e)
         {
 
@@ -365,13 +373,18 @@ namespace YazLab1_1
                     return;
                 }
 
-
+                formTarifDuzenle = new FormTarifDuzenle(name);
+                formTarifDuzenle.FormClosed += FormTarifDuzenle_FormClosed;
+                formTarifDuzenle.MdiParent = this.form1_;
+                formTarifDuzenle.Dock = DockStyle.Fill;
+                formTarifDuzenle.Show();
+                /*
                 //sayfaya gecis
                 if (formTarifDuzenle == null)
                 {
                     formTarifDuzenle = new FormTarifDuzenle(name);
                     formTarifDuzenle.FormClosed += FormTarifDuzenle_FormClosed;
-                    formTarifDuzenle.MdiParent = this.form1_;
+                    formTarifDuzenle.MdiParent = this;
                     formTarifDuzenle.Dock = DockStyle.Fill;
                     formTarifDuzenle.Show();
                 }
@@ -379,6 +392,7 @@ namespace YazLab1_1
                 {
                     formTarifDuzenle.Activate();
                 }
+                */
             }
             catch (Exception e)
             {
@@ -389,6 +403,44 @@ namespace YazLab1_1
 
         }
 
+        public void tarifTemizle(string name)
+        {
+            //tarif kontrol
+            DataTable tarif = new DataTable();
+            try
+            {
+                con.Open();
+                string query_tarifKontrol = @"select * from tarifler where TarifAdi = @TarifAdi";
+                adapter = new MySqlDataAdapter(query_tarifKontrol, con);
+                adapter.SelectCommand.Parameters.AddWithValue("@TarifAdi", name);
+                adapter.Fill(tarif);
+                con.Close();
+
+                if (tarif.Rows.Count != 1)
+                {
+                    MessageBox.Show("İstenilen tarif bulunamadi");
+                    return;
+                }
+
+                //tarifi sil
+                con.Open();
+                string query_tarifSil = @"DELETE from tarifler where TarifAdi = @TarifAdi";
+                cmd = new MySqlCommand(query_tarifSil, con);
+                cmd.Parameters.AddWithValue("@TarifAdi", name);
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+                //sayfayi tekrar doldur
+                //this.sayfayiDoldur(@"select * from tarifler");
+
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("tarif silme hatasi: ", e.Message);
+            }
+        }
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             string name = kryptonLabelName1a.Text;
@@ -397,7 +449,11 @@ namespace YazLab1_1
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-
+            string name = kryptonLabelName1a.Text;
+            this.tarifTemizle(name);
+            this.Visible = false;
+            //bu kısımda ana ekrana döndürülebilir.
+            MessageBox.Show("Tarif başarıyla silindi.");
         }
     }
 }

@@ -13,16 +13,24 @@ namespace YazLab1_1
 {
     public partial class FormMalzemeListesi : Form
     {
-        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
-        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
+        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
+        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
         MySqlCommand cmd;
         MySqlDataAdapter adapter;
         DataTable dt;
 
+        FormMalzemeDuzenle formMalzemeDuzenle;
+        Form1 form1_;
         public FormMalzemeListesi()
         {
             InitializeComponent();
         }
+        public FormMalzemeListesi(Form1 form_)
+        {
+            InitializeComponent();
+            this.form1_ = form_;
+        }
+
 
         public void tabloGuncelle(string query)
         {
@@ -119,6 +127,40 @@ namespace YazLab1_1
             }
         }
 
+        public void MalzemeDuzenleEkraniGecis(string name)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                con.Open();
+                string query_tarifKontrol = @"select * from malzemeler where MalzemeAdi = @MalzemeAdi";
+                adapter = new MySqlDataAdapter(query_tarifKontrol, con);
+                adapter.SelectCommand.Parameters.AddWithValue("@MalzemeAdi", name);
+                adapter.Fill(dt);
+                con.Close();
+
+                if (dt.Rows.Count != 1)
+                {
+                    MessageBox.Show("İstenilen tarif bulunamadi");
+                    return;
+                }
+
+                formMalzemeDuzenle = new FormMalzemeDuzenle(name);
+                formMalzemeDuzenle.FormClosed += FormMalzemeDuzenle_FormClosed;
+                formMalzemeDuzenle.MdiParent = this.form1_;
+                formMalzemeDuzenle.Dock = DockStyle.Fill;
+                formMalzemeDuzenle.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("tarif güncelleme hatasi: ", ex.Message);
+            }
+        }
+
+        private void FormMalzemeDuzenle_FormClosed(object? sender, FormClosedEventArgs e)
+        {
+            formMalzemeDuzenle = null;
+        }
         private void dataGridViewMalzeme_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -138,7 +180,7 @@ namespace YazLab1_1
                     }
                     else
                     {
-
+                        this.MalzemeDuzenleEkraniGecis(dataGridViewMalzeme.Rows[e.RowIndex].Cells["MalzemeAdi"].Value.ToString());
                     }
                 }
             }

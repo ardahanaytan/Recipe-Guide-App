@@ -12,9 +12,9 @@ namespace YazLab1_1
 
     public partial class Form1 : Form
     {
-        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
+        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
 
-        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
+        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
         MySqlCommand cmd;
         MySqlDataAdapter adapter;
         DataTable dt;
@@ -319,8 +319,8 @@ namespace YazLab1_1
             foreach (DataRow row in table.Rows)
             {
                 //resim
-                string default_path = "C:/Users/ardah/Desktop/proje22/images/404.png";
-                //string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
+                //string default_path = "C:/Users/ardah/Desktop/proje22/images/404.png";
+                string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
 
                 string pictureBoxName = "pictureBoxTarif" + num.ToString();
                 PictureBox pic_name = this.Controls.Find(pictureBoxName, true).FirstOrDefault() as PictureBox;
@@ -863,7 +863,7 @@ namespace YazLab1_1
         {
             if (malzemeListesi == null)
             {
-                malzemeListesi = new FormMalzemeListesi();
+                malzemeListesi = new FormMalzemeListesi(this);
                 malzemeListesi.FormClosed += malzemeListesi_FormClosed;
                 malzemeListesi.MdiParent = this;
                 malzemeListesi.Dock = DockStyle.Fill;
@@ -1026,12 +1026,14 @@ namespace YazLab1_1
         private void button2_Click(object sender, EventArgs e)
         {
             panelAnaManu.Visible = true;
-            FormArama arama = null;
-            FormTarifOnerme tarifOnerme = null;
-            FormTarifListesi tarifListesi = null;
-            FormTarifEkleme tarifEkleme = null;
-            FormMalzemeListesi malzemeListesi = null;
-            FormMalzemeEkleme malzemeEkleme = null;
+            arama = null;
+            tarifOnerme = null;
+            tarifListesi = null;
+            tarifEkleme = null;
+            malzemeListesi = null;
+            malzemeEkleme = null;
+            tarifEkrani = null;
+            sayfayiDoldur(@"select * from tarifler");
         }
 
         public void nameToForm(string name)
@@ -1061,18 +1063,13 @@ namespace YazLab1_1
                     id = int.Parse(row["TarifID"].ToString());
                 }
 
-                if (tarifEkrani == null)
-                {
-                    tarifEkrani = new TarifEkrani(id);
-                    tarifEkrani.FormClosed += tarifEkrani_FormClosed;
-                    tarifEkrani.MdiParent = this;
-                    tarifEkrani.Dock = DockStyle.Fill;
-                    tarifEkrani.Show();
-                }
-                else
-                {
-                    tarifEkrani.Activate();
-                }
+                tarifEkrani = new TarifEkrani(this, id);
+                tarifEkrani.FormClosed += tarifEkrani_FormClosed;
+                tarifEkrani.MdiParent = this;
+                tarifEkrani.Dock = DockStyle.Fill;
+                tarifEkrani.Show();
+
+                
                 panelAnaManu.Visible = false;
 
 
@@ -1088,45 +1085,6 @@ namespace YazLab1_1
         {
             tarifEkrani = null;
         }
-
-
-        private void pictureBoxTarif1_Click(object sender, EventArgs e)
-        {
-            string name = labelName1.Text;
-            this.nameToForm(name);
-        }
-
-        private void pictureBoxTarif2_Click(object sender, EventArgs e)
-        {
-            string name = labelName2.Text;
-            this.nameToForm(name);
-        }
-
-        private void pictureBoxTarif3_Click(object sender, EventArgs e)
-        {
-            string name = labelName3.Text;
-            this.nameToForm(name);
-        }
-
-        private void labelName1_Click(object sender, EventArgs e)
-        {
-            string name = labelName1.Text;
-            this.nameToForm(name);
-        }
-
-        private void labelName2_Click(object sender, EventArgs e)
-        {
-            string name = labelName2.Text;
-            this.nameToForm(name);
-        }
-
-        private void labelName3_Click(object sender, EventArgs e)
-        {
-            string name = labelName3.Text;
-            this.nameToForm(name);
-        }
-
-
 
         public void tarifTemizle(string name)
         {
@@ -1185,7 +1143,12 @@ namespace YazLab1_1
                     return;
                 }
 
-
+                formTarifDuzenle = new FormTarifDuzenle(name);
+                formTarifDuzenle.FormClosed += FormTarifDuzenle_FormClosed;
+                formTarifDuzenle.MdiParent = this;
+                formTarifDuzenle.Dock = DockStyle.Fill;
+                formTarifDuzenle.Show();
+                /*
                 //sayfaya gecis
                 if (formTarifDuzenle == null)
                 {
@@ -1199,6 +1162,7 @@ namespace YazLab1_1
                 {
                     formTarifDuzenle.Activate();
                 }
+                */
                 panelAnaManu.Visible = false;
             }
             catch (Exception e)
@@ -1265,6 +1229,42 @@ namespace YazLab1_1
         {
             string name = labelName3.Text;
             this.tarifTemizle(name);
+        }
+
+        private void pictureBoxTarif1_Click_1(object sender, EventArgs e)
+        {
+            string name = labelName1.Text;
+            this.nameToForm(name);
+        }
+
+        private void pictureBoxTarif2_Click_1(object sender, EventArgs e)
+        {
+            string name = labelName2.Text;
+            this.nameToForm(name);
+        }
+
+        private void pictureBoxTarif3_Click_1(object sender, EventArgs e)
+        {
+            string name = labelName3.Text;
+            this.nameToForm(name);
+        }
+
+        private void labelName1_Click_1(object sender, EventArgs e)
+        {
+            string name = labelName1.Text;
+            this.nameToForm(name);
+        }
+
+        private void labelName2_Click_1(object sender, EventArgs e)
+        {
+            string name = labelName2.Text;
+            this.nameToForm(name);
+        }
+
+        private void labelName3_Click_1(object sender, EventArgs e)
+        {
+            string name = labelName3.Text;
+            this.nameToForm(name);
         }
     }
 

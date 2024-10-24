@@ -51,6 +51,8 @@
             kryptonComboBoxMalzemeler2 = new Krypton.Toolkit.KryptonComboBox();
             kryptonTextBoxMalzemeMiktarı2 = new Krypton.Toolkit.KryptonTextBox();
             kryptonButtonMalzemeEkle = new Krypton.Toolkit.KryptonButton();
+            kryptonLabel8 = new Krypton.Toolkit.KryptonLabel();
+            kryptonLabel9 = new Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)kryptonPictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)kryptonComboBoxKategori).BeginInit();
             ((System.ComponentModel.ISupportInitialize)kryptonComboBox1).BeginInit();
@@ -197,14 +199,14 @@
             // 
             // kryptonTextBoxMalzemeMiktarı1
             // 
-            kryptonTextBoxMalzemeMiktarı1.Location = new Point(558, 128);
+            kryptonTextBoxMalzemeMiktarı1.Location = new Point(558, 141);
             kryptonTextBoxMalzemeMiktarı1.Name = "kryptonTextBoxMalzemeMiktarı1";
             kryptonTextBoxMalzemeMiktarı1.Size = new Size(133, 23);
             kryptonTextBoxMalzemeMiktarı1.TabIndex = 16;
             // 
             // kryptonButtonMalzemeMiktarDuzenleme
             // 
-            kryptonButtonMalzemeMiktarDuzenleme.Location = new Point(558, 170);
+            kryptonButtonMalzemeMiktarDuzenleme.Location = new Point(560, 185);
             kryptonButtonMalzemeMiktarDuzenleme.Name = "kryptonButtonMalzemeMiktarDuzenleme";
             kryptonButtonMalzemeMiktarDuzenleme.Size = new Size(96, 23);
             kryptonButtonMalzemeMiktarDuzenleme.TabIndex = 17;
@@ -222,7 +224,7 @@
             // 
             // kryptonLabel7
             // 
-            kryptonLabel7.Location = new Point(558, 214);
+            kryptonLabel7.Location = new Point(558, 234);
             kryptonLabel7.Name = "kryptonLabel7";
             kryptonLabel7.Size = new Size(85, 20);
             kryptonLabel7.TabIndex = 19;
@@ -240,19 +242,35 @@
             // 
             // kryptonTextBoxMalzemeMiktarı2
             // 
-            kryptonTextBoxMalzemeMiktarı2.Location = new Point(558, 304);
+            kryptonTextBoxMalzemeMiktarı2.Location = new Point(558, 327);
             kryptonTextBoxMalzemeMiktarı2.Name = "kryptonTextBoxMalzemeMiktarı2";
             kryptonTextBoxMalzemeMiktarı2.Size = new Size(133, 23);
             kryptonTextBoxMalzemeMiktarı2.TabIndex = 21;
             // 
             // kryptonButtonMalzemeEkle
             // 
-            kryptonButtonMalzemeEkle.Location = new Point(558, 343);
+            kryptonButtonMalzemeEkle.Location = new Point(558, 369);
             kryptonButtonMalzemeEkle.Name = "kryptonButtonMalzemeEkle";
             kryptonButtonMalzemeEkle.Size = new Size(90, 25);
             kryptonButtonMalzemeEkle.TabIndex = 22;
             kryptonButtonMalzemeEkle.Values.Text = "Malzeme Ekle";
             kryptonButtonMalzemeEkle.Click += kryptonButtonMalzemeEkle_Click;
+            // 
+            // kryptonLabel8
+            // 
+            kryptonLabel8.Location = new Point(558, 115);
+            kryptonLabel8.Name = "kryptonLabel8";
+            kryptonLabel8.Size = new Size(101, 20);
+            kryptonLabel8.TabIndex = 23;
+            kryptonLabel8.Values.Text = "Malzeme Miktarı";
+            // 
+            // kryptonLabel9
+            // 
+            kryptonLabel9.Location = new Point(558, 301);
+            kryptonLabel9.Name = "kryptonLabel9";
+            kryptonLabel9.Size = new Size(101, 20);
+            kryptonLabel9.TabIndex = 24;
+            kryptonLabel9.Values.Text = "Malzeme Miktarı";
             // 
             // FormTarifDuzenle
             // 
@@ -260,6 +278,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(148, 132, 179);
             ClientSize = new Size(1020, 624);
+            Controls.Add(kryptonLabel9);
+            Controls.Add(kryptonLabel8);
             Controls.Add(kryptonButtonMalzemeEkle);
             Controls.Add(kryptonTextBoxMalzemeMiktarı2);
             Controls.Add(kryptonComboBoxMalzemeler2);
@@ -286,6 +306,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormTarifDuzenle";
             Text = "Form2";
+            Load += FormTarifDuzenle_Load;
             ((System.ComponentModel.ISupportInitialize)kryptonPictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)kryptonComboBoxKategori).EndInit();
             ((System.ComponentModel.ISupportInitialize)kryptonComboBox1).EndInit();
@@ -319,5 +340,7 @@
         private Krypton.Toolkit.KryptonComboBox kryptonComboBoxMalzemeler2;
         private Krypton.Toolkit.KryptonTextBox kryptonTextBoxMalzemeMiktarı2;
         private Krypton.Toolkit.KryptonButton kryptonButtonMalzemeEkle;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel8;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel9;
     }
 }

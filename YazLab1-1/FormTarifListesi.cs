@@ -13,13 +13,14 @@ namespace YazLab1_1
 {
     public partial class FormTarifListesi : Form
     {
-        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
-        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
+        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
+        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
         MySqlCommand cmd;
         MySqlDataAdapter adapter;
         DataTable dt;
 
         TarifEkrani tarifEkrani;
+        FormTarifDuzenle formTarifDuzenle;
         Form1 form1_;
 
         public FormTarifListesi()
@@ -409,6 +410,7 @@ namespace YazLab1_1
 
         public void nameToForm(string name)
         {
+            MessageBox.Show(name);
             DataTable tarif = new DataTable();
             int id = -1;
             try
@@ -434,6 +436,12 @@ namespace YazLab1_1
                     id = int.Parse(row["TarifID"].ToString());
                 }
 
+                tarifEkrani = new TarifEkrani(this.form1_, id);
+                tarifEkrani.FormClosed += tarifEkrani_FormClosed;
+                tarifEkrani.MdiParent = form1_;
+                tarifEkrani.Dock = DockStyle.Fill;
+                tarifEkrani.Show();
+                /*
                 if (tarifEkrani == null)
                 {
                     tarifEkrani = new TarifEkrani(this.form1_, id);
@@ -444,8 +452,13 @@ namespace YazLab1_1
                 }
                 else
                 {
-                    tarifEkrani.Activate();
+                    tarifEkrani = new TarifEkrani(this.form1_, id);
+                    tarifEkrani.FormClosed += tarifEkrani_FormClosed;
+                    tarifEkrani.MdiParent = form1_;
+                    tarifEkrani.Dock = DockStyle.Fill;
+                    tarifEkrani.Show();
                 }
+                */
                 //panelAnaManu.Visible = false;
 
 
@@ -462,6 +475,59 @@ namespace YazLab1_1
             tarifEkrani = null;
         }
 
+        public void tarifDuzenleEkraniGecis(string name)
+        {
+            DataTable tarif = new DataTable();
+            try
+            {
+                //tarif var mi kontrol
+                con.Open();
+                string query_tarifKontrol = @"select * from tarifler where TarifAdi = @TarifAdi";
+                adapter = new MySqlDataAdapter(query_tarifKontrol, con);
+                adapter.SelectCommand.Parameters.AddWithValue("@TarifAdi", name);
+                adapter.Fill(tarif);
+                con.Close();
+
+                if (tarif.Rows.Count != 1)
+                {
+                    MessageBox.Show("İstenilen tarif bulunamadi");
+                    return;
+                }
+
+                formTarifDuzenle = new FormTarifDuzenle(name);
+                formTarifDuzenle.FormClosed += FormTarifDuzenle_FormClosed;
+                formTarifDuzenle.MdiParent = this.form1_;
+                formTarifDuzenle.Dock = DockStyle.Fill;
+                formTarifDuzenle.Show();
+                /*
+                //sayfaya gecis
+                if (formTarifDuzenle == null)
+                {
+                    formTarifDuzenle = new FormTarifDuzenle(name);
+                    formTarifDuzenle.FormClosed += FormTarifDuzenle_FormClosed;
+                    formTarifDuzenle.MdiParent = this;
+                    formTarifDuzenle.Dock = DockStyle.Fill;
+                    formTarifDuzenle.Show();
+                }
+                else
+                {
+                    formTarifDuzenle.Activate();
+                }
+                */
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("tarif güncelleme hatasi: ", e.Message);
+            }
+
+
+
+        }
+
+        private void FormTarifDuzenle_FormClosed(object? sender, FormClosedEventArgs e)
+        {
+            formTarifDuzenle = null;
+        }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -470,7 +536,7 @@ namespace YazLab1_1
                 if (dataGridViewTarifler.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
                 {
                     string buttonVal = dataGridViewTarifler.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-                    MessageBox.Show(buttonVal);
+                    //MessageBox.Show(buttonVal);
                     string malzemeID_ = dataGridViewTarifler.Rows[e.RowIndex].Cells["TarifID"].Value.ToString();
                     if (malzemeID_ == null || buttonVal == null)
                     {
@@ -483,13 +549,13 @@ namespace YazLab1_1
                     }
                     else
                     {
-
+                        this.tarifDuzenleEkraniGecis(dataGridViewTarifler.Rows[e.RowIndex].Cells["tarifAdi"].Value.ToString());
                     }
                 }
                 else if (e.RowIndex >= 0)
                 {
                     string name = dataGridViewTarifler.Rows[e.RowIndex].Cells["tarifAdi"].Value.ToString();
-                    MessageBox.Show("name:" + name);
+                    //MessageBox.Show("name:" + name);
                     this.nameToForm(name);
                 }
             }

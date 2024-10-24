@@ -8,13 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Common;
 
 namespace YazLab1_1
 {
     public partial class FormTarifDuzenle : Form
     {
-        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
-        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
+        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
+        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
         MySqlCommand cmd;
         MySqlDataAdapter adapter;
         DataTable dt;
@@ -40,9 +41,9 @@ namespace YazLab1_1
 
                 //duzenle formunu doldurma
 
-                string default_path = "C:/Users/ardah/Desktop/proje22/images/404.png";
-                //string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
-
+                //string default_path = "C:/Users/ardah/Desktop/proje22/images/404.png";
+                string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
+                kryptonPictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                 foreach (DataRow row in tarif.Rows)
                 {
                     //id'yi al
@@ -88,6 +89,7 @@ namespace YazLab1_1
                     }
 
                     //sure
+                    kryptonNumericUpDown1.Maximum = 100000000;
                     kryptonNumericUpDown1.Value = int.Parse(row["HazirlamaSuresi"].ToString());
 
                     //talimatlar
@@ -226,10 +228,11 @@ namespace YazLab1_1
 
         }
 
+
         private void kryptonButtonFotoGuncelle_Click(object sender, EventArgs e)
         {
-            string default_path = "C:/Users/ardah/Desktop/proje22/images/404.png";
-            //string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
+            //string default_path = "C:/Users/ardah/Desktop/proje22/images/404.png";
+            string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
 
             string path = "";
             OpenFileDialog openFileDiaglog = new OpenFileDialog();
@@ -305,7 +308,11 @@ namespace YazLab1_1
                 MessageBox.Show("Tarif ismi zaten bulunmakta!");
                 return;
             }
-
+            if(kryptonComboBoxKategori.SelectedIndex < 0)
+            {
+                MessageBox.Show("Yanlış seçim");
+                return;
+            }
             string str_kategori = kryptonComboBoxKategori.Items[kryptonComboBoxKategori.SelectedIndex].ToString();
             string talimatlar = richTextBoxTalimatlar.Text;
             int sure = (int)kryptonNumericUpDown1.Value;
@@ -335,6 +342,11 @@ namespace YazLab1_1
 
         private void kryptonButtonMalzemeSil_Click(object sender, EventArgs e)
         {
+            if(kryptonComboBox1.SelectedIndex < 0)
+            {
+                MessageBox.Show("Hatalı Seçim!");
+                return;
+            }
             string str_malzeme = kryptonComboBox1.Items[kryptonComboBox1.SelectedIndex].ToString();
             if (str_malzeme == "")
             {
@@ -352,14 +364,14 @@ namespace YazLab1_1
                 adapter.Fill(malzeme);
                 con.Close();
 
-                if(malzeme.Rows.Count != 1)
+                if (malzeme.Rows.Count != 1)
                 {
                     MessageBox.Show("Malzeme alinamadi");
                     return;
                 }
 
                 //silme
-                foreach(DataRow row in malzeme.Rows)
+                foreach (DataRow row in malzeme.Rows)
                 {
                     con.Open();
                     string query_malzemeIliskiSil = @"DELETE from iliski where MalzemeIDr = @MalzemeIDr AND TarifIDr=@TarifIDr";
@@ -374,14 +386,28 @@ namespace YazLab1_1
                     con.Close();
                 }
 
-                
-                
 
+                DataTable name_alma = new DataTable();
+                con.Open();
+                string query_nameAl = @"select * from tarifler where TarifID=@TarifID";
+                adapter = new MySqlDataAdapter(query_nameAl, con);
+                adapter.SelectCommand.Parameters.AddWithValue("@TarifID", this.tarifID);
+                name_alma.Clear();
+                adapter.Fill(name_alma);
+                con.Close();
 
-
+                if (name_alma.Rows.Count != 1)
+                {
+                    MessageBox.Show("isim alinamadi");
+                    return;
+                }
+                foreach (DataRow row in name_alma.Rows)
+                {
+                    this.formuDoldur(row["TarifAdi"].ToString());
+                }
 
             }
-            catch(Exception ex1)
+            catch (Exception ex1)
             {
                 MessageBox.Show("ilişiki malzeme silme hatasi: ", ex1.Message);
             }
@@ -390,15 +416,178 @@ namespace YazLab1_1
 
         private void kryptonButtonMalzemeMiktarDuzenleme_Click(object sender, EventArgs e)
         {
+            string str_malzeme = kryptonComboBox1.Items[kryptonComboBox1.SelectedIndex].ToString();
+            string text_input = kryptonTextBoxMalzemeMiktarı1.Text;
+            float res;
+            if (!float.TryParse(text_input, out res)) 
+            {
+                MessageBox.Show("Girdi geçerli bir float değeri değildir.");
+            }
+            //MessageBox.Show(res.ToString());
+            DataTable malzeme = new DataTable();
+            try
+            {
+                //malzeme id alma
+                con.Open();
+                string query_idAlma = @"select * from malzemeler where MalzemeAdi=@MalzemeAdi";
+                adapter = new MySqlDataAdapter(query_idAlma, con);
+                adapter.SelectCommand.Parameters.AddWithValue("@MalzemeAdi", str_malzeme);
+                adapter.Fill(malzeme);
+                con.Close();
+
+                if (malzeme.Rows.Count != 1)
+                {
+                    MessageBox.Show("Malzeme alinamadi");
+                    return;
+                }
+
+                foreach(DataRow row in malzeme.Rows)
+                {
+                    con.Open();
+                    string query_tarifGuncelle = @"UPDATE iliski SET MalzemeMiktar=@MalzemeMiktar where TarifIDr=@TarifIDr AND MalzemeIDr=@MalzemeIDr";
+                    MySqlCommand cmd = new MySqlCommand(query_tarifGuncelle, con);
+                    cmd.Parameters.AddWithValue("@MalzemeMiktar", res);
+                    cmd.Parameters.AddWithValue("@TarifIDr", this.tarifID);
+                    cmd.Parameters.AddWithValue("@MalzemeIDr", row["MalzemeID"].ToString());
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected != 1)
+                    {
+                        MessageBox.Show("güncelleme hatasi");
+                    }
+                    con.Close();
+                }
+
+
+
+                
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("iliski guncelleme hatasi: " + ex.Message);
+            }
 
         }
 
         private void kryptonButtonMalzemeEkle_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string str_malzeme = kryptonComboBoxMalzemeler2.Items[kryptonComboBoxMalzemeler2.SelectedIndex].ToString();
+                string text_input = kryptonTextBoxMalzemeMiktarı2.Text;
+                float res;
+                if (!float.TryParse(text_input, out res))
+                {
+                    MessageBox.Show("Girdi geçerli bir float değeri değildir.");
+                }
+                DataTable malzeme_table = new DataTable();
+
+                con.Open();
+                string query_IdyiAl = @"select * from malzemeler where MalzemeAdi=@MalzemeAdi";
+                adapter = new MySqlDataAdapter(query_IdyiAl, con);
+                adapter.SelectCommand.Parameters.AddWithValue("@MalzemeAdi", str_malzeme);
+                malzeme_table.Clear();
+                adapter.Fill(malzeme_table);
+                con.Close();
+
+                if (malzeme_table.Rows.Count != 1)
+                {
+                    MessageBox.Show("malzeme alinamadi");
+                    return;
+                }
+                foreach(DataRow row in  malzeme_table.Rows)
+                {
+                    con.Open();
+                    string query_iliskiEkle = @"INSERT INTO iliski (MalzemeIDr, TarifIDr, MalzemeMiktar) VALUES (@MalzemeIDr, @TarifIDr, @MalzemeMiktar)";
+                    cmd = new MySqlCommand(query_iliskiEkle, con);
+                    cmd.Parameters.AddWithValue("@MalzemeIDr", row["MalzemeID"].ToString());
+                    cmd.Parameters.AddWithValue("@TarifIDr", this.tarifID);
+                    cmd.Parameters.AddWithValue("@MalzemeMiktar", res);
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+
+                DataTable name_alma = new DataTable();
+                con.Open();
+                string query_nameAl = @"select * from tarifler where TarifID=@TarifID";
+                adapter = new MySqlDataAdapter(query_nameAl, con);
+                adapter.SelectCommand.Parameters.AddWithValue("@TarifID", this.tarifID);
+                name_alma.Clear();
+                adapter.Fill(name_alma);
+                con.Close();
+
+                if(name_alma.Rows.Count != 1)
+                {
+                    MessageBox.Show("isim alinamadi");
+                    return;
+                }
+                foreach(DataRow row in name_alma.Rows)
+                {
+                    this.formuDoldur(row["TarifAdi"].ToString());
+                }
+
+                
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("iliski guncelleme hatasi: " + ex.Message);
+            }
 
         }
 
         private void kryptonComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            try
+            {
+                DataTable malzeme_table = new DataTable();
+                string malzeme = (string)kryptonComboBox1.SelectedItem;
+                //MessageBox.Show("xd:" + malzeme);
+                con.Open();
+                string query_IdyiAl = @"select * from malzemeler where MalzemeAdi=@MalzemeAdi";
+                adapter = new MySqlDataAdapter(query_IdyiAl, con);
+                adapter.SelectCommand.Parameters.AddWithValue("@MalzemeAdi", malzeme);
+                malzeme_table.Clear();
+                adapter.Fill(malzeme_table);
+                con.Close();
+
+                if (malzeme_table.Rows.Count != 1)
+                {
+                    MessageBox.Show("malzeme alinamadi");
+                    return;
+                }
+                DataTable iliski_table = new DataTable();
+                foreach (DataRow row in malzeme_table.Rows)
+                {
+                    con.Open();
+                    string query_IliskidenBul = @"select * from iliski where MalzemeIDr=@MalzemeIDr AND TarifIDr=@TarifIDr";
+                    adapter = new MySqlDataAdapter(query_IliskidenBul, con);
+                    adapter.SelectCommand.Parameters.AddWithValue("@MalzemeIDr", row["MalzemeID"].ToString());
+                    adapter.SelectCommand.Parameters.AddWithValue("@TarifIDr", this.tarifID);
+                    iliski_table.Clear();
+                    adapter.Fill(iliski_table);
+                    con.Close();
+
+                    if (iliski_table.Rows.Count != 1)
+                    {
+                        MessageBox.Show("iliski alinamadi");
+                        return;
+                    }
+                    foreach (DataRow row2 in iliski_table.Rows)
+                    {
+                        kryptonTextBoxMalzemeMiktarı1.Text = row2["MalzemeMiktar"].ToString();
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Seçilen item'a göre miktar güncelleme hatasi: " + ex.Message);
+            }
+        }
+
+        private void FormTarifDuzenle_Load(object sender, EventArgs e)
         {
 
         }
