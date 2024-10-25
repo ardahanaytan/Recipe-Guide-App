@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ardah\\Desktop\\proje23\\YazLab1-1\\YazLab1-1.csproj": {}
+    "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\YazLab1-1\\YazLab1-1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ardah\\Desktop\\proje23\\YazLab1-1\\YazLab1-1.csproj": {
+    "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\YazLab1-1\\YazLab1-1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ardah\\Desktop\\proje23\\YazLab1-1\\YazLab1-1.csproj",
+        "projectUniqueName": "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\YazLab1-1\\YazLab1-1.csproj",
         "projectName": "YazLab1-1",
-        "projectPath": "C:\\Users\\ardah\\Desktop\\proje23\\YazLab1-1\\YazLab1-1.csproj",
-        "packagesPath": "C:\\Users\\ardah\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ardah\\Desktop\\proje23\\YazLab1-1\\obj\\",
+        "projectPath": "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\YazLab1-1\\YazLab1-1.csproj",
+        "packagesPath": "C:\\Users\\sefat\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\YazLab1-1\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\ardah\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\sefat\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -39,6 +34,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -85,7 +85,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -12,9 +12,9 @@ namespace YazLab1_1
 
     public partial class Form1 : Form
     {
-        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
+        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
 
-        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
+        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
         MySqlCommand cmd;
         MySqlDataAdapter adapter;
         DataTable dt;
@@ -160,8 +160,8 @@ namespace YazLab1_1
 
                 //string malzeme_adi, string toplam_miktar, string malzeme_birim, float birimFiyat
                 //1-10
-                malzeme_ekle("Yulaf Ezmesi", "0", "Gram", 0.05f);
-                malzeme_ekle("Süt", "0", "Mililitre", 0.03f);
+                malzeme_ekle("Yulaf Ezmesi", "10", "Gram", 0.05f);
+                malzeme_ekle("Süt", "20.2", "Mililitre", 0.03f);
                 malzeme_ekle("Tarçın", "0", "Gram", 0.9f);
                 malzeme_ekle("Türk Kahvesi", "0", "Gram", 0.55f);
                 malzeme_ekle("Muz", "0", "Tane", 11.0f);
@@ -391,8 +391,8 @@ namespace YazLab1_1
             foreach (DataRow row in table.Rows)
             {
                 //resim
-                string default_path = "C:/Users/ardah/Desktop/proje22/images/404.png";
-                //string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
+                //string default_path = "C:/Users/ardah/Desktop/proje22/images/404.png";
+                string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
 
                 string pictureBoxName = "pictureBoxTarif" + num.ToString();
                 PictureBox pic_name = this.Controls.Find(pictureBoxName, true).FirstOrDefault() as PictureBox;
@@ -435,6 +435,8 @@ namespace YazLab1_1
                 float maliyet = 0f;
                 float gereken = 0f;
                 string id = row["TarifID"].ToString();
+                float tum_miktar = 0f;
+                float sahip_olunanlar = 0f;
 
                 DataTable malzemeler = new DataTable();
                 try
@@ -564,6 +566,9 @@ namespace YazLab1_1
                             {
                                 float neKadarVar = -1f;
                                 float birimFiyat = -1f;
+
+                               
+
                                 foreach (DataRow row_ in dt_mik.Rows)
                                 {
                                     neKadarVar = float.Parse(row_["ToplamMiktar"]?.ToString() ?? string.Empty);
@@ -579,14 +584,15 @@ namespace YazLab1_1
                                     else
                                     {
                                         yeterli_malzemeler += "," + malzeme;
-
-
-
                                     }
+                                    tum_miktar += malzeme_miktar;
+                                    sahip_olunanlar += malzeme_miktar;
 
                                 }
                                 else
                                 {
+                                    tum_miktar += malzeme_miktar;
+                                    sahip_olunanlar += neKadarVar;
                                     gereken -= (malzeme_miktar - neKadarVar) * birimFiyat;
                                     gezen = 1;
                                     string eklenecek = "";
@@ -687,7 +693,27 @@ namespace YazLab1_1
                         }
 
 
-
+                        //yuzde
+                        string labelYuzde = "labelYuzde" + num.ToString();
+                        Label yuzdeLabel = this.Controls.Find(labelYuzde, true).FirstOrDefault() as Label;
+                        float sayi = (100 * sahip_olunanlar) / tum_miktar;
+                        string yuzde_ = sayi.ToString("F2") + '%';
+                        if (yuzdeLabel != null)
+                        {
+                            yuzdeLabel.Text = yuzde_;
+                            if (sayi <= 100.0f)
+                            {
+                                yuzdeLabel.ForeColor = Color.Red;
+                            }
+                            else
+                            {
+                                yuzdeLabel.ForeColor = Color.Red;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("yuzde label hatasi!");
+                        }
 
                     }
 

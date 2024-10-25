@@ -16,16 +16,16 @@ namespace YazLab1_1
 {
     public partial class TarifEkrani : Form
     {
-        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
-        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
+        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
+        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
         MySqlCommand cmd;
         MySqlDataAdapter adapter;
         DataTable dt;
         FormTarifDuzenle formTarifDuzenle;
         Form1 form1_;
 
-        //string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
-        string default_path = "C:/Users/ardah/Desktop/proje22/images/404.png";
+        string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
+        //string default_path = "C:/Users/ardah/Desktop/proje22/images/404.png";
 
         public int tarifId;
 
@@ -80,6 +80,8 @@ namespace YazLab1_1
                     float maliyet = 0f;
                     float gereken = 0f;
 
+                    float tum_miktar = 0f;
+                    float sahip_olunanlar = 0f;
                     string id = row["TarifID"].ToString();
 
                     DataTable malzemeler = new DataTable();
@@ -225,14 +227,15 @@ namespace YazLab1_1
                                         else
                                         {
                                             yeterli_malzemeler += "," + malzeme;
-
-
-
                                         }
+                                        tum_miktar += malzeme_miktar;
+                                        sahip_olunanlar += malzeme_miktar;
 
                                     }
                                     else
                                     {
+                                        tum_miktar += malzeme_miktar;
+                                        sahip_olunanlar += neKadarVar;
                                         gereken -= (malzeme_miktar - neKadarVar) * birimFiyat;
                                         gezen = 1;
                                         string eklenecek = "";
@@ -291,7 +294,18 @@ namespace YazLab1_1
                             //gerekli
                             kryptonLabelGerekliFiyat1.Text = "Gerekli Fiyat: " + gereken.ToString() + "₺";
 
-
+                            //yuzde
+                            float sayi = (100 * sahip_olunanlar) / tum_miktar;
+                            string yuzde_ = sayi.ToString("F2") + '%';
+                            labelYuzde.Text = yuzde_;
+                            if (sayi <= 100.0f)
+                            {
+                                labelYuzde.ForeColor = Color.Red;
+                            }
+                            else
+                            {
+                                labelYuzde.ForeColor = Color.Green;
+                            }
 
 
 

@@ -13,8 +13,8 @@ namespace YazLab1_1
 {
     public partial class FormTarifListesi : Form
     {
-        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
-        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
+        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
+        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
         MySqlCommand cmd;
         MySqlDataAdapter adapter;
         DataTable dt;
@@ -50,6 +50,9 @@ namespace YazLab1_1
                 {
                     float maliyet = 0f;
                     float gereken = 0f;
+
+                    float tum_miktar = 0f;
+                    float sahip_olunanlar = 0f;
                     string id = row["TarifID"].ToString();
                     //MessageBox.Show("id:" + id.ToString());
 
@@ -199,14 +202,15 @@ namespace YazLab1_1
                                         else
                                         {
                                             yeterli_malzemeler += "," + malzeme;
-
-
-
                                         }
+                                        tum_miktar += malzeme_miktar;
+                                        sahip_olunanlar += malzeme_miktar;
 
                                     }
                                     else
                                     {
+                                        tum_miktar += malzeme_miktar;
+                                        sahip_olunanlar += neKadarVar;
                                         gereken -= (malzeme_miktar - neKadarVar) * birimFiyat;
                                         gezen = 1;
                                         string eklenecek = "";
@@ -251,10 +255,11 @@ namespace YazLab1_1
                                 yetersiz_malzemeler = "Yok";
                             }
 
+                            //yuzde
+                            string yuzde_ = ((100 * sahip_olunanlar) / tum_miktar).ToString("F2") + '%';
 
 
-
-                            int row_num = dataGridViewTarifler.Rows.Add(id, ad, kategori, sure, yeterli_malzemeler, yetersiz_malzemeler, talimatlar, maliyet, gereken);
+                            int row_num = dataGridViewTarifler.Rows.Add(id, ad, kategori, sure, yeterli_malzemeler, yetersiz_malzemeler, yuzde_, talimatlar, maliyet, gereken);
                             if (yetersiz_malzemeler == "Yok")
                             {
                                 dataGridViewTarifler.Rows[row_num].DefaultCellStyle.BackColor = Color.Green;
@@ -265,6 +270,10 @@ namespace YazLab1_1
                                 dataGridViewTarifler.Rows[row_num].DefaultCellStyle.BackColor = Color.Red;
                                 dataGridViewTarifler.Rows[row_num].DefaultCellStyle.ForeColor = Color.White; // İsteğe bağlı yazı rengi
                             }
+
+                            
+
+
                         }
                     }
 

@@ -55,6 +55,8 @@
             buttonSayfa1 = new Krypton.Toolkit.KryptonButton();
             comboBoxSayfa1 = new Krypton.Toolkit.KryptonComboBox();
             panel13 = new Panel();
+            labelYuzde3 = new Label();
+            pictureBox21 = new PictureBox();
             richTextBoxTalimat13 = new Krypton.Toolkit.KryptonRichTextBox();
             richTextBoxEksik13 = new Krypton.Toolkit.KryptonRichTextBox();
             pictureBox18 = new PictureBox();
@@ -73,6 +75,8 @@
             labelName3 = new Label();
             pictureBoxTarif3 = new PictureBox();
             panel12 = new Panel();
+            labelYuzde2 = new Label();
+            pictureBox20 = new PictureBox();
             richTextBoxTalimat12 = new Krypton.Toolkit.KryptonRichTextBox();
             richTextBoxEksik12 = new Krypton.Toolkit.KryptonRichTextBox();
             pictureBox16 = new PictureBox();
@@ -91,6 +95,8 @@
             labelName2 = new Label();
             pictureBoxTarif2 = new PictureBox();
             panel11 = new Panel();
+            labelYuzde1 = new Label();
+            pictureBox19 = new PictureBox();
             richTextBoxEksik11 = new Krypton.Toolkit.KryptonRichTextBox();
             richTextBoxTalimat11 = new Krypton.Toolkit.KryptonRichTextBox();
             richTextBoxTam11 = new Krypton.Toolkit.KryptonRichTextBox();
@@ -111,7 +117,8 @@
             pictureBox3 = new PictureBox();
             pictureBox2 = new PictureBox();
             label5 = new Label();
-            comboBoxSayfa = new ComboBox();
+            pictureBox22 = new PictureBox();
+            pictureBox23 = new PictureBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             menuCubuk.SuspendLayout();
@@ -125,6 +132,7 @@
             panelAnaManu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)comboBoxSayfa1).BeginInit();
             panel13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox21).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox18).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox17).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox12).BeginInit();
@@ -132,6 +140,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxTarif3).BeginInit();
             panel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox20).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox16).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox15).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
@@ -139,6 +148,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxTarif2).BeginInit();
             panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox19).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox14).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
@@ -147,6 +157,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBoxTarif1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox22).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox23).BeginInit();
             SuspendLayout();
             // 
             // button1
@@ -169,6 +181,8 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(108, 91, 123);
+            panel1.Controls.Add(pictureBox23);
+            panel1.Controls.Add(pictureBox22);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(button1);
@@ -429,7 +443,6 @@
             panelAnaManu.Controls.Add(pictureBox3);
             panelAnaManu.Controls.Add(pictureBox2);
             panelAnaManu.Controls.Add(label5);
-            panelAnaManu.Controls.Add(comboBoxSayfa);
             panelAnaManu.Location = new Point(0, 38);
             panelAnaManu.Name = "panelAnaManu";
             panelAnaManu.Size = new Size(1240, 621);
@@ -517,6 +530,8 @@
             // 
             // panel13
             // 
+            panel13.Controls.Add(labelYuzde3);
+            panel13.Controls.Add(pictureBox21);
             panel13.Controls.Add(richTextBoxTalimat13);
             panel13.Controls.Add(richTextBoxEksik13);
             panel13.Controls.Add(pictureBox18);
@@ -538,6 +553,24 @@
             panel13.Name = "panel13";
             panel13.Size = new Size(312, 561);
             panel13.TabIndex = 60;
+            // 
+            // labelYuzde3
+            // 
+            labelYuzde3.AutoSize = true;
+            labelYuzde3.Location = new Point(187, 262);
+            labelYuzde3.Name = "labelYuzde3";
+            labelYuzde3.Size = new Size(48, 15);
+            labelYuzde3.TabIndex = 80;
+            labelYuzde3.Text = "label14";
+            // 
+            // pictureBox21
+            // 
+            pictureBox21.Image = (Image)resources.GetObject("pictureBox21.Image");
+            pictureBox21.Location = new Point(149, 254);
+            pictureBox21.Name = "pictureBox21";
+            pictureBox21.Size = new Size(32, 32);
+            pictureBox21.TabIndex = 79;
+            pictureBox21.TabStop = false;
             // 
             // richTextBoxTalimat13
             // 
@@ -739,6 +772,8 @@
             // 
             // panel12
             // 
+            panel12.Controls.Add(labelYuzde2);
+            panel12.Controls.Add(pictureBox20);
             panel12.Controls.Add(richTextBoxTalimat12);
             panel12.Controls.Add(richTextBoxEksik12);
             panel12.Controls.Add(pictureBox16);
@@ -760,6 +795,24 @@
             panel12.Name = "panel12";
             panel12.Size = new Size(299, 561);
             panel12.TabIndex = 59;
+            // 
+            // labelYuzde2
+            // 
+            labelYuzde2.AutoSize = true;
+            labelYuzde2.Location = new Point(187, 262);
+            labelYuzde2.Name = "labelYuzde2";
+            labelYuzde2.Size = new Size(48, 15);
+            labelYuzde2.TabIndex = 79;
+            labelYuzde2.Text = "label13";
+            // 
+            // pictureBox20
+            // 
+            pictureBox20.Image = (Image)resources.GetObject("pictureBox20.Image");
+            pictureBox20.Location = new Point(149, 254);
+            pictureBox20.Name = "pictureBox20";
+            pictureBox20.Size = new Size(32, 32);
+            pictureBox20.TabIndex = 78;
+            pictureBox20.TabStop = false;
             // 
             // richTextBoxTalimat12
             // 
@@ -961,6 +1014,8 @@
             // 
             // panel11
             // 
+            panel11.Controls.Add(labelYuzde1);
+            panel11.Controls.Add(pictureBox19);
             panel11.Controls.Add(richTextBoxEksik11);
             panel11.Controls.Add(richTextBoxTalimat11);
             panel11.Controls.Add(richTextBoxTam11);
@@ -982,6 +1037,24 @@
             panel11.Name = "panel11";
             panel11.Size = new Size(282, 561);
             panel11.TabIndex = 58;
+            // 
+            // labelYuzde1
+            // 
+            labelYuzde1.AutoSize = true;
+            labelYuzde1.Location = new Point(176, 262);
+            labelYuzde1.Name = "labelYuzde1";
+            labelYuzde1.Size = new Size(48, 15);
+            labelYuzde1.TabIndex = 75;
+            labelYuzde1.Text = "label12";
+            // 
+            // pictureBox19
+            // 
+            pictureBox19.Image = (Image)resources.GetObject("pictureBox19.Image");
+            pictureBox19.Location = new Point(138, 254);
+            pictureBox19.Name = "pictureBox19";
+            pictureBox19.Size = new Size(32, 32);
+            pictureBox19.TabIndex = 74;
+            pictureBox19.TabStop = false;
             // 
             // richTextBoxEksik11
             // 
@@ -1208,13 +1281,23 @@
             label5.Size = new Size(100, 23);
             label5.TabIndex = 0;
             // 
-            // comboBoxSayfa
+            // pictureBox22
             // 
-            comboBoxSayfa.FormattingEnabled = true;
-            comboBoxSayfa.Location = new Point(3, 376);
-            comboBoxSayfa.Name = "comboBoxSayfa";
-            comboBoxSayfa.Size = new Size(121, 23);
-            comboBoxSayfa.TabIndex = 63;
+            pictureBox22.Image = (Image)resources.GetObject("pictureBox22.Image");
+            pictureBox22.Location = new Point(383, 5);
+            pictureBox22.Name = "pictureBox22";
+            pictureBox22.Size = new Size(32, 32);
+            pictureBox22.TabIndex = 4;
+            pictureBox22.TabStop = false;
+            // 
+            // pictureBox23
+            // 
+            pictureBox23.Image = (Image)resources.GetObject("pictureBox23.Image");
+            pictureBox23.Location = new Point(552, 5);
+            pictureBox23.Name = "pictureBox23";
+            pictureBox23.Size = new Size(32, 32);
+            pictureBox23.TabIndex = 5;
+            pictureBox23.TabStop = false;
             // 
             // Form1
             // 
@@ -1249,6 +1332,7 @@
             ((System.ComponentModel.ISupportInitialize)comboBoxSayfa1).EndInit();
             panel13.ResumeLayout(false);
             panel13.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox21).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox18).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox17).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox12).EndInit();
@@ -1257,6 +1341,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBoxTarif3).EndInit();
             panel12.ResumeLayout(false);
             panel12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox20).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox16).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox15).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
@@ -1265,6 +1350,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBoxTarif2).EndInit();
             panel11.ResumeLayout(false);
             panel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox19).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox14).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
@@ -1273,6 +1359,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBoxTarif1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox22).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox23).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1298,7 +1386,6 @@
         private Panel panelArama;
         private Button button7;
         private Panel panelMalzemeEkle;
-        private Button button8;
         private System.Windows.Forms.Timer menuCubukTimer;
         private Panel panelAnaManu;
         private Label label5;
@@ -1349,7 +1436,6 @@
         private Label labelKategori1;
         private Label labelName1;
         private PictureBox pictureBoxTarif1;
-        private ComboBox comboBoxSayfa;
         private Krypton.Toolkit.KryptonRichTextBox richTextBoxTam11;
         private Krypton.Toolkit.KryptonRichTextBox richTextBoxEksik11;
         private Krypton.Toolkit.KryptonRichTextBox richTextBoxTam13;
@@ -1361,5 +1447,14 @@
         private Krypton.Toolkit.KryptonRichTextBox richTextBoxTalimat12;
         private Krypton.Toolkit.KryptonComboBox comboBoxSayfa1;
         private Krypton.Toolkit.KryptonButton buttonSayfa1;
+        private Button button8;
+        private PictureBox pictureBox19;
+        private PictureBox pictureBox21;
+        private PictureBox pictureBox20;
+        private Label labelYuzde3;
+        private Label labelYuzde2;
+        private Label labelYuzde1;
+        private PictureBox pictureBox23;
+        private PictureBox pictureBox22;
     }
 }
