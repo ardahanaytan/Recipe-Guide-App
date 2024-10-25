@@ -13,8 +13,8 @@ namespace YazLab1_1
 {
     public partial class FormTarifListesi : Form
     {
-        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
-        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
+        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
+        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
         MySqlCommand cmd;
         MySqlDataAdapter adapter;
         DataTable dt;
@@ -271,7 +271,27 @@ namespace YazLab1_1
                                 dataGridViewTarifler.Rows[row_num].DefaultCellStyle.ForeColor = Color.White; // İsteğe bağlı yazı rengi
                             }
 
-                            
+                            //maliyet
+                            try
+                            {
+                                con.Open();
+                                string query_maliyetUpdate = @"UPDATE tarifler SET Maliyet= @Maliyet where TarifID= @TarifID";
+                                MySqlCommand cmd = new MySqlCommand(query_maliyetUpdate, con);
+                                cmd.Parameters.AddWithValue("@Maliyet", maliyet);
+                                cmd.Parameters.AddWithValue("@TarifID", int.Parse(row["TarifID"].ToString()));
+                                int rowsAffected = cmd.ExecuteNonQuery();
+                                if (rowsAffected != 1)
+                                {
+                                    MessageBox.Show("güncelleme hatasi");
+                                }
+
+                                con.Close();
+                            }
+                            catch (Exception ex6)
+                            {
+                                MessageBox.Show("maliyet guncelleme hatasi: " + ex6.Message);
+                            }
+
 
 
                         }

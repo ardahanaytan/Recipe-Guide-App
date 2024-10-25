@@ -14,8 +14,8 @@ namespace YazLab1_1
 {
     public partial class FormTarifDuzenle : Form
     {
-        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
-        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
+        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
+        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
         MySqlCommand cmd;
         MySqlDataAdapter adapter;
         DataTable dt;
@@ -41,8 +41,8 @@ namespace YazLab1_1
 
                 //duzenle formunu doldurma
 
-                //string default_path = "C:/Users/ardah/Desktop/proje22/images/404.png";
-                string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
+                string default_path = "C:/Users/ardah/Desktop/proje24/images/404.png";
+                //string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
                 kryptonPictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                 foreach (DataRow row in tarif.Rows)
                 {
@@ -232,8 +232,8 @@ namespace YazLab1_1
 
         private void kryptonButtonFotoGuncelle1_Click(object sender, EventArgs e)
         {
-            //string default_path = "C:/Users/ardah/Desktop/proje22/images/404.png";
-            string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
+            string default_path = "C:/Users/ardah/Desktop/proje22/images/404.png";
+            //string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
 
             string path = "";
             OpenFileDialog openFileDiaglog = new OpenFileDialog();

@@ -10,6 +10,9 @@
     <Compile Update="FormTarifDuzenle.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="searchResultControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="TarifEkrani.cs">
       <SubType>Form</SubType>
     </Compile>
