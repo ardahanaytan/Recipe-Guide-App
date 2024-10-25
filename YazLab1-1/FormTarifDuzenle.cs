@@ -14,8 +14,8 @@ namespace YazLab1_1
 {
     public partial class FormTarifDuzenle : Form
     {
-        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
-        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
+        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
+        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
         MySqlCommand cmd;
         MySqlDataAdapter adapter;
         DataTable dt;
@@ -41,14 +41,14 @@ namespace YazLab1_1
 
                 //duzenle formunu doldurma
 
-                //string default_path = "C:/Users/ardah/Desktop/proje22/images/404.png";
-                string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
+                string default_path = "C:/Users/ardah/Desktop/proje22/images/404.png";
+                //string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
                 kryptonPictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                 foreach (DataRow row in tarif.Rows)
                 {
                     //id'yi al
                     this.tarifID = int.Parse(row["TarifID"].ToString());
-                    kryptonLabel1.Text = "Tarif ID: " + this.tarifID.ToString();
+                    kryptonLabel11.Text = "Tarif ID: " + this.tarifID.ToString();
 
                     //resim
                     string path = row["Path"].ToString();
@@ -63,24 +63,26 @@ namespace YazLab1_1
                     }
 
                     //path
-                    kryptonTextBoxPath.Text = path;
-                    kryptonTextBoxPath.ReadOnly = true;
+                    kryptonTextBoxPath1.Text = path;
+                    kryptonTextBoxPath1.ReadOnly = true;
 
                     //name
-                    kryptonTextBox1.Text = row["TarifAdi"].ToString();
+                    kryptonTextBox11.Text = row["TarifAdi"].ToString();
 
                     //kategoriler
-                    kryptonComboBoxKategori.Items.Clear();
-                    kryptonComboBoxKategori.Items.Add("Kahvaltı");
-                    kryptonComboBoxKategori.Items.Add("Yemek");
-                    kryptonComboBoxKategori.Items.Add("Çorba");
-                    kryptonComboBoxKategori.Items.Add("Tatlı");
-                    kryptonComboBoxKategori.Items.Add("İçecek");
-                    //kryptonComboBoxKategori
+                    /*
+                    kryptonComboBoxKategori1.Items.Clear();
+                    kryptonComboBoxKategori1.Items.Add("Kahvaltı");
+                    kryptonComboBoxKategori1.Items.Add("Yemek");
+                    kryptonComboBoxKategori1.Items.Add("Çorba");
+                    kryptonComboBoxKategori1.Items.Add("Tatlı");
+                    kryptonComboBoxKategori1.Items.Add("İçecek");
+                    */
+                    //kryptonComboBoxKategori1
                     string kategori = row["Kategori"].ToString();
-                    if (kryptonComboBoxKategori.Items.Contains(kategori))
+                    if (kryptonComboBoxKategori1.Items.Contains(kategori))
                     {
-                        kryptonComboBoxKategori.SelectedItem = kategori;
+                        kryptonComboBoxKategori1.SelectedItem = kategori;
                     }
                     else
                     {
@@ -89,15 +91,15 @@ namespace YazLab1_1
                     }
 
                     //sure
-                    kryptonNumericUpDown1.Maximum = 100000000;
-                    kryptonNumericUpDown1.Value = int.Parse(row["HazirlamaSuresi"].ToString());
+                    kryptonNumericUpDown11.Maximum = 100000000;
+                    kryptonNumericUpDown11.Value = int.Parse(row["HazirlamaSuresi"].ToString());
 
                     //talimatlar
-                    richTextBoxTalimatlar.Text = row["Talimatlar"].ToString();
+                    richTextBoxTalimatlar1.Text = row["Talimatlar"].ToString();
 
                     //tarif malzeme combobox
                     //temizle
-                    kryptonComboBox1.Items.Clear();
+                    kryptonComboBox11.Items.Clear();
 
                     DataTable malzemeler_id = new DataTable();
                     try
@@ -129,7 +131,7 @@ namespace YazLab1_1
                             }
                             foreach (DataRow row3 in malzemeler.Rows)
                             {
-                                kryptonComboBox1.Items.Add(row3["MalzemeAdi"].ToString());
+                                kryptonComboBox11.Items.Add(row3["MalzemeAdi"].ToString());
                             }
                         }
 
@@ -142,7 +144,7 @@ namespace YazLab1_1
 
 
                     //tum malzeme combobox
-                    kryptonComboBoxMalzemeler2.Items.Clear();
+                    kryptonComboBoxMalzemeler21.Items.Clear();
 
                     DataTable tum_malzemeler = new DataTable();
                     DataTable secilmis_malzemeler = new DataTable();
@@ -201,7 +203,7 @@ namespace YazLab1_1
                     //tabloyu doldur
                     foreach (string name_ in malzemeList)
                     {
-                        kryptonComboBoxMalzemeler2.Items.Add(name_);
+                        kryptonComboBoxMalzemeler21.Items.Add(name_);
                     }
 
 
@@ -228,8 +230,7 @@ namespace YazLab1_1
 
         }
 
-
-        private void kryptonButtonFotoGuncelle_Click(object sender, EventArgs e)
+        private void kryptonButtonFotoGuncelle1_Click(object sender, EventArgs e)
         {
             //string default_path = "C:/Users/ardah/Desktop/proje22/images/404.png";
             string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
@@ -273,8 +274,8 @@ namespace YazLab1_1
                 }
 
                 //path
-                kryptonTextBoxPath.Text = path;
-                kryptonTextBoxPath.ReadOnly = true;
+                kryptonTextBoxPath1.Text = path;
+                kryptonTextBoxPath1.ReadOnly = true;
 
 
             }
@@ -284,9 +285,9 @@ namespace YazLab1_1
             }
         }
 
-        private void buttonDüzenle_Click(object sender, EventArgs e)
+        private void buttonDüzenle1_Click(object sender, EventArgs e)
         {
-            string ad = kryptonTextBox1.Text; //isme kontrol lazim
+            string ad = kryptonTextBox11.Text; //isme kontrol lazim
 
             DataTable tarif = new DataTable();
             try
@@ -308,14 +309,14 @@ namespace YazLab1_1
                 MessageBox.Show("Tarif ismi zaten bulunmakta!");
                 return;
             }
-            if(kryptonComboBoxKategori.SelectedIndex < 0)
+            if (kryptonComboBoxKategori1.SelectedIndex < 0)
             {
                 MessageBox.Show("Yanlış seçim");
                 return;
             }
-            string str_kategori = kryptonComboBoxKategori.Items[kryptonComboBoxKategori.SelectedIndex].ToString();
-            string talimatlar = richTextBoxTalimatlar.Text;
-            int sure = (int)kryptonNumericUpDown1.Value;
+            string str_kategori = kryptonComboBoxKategori1.Items[kryptonComboBoxKategori1.SelectedIndex].ToString();
+            string talimatlar = richTextBoxTalimatlar1.Text;
+            int sure = (int)kryptonNumericUpDown11.Value;
             try
             {
                 con.Open();
@@ -337,17 +338,16 @@ namespace YazLab1_1
             {
                 MessageBox.Show("tarif isim kontrol hatasi: ", ex2.Message);
             }
-
         }
 
-        private void kryptonButtonMalzemeSil_Click(object sender, EventArgs e)
+        private void kryptonButtonMalzemeSil1_Click(object sender, EventArgs e)
         {
-            if(kryptonComboBox1.SelectedIndex < 0)
+            if (kryptonComboBox11.SelectedIndex < 0)
             {
                 MessageBox.Show("Hatalı Seçim!");
                 return;
             }
-            string str_malzeme = kryptonComboBox1.Items[kryptonComboBox1.SelectedIndex].ToString();
+            string str_malzeme = kryptonComboBox11.Items[kryptonComboBox11.SelectedIndex].ToString();
             if (str_malzeme == "")
             {
                 MessageBox.Show("Lütfen seçim yapınız");
@@ -411,15 +411,14 @@ namespace YazLab1_1
             {
                 MessageBox.Show("ilişiki malzeme silme hatasi: ", ex1.Message);
             }
-
         }
 
-        private void kryptonButtonMalzemeMiktarDuzenleme_Click(object sender, EventArgs e)
+        private void kryptonButtonMalzemeMiktarDuzenleme1_Click(object sender, EventArgs e)
         {
-            string str_malzeme = kryptonComboBox1.Items[kryptonComboBox1.SelectedIndex].ToString();
-            string text_input = kryptonTextBoxMalzemeMiktarı1.Text;
+            string str_malzeme = kryptonComboBox11.Items[kryptonComboBox11.SelectedIndex].ToString();
+            string text_input = kryptonTextBoxMalzemeMiktarı11.Text;
             float res;
-            if (!float.TryParse(text_input, out res)) 
+            if (!float.TryParse(text_input, out res))
             {
                 MessageBox.Show("Girdi geçerli bir float değeri değildir.");
             }
@@ -441,7 +440,7 @@ namespace YazLab1_1
                     return;
                 }
 
-                foreach(DataRow row in malzeme.Rows)
+                foreach (DataRow row in malzeme.Rows)
                 {
                     con.Open();
                     string query_tarifGuncelle = @"UPDATE iliski SET MalzemeMiktar=@MalzemeMiktar where TarifIDr=@TarifIDr AND MalzemeIDr=@MalzemeIDr";
@@ -459,21 +458,20 @@ namespace YazLab1_1
 
 
 
-                
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("iliski guncelleme hatasi: " + ex.Message);
             }
-
         }
 
-        private void kryptonButtonMalzemeEkle_Click(object sender, EventArgs e)
+        private void kryptonButtonMalzemeEkle1_Click(object sender, EventArgs e)
         {
             try
             {
-                string str_malzeme = kryptonComboBoxMalzemeler2.Items[kryptonComboBoxMalzemeler2.SelectedIndex].ToString();
-                string text_input = kryptonTextBoxMalzemeMiktarı2.Text;
+                string str_malzeme = kryptonComboBoxMalzemeler21.Items[kryptonComboBoxMalzemeler21.SelectedIndex].ToString();
+                string text_input = kryptonTextBoxMalzemeMiktarı21.Text;
                 float res;
                 if (!float.TryParse(text_input, out res))
                 {
@@ -494,7 +492,7 @@ namespace YazLab1_1
                     MessageBox.Show("malzeme alinamadi");
                     return;
                 }
-                foreach(DataRow row in  malzeme_table.Rows)
+                foreach (DataRow row in malzeme_table.Rows)
                 {
                     con.Open();
                     string query_iliskiEkle = @"INSERT INTO iliski (MalzemeIDr, TarifIDr, MalzemeMiktar) VALUES (@MalzemeIDr, @TarifIDr, @MalzemeMiktar)";
@@ -515,33 +513,32 @@ namespace YazLab1_1
                 adapter.Fill(name_alma);
                 con.Close();
 
-                if(name_alma.Rows.Count != 1)
+                if (name_alma.Rows.Count != 1)
                 {
                     MessageBox.Show("isim alinamadi");
                     return;
                 }
-                foreach(DataRow row in name_alma.Rows)
+                foreach (DataRow row in name_alma.Rows)
                 {
                     this.formuDoldur(row["TarifAdi"].ToString());
                 }
 
-                
-                
+
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show("iliski guncelleme hatasi: " + ex.Message);
             }
-
         }
 
-        private void kryptonComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void kryptonComboBox11_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             try
             {
                 DataTable malzeme_table = new DataTable();
-                string malzeme = (string)kryptonComboBox1.SelectedItem;
+                string malzeme = (string)kryptonComboBox11.SelectedItem;
                 //MessageBox.Show("xd:" + malzeme);
                 con.Open();
                 string query_IdyiAl = @"select * from malzemeler where MalzemeAdi=@MalzemeAdi";
@@ -575,7 +572,7 @@ namespace YazLab1_1
                     }
                     foreach (DataRow row2 in iliski_table.Rows)
                     {
-                        kryptonTextBoxMalzemeMiktarı1.Text = row2["MalzemeMiktar"].ToString();
+                        kryptonTextBoxMalzemeMiktarı11.Text = row2["MalzemeMiktar"].ToString();
                     }
                 }
 

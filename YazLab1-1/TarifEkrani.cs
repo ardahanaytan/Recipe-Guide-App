@@ -16,16 +16,16 @@ namespace YazLab1_1
 {
     public partial class TarifEkrani : Form
     {
-        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
-        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
+        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
+        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
         MySqlCommand cmd;
         MySqlDataAdapter adapter;
         DataTable dt;
         FormTarifDuzenle formTarifDuzenle;
         Form1 form1_;
 
-        string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
-        //string default_path = "C:/Users/ardah/Desktop/proje22/images/404.png";
+        //string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
+        string default_path = "C:/Users/ardah/Desktop/proje22/images/404.png";
 
         public int tarifId;
 

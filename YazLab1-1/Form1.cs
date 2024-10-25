@@ -12,9 +12,9 @@ namespace YazLab1_1
 
     public partial class Form1 : Form
     {
-        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
+        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
 
-        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
+        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
         MySqlCommand cmd;
         MySqlDataAdapter adapter;
         DataTable dt;
@@ -142,30 +142,102 @@ namespace YazLab1_1
             try
             {
                 //string tarif_adi, string kategori, int hazirlamaSuresi, string talimatlar
-                tarif_ekle("tarif1", "Yemek", 21, "asdkhjnadsjkhnajsdkhnasdh", "");
-                tarif_ekle("tarif2", "Çorba", 21241, "asdkhjnadsjasdhasdhkhnajsdkhnasdh", "");
-                tarif_ekle("tarif3", "Tatlı", 22141, "asdkhjnadasdhasdsjkhnajsdkhnasdh", "");
-                tarif_ekle("tarif4", "Çorba", 21241, "asdkhjnadsasdhasdhjkhnajsdkhnasdh", "");
-                tarif_ekle("tarif5", "Tatlı", 211, "asdkhjnadsjkasdhasdhhnajsdkhnasdh", "");
+                //Kahvaltı
+                //1-10
+                tarif_ekle("Kahveli Yulaf Lapası", "Kahvaltı", 20, "1. Küçük bir tencereye yulaf ezmesini ve sütü ekliyoruz.\r\n2. Altını açarak kaynayana kadar ara ara karıştırarak pişiriyoruz.\r\n3. Kaynadıktan sonra altını kapatarak üzerine kahve ve tarçını ekliyoruz.\r\n4. Kahve eriyip yulaf lapasına iyice karışana kadar karıştırıyoruz.\r\n5. Üzerine muz dilimleri veya kuruyemiş ekleyebilirsiniz. \r\n(Bu eklemeler kalori değerini arttıracaktır!)\r\n", "");
+                tarif_ekle("Unsuz Muzlu Pankek", "Kahvaltı", 12, "1. Muzu çatal yardımıyla ezerek püre kıvamına getiriyoruz.\r\n2. Yumurtaları muz püresinin üzerine kırarak iyice çırpıyoruz.\r\n3. Tavayı yağladıktan sonra harcımızdan her seferinde birer \r\nyemek kaşığı alarak tavaya ekliyoruz.\r\n4. Üst kısmında kabarcıklar oluştuğunda çevirip diğer \r\nyüzünü de pişiriyoruz.\r\n", "");
+                tarif_ekle("Kahveli Pankek", "Kahvaltı", 15, "1. Yulaf ezmesini blender yardımıyla un haline getiriyoruz.\r\n2. Tüm malzemeleri karıştırıp iyice çırparak homojen bir \r\nkıvama getiriyoruz.\r\n3. Yapışmaz yüzeyli tavayı ısıttıktan sonra harcımızı birer \r\nkaşık birer kaşık olarak tavaya ekliyoruz.\r\n4. Üst kısmında kabarcıklar çıktığında pankekleri çevirerek \r\ndiğer yüzlerini de pişiriyoruz.\r\n", "");
+                tarif_ekle("Lor Tava", "Kahvaltı", 8, "1. Tavada tereyağını eritiyoruz.\r\n2. Üzerine lor peynirini ekleyip 1 dakika kadar pişiriyoruz.\r\n3. Domates püresini ekleyip birkaç dakika karıştırarak pişiriyoruz.\r\n4. Son olarak üzerine istediğimiz baharatları ekleyerek lezzetlendiriyoruz.\r\n", "");
+                tarif_ekle("Ev Yapımı Notella", "Kahvaltı", 15, "1. Fındıkları bir tavaya alarak birkaç dakika kavuruyoruz.\r\n2. Hurmaları 15 dakika kadar sıcak suda bekletip çekirdeklerini ayırıyoruz.\r\n3. Fındıkların üzerine 1 yemek kaşığı kadar hurma suyundan ekleyip blenderdan geçiriyoruz.\r\n4. Hurmaları, balı ve kakaoyu da blender kabına ekleyip tekrar blenderdan geçiriyoruz. Bu aşamada hurma suyundan ekleyerek fındık kremanızı istediğiniz kıvama getirebilirsiniz.\r\n", "");
+                tarif_ekle("Mantarlı Fit Omlet", "Kahvaltı", 13, "1. Mantarların zarlarını soyup dilimliyoruz.\r\n2. Tavanın altını ısıtıp zeytinyağını da koyduktan sonra mantarları bir kaşık yardımıyla çevirerek birkaç dakika pişiriyoruz.\r\n3. Yumurtaları çırpıp mantarların üzerine döküyoruz ve tavanın üzerini kapatıyoruz.\r\n4. Tavadaki karışımın alt tabanı piştikten sonra üzerine lor peynirlerini de ekleyip kapağını tekrar kapatıyoruz ve üst kısmının da pişmesini sağlıyoruz.\r\n5. Son olarak üzerine pul biber veya istediğiniz farklı baharatları ekleyerek servis edebilirsiniz.\r\n", "");
+                tarif_ekle("Ispanaklı ve Peynirli Omlet", "Kahvaltı", 13, "1. Ispanakları iyice yıkayıp ince ince doğruyoruz.\r\n2. Beyaz peyniri de küçük parçalar halinde doğrayıp ıspanakla karıştırıyoruz.\r\n3. Yapışmaz yüzeyli tavayı ısıttıktan sonra ıspanak ve peynir karışımını peynirler yumuşayana kadar pişiriyoruz. (Tereyağı kullanacaksanız bu aşamada ekleyebilirsiniz.)\r\n4. Üzerine yumurtaları da ekleyip karıştırarak pişiriyoruz.\r\n", "");
+                tarif_ekle("Muzlu Yulaf Lapası", "Kahvaltı", 7, "1. Yulaf ezmesini bir kaseye alıp üzerine yulafları kaplayacak kadar sıcak su ekliyoruz. 5 dakika kadar yulafın yumuşamasını bekliyoruz. (Süreci hızlandırmak için kasenin üzerini bir tabak yardımıyla kapatabilirsiniz.)\r\n2. Yulaflar yumuşadıktan sonra üzerine tarçın ve keçiboynuzu unu (veya bal) ekliyoruz. İyice karıştırıyoruz.\r\n3. Muzları dilimleyerek kaseye alıyoruz.\r\n", "");
+                tarif_ekle("Fıstık Ezmesi", "Kahvaltı", 15, "1. Fıstıkların kabukları soyulur ve tavada 5 dakika kadar kavrulur.\r\n2. Rondo veya blender yardımıyla iyice parçalanır.\r\n3. İsteğe göre bal ekleyerek tatlandırılır ve yağ ekleyerek akışkan kıvama getirilir.\r\n4. İyice karıştırılır, afiyet olsun!\r\n", "");
+                tarif_ekle("Tahinli Unsuz Pankek", "Kahvaltı", 15, "1. Susamları tavada birkaç dakika ısıtıyoruz, rengi biraz karardıktan sonra ateşten alıp kenara koyuyoruz.\r\n2. Muzu çatal yardımıyla ezerek püre haline getiriyoruz.\r\n3. Muz püresinin üzerine yumurtaları kırıyoruz ve iyice çırpıyoruz. İyice çırptıktan sonra tarçın ve tahini de karışımın üzerine ekliyoruz.\r\n4. Tavayı yağlayıp biraz ısıtıyoruz. Daha sonra harcımızı tavaya alarak pişiriyoruz. (Tüm harcı tek pankek olarak pişirmeye çalışmayın, çevirmesi zor olacaktır. Bir yemek kaşıklık boyutlarda alarak pişirebilirsiniz.)\r\n5. Pişirirken pankeklerin üst kısmında kabarcıklar oluştuğunda çevirebilirsiniz.\r\n6. Pişen pankekleri tabağımıza aldıktan sonra üzerine bal ve kavurduğumuz susamları da ekliyoruz.\r\n", "");
+                //11-20
+                tarif_ekle("Protein Bohçası", "Kahvaltı", 13, "1. Lor peynirini ufalıyoruz ve üzerine domates püresini de ekleyip karıştırıyoruz.\r\n2. Yumurtaları başka bir kabın içine kırarak iyice çırpıyoruz.\r\n3. Tavamızı ısıttıktan sonra yağı ekliyoruz ve çırptığımız yumurtaları tavaya döküyoruz.\r\n4. Yumurtaların altı piştikten sonra üzerinin orta kısmına lor karışımını ekliyoruz.\r\n5. Ardından yumurtanın sağ ve sol kısmını içe doğru, yani lor karışımının üzerine doğru katlıyoruz.\r\n6. İç kısmı da piştikten sonra tabağımıza alıp üzerine kekik serpiyoruz.\r\n", "");
+
 
                 //string malzeme_adi, string toplam_miktar, string malzeme_birim, float birimFiyat
-                malzeme_ekle("malzeme1", "4212", "Gram", 1f);
-                malzeme_ekle("malzeme2", "4212", "Gram", 100f);
-                malzeme_ekle("malzeme3", "4212", "Gram", 1f);
-                malzeme_ekle("malzeme4", "4212", "Gram", 1f);
+                //1-10
+                malzeme_ekle("Yulaf Ezmesi", "0", "Gram", 0.05f);
+                malzeme_ekle("Süt", "0", "Mililitre", 0.03f);
+                malzeme_ekle("Tarçın", "0", "Gram", 0.9f);
+                malzeme_ekle("Türk Kahvesi", "0", "Gram", 0.55f);
+                malzeme_ekle("Muz", "0", "Tane", 11.0f);
+                malzeme_ekle("Yumurta", "0", "Tane", 4.85f);
+                malzeme_ekle("Yoğurt", "0", "Gram", 0.9f);
+                malzeme_ekle("Kabartma Tozu", "0", "Tane", 0.25f);
+                malzeme_ekle("Hindistan Cevizi", "0", "Gram", 0.6f);
+                malzeme_ekle("Lor Peyniri", "0", "Gram", 0.85f);
+                //11-20
+                malzeme_ekle("Tereyağı", "0", "Gram", 0.35f);
+                malzeme_ekle("Domates Püresi", "0", "Gram", 0.75f);
+                malzeme_ekle("Fındık", "0", "Gram", 0.4f);
+                malzeme_ekle("Kakao", "0", "Gram", 0.35f);
+                malzeme_ekle("Hurma", "0", "Adet", 6.3f);
+                malzeme_ekle("Bal", "0", "Gram", 0.65f);
+                malzeme_ekle("Kültür Mantarı", "0", "Gram", 0.15f);
+                malzeme_ekle("Pul Biber", "0", "Gram", 0.7f);
+                malzeme_ekle("Zeytinyağı", "0", "Mililitre", 0.3f);
+                malzeme_ekle("Ispanak", "0", "Gram", 0.15f);
+                //21-30
+                malzeme_ekle("Beyaz Peynir", "0", "Gram", 0.3f);
+                malzeme_ekle("Un", "0", "Gram", 0.02f);
+                malzeme_ekle("Fıstık", "0", "Gram", 0.3f);
+                malzeme_ekle("Hindistan Cevizi Yağı", "0", "Mililitre", 0.7f);
+                malzeme_ekle("Susam", "0", "Gram", 0.4f);
+                malzeme_ekle("Tahin", "0", "Gram", 0.3f);
 
                 // ilki malzeme id, 2. tarif id, 3. miktar
-                iliski_ekle(1, 1, 10);
-                iliski_ekle(2, 1, 10);
-                iliski_ekle(1, 3, 5);
-                iliski_ekle(1, 4, 3);
-                iliski_ekle(2, 4, 200);
-                iliski_ekle(3, 4, 4312);
-                iliski_ekle(1, 5, 7);
-                iliski_ekle(1, 2, 1110);
-                iliski_ekle(3, 1, 10);
-
-
+                iliski_ekle(1, 1, 200);
+                iliski_ekle(2, 1, 200);
+                iliski_ekle(3, 1, 6);
+                iliski_ekle(4, 1, 13);
+                iliski_ekle(5, 2, 1);
+                iliski_ekle(6, 2, 2);
+                iliski_ekle(24, 2, 6);
+                iliski_ekle(1, 3, 100);
+                iliski_ekle(7, 3, 20);
+                iliski_ekle(4, 3, 13);
+                iliski_ekle(8, 3, 1);
+                iliski_ekle(6, 3, 2);
+                iliski_ekle(9, 3, 13);
+                iliski_ekle(10, 4, 200);
+                iliski_ekle(11, 4, 20);
+                iliski_ekle(12, 4, 20);
+                iliski_ekle(13, 5, 200);
+                iliski_ekle(14, 5, 20);
+                iliski_ekle(15, 5, 12);
+                iliski_ekle(16, 5, 13);
+                iliski_ekle(10, 6, 60);
+                iliski_ekle(6, 6, 2);
+                iliski_ekle(17, 6, 250);
+                iliski_ekle(18, 6, 6);
+                iliski_ekle(19, 6, 6);
+                iliski_ekle(20, 7, 250);
+                iliski_ekle(21, 7, 50);
+                iliski_ekle(6, 7, 2);
+                iliski_ekle(11, 7, 13);
+                iliski_ekle(1, 8, 100);
+                iliski_ekle(5, 8, 1);
+                iliski_ekle(3, 8, 6);
+                iliski_ekle(22, 8, 13);
+                iliski_ekle(16, 8, 6);
+                iliski_ekle(23, 9, 160);
+                iliski_ekle(24, 9, 20);
+                iliski_ekle(16, 9, 13);
+                iliski_ekle(25, 10, 13);
+                iliski_ekle(5, 10, 1);
+                iliski_ekle(6, 10, 2);
+                iliski_ekle(3, 10, 6);
+                iliski_ekle(26, 10, 20);
+                iliski_ekle(24, 10, 6);
+                iliski_ekle(26, 10, 6);
+                iliski_ekle(6, 11, 2);
+                iliski_ekle(10, 11, 50);
+                iliski_ekle(11, 11, 10);
+                iliski_ekle(12, 11, 20);
             }
             catch (Exception ex)
             {
@@ -319,8 +391,8 @@ namespace YazLab1_1
             foreach (DataRow row in table.Rows)
             {
                 //resim
-                //string default_path = "C:/Users/ardah/Desktop/proje22/images/404.png";
-                string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
+                string default_path = "C:/Users/ardah/Desktop/proje22/images/404.png";
+                //string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
 
                 string pictureBoxName = "pictureBoxTarif" + num.ToString();
                 PictureBox pic_name = this.Controls.Find(pictureBoxName, true).FirstOrDefault() as PictureBox;
