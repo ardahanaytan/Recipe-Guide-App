@@ -1,6 +1,6 @@
 ﻿namespace YazLab1_1
 {
-    partial class FormTarifOnerme
+    partial class FormAramaListeleme
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTarifOnerme));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAramaListeleme));
             panel13 = new Panel();
             labelEslesmeYuzdesi3 = new Label();
             labelYuzde3 = new Label();
@@ -71,8 +71,8 @@
             pictureBoxTarif2 = new PictureBox();
             panel11 = new Panel();
             labelEslesmeYuzdesi1 = new Label();
-            labelYuzde1 = new Label();
             pictureBox1 = new PictureBox();
+            labelYuzde1 = new Label();
             pictureBox19 = new PictureBox();
             richTextBoxEksik11 = new Krypton.Toolkit.KryptonRichTextBox();
             richTextBoxTalimat11 = new Krypton.Toolkit.KryptonRichTextBox();
@@ -140,19 +140,19 @@
             panel13.Controls.Add(labelKategori3);
             panel13.Controls.Add(labelName3);
             panel13.Controls.Add(pictureBoxTarif3);
-            panel13.Location = new Point(649, 8);
+            panel13.Location = new Point(650, 10);
             panel13.Name = "panel13";
             panel13.Size = new Size(312, 561);
-            panel13.TabIndex = 87;
+            panel13.TabIndex = 82;
             // 
             // labelEslesmeYuzdesi3
             // 
             labelEslesmeYuzdesi3.AutoSize = true;
             labelEslesmeYuzdesi3.Location = new Point(119, 18);
             labelEslesmeYuzdesi3.Name = "labelEslesmeYuzdesi3";
-            labelEslesmeYuzdesi3.Size = new Size(38, 15);
-            labelEslesmeYuzdesi3.TabIndex = 93;
-            labelEslesmeYuzdesi3.Text = "label1";
+            labelEslesmeYuzdesi3.Size = new Size(44, 15);
+            labelEslesmeYuzdesi3.TabIndex = 81;
+            labelEslesmeYuzdesi3.Text = "label12";
             // 
             // labelYuzde3
             // 
@@ -169,7 +169,7 @@
             pictureBox14.Location = new Point(81, 9);
             pictureBox14.Name = "pictureBox14";
             pictureBox14.Size = new Size(32, 32);
-            pictureBox14.TabIndex = 92;
+            pictureBox14.TabIndex = 80;
             pictureBox14.TabStop = false;
             // 
             // pictureBox21
@@ -348,7 +348,7 @@
             labelName3.TabIndex = 59;
             labelName3.Text = "Tarif Adı";
             labelName3.TextAlign = ContentAlignment.MiddleCenter;
-            labelName3.Click += labelName3_Click_1;
+            labelName3.Click += labelName3_Click;
             // 
             // pictureBoxTarif3
             // 
@@ -357,7 +357,7 @@
             pictureBoxTarif3.Size = new Size(254, 130);
             pictureBoxTarif3.TabIndex = 58;
             pictureBoxTarif3.TabStop = false;
-            pictureBoxTarif3.Click += pictureBoxTarif3_Click_1;
+            pictureBoxTarif3.Click += pictureBoxTarif3_Click;
             // 
             // panel12
             // 
@@ -380,10 +380,10 @@
             panel12.Controls.Add(labelKategori2);
             panel12.Controls.Add(labelName2);
             panel12.Controls.Add(pictureBoxTarif2);
-            panel12.Location = new Point(347, 8);
+            panel12.Location = new Point(351, 10);
             panel12.Name = "panel12";
             panel12.Size = new Size(299, 561);
-            panel12.TabIndex = 86;
+            panel12.TabIndex = 81;
             // 
             // labelEslesmeYuzdesi2
             // 
@@ -391,8 +391,8 @@
             labelEslesmeYuzdesi2.Location = new Point(119, 18);
             labelEslesmeYuzdesi2.Name = "labelEslesmeYuzdesi2";
             labelEslesmeYuzdesi2.Size = new Size(38, 15);
-            labelEslesmeYuzdesi2.TabIndex = 91;
-            labelEslesmeYuzdesi2.Text = "label1";
+            labelEslesmeYuzdesi2.TabIndex = 79;
+            labelEslesmeYuzdesi2.Text = "label5";
             // 
             // labelYuzde2
             // 
@@ -409,7 +409,7 @@
             pictureBox13.Location = new Point(81, 9);
             pictureBox13.Name = "pictureBox13";
             pictureBox13.Size = new Size(32, 32);
-            pictureBox13.TabIndex = 90;
+            pictureBox13.TabIndex = 78;
             pictureBox13.TabStop = false;
             // 
             // pictureBox20
@@ -588,7 +588,7 @@
             labelName2.TabIndex = 57;
             labelName2.Text = "Tarif Adı";
             labelName2.TextAlign = ContentAlignment.MiddleCenter;
-            labelName2.Click += labelName2_Click_1;
+            labelName2.Click += labelName2_Click;
             // 
             // pictureBoxTarif2
             // 
@@ -597,13 +597,13 @@
             pictureBoxTarif2.Size = new Size(254, 130);
             pictureBoxTarif2.TabIndex = 56;
             pictureBoxTarif2.TabStop = false;
-            pictureBoxTarif2.Click += pictureBoxTarif2_Click_1;
+            pictureBoxTarif2.Click += pictureBoxTarif2_Click;
             // 
             // panel11
             // 
             panel11.Controls.Add(labelEslesmeYuzdesi1);
-            panel11.Controls.Add(labelYuzde1);
             panel11.Controls.Add(pictureBox1);
+            panel11.Controls.Add(labelYuzde1);
             panel11.Controls.Add(pictureBox19);
             panel11.Controls.Add(richTextBoxEksik11);
             panel11.Controls.Add(richTextBoxTalimat11);
@@ -620,10 +620,10 @@
             panel11.Controls.Add(labelKategori1);
             panel11.Controls.Add(labelName1);
             panel11.Controls.Add(pictureBoxTarif1);
-            panel11.Location = new Point(62, 8);
+            panel11.Location = new Point(63, 10);
             panel11.Name = "panel11";
             panel11.Size = new Size(282, 561);
-            panel11.TabIndex = 85;
+            panel11.TabIndex = 80;
             // 
             // labelEslesmeYuzdesi1
             // 
@@ -631,8 +631,17 @@
             labelEslesmeYuzdesi1.Location = new Point(108, 18);
             labelEslesmeYuzdesi1.Name = "labelEslesmeYuzdesi1";
             labelEslesmeYuzdesi1.Size = new Size(38, 15);
-            labelEslesmeYuzdesi1.TabIndex = 89;
+            labelEslesmeYuzdesi1.TabIndex = 77;
             labelEslesmeYuzdesi1.Text = "label1";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(70, 9);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(32, 32);
+            pictureBox1.TabIndex = 76;
+            pictureBox1.TabStop = false;
             // 
             // labelYuzde1
             // 
@@ -642,15 +651,6 @@
             labelYuzde1.Size = new Size(44, 15);
             labelYuzde1.TabIndex = 75;
             labelYuzde1.Text = "label12";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(70, 9);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(32, 32);
-            pictureBox1.TabIndex = 88;
-            pictureBox1.TabStop = false;
             // 
             // pictureBox19
             // 
@@ -828,7 +828,7 @@
             labelName1.TabIndex = 55;
             labelName1.Text = "Tarif Adı";
             labelName1.TextAlign = ContentAlignment.MiddleCenter;
-            labelName1.Click += labelName1_Click_1;
+            labelName1.Click += labelName1_Click;
             // 
             // pictureBoxTarif1
             // 
@@ -837,31 +837,31 @@
             pictureBoxTarif1.Size = new Size(254, 130);
             pictureBoxTarif1.TabIndex = 54;
             pictureBoxTarif1.TabStop = false;
-            pictureBoxTarif1.Click += pictureBoxTarif1_Click_1;
+            pictureBoxTarif1.Click += pictureBoxTarif1_Click;
             // 
             // pictureBox3
             // 
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(967, 218);
+            pictureBox3.Location = new Point(968, 220);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(50, 50);
-            pictureBox3.TabIndex = 84;
+            pictureBox3.TabIndex = 79;
             pictureBox3.TabStop = false;
-            pictureBox3.Click += pictureBox3_Click_1;
+            pictureBox3.Click += pictureBox3_Click;
             // 
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(6, 218);
+            pictureBox2.Location = new Point(7, 220);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(50, 50);
-            pictureBox2.TabIndex = 83;
+            pictureBox2.TabIndex = 78;
             pictureBox2.TabStop = false;
-            pictureBox2.Click += pictureBox2_Click_1;
+            pictureBox2.Click += pictureBox2_Click;
             // 
             // buttonSayfa1
             // 
-            buttonSayfa1.Location = new Point(542, 575);
+            buttonSayfa1.Location = new Point(544, 577);
             buttonSayfa1.Name = "buttonSayfa1";
             buttonSayfa1.OverrideDefault.Back.Color1 = Color.FromArgb(108, 91, 123);
             buttonSayfa1.OverrideDefault.Back.Color2 = Color.FromArgb(108, 91, 123);
@@ -903,9 +903,9 @@
             buttonSayfa1.StateTracking.Content.ShortText.Color1 = Color.WhiteSmoke;
             buttonSayfa1.StateTracking.Content.ShortText.Color2 = Color.WhiteSmoke;
             buttonSayfa1.StateTracking.Content.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonSayfa1.TabIndex = 89;
+            buttonSayfa1.TabIndex = 84;
             buttonSayfa1.Values.Text = "Seç";
-            buttonSayfa1.Click += buttonSayfa1_Click_1;
+            buttonSayfa1.Click += buttonSayfa1_Click;
             // 
             // comboBoxSayfa1
             // 
@@ -913,7 +913,7 @@
             comboBoxSayfa1.DropDownWidth = 362;
             comboBoxSayfa1.IntegralHeight = false;
             comboBoxSayfa1.Items.AddRange(new object[] { "Kahvaltı", "Yemek", "Çorba", "Tatlı", "İçecek" });
-            comboBoxSayfa1.Location = new Point(388, 572);
+            comboBoxSayfa1.Location = new Point(390, 574);
             comboBoxSayfa1.Name = "comboBoxSayfa1";
             comboBoxSayfa1.Size = new Size(142, 38);
             comboBoxSayfa1.StateCommon.ComboBox.Back.Color1 = Color.FromArgb(108, 91, 123);
@@ -937,9 +937,9 @@
             comboBoxSayfa1.StateCommon.Item.Content.ShortText.Color1 = Color.WhiteSmoke;
             comboBoxSayfa1.StateCommon.Item.Content.ShortText.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxSayfa1.StateTracking.Item.Back.Color1 = Color.SlateBlue;
-            comboBoxSayfa1.TabIndex = 88;
+            comboBoxSayfa1.TabIndex = 83;
             // 
-            // FormTarifOnerme
+            // FormAramaListeleme
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -953,9 +953,9 @@
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox2);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "FormTarifOnerme";
-            Text = "FormTarifOnerme";
-            Load += FormTarifOnerme_Load;
+            Name = "FormAramaListeleme";
+            Text = "FormAramaListeleme";
+            Load += FormAramaListeleme_Load;
             panel13.ResumeLayout(false);
             panel13.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox14).EndInit();
@@ -1044,13 +1044,13 @@
         private PictureBox pictureBoxTarif1;
         private PictureBox pictureBox3;
         private PictureBox pictureBox2;
+        private Krypton.Toolkit.KryptonButton buttonSayfa1;
+        private Krypton.Toolkit.KryptonComboBox comboBoxSayfa1;
         private Label labelEslesmeYuzdesi3;
         private PictureBox pictureBox14;
         private Label labelEslesmeYuzdesi2;
         private PictureBox pictureBox13;
         private Label labelEslesmeYuzdesi1;
         private PictureBox pictureBox1;
-        private Krypton.Toolkit.KryptonButton buttonSayfa1;
-        private Krypton.Toolkit.KryptonComboBox comboBoxSayfa1;
     }
 }

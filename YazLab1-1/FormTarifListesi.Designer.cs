@@ -33,7 +33,6 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             dataGridViewTarifler = new DataGridView();
-            label1 = new Label();
             tarifID = new DataGridViewTextBoxColumn();
             tarifAdi = new DataGridViewTextBoxColumn();
             tarifKategori = new DataGridViewTextBoxColumn();
@@ -46,6 +45,7 @@
             GerekenFiyat = new DataGridViewTextBoxColumn();
             Düzenle = new DataGridViewButtonColumn();
             Sil = new DataGridViewButtonColumn();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTarifler).BeginInit();
             SuspendLayout();
             // 
@@ -95,17 +95,6 @@
             dataGridViewTarifler.TabIndex = 0;
             dataGridViewTarifler.CellContentClick += dataGridView1_CellContentClick;
             dataGridViewTarifler.CellPainting += dataGridViewTarifler_CellPainting;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.FromArgb(148, 132, 179);
-            label1.Font = new Font("Poppins Light", 36F, FontStyle.Italic, GraphicsUnit.Point);
-            label1.Location = new Point(346, 31);
-            label1.Name = "label1";
-            label1.Size = new Size(286, 84);
-            label1.TabIndex = 2;
-            label1.Text = "Tarif Listesi";
             // 
             // tarifID
             // 
@@ -195,12 +184,23 @@
             Sil.UseColumnTextForButtonValue = true;
             Sil.Width = 85;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.FromArgb(148, 132, 179);
+            label1.Font = new Font("Poppins Light", 36F, FontStyle.Italic, GraphicsUnit.Point);
+            label1.Location = new Point(346, 31);
+            label1.Name = "label1";
+            label1.Size = new Size(286, 84);
+            label1.TabIndex = 2;
+            label1.Text = "Tarif Listesi";
+            // 
             // FormTarifListesi
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(148, 132, 179);
-            ClientSize = new Size(1020, 624);
+            ClientSize = new Size(1024, 615);
             Controls.Add(dataGridViewTarifler);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;

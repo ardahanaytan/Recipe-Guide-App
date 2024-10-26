@@ -55,6 +55,7 @@ namespace YazLab1_1
                     float sahip_olunanlar = 0f;
                     string id = row["TarifID"].ToString();
                     //MessageBox.Show("id:" + id.ToString());
+                    int malzeme_sayisi = 0;
 
                     DataTable malzemeler = new DataTable();
                     try
@@ -90,6 +91,7 @@ namespace YazLab1_1
                         {
                             MessageBox.Show("Malzeme İsmi Alinirken Hata Oluştu:", ex3.Message);
                         }
+                        malzeme_sayisi += 1;
                         DataTable miktar_table = new DataTable();
                         if (malzeme_name.Rows.Count == 1)
                         {
@@ -258,6 +260,12 @@ namespace YazLab1_1
                             //yuzde
                             string yuzde_ = ((100 * sahip_olunanlar) / tum_miktar).ToString("F2") + '%';
 
+                            //gereken - olayi
+                            if (gereken < 0)
+                            {
+                                gereken *= -1;
+                            }
+
 
                             int row_num = dataGridViewTarifler.Rows.Add(id, ad, kategori, sure, yeterli_malzemeler, yetersiz_malzemeler, yuzde_, talimatlar, maliyet, gereken);
                             if (yetersiz_malzemeler == "Yok")
@@ -271,7 +279,7 @@ namespace YazLab1_1
                                 dataGridViewTarifler.Rows[row_num].DefaultCellStyle.ForeColor = Color.White; // İsteğe bağlı yazı rengi
                             }
 
-                            //maliyet
+                            //maliyet guncelle
                             try
                             {
                                 con.Open();
@@ -292,17 +300,31 @@ namespace YazLab1_1
                                 MessageBox.Show("maliyet guncelleme hatasi: " + ex6.Message);
                             }
 
+                            //malzeme miktar guncelle
+                            try
+                            {
+                                con.Open();
+                                string query_malzemeSayisiUpdate = @"UPDATE tarifler SET MalzemeSayisi= @MalzemeSayisi where TarifID= @TarifID";
+                                MySqlCommand cmd = new MySqlCommand(query_malzemeSayisiUpdate, con);
+                                cmd.Parameters.AddWithValue("@MalzemeSayisi", malzeme_sayisi);
+                                cmd.Parameters.AddWithValue("@TarifID", int.Parse(row["TarifID"].ToString()));
+                                int rowsAffected = cmd.ExecuteNonQuery();
+                                if (rowsAffected != 1)
+                                {
+                                    MessageBox.Show("güncelleme hatasi");
+                                }
+
+                                con.Close();
+                            }
+                            catch (Exception ex7)
+                            {
+                                MessageBox.Show("malzeme sayisi guncelleme hatasi: " + ex7.Message);
+                            }
+
 
 
                         }
                     }
-
-
-
-
-
-
-                    //dataGridViewTarifler.Invalidate(); // tekrar boyama?????????
                 }
             }
             catch (Exception ex1)

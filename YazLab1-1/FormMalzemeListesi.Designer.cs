@@ -161,7 +161,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(148, 132, 179);
-            ClientSize = new Size(1020, 624);
+            ClientSize = new Size(1024, 615);
             Controls.Add(label1);
             Controls.Add(dataGridViewMalzeme);
             FormBorderStyle = FormBorderStyle.None;

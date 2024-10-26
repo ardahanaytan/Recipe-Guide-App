@@ -112,7 +112,7 @@ namespace YazLab1_1
                 string miktar = kryptonTextBoxToplamMiktar.Text;
 
                 //birim
-                if(comboBoxBirim.SelectedIndex < 0)
+                if (comboBoxBirim.SelectedIndex < 0)
                 {
                     MessageBox.Show("Yanlış seçim");
                     return;

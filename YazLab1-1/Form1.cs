@@ -4,6 +4,7 @@ using MySql.Data.MySqlClient;
 using System.Runtime.InteropServices;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using Krypton.Toolkit;
+using Org.BouncyCastle.Asn1.Smime;
 //using ComponentFactory.Krypton.Toolkit;
 
 namespace YazLab1_1
@@ -12,9 +13,9 @@ namespace YazLab1_1
 
     public partial class Form1 : Form
     {
-        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
+        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
 
-        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
+        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
         MySqlCommand cmd;
         MySqlDataAdapter adapter;
         DataTable dt;
@@ -101,7 +102,7 @@ namespace YazLab1_1
 
         }
 
-        public void tarif_ekle(string tarif_adi, string kategori, int hazirlamaSuresi, string talimatlar, float maliyet, string path)
+        public void tarif_ekle(string tarif_adi, string kategori, int hazirlamaSuresi, string talimatlar, float maliyet, string path, int malzemeSayisi)
         {
             try
             {
@@ -121,7 +122,7 @@ namespace YazLab1_1
                 }
                 //tarif ekle
                 con.Open();
-                string query_tarifEkle = @"insert into tarifler (TarifAdi, Kategori, HazirlamaSuresi, Talimatlar, Maliyet, Path) values (@TarifAdi, @Kategori, @HazirlamaSuresi, @Talimatlar, @Maliyet, @Path)";
+                string query_tarifEkle = @"insert into tarifler (TarifAdi, Kategori, HazirlamaSuresi, Talimatlar, Maliyet, Path, MalzemeSayisi) values (@TarifAdi, @Kategori, @HazirlamaSuresi, @Talimatlar, @Maliyet, @Path, @MalzemeSayisi)";
                 cmd = new MySqlCommand(query_tarifEkle, con);
                 cmd.Parameters.AddWithValue("@TarifAdi", tarif_adi);
                 cmd.Parameters.AddWithValue("@Kategori", kategori);
@@ -129,6 +130,8 @@ namespace YazLab1_1
                 cmd.Parameters.AddWithValue("@Talimatlar", talimatlar);
                 cmd.Parameters.AddWithValue("@Maliyet", 0f);
                 cmd.Parameters.AddWithValue("@Path", path);
+                cmd.Parameters.AddWithValue("@MalzemeSayisi", 0);
+
                 cmd.ExecuteNonQuery();
                 con.Close();
 
@@ -148,21 +151,21 @@ namespace YazLab1_1
                 //string tarif_adi, string kategori, int hazirlamaSuresi, string talimatlar
                 //Kahvaltı
                 //1-10
-                tarif_ekle("Kahveli Yulaf Lapası", "Kahvaltı", 20, "1. Küçük bir tencereye yulaf ezmesini ve sütü ekliyoruz.\r\n2. Altını açarak kaynayana kadar ara ara karıştırarak pişiriyoruz.\r\n3. Kaynadıktan sonra altını kapatarak üzerine kahve ve tarçını ekliyoruz.\r\n4. Kahve eriyip yulaf lapasına iyice karışana kadar karıştırıyoruz.\r\n5. Üzerine muz dilimleri veya kuruyemiş ekleyebilirsiniz. \r\n(Bu eklemeler kalori değerini arttıracaktır!)\r\n", 0f, "");
-                tarif_ekle("Unsuz Muzlu Pankek", "Kahvaltı", 12, "1. Muzu çatal yardımıyla ezerek püre kıvamına getiriyoruz.\r\n2. Yumurtaları muz püresinin üzerine kırarak iyice çırpıyoruz.\r\n3. Tavayı yağladıktan sonra harcımızdan her seferinde birer \r\nyemek kaşığı alarak tavaya ekliyoruz.\r\n4. Üst kısmında kabarcıklar oluştuğunda çevirip diğer \r\nyüzünü de pişiriyoruz.\r\n", 0f, "");
-                tarif_ekle("Kahveli Pankek", "Kahvaltı", 15, "1. Yulaf ezmesini blender yardımıyla un haline getiriyoruz.\r\n2. Tüm malzemeleri karıştırıp iyice çırparak homojen bir \r\nkıvama getiriyoruz.\r\n3. Yapışmaz yüzeyli tavayı ısıttıktan sonra harcımızı birer \r\nkaşık birer kaşık olarak tavaya ekliyoruz.\r\n4. Üst kısmında kabarcıklar çıktığında pankekleri çevirerek \r\ndiğer yüzlerini de pişiriyoruz.\r\n", 0f, "");
-                tarif_ekle("Lor Tava", "Kahvaltı", 8, "1. Tavada tereyağını eritiyoruz.\r\n2. Üzerine lor peynirini ekleyip 1 dakika kadar pişiriyoruz.\r\n3. Domates püresini ekleyip birkaç dakika karıştırarak pişiriyoruz.\r\n4. Son olarak üzerine istediğimiz baharatları ekleyerek lezzetlendiriyoruz.\r\n", 0f, "");
-                tarif_ekle("Ev Yapımı Notella", "Kahvaltı", 15, "1. Fındıkları bir tavaya alarak birkaç dakika kavuruyoruz.\r\n2. Hurmaları 15 dakika kadar sıcak suda bekletip çekirdeklerini ayırıyoruz.\r\n3. Fındıkların üzerine 1 yemek kaşığı kadar hurma suyundan ekleyip blenderdan geçiriyoruz.\r\n4. Hurmaları, balı ve kakaoyu da blender kabına ekleyip tekrar blenderdan geçiriyoruz. Bu aşamada hurma suyundan ekleyerek fındık kremanızı istediğiniz kıvama getirebilirsiniz.\r\n", 0f, "");
-                tarif_ekle("Mantarlı Fit Omlet", "Kahvaltı", 13, "1. Mantarların zarlarını soyup dilimliyoruz.\r\n2. Tavanın altını ısıtıp zeytinyağını da koyduktan sonra mantarları bir kaşık yardımıyla çevirerek birkaç dakika pişiriyoruz.\r\n3. Yumurtaları çırpıp mantarların üzerine döküyoruz ve tavanın üzerini kapatıyoruz.\r\n4. Tavadaki karışımın alt tabanı piştikten sonra üzerine lor peynirlerini de ekleyip kapağını tekrar kapatıyoruz ve üst kısmının da pişmesini sağlıyoruz.\r\n5. Son olarak üzerine pul biber veya istediğiniz farklı baharatları ekleyerek servis edebilirsiniz.\r\n", 0f, "");
-                tarif_ekle("Ispanaklı ve Peynirli Omlet", "Kahvaltı", 13, "1. Ispanakları iyice yıkayıp ince ince doğruyoruz.\r\n2. Beyaz peyniri de küçük parçalar halinde doğrayıp ıspanakla karıştırıyoruz.\r\n3. Yapışmaz yüzeyli tavayı ısıttıktan sonra ıspanak ve peynir karışımını peynirler yumuşayana kadar pişiriyoruz. (Tereyağı kullanacaksanız bu aşamada ekleyebilirsiniz.)\r\n4. Üzerine yumurtaları da ekleyip karıştırarak pişiriyoruz.\r\n", 0f, "");
-                tarif_ekle("Muzlu Yulaf Lapası", "Kahvaltı", 7, "1. Yulaf ezmesini bir kaseye alıp üzerine yulafları kaplayacak kadar sıcak su ekliyoruz. 5 dakika kadar yulafın yumuşamasını bekliyoruz. (Süreci hızlandırmak için kasenin üzerini bir tabak yardımıyla kapatabilirsiniz.)\r\n2. Yulaflar yumuşadıktan sonra üzerine tarçın ve keçiboynuzu unu (veya bal) ekliyoruz. İyice karıştırıyoruz.\r\n3. Muzları dilimleyerek kaseye alıyoruz.\r\n", 0f, "");
-                tarif_ekle("Fıstık Ezmesi", "Kahvaltı", 15, "1. Fıstıkların kabukları soyulur ve tavada 5 dakika kadar kavrulur.\r\n2. Rondo veya blender yardımıyla iyice parçalanır.\r\n3. İsteğe göre bal ekleyerek tatlandırılır ve yağ ekleyerek akışkan kıvama getirilir.\r\n4. İyice karıştırılır, afiyet olsun!\r\n", 0f, "");
-                tarif_ekle("Tahinli Unsuz Pankek", "Kahvaltı", 15, "1. Susamları tavada birkaç dakika ısıtıyoruz, rengi biraz karardıktan sonra ateşten alıp kenara koyuyoruz.\r\n2. Muzu çatal yardımıyla ezerek püre haline getiriyoruz.\r\n3. Muz püresinin üzerine yumurtaları kırıyoruz ve iyice çırpıyoruz. İyice çırptıktan sonra tarçın ve tahini de karışımın üzerine ekliyoruz.\r\n4. Tavayı yağlayıp biraz ısıtıyoruz. Daha sonra harcımızı tavaya alarak pişiriyoruz. (Tüm harcı tek pankek olarak pişirmeye çalışmayın, çevirmesi zor olacaktır. Bir yemek kaşıklık boyutlarda alarak pişirebilirsiniz.)\r\n5. Pişirirken pankeklerin üst kısmında kabarcıklar oluştuğunda çevirebilirsiniz.\r\n6. Pişen pankekleri tabağımıza aldıktan sonra üzerine bal ve kavurduğumuz susamları da ekliyoruz.\r\n", 0f, "");
+                tarif_ekle("Kahveli Yulaf Lapası", "Kahvaltı", 20, "1. Küçük bir tencereye yulaf ezmesini ve sütü ekliyoruz.\r\n2. Altını açarak kaynayana kadar ara ara karıştırarak pişiriyoruz.\r\n3. Kaynadıktan sonra altını kapatarak üzerine kahve ve tarçını ekliyoruz.\r\n4. Kahve eriyip yulaf lapasına iyice karışana kadar karıştırıyoruz.\r\n5. Üzerine muz dilimleri veya kuruyemiş ekleyebilirsiniz. \r\n(Bu eklemeler kalori değerini arttıracaktır!)\r\n", 0f, "", 0);
+                tarif_ekle("Unsuz Muzlu Pankek", "Kahvaltı", 12, "1. Muzu çatal yardımıyla ezerek püre kıvamına getiriyoruz.\r\n2. Yumurtaları muz püresinin üzerine kırarak iyice çırpıyoruz.\r\n3. Tavayı yağladıktan sonra harcımızdan her seferinde birer \r\nyemek kaşığı alarak tavaya ekliyoruz.\r\n4. Üst kısmında kabarcıklar oluştuğunda çevirip diğer \r\nyüzünü de pişiriyoruz.\r\n", 0f, "", 0);
+                tarif_ekle("Kahveli Pankek", "Kahvaltı", 15, "1. Yulaf ezmesini blender yardımıyla un haline getiriyoruz.\r\n2. Tüm malzemeleri karıştırıp iyice çırparak homojen bir \r\nkıvama getiriyoruz.\r\n3. Yapışmaz yüzeyli tavayı ısıttıktan sonra harcımızı birer \r\nkaşık birer kaşık olarak tavaya ekliyoruz.\r\n4. Üst kısmında kabarcıklar çıktığında pankekleri çevirerek \r\ndiğer yüzlerini de pişiriyoruz.\r\n", 0f, "", 0);
+                tarif_ekle("Lor Tava", "Kahvaltı", 8, "1. Tavada tereyağını eritiyoruz.\r\n2. Üzerine lor peynirini ekleyip 1 dakika kadar pişiriyoruz.\r\n3. Domates püresini ekleyip birkaç dakika karıştırarak pişiriyoruz.\r\n4. Son olarak üzerine istediğimiz baharatları ekleyerek lezzetlendiriyoruz.\r\n", 0f, "", 0);
+                tarif_ekle("Ev Yapımı Notella", "Kahvaltı", 15, "1. Fındıkları bir tavaya alarak birkaç dakika kavuruyoruz.\r\n2. Hurmaları 15 dakika kadar sıcak suda bekletip çekirdeklerini ayırıyoruz.\r\n3. Fındıkların üzerine 1 yemek kaşığı kadar hurma suyundan ekleyip blenderdan geçiriyoruz.\r\n4. Hurmaları, balı ve kakaoyu da blender kabına ekleyip tekrar blenderdan geçiriyoruz. Bu aşamada hurma suyundan ekleyerek fındık kremanızı istediğiniz kıvama getirebilirsiniz.\r\n", 0f, "", 0);
+                tarif_ekle("Mantarlı Fit Omlet", "Kahvaltı", 13, "1. Mantarların zarlarını soyup dilimliyoruz.\r\n2. Tavanın altını ısıtıp zeytinyağını da koyduktan sonra mantarları bir kaşık yardımıyla çevirerek birkaç dakika pişiriyoruz.\r\n3. Yumurtaları çırpıp mantarların üzerine döküyoruz ve tavanın üzerini kapatıyoruz.\r\n4. Tavadaki karışımın alt tabanı piştikten sonra üzerine lor peynirlerini de ekleyip kapağını tekrar kapatıyoruz ve üst kısmının da pişmesini sağlıyoruz.\r\n5. Son olarak üzerine pul biber veya istediğiniz farklı baharatları ekleyerek servis edebilirsiniz.\r\n", 0f, "", 0);
+                tarif_ekle("Ispanaklı ve Peynirli Omlet", "Kahvaltı", 13, "1. Ispanakları iyice yıkayıp ince ince doğruyoruz.\r\n2. Beyaz peyniri de küçük parçalar halinde doğrayıp ıspanakla karıştırıyoruz.\r\n3. Yapışmaz yüzeyli tavayı ısıttıktan sonra ıspanak ve peynir karışımını peynirler yumuşayana kadar pişiriyoruz. (Tereyağı kullanacaksanız bu aşamada ekleyebilirsiniz.)\r\n4. Üzerine yumurtaları da ekleyip karıştırarak pişiriyoruz.\r\n", 0f, "", 0);
+                tarif_ekle("Muzlu Yulaf Lapası", "Kahvaltı", 7, "1. Yulaf ezmesini bir kaseye alıp üzerine yulafları kaplayacak kadar sıcak su ekliyoruz. 5 dakika kadar yulafın yumuşamasını bekliyoruz. (Süreci hızlandırmak için kasenin üzerini bir tabak yardımıyla kapatabilirsiniz.)\r\n2. Yulaflar yumuşadıktan sonra üzerine tarçın ve keçiboynuzu unu (veya bal) ekliyoruz. İyice karıştırıyoruz.\r\n3. Muzları dilimleyerek kaseye alıyoruz.\r\n", 0f, "", 0);
+                tarif_ekle("Fıstık Ezmesi", "Kahvaltı", 15, "1. Fıstıkların kabukları soyulur ve tavada 5 dakika kadar kavrulur.\r\n2. Rondo veya blender yardımıyla iyice parçalanır.\r\n3. İsteğe göre bal ekleyerek tatlandırılır ve yağ ekleyerek akışkan kıvama getirilir.\r\n4. İyice karıştırılır, afiyet olsun!\r\n", 0f, "", 0);
+                tarif_ekle("Tahinli Unsuz Pankek", "Kahvaltı", 15, "1. Susamları tavada birkaç dakika ısıtıyoruz, rengi biraz karardıktan sonra ateşten alıp kenara koyuyoruz.\r\n2. Muzu çatal yardımıyla ezerek püre haline getiriyoruz.\r\n3. Muz püresinin üzerine yumurtaları kırıyoruz ve iyice çırpıyoruz. İyice çırptıktan sonra tarçın ve tahini de karışımın üzerine ekliyoruz.\r\n4. Tavayı yağlayıp biraz ısıtıyoruz. Daha sonra harcımızı tavaya alarak pişiriyoruz. (Tüm harcı tek pankek olarak pişirmeye çalışmayın, çevirmesi zor olacaktır. Bir yemek kaşıklık boyutlarda alarak pişirebilirsiniz.)\r\n5. Pişirirken pankeklerin üst kısmında kabarcıklar oluştuğunda çevirebilirsiniz.\r\n6. Pişen pankekleri tabağımıza aldıktan sonra üzerine bal ve kavurduğumuz susamları da ekliyoruz.\r\n", 0f, "", 0);
                 //11-20
-                tarif_ekle("Protein Bohçası", "Kahvaltı", 13, "1. Lor peynirini ufalıyoruz ve üzerine domates püresini de ekleyip karıştırıyoruz.\r\n2. Yumurtaları başka bir kabın içine kırarak iyice çırpıyoruz.\r\n3. Tavamızı ısıttıktan sonra yağı ekliyoruz ve çırptığımız yumurtaları tavaya döküyoruz.\r\n4. Yumurtaların altı piştikten sonra üzerinin orta kısmına lor karışımını ekliyoruz.\r\n5. Ardından yumurtanın sağ ve sol kısmını içe doğru, yani lor karışımının üzerine doğru katlıyoruz.\r\n6. İç kısmı da piştikten sonra tabağımıza alıp üzerine kekik serpiyoruz.\r\n", 0f, "");
-                tarif_ekle("Tok Tutan Protein Tostu", "Kahvaltı", 8, "1. Kaşarları küçük küçük doğruyoruz.\r\n2. Lor peynirini domates suyuyla veya domates püresiyle biraz sulandırarak karıştırıyoruz.\r\n3. Ekmeği kestikten sonra alt ve üst katmana kaşarları, aralarına da lor peynirini koyuyoruz.\r\n4. Tost makinesinde pişirdikten sonra dilimliyoruz.\r\n", 0f, "");
-                tarif_ekle("Akşamdan Hazırlamalık Kahvaltı", "Kahvaltı", 3, "1. Yulaf ve sütü bir kaba ekleyerek 15 dakika kadar buzdolabında bekletiyoruz.\r\n2. Meyveleri dilimliyoruz, isteğe bağlı eklenecek diğer malzemelerle birlikte (fıstık ezmesi, hindistan cevizi, bal) yulaf karışımına ekliyoruz.\r\n3. Üzerini kapatarak akşamdan buzdolabına atıyoruz. Sabah dolaptan çıkarıp karıştırıyoruz.\r\n", 0f, "");
-                tarif_ekle("Fit Fransız Tostu", "Kahvaltı", 20, "1. Yumurtaları geniş bir kabın içine kırarak çırpıyoruz.\r\n2. Whey proteini sütle beraber iyice karıştırıyoruz.\r\n3. Tüm malzemeleri çırptığımız yumurtaların üzerine ekleyerek çırpıyoruz. (Bu aşamada blender da kullanabilirsiniz.)\r\n4. Tavayı ısıtıp yağlıyoruz.\r\n5. Tost ekmeklerini az önce hazırladığımız karışımın içine atarak ıslatıp iyice emdiriyoruz.\r\n6. Daha sonra tavaya alıyoruz ve çevirerek iki tarafını da kızartıyoruz.\r\n", 0f, "");
+                tarif_ekle("Protein Bohçası", "Kahvaltı", 13, "1. Lor peynirini ufalıyoruz ve üzerine domates püresini de ekleyip karıştırıyoruz.\r\n2. Yumurtaları başka bir kabın içine kırarak iyice çırpıyoruz.\r\n3. Tavamızı ısıttıktan sonra yağı ekliyoruz ve çırptığımız yumurtaları tavaya döküyoruz.\r\n4. Yumurtaların altı piştikten sonra üzerinin orta kısmına lor karışımını ekliyoruz.\r\n5. Ardından yumurtanın sağ ve sol kısmını içe doğru, yani lor karışımının üzerine doğru katlıyoruz.\r\n6. İç kısmı da piştikten sonra tabağımıza alıp üzerine kekik serpiyoruz.\r\n", 0f, "", 0);
+                tarif_ekle("Tok Tutan Protein Tostu", "Kahvaltı", 8, "1. Kaşarları küçük küçük doğruyoruz.\r\n2. Lor peynirini domates suyuyla veya domates püresiyle biraz sulandırarak karıştırıyoruz.\r\n3. Ekmeği kestikten sonra alt ve üst katmana kaşarları, aralarına da lor peynirini koyuyoruz.\r\n4. Tost makinesinde pişirdikten sonra dilimliyoruz.\r\n", 0f, "", 0);
+                tarif_ekle("Akşamdan Hazırlamalık Kahvaltı", "Kahvaltı", 3, "1. Yulaf ve sütü bir kaba ekleyerek 15 dakika kadar buzdolabında bekletiyoruz.\r\n2. Meyveleri dilimliyoruz, isteğe bağlı eklenecek diğer malzemelerle birlikte (fıstık ezmesi, hindistan cevizi, bal) yulaf karışımına ekliyoruz.\r\n3. Üzerini kapatarak akşamdan buzdolabına atıyoruz. Sabah dolaptan çıkarıp karıştırıyoruz.\r\n", 0f, "", 0);
+                tarif_ekle("Fit Fransız Tostu", "Kahvaltı", 20, "1. Yumurtaları geniş bir kabın içine kırarak çırpıyoruz.\r\n2. Whey proteini sütle beraber iyice karıştırıyoruz.\r\n3. Tüm malzemeleri çırptığımız yumurtaların üzerine ekleyerek çırpıyoruz. (Bu aşamada blender da kullanabilirsiniz.)\r\n4. Tavayı ısıtıp yağlıyoruz.\r\n5. Tost ekmeklerini az önce hazırladığımız karışımın içine atarak ıslatıp iyice emdiriyoruz.\r\n6. Daha sonra tavaya alıyoruz ve çevirerek iki tarafını da kızartıyoruz.\r\n", 0f, "", 0);
 
 
 
@@ -300,6 +303,7 @@ namespace YazLab1_1
                                     `Talimatlar` TEXT(5000) NOT NULL,
                                     `Path` TEXT(5000) NOT NULL,
                                     `Maliyet` FLOAT NOT NULL,
+                                    `MalzemeSayisi` INT NOT NULL,
                                     PRIMARY KEY (`TarifID`),
                                     UNIQUE INDEX `TarifID_UNIQUE` (`TarifID` ASC) VISIBLE);";
 
@@ -420,6 +424,20 @@ namespace YazLab1_1
             }
         }
 
+        private void AdjustFontSize(Label label)
+        {
+            Font font = label.Font;
+            float fontSize = font.Size;
+
+            //MessageBox.Show(label.PreferredWidth.ToString());
+            while (254 < label.Width && fontSize > 1)
+            {
+                fontSize -= 0.5f; // Boyutu küçült
+                label.Font = new Font(font.FontFamily, fontSize, font.Style);
+            }
+
+        }
+
 
         public void elementDoldurma(DataTable table)
         {
@@ -456,6 +474,7 @@ namespace YazLab1_1
                 //name
                 string labelName = "labelName" + num.ToString();
                 Label lbl_name = this.Controls.Find(labelName, true).FirstOrDefault() as Label;
+
                 if (lbl_name != null)
                 {
                     lbl_name.Text = row["TarifAdi"].ToString();
@@ -465,7 +484,7 @@ namespace YazLab1_1
                     MessageBox.Show("label name hatasi!");
 
                 }
-
+                this.AdjustFontSize(lbl_name);
                 //maliyet - eksik varsa miktar - malzemeler
 
                 float maliyet = 0f;
@@ -473,6 +492,7 @@ namespace YazLab1_1
                 string id = row["TarifID"].ToString();
                 float tum_miktar = 0f;
                 float sahip_olunanlar = 0f;
+                int malzeme_sayisi = 0;
 
                 DataTable malzemeler = new DataTable();
                 try
@@ -493,6 +513,7 @@ namespace YazLab1_1
                 string str_malzemeler = "";
                 foreach (DataRow row1 in malzemeler.Rows)
                 {
+
                     string malzeme_id_ = row1["MalzemeIDr"].ToString();
                     DataTable malzeme_name = new DataTable();
                     try
@@ -508,6 +529,7 @@ namespace YazLab1_1
                     {
                         MessageBox.Show("Malzeme İsmi Alinirken Hata Oluştu:", ex3.Message);
                     }
+                    malzeme_sayisi += 1;
                     DataTable miktar_table = new DataTable();
                     if (malzeme_name.Rows.Count == 1)
                     {
@@ -715,6 +737,7 @@ namespace YazLab1_1
                             MessageBox.Show("Maliyet label hatasi!");
                         }
 
+                        //maliyet guncellemesi
                         try
                         {
                             con.Open();
@@ -735,7 +758,31 @@ namespace YazLab1_1
                             MessageBox.Show("maliyet guncelleme hatasi: " + ex6.Message);
                         }
 
+                        //malzeme sayisi guncellemesi
+                        try
+                        {
+                            con.Open();
+                            string query_malzemeSayisiUpdate = @"UPDATE tarifler SET MalzemeSayisi= @MalzemeSayisi where TarifID= @TarifID";
+                            MySqlCommand cmd = new MySqlCommand(query_malzemeSayisiUpdate, con);
+                            cmd.Parameters.AddWithValue("@MalzemeSayisi", malzeme_sayisi);
+                            cmd.Parameters.AddWithValue("@TarifID", int.Parse(row["TarifID"].ToString()));
+                            int rowsAffected = cmd.ExecuteNonQuery();
+                            if (rowsAffected != 1)
+                            {
+                                MessageBox.Show("güncelleme hatasi");
+                            }
 
+                            con.Close();
+                        }
+                        catch (Exception ex7)
+                        {
+                            MessageBox.Show("malzeme sayisi guncelleme hatasi: " + ex7.Message);
+                        }
+
+                        if (gereken < 0)
+                        {
+                            gereken *= -1;
+                        }
                         //eksik
                         string labelEksikName = "labelGereken" + num.ToString();
                         Label eksikLabel = this.Controls.Find(labelEksikName, true).FirstOrDefault() as Label;
@@ -868,6 +915,7 @@ namespace YazLab1_1
             dt_tarif.Columns.Add("Talimatlar", typeof(string));
             dt_tarif.Columns.Add("Maliyet", typeof(float));
             dt_tarif.Columns.Add("Path", typeof(string));
+            dt_tarif.Columns.Add("MalzemeSayisi", typeof(int));
             try
             {
                 int sayfaBasinaTarif = 3;
@@ -883,7 +931,8 @@ namespace YazLab1_1
                         int.Parse(table.Rows[i]["HazirlamaSuresi"].ToString()),
                         table.Rows[i]["Talimatlar"].ToString(),
                         float.Parse(table.Rows[i]["Maliyet"].ToString()),
-                        table.Rows[i]["Path"].ToString()
+                        table.Rows[i]["Path"].ToString(),
+                        int.Parse(table.Rows[i]["MalzemeSayisi"].ToString())
                  );
                 }
 
@@ -999,7 +1048,7 @@ namespace YazLab1_1
         {
             if (arama == null)
             {
-                arama = new FormArama();
+                arama = new FormArama(this);
                 arama.FormClosed += Arama_FormClosed;
                 arama.MdiParent = this;
                 arama.Show();
@@ -1009,6 +1058,9 @@ namespace YazLab1_1
                 arama.Activate();
             }
             panelAnaManu.Visible = false;
+            panel2.Visible = false;
+            pictureBox22.Visible = false;
+            pictureBox23.Visible = false;
         }
 
         private void Arama_FormClosed(object? sender, FormClosedEventArgs e)
@@ -1020,7 +1072,7 @@ namespace YazLab1_1
         {
             if (tarifOnerme == null)
             {
-                tarifOnerme = new FormTarifOnerme();
+                tarifOnerme = new FormTarifOnerme(this);
                 tarifOnerme.FormClosed += TarifOnerme_FormClosed;
                 tarifOnerme.MdiParent = this;
                 tarifOnerme.Dock = DockStyle.Fill;
@@ -1031,6 +1083,9 @@ namespace YazLab1_1
                 tarifOnerme.Activate();
             }
             panelAnaManu.Visible = false;
+            panel2.Visible = false;
+            pictureBox22.Visible = false;
+            pictureBox23.Visible = false;
         }
 
         private void TarifOnerme_FormClosed(object? sender, FormClosedEventArgs e)
@@ -1055,6 +1110,9 @@ namespace YazLab1_1
                 tarifListesi.Activate();
             }
             panelAnaManu.Visible = false;
+            panel2.Visible = false;
+            pictureBox22.Visible = false;
+            pictureBox23.Visible = false;
         }
 
         private void TarifListesi_FormClosed(object? sender, FormClosedEventArgs e)
@@ -1080,27 +1138,30 @@ namespace YazLab1_1
 
                 try
                 {
-                    
-                   DataTable dt = new DataTable();
-                   con.Open();
-                   string query_comboDoldur = @"SELECT MalzemeAdi from malzemeler";
-                   adapter = new MySqlDataAdapter(query_comboDoldur, con);
-                   adapter.Fill(dt);
-                   con.Close();
+
+                    DataTable dt = new DataTable();
+                    con.Open();
+                    string query_comboDoldur = @"SELECT MalzemeAdi from malzemeler";
+                    adapter = new MySqlDataAdapter(query_comboDoldur, con);
+                    adapter.Fill(dt);
+                    con.Close();
 
                     tarifEkleme.comboBoxMalzemeSecimi1.Items.Clear(); //temizleme
-                   foreach (DataRow row in dt.Rows)
-                   {
+                    foreach (DataRow row in dt.Rows)
+                    {
                         tarifEkleme.comboBoxMalzemeSecimi1.Items.Add(row["MalzemeAdi"].ToString());
-                   }                    
+                    }
                 }
-                catch(Exception ex1)
+                catch (Exception ex1)
                 {
                     MessageBox.Show("malzeme combobox guncelleme hatası: " + ex1.Message);
                 }
 
             }
             panelAnaManu.Visible = false;
+            panel2.Visible = false;
+            pictureBox22.Visible = false;
+            pictureBox23.Visible = false;
         }
 
         private void TarifEkleme_FormClosed(object? sender, FormClosedEventArgs e)
@@ -1124,6 +1185,9 @@ namespace YazLab1_1
                 malzemeListesi.tabloGuncelle("select * from malzemeler ORDER BY MalzemeAdi ASC");
             }
             panelAnaManu.Visible = false;
+            panel2.Visible = false;
+            pictureBox22.Visible = false;
+            pictureBox23.Visible = false;
         }
 
         private void malzemeListesi_FormClosed(object? sender, FormClosedEventArgs e)
@@ -1146,6 +1210,9 @@ namespace YazLab1_1
                 malzemeEkleme.Activate();
             }
             panelAnaManu.Visible = false;
+            panel2.Visible = false;
+            pictureBox22.Visible = false;
+            pictureBox23.Visible = false;
         }
 
         private void malzemeEkleme_FormClosed(object? sender, FormClosedEventArgs e)
@@ -1253,6 +1320,8 @@ namespace YazLab1_1
             dt_tarif.Columns.Add("Talimatlar", typeof(string));
             dt_tarif.Columns.Add("Maliyet", typeof(float));
             dt_tarif.Columns.Add("Path", typeof(string));
+            dt_tarif.Columns.Add("MalzemeSayisi", typeof(int));
+
             try
             {
                 int sayfaBasinaTarif = 3;
@@ -1268,7 +1337,8 @@ namespace YazLab1_1
                         int.Parse(table.Rows[i]["HazirlamaSuresi"].ToString()),
                         table.Rows[i]["Talimatlar"].ToString(),
                         float.Parse(table.Rows[i]["Maliyet"].ToString()),
-                        table.Rows[i]["Path"].ToString()
+                        table.Rows[i]["Path"].ToString(),
+                        int.Parse(table.Rows[i]["MalzemeSayisi"].ToString())
                         );
                 }
                 this.elementDoldurma(dt_tarif);
@@ -1315,6 +1385,7 @@ namespace YazLab1_1
             dt_tarif.Columns.Add("Talimatlar", typeof(string));
             dt_tarif.Columns.Add("Maliyet", typeof(float));
             dt_tarif.Columns.Add("Path", typeof(string));
+            dt_tarif.Columns.Add("MalzemeSayisi", typeof(int));
             try
             {
                 int sayfaBasinaTarif = 3;
@@ -1330,7 +1401,8 @@ namespace YazLab1_1
                         int.Parse(table.Rows[i]["HazirlamaSuresi"].ToString()),
                         table.Rows[i]["Talimatlar"].ToString(),
                         float.Parse(table.Rows[i]["Maliyet"].ToString()),
-                        table.Rows[i]["Path"].ToString()
+                        table.Rows[i]["Path"].ToString(),
+                        int.Parse(table.Rows[i]["MalzemeSayisi"].ToString())
                         );
                 }
                 this.elementDoldurma(dt_tarif);
@@ -1354,6 +1426,9 @@ namespace YazLab1_1
             sayfayiDoldur(@"select * from tarifler ORDER BY TarifAdi ASC");
 
             this.anaQuery = @"select * from tarifler ORDER BY TarifAdi ASC";
+            panel2.Visible = true;
+            pictureBox22.Visible = true;
+            pictureBox23.Visible = true;
         }
 
         public void nameToForm(string name)
@@ -1434,8 +1509,9 @@ namespace YazLab1_1
                 con.Close();
 
                 //sayfayi tekrar doldur
-                this.sayfayiDoldur(this.anaQuery);
                 this.anaQuery = @"select * from tarifler ORDER BY TarifAdi ASC";
+                this.sayfayiDoldur(this.anaQuery);
+
 
             }
             catch (Exception e)
@@ -1523,6 +1599,7 @@ namespace YazLab1_1
             dt_tarif.Columns.Add("Talimatlar", typeof(string));
             dt_tarif.Columns.Add("Maliyet", typeof(float));
             dt_tarif.Columns.Add("Path", typeof(string));
+            dt_tarif.Columns.Add("MalzemeSayisi", typeof(int));
             try
             {
                 int sayfaBasinaTarif = 3;
@@ -1538,7 +1615,8 @@ namespace YazLab1_1
                         int.Parse(table.Rows[i]["HazirlamaSuresi"].ToString()),
                         table.Rows[i]["Talimatlar"].ToString(),
                         float.Parse(table.Rows[i]["Maliyet"].ToString()),
-                        table.Rows[i]["Path"].ToString()
+                        table.Rows[i]["Path"].ToString(),
+                        int.Parse(table.Rows[i]["MalzemeSayisi"].ToString())
                         );
                 }
                 //MessageBox.Show("sayi:" + dt_tarif.Rows.Count);
@@ -1771,8 +1849,185 @@ namespace YazLab1_1
             this.deneme2_MaliyetCokAz();
         }
 
+        private void kryptonButton3_Click(object sender, EventArgs e)
+        {
+            //Malzeme
+            string minMalzemeSayisi = textBoxMalzemeMin.Text;
+            string maxMalzemeSayisi = textBoxMalzemeMax.Text;
+
+            int minMalzemeSayi_int = 0;
+            int maxMalzemeSayi_int = 0;
+
+            if (!int.TryParse(minMalzemeSayisi, out minMalzemeSayi_int))
+            {
+                Console.WriteLine("min malzeme geçerli bir int değil!");
+                return;
+            }
+
+            if (!int.TryParse(maxMalzemeSayisi, out maxMalzemeSayi_int))
+            {
+                Console.WriteLine("max malzeme geçerli bir int değil!");
+                return;
+            }
+
+            if (minMalzemeSayi_int <= 0)
+            {
+                Console.WriteLine("min malzeme sayisi 0 ve 0'dan küçük olmamali");
+                return;
+            }
+
+            if (maxMalzemeSayi_int <= 0)
+            {
+                Console.WriteLine("max malzeme sayisi 0 ve 0'dan küçük olmamali");
+                return;
+            }
+
+            if (minMalzemeSayi_int > maxMalzemeSayi_int)
+            {
+                Console.WriteLine("min maxdan büyük olmamai");
+                return;
+            }
+
+            DataTable malzemeSayisiTable = new DataTable();
+            try
+            {
+
+                con.Open();
+                string query_maliyetAzCok = "SELECT * FROM tarifler WHERE MalzemeSayisi BETWEEN " + minMalzemeSayi_int + " AND " + maxMalzemeSayi_int + " ORDER BY MalzemeSayisi ASC";
+                adapter = new MySqlDataAdapter(query_maliyetAzCok, con);
+                adapter.Fill(malzemeSayisiTable);
+                con.Close();
+
+                if (malzemeSayisiTable.Rows.Count > 0)
+                {
+                    this.table_ile_doldurma(malzemeSayisiTable);
+                    this.anaQuery = query_maliyetAzCok;
+                }
+                else
+                {
+                    MessageBox.Show("Uygun tarifler bulunamadı!");
+                }
+
+            }
+            catch (Exception ex1)
+            {
+                MessageBox.Show("sure azcok hatasi: " + ex1.Message);
+            }
 
 
 
+        }
+
+        private void kryptonButton5_Click(object sender, EventArgs e)
+        {
+            //Kategori
+            if (checkedListBoxKategori.CheckedItems.Count <= 0)
+            {
+                MessageBox.Show("Filtreleyeceğiniz kategorileri seçin.");
+            }
+
+            try
+            {
+                DataTable kategoriTable = new DataTable();
+
+                List<string> selectedCategories = new List<string>();
+                foreach (var item in checkedListBoxKategori.CheckedItems)
+                {
+                    selectedCategories.Add("'" + item.ToString() + "'"); // Kategorileri tek tırnak içinde ekliyoruz
+                }
+                string categories = string.Join(", ", selectedCategories);
+                //SELECT * FROM tarifler WHERE Kategori IN ('x1', 'x2', 'x3');
+                con.Open();
+                string query_kategoriCheckList = "SELECT * FROM tarifler WHERE Kategori IN (" + categories + ")";
+                adapter = new MySqlDataAdapter(query_kategoriCheckList, con);
+                adapter.Fill(kategoriTable);
+                con.Close();
+
+                if (kategoriTable.Rows.Count > 0)
+                {
+                    this.table_ile_doldurma(kategoriTable);
+                    this.anaQuery = query_kategoriCheckList;
+                }
+                else
+                {
+                    MessageBox.Show("Uygun tarifler bulunamadı!");
+                }
+
+            }
+            catch (Exception ex1)
+            {
+                MessageBox.Show("sure azcok hatasi: " + ex1.Message);
+            }
+
+
+
+        }
+
+        private void kryptonButton4_Click(object sender, EventArgs e)
+        {
+            //Maliyet
+
+            string minMaliyetSayisi = textBoxMaliyetMin.Text;
+            string maxMaliyetSayisi = textBoxMaliyetMax.Text;
+
+            int minMaliyetSayi_int = 0;
+            int maxMaliyetSayi_int = 0;
+
+            if (!int.TryParse(minMaliyetSayisi, out minMaliyetSayi_int))
+            {
+                Console.WriteLine("min maliyet geçerli bir int değil!");
+                return;
+            }
+
+            if (!int.TryParse(maxMaliyetSayisi, out maxMaliyetSayi_int))
+            {
+                Console.WriteLine("max maliyet geçerli bir int değil!");
+                return;
+            }
+
+            if (minMaliyetSayi_int <= 0)
+            {
+                Console.WriteLine("min maliyet sayisi 0 ve 0'dan küçük olmamali");
+                return;
+            }
+
+            if (maxMaliyetSayi_int <= 0)
+            {
+                Console.WriteLine("max maliyet sayisi 0 ve 0'dan küçük olmamali");
+                return;
+            }
+
+            if (minMaliyetSayi_int > maxMaliyetSayi_int)
+            {
+                Console.WriteLine("min maxdan büyük olmamai");
+                return;
+            }
+
+            DataTable maliyetSayisiTable = new DataTable();
+            try
+            {
+
+                con.Open();
+                string query_maliyetAzCok = "SELECT * FROM tarifler WHERE Maliyet BETWEEN " + minMaliyetSayi_int + " AND " + maxMaliyetSayi_int + " ORDER BY Maliyet ASC";
+                adapter = new MySqlDataAdapter(query_maliyetAzCok, con);
+                adapter.Fill(maliyetSayisiTable);
+                con.Close();
+
+                if (maliyetSayisiTable.Rows.Count > 0)
+                {
+                    this.table_ile_doldurma(maliyetSayisiTable);
+                    this.anaQuery = query_maliyetAzCok;
+                }
+                else
+                {
+                    MessageBox.Show("Uygun tarifler bulunamadı!");
+                }
+
+            }
+            catch (Exception ex1)
+            {
+                MessageBox.Show("sure azcok hatasi: " + ex1.Message);
+            }
+        }
     }
 }

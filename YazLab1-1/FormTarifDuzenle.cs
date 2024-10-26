@@ -594,6 +594,6 @@ namespace YazLab1_1
             }
         }
 
-        
+
     }
 }

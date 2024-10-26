@@ -222,7 +222,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(148, 132, 179);
-            ClientSize = new Size(1012, 620);
+            ClientSize = new Size(1024, 615);
             Controls.Add(buttonMalzemeEkle1);
             Controls.Add(comboBoxMalzemeBirimi1);
             Controls.Add(textBoxBirimFiyat1);

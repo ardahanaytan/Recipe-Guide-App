@@ -12,7 +12,7 @@ using Krypton.Toolkit;
 
 namespace YazLab1_1
 {
-    public partial class FormTarifOnerme : Form
+    public partial class FormAramaListeleme : Form
     {
         MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
 
@@ -23,17 +23,20 @@ namespace YazLab1_1
 
         TarifEkrani tarifEkrani;
         Form1 form1_;
-        Dictionary<int, float> dict_;
+        //Panel manu_;
 
-        public FormTarifOnerme()
+        Dictionary<int, float> dict_;
+        public FormAramaListeleme()
         {
             InitializeComponent();
         }
 
-        public FormTarifOnerme(Form1 form1)
+        public FormAramaListeleme(Dictionary<int, float> dict, Form1 form1 ) //Panel manu
         {
             InitializeComponent();
+            this.dict_ = dict;
             this.form1_ = form1;
+            //this.manu_ = manu;
         }
 
         public void panelGorunurlukAyarlama(DataTable tarif)
@@ -530,6 +533,7 @@ namespace YazLab1_1
             }
         }
 
+
         public void sayfayiDoldur(DataTable table)
         {
             int len_tarif = table.Rows.Count;
@@ -590,104 +594,10 @@ namespace YazLab1_1
 
         }
 
-        private void FormTarifOnerme_Load(object sender, EventArgs e)
+        private void FormAramaListeleme_Load(object sender, EventArgs e)
         {
-            //dict oluştur tum malzemeli
-            try
-            {
-                DataTable tarifler = new DataTable();
-                con.Open();
-                string query_tarifleriAl = "select * from tarifler";
-                adapter = new MySqlDataAdapter(query_tarifleriAl, con);
-                adapter.Fill(tarifler);
-                con.Close();
+            //dict to datatable
 
-                Dictionary<int, float> tarif_iliski = new Dictionary<int, float>();
-                Dictionary<int, float> tarif_maliyet = new Dictionary<int, float>();
-
-
-                if (tarifler.Rows.Count <= 0)
-                {
-                    MessageBox.Show("Tarifler alinamadi");
-                    return;
-                }
-
-                foreach (DataRow row3 in tarifler.Rows)
-                {
-                    int malzeme_sayisi = 0;
-                    int tam_sayisi = 0;
-
-                    int tarif_id = int.Parse(row3["TarifID"].ToString());
-                    float tarif_maliyet_ = float.Parse(row3["Maliyet"].ToString());
-                    DataTable iliskiler = new DataTable();
-                    con.Open();
-                    string query_getIliskiler = "select * from iliski where TarifIDr=@TarifIDr";
-                    adapter = new MySqlDataAdapter(query_getIliskiler, con);
-                    adapter.SelectCommand.Parameters.AddWithValue("@TarifIDr", tarif_id);
-                    iliskiler.Clear();
-                    adapter.Fill(iliskiler);
-                    con.Close();
-
-                    if (iliskiler.Rows.Count <= 0)
-                    {
-                        MessageBox.Show("İlişkiler alinamadi");
-                        return;
-                    }
-                    malzeme_sayisi = iliskiler.Rows.Count;
-
-                    foreach (DataRow row4 in iliskiler.Rows)
-                    {
-                        int malzeme_id = int.Parse(row4["MalzemeIDr"].ToString());
-                        float gerekli_miktar = float.Parse(row4["MalzemeMiktar"].ToString());
-                        DataTable malzeme = new DataTable();
-                        con.Open();
-                        string query_getMalzemeler = "select * from malzemeler where MalzemeID=@MalzemeID";
-                        adapter = new MySqlDataAdapter(query_getMalzemeler, con);
-                        adapter.SelectCommand.Parameters.AddWithValue("@MalzemeID", malzeme_id);
-                        malzeme.Clear();
-                        adapter.Fill(malzeme);
-                        con.Close();
-
-                        if (malzeme.Rows.Count <= 0)
-                        {
-                            MessageBox.Show("Malzemeler alinamadi");
-                            return;
-                        }
-
-                        foreach (DataRow row5 in malzeme.Rows)
-                        {
-                            float sahipMiktar = float.Parse(row5["ToplamMiktar"].ToString());
-                            if (sahipMiktar >= gerekli_miktar)
-                            {
-                                tam_sayisi += 1;
-                            }
-                        }
-
-                    }
-
-
-                    tarif_iliski.Add(tarif_id, tam_sayisi * 100 / (float)malzeme_sayisi);
-                    tarif_maliyet.Add(tarif_id, tarif_maliyet_);
-
-                }
-
-                Dictionary<int, float> sortedTarifIliski = tarif_iliski
-                    .OrderByDescending(x => x.Value) // yuzdelere gore coktan aza
-                    .ThenBy(x => tarif_maliyet[x.Key]) //value'ler ayni ise maliyetleri azdan coga
-                    .ToDictionary(x => x.Key, x => x.Value);
-
-                this.dict_ = sortedTarifIliski;
-
-
-            }
-            catch (Exception ex1)
-            {
-                MessageBox.Show("tarifleri alma hatasi: " + ex1.Message);
-            }
-
-
-
-            //sonra devam
             DataTable dt_tarif = new DataTable();
             dt_tarif.Columns.Add("TarifID", typeof(int));
             dt_tarif.Columns.Add("TarifAdi", typeof(string));
@@ -736,57 +646,7 @@ namespace YazLab1_1
             sayfayiDoldur(dt_tarif);
         }
 
-        public void nameToForm(string name)
-        {
-            DataTable tarif = new DataTable();
-            int id = -1;
-            try
-            {
-                //MessageBox.Show(name.ToString());
-                con.Open();
-                string query_nameToTarif = @"select * from tarifler where TarifAdi = @TarifAdi";
-                adapter = new MySqlDataAdapter(query_nameToTarif, con);
-                adapter.SelectCommand.Parameters.AddWithValue("@TarifAdi", name);
-                adapter.Fill(tarif);
-                con.Close();
-
-
-
-                if (tarif.Rows.Count != 1)
-                {
-                    MessageBox.Show("tarif bulunurken hata!");
-                    return;
-                }
-
-                foreach (DataRow row in tarif.Rows)
-                {
-                    id = int.Parse(row["TarifID"].ToString());
-                }
-
-                tarifEkrani = new TarifEkrani(this.form1_, id);
-                tarifEkrani.FormClosed += tarifEkrani_FormClosed;
-                tarifEkrani.MdiParent = this.form1_;
-                tarifEkrani.Dock = DockStyle.Fill;
-                tarifEkrani.Show();
-
-
-                //panelAnaManu.Visible = false;
-
-
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("İsimden forma geçilirken hata: ", ex.Message);
-            }
-        }
-
-        private void tarifEkrani_FormClosed(object? sender, FormClosedEventArgs e)
-        {
-            tarifEkrani = null;
-        }
-
-        private void pictureBox2_Click_1(object sender, EventArgs e)
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
             //en sol mu kontrol - return
             int ComboBoxNum = comboBoxSayfa1.SelectedIndex + 1;
@@ -836,10 +696,9 @@ namespace YazLab1_1
             {
                 MessageBox.Show("5Sayfa doldurma hatası: " + ex1.Message);
             }
-
         }
 
-        private void pictureBox3_Click_1(object sender, EventArgs e)
+        private void pictureBox3_Click(object sender, EventArgs e)
         {
             //sag
 
@@ -894,10 +753,13 @@ namespace YazLab1_1
                 MessageBox.Show("5Sayfa doldurma hatası: " + ex1.Message);
             }
 
+
         }
 
-        private void buttonSayfa1_Click_1(object sender, EventArgs e)
+        private void buttonSayfa1_Click(object sender, EventArgs e)
         {
+
+
             DataTable dt_tarif = new DataTable();
             dt_tarif.Columns.Add("TarifID", typeof(int));
             dt_tarif.Columns.Add("TarifAdi", typeof(string));
@@ -938,37 +800,87 @@ namespace YazLab1_1
             }
         }
 
-        private void pictureBoxTarif1_Click_1(object sender, EventArgs e)
+        public void nameToForm(string name)
+        {
+            DataTable tarif = new DataTable();
+            int id = -1;
+            try
+            {
+                //MessageBox.Show(name.ToString());
+                con.Open();
+                string query_nameToTarif = @"select * from tarifler where TarifAdi = @TarifAdi";
+                adapter = new MySqlDataAdapter(query_nameToTarif, con);
+                adapter.SelectCommand.Parameters.AddWithValue("@TarifAdi", name);
+                adapter.Fill(tarif);
+                con.Close();
+
+
+
+                if (tarif.Rows.Count != 1)
+                {
+                    MessageBox.Show("tarif bulunurken hata!");
+                    return;
+                }
+
+                foreach (DataRow row in tarif.Rows)
+                {
+                    id = int.Parse(row["TarifID"].ToString());
+                }
+
+                tarifEkrani = new TarifEkrani(this.form1_, id);
+                tarifEkrani.FormClosed += tarifEkrani_FormClosed;
+                tarifEkrani.MdiParent = this.form1_;
+                tarifEkrani.Dock = DockStyle.Fill;
+                tarifEkrani.Show();
+
+
+                //panelAnaManu.Visible = false;
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("İsimden forma geçilirken hata: ", ex.Message);
+            }
+        }
+
+        private void tarifEkrani_FormClosed(object? sender, FormClosedEventArgs e)
+        {
+            tarifEkrani = null;
+        }
+
+        private void pictureBoxTarif1_Click(object sender, EventArgs e)
         {
             string name = labelName1.Text;
             this.nameToForm(name);
         }
 
-        private void pictureBoxTarif2_Click_1(object sender, EventArgs e)
+        private void pictureBoxTarif2_Click(object sender, EventArgs e)
         {
             string name = labelName2.Text;
             this.nameToForm(name);
         }
 
-        private void pictureBoxTarif3_Click_1(object sender, EventArgs e)
+        private void pictureBoxTarif3_Click(object sender, EventArgs e)
         {
             string name = labelName3.Text;
             this.nameToForm(name);
         }
 
-        private void labelName1_Click_1(object sender, EventArgs e)
+        private void labelName1_Click(object sender, EventArgs e)
         {
             string name = labelName1.Text;
             this.nameToForm(name);
         }
 
-        private void labelName2_Click_1(object sender, EventArgs e)
+        private void labelName2_Click(object sender, EventArgs e)
         {
             string name = labelName2.Text;
             this.nameToForm(name);
         }
 
-        private void labelName3_Click_1(object sender, EventArgs e)
+        private void labelName3_Click(object sender, EventArgs e)
         {
             string name = labelName3.Text;
             this.nameToForm(name);

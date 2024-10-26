@@ -281,7 +281,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(148, 132, 179);
-            ClientSize = new Size(1004, 585);
+            ClientSize = new Size(1024, 615);
             Controls.Add(labelYuzde);
             Controls.Add(kryptonPictureBox1);
             Controls.Add(richTextBoxEksikMalzemeler1);

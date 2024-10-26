@@ -33,11 +33,11 @@
             button1 = new Button();
             textBox1 = new TextBox();
             panel1 = new Panel();
+            pictureBox22 = new PictureBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
             panel2 = new Panel();
             textBoxArama = new TextBox();
             pictureBox23 = new PictureBox();
-            pictureBox22 = new PictureBox();
             pictureBox1 = new PictureBox();
             label1 = new Label();
             menuCubuk = new FlowLayoutPanel();
@@ -58,6 +58,19 @@
             menuCubukTimer = new System.Windows.Forms.Timer(components);
             panelAnaManu = new Panel();
             panelFiltre = new Panel();
+            checkedListBoxKategori = new CheckedListBox();
+            kryptonButton5 = new Krypton.Toolkit.KryptonButton();
+            label18 = new Label();
+            kryptonButton4 = new Krypton.Toolkit.KryptonButton();
+            label16 = new Label();
+            textBoxMaliyetMax = new TextBox();
+            textBoxMaliyetMin = new TextBox();
+            label17 = new Label();
+            kryptonButton3 = new Krypton.Toolkit.KryptonButton();
+            label15 = new Label();
+            textBoxMalzemeMax = new TextBox();
+            textBoxMalzemeMin = new TextBox();
+            label14 = new Label();
             label13 = new Label();
             kryptonButtonMaliyetAzalan = new Krypton.Toolkit.KryptonButton();
             kryptonButtonMaliyetArtan = new Krypton.Toolkit.KryptonButton();
@@ -130,10 +143,11 @@
             pictureBox3 = new PictureBox();
             pictureBox2 = new PictureBox();
             label5 = new Label();
+            kryptonContextMenu1 = new Krypton.Toolkit.KryptonContextMenu();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox22).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox23).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox22).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             menuCubuk.SuspendLayout();
             panelAnaEkran.SuspendLayout();
@@ -208,6 +222,16 @@
             panel1.TabIndex = 2;
             panel1.MouseDown += panel1_MouseDown;
             // 
+            // pictureBox22
+            // 
+            pictureBox22.Image = (Image)resources.GetObject("pictureBox22.Image");
+            pictureBox22.Location = new Point(809, 4);
+            pictureBox22.Name = "pictureBox22";
+            pictureBox22.Size = new Size(32, 32);
+            pictureBox22.TabIndex = 4;
+            pictureBox22.TabStop = false;
+            pictureBox22.Click += pictureBox22_Click;
+            // 
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.BackColor = Color.White;
@@ -242,16 +266,6 @@
             pictureBox23.TabIndex = 5;
             pictureBox23.TabStop = false;
             pictureBox23.Click += pictureBox23_Click;
-            // 
-            // pictureBox22
-            // 
-            pictureBox22.Image = (Image)resources.GetObject("pictureBox22.Image");
-            pictureBox22.Location = new Point(809, 4);
-            pictureBox22.Name = "pictureBox22";
-            pictureBox22.Size = new Size(32, 32);
-            pictureBox22.TabIndex = 4;
-            pictureBox22.TabStop = false;
-            pictureBox22.Click += pictureBox22_Click;
             // 
             // pictureBox1
             // 
@@ -514,23 +528,272 @@
             // 
             panelFiltre.BackColor = Color.White;
             panelFiltre.BorderStyle = BorderStyle.FixedSingle;
+            panelFiltre.Controls.Add(checkedListBoxKategori);
+            panelFiltre.Controls.Add(kryptonButton5);
+            panelFiltre.Controls.Add(label18);
+            panelFiltre.Controls.Add(kryptonButton4);
+            panelFiltre.Controls.Add(label16);
+            panelFiltre.Controls.Add(textBoxMaliyetMax);
+            panelFiltre.Controls.Add(textBoxMaliyetMin);
+            panelFiltre.Controls.Add(label17);
+            panelFiltre.Controls.Add(kryptonButton3);
+            panelFiltre.Controls.Add(label15);
+            panelFiltre.Controls.Add(textBoxMalzemeMax);
+            panelFiltre.Controls.Add(textBoxMalzemeMin);
+            panelFiltre.Controls.Add(label14);
             panelFiltre.Controls.Add(label13);
             panelFiltre.Controls.Add(kryptonButtonMaliyetAzalan);
             panelFiltre.Controls.Add(kryptonButtonMaliyetArtan);
             panelFiltre.Controls.Add(label12);
             panelFiltre.Controls.Add(kryptonButton2);
             panelFiltre.Controls.Add(kryptonButton1);
-            panelFiltre.Location = new Point(831, 2);
+            panelFiltre.Location = new Point(896, 2);
             panelFiltre.Name = "panelFiltre";
-            panelFiltre.Size = new Size(334, 278);
+            panelFiltre.Size = new Size(269, 415);
             panelFiltre.TabIndex = 77;
             panelFiltre.Visible = false;
+            // 
+            // checkedListBoxKategori
+            // 
+            checkedListBoxKategori.CheckOnClick = true;
+            checkedListBoxKategori.FormattingEnabled = true;
+            checkedListBoxKategori.Items.AddRange(new object[] { "Kahvaltı", "Yemek", "Tatlı", "Çorba", "İçecek" });
+            checkedListBoxKategori.Location = new Point(12, 252);
+            checkedListBoxKategori.Name = "checkedListBoxKategori";
+            checkedListBoxKategori.Size = new Size(160, 84);
+            checkedListBoxKategori.TabIndex = 86;
+            // 
+            // kryptonButton5
+            // 
+            kryptonButton5.Location = new Point(178, 303);
+            kryptonButton5.Name = "kryptonButton5";
+            kryptonButton5.OverrideDefault.Back.Color1 = Color.FromArgb(108, 91, 123);
+            kryptonButton5.OverrideDefault.Back.Color2 = Color.FromArgb(108, 91, 123);
+            kryptonButton5.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            kryptonButton5.Size = new Size(79, 33);
+            kryptonButton5.StateCommon.Back.Color1 = Color.FromArgb(108, 91, 123);
+            kryptonButton5.StateCommon.Back.Color2 = Color.FromArgb(108, 91, 123);
+            kryptonButton5.StateCommon.Border.Color1 = Color.Thistle;
+            kryptonButton5.StateCommon.Border.Color2 = Color.SlateBlue;
+            kryptonButton5.StateCommon.Border.ColorAngle = 45F;
+            kryptonButton5.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            kryptonButton5.StateCommon.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            kryptonButton5.StateCommon.Border.Rounding = 20F;
+            kryptonButton5.StateCommon.Border.Width = 4;
+            kryptonButton5.StateCommon.Content.ShortText.Color1 = Color.WhiteSmoke;
+            kryptonButton5.StateCommon.Content.ShortText.Color2 = Color.WhiteSmoke;
+            kryptonButton5.StateCommon.Content.ShortText.Font = new Font("Poppins Light", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonButton5.StatePressed.Back.Color1 = Color.Thistle;
+            kryptonButton5.StatePressed.Back.Color2 = Color.Thistle;
+            kryptonButton5.StatePressed.Border.Color1 = Color.Thistle;
+            kryptonButton5.StatePressed.Border.Color2 = Color.SlateBlue;
+            kryptonButton5.StatePressed.Border.ColorAngle = 45F;
+            kryptonButton5.StatePressed.Border.ColorStyle = Krypton.Toolkit.PaletteColorStyle.RoundedTopLight;
+            kryptonButton5.StatePressed.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            kryptonButton5.StatePressed.Border.Rounding = 20F;
+            kryptonButton5.StatePressed.Border.Width = 4;
+            kryptonButton5.StatePressed.Content.ShortText.Color1 = Color.WhiteSmoke;
+            kryptonButton5.StatePressed.Content.ShortText.Color2 = Color.WhiteSmoke;
+            kryptonButton5.StatePressed.Content.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonButton5.StateTracking.Back.Color1 = Color.FromArgb(108, 91, 123);
+            kryptonButton5.StateTracking.Back.Color2 = Color.FromArgb(108, 91, 123);
+            kryptonButton5.StateTracking.Border.Color1 = Color.Thistle;
+            kryptonButton5.StateTracking.Border.Color2 = Color.SlateBlue;
+            kryptonButton5.StateTracking.Border.ColorAngle = 45F;
+            kryptonButton5.StateTracking.Border.ColorStyle = Krypton.Toolkit.PaletteColorStyle.RoundedTopLight;
+            kryptonButton5.StateTracking.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            kryptonButton5.StateTracking.Border.Rounding = 20F;
+            kryptonButton5.StateTracking.Border.Width = 4;
+            kryptonButton5.StateTracking.Content.ShortText.Color1 = Color.WhiteSmoke;
+            kryptonButton5.StateTracking.Content.ShortText.Color2 = Color.WhiteSmoke;
+            kryptonButton5.StateTracking.Content.ShortText.Font = new Font("Poppins Light", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonButton5.TabIndex = 85;
+            kryptonButton5.Values.Text = "Filtrele";
+            kryptonButton5.Click += kryptonButton5_Click;
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Font = new Font("Poppins Light", 12F, FontStyle.Italic, GraphicsUnit.Point);
+            label18.Location = new Point(8, 225);
+            label18.Name = "label18";
+            label18.Size = new Size(145, 28);
+            label18.TabIndex = 83;
+            label18.Text = "Kategoriye Göre ";
+            // 
+            // kryptonButton4
+            // 
+            kryptonButton4.Location = new Point(178, 378);
+            kryptonButton4.Name = "kryptonButton4";
+            kryptonButton4.OverrideDefault.Back.Color1 = Color.FromArgb(108, 91, 123);
+            kryptonButton4.OverrideDefault.Back.Color2 = Color.FromArgb(108, 91, 123);
+            kryptonButton4.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            kryptonButton4.Size = new Size(79, 33);
+            kryptonButton4.StateCommon.Back.Color1 = Color.FromArgb(108, 91, 123);
+            kryptonButton4.StateCommon.Back.Color2 = Color.FromArgb(108, 91, 123);
+            kryptonButton4.StateCommon.Border.Color1 = Color.Thistle;
+            kryptonButton4.StateCommon.Border.Color2 = Color.SlateBlue;
+            kryptonButton4.StateCommon.Border.ColorAngle = 45F;
+            kryptonButton4.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            kryptonButton4.StateCommon.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            kryptonButton4.StateCommon.Border.Rounding = 20F;
+            kryptonButton4.StateCommon.Border.Width = 4;
+            kryptonButton4.StateCommon.Content.ShortText.Color1 = Color.WhiteSmoke;
+            kryptonButton4.StateCommon.Content.ShortText.Color2 = Color.WhiteSmoke;
+            kryptonButton4.StateCommon.Content.ShortText.Font = new Font("Poppins Light", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonButton4.StatePressed.Back.Color1 = Color.Thistle;
+            kryptonButton4.StatePressed.Back.Color2 = Color.Thistle;
+            kryptonButton4.StatePressed.Border.Color1 = Color.Thistle;
+            kryptonButton4.StatePressed.Border.Color2 = Color.SlateBlue;
+            kryptonButton4.StatePressed.Border.ColorAngle = 45F;
+            kryptonButton4.StatePressed.Border.ColorStyle = Krypton.Toolkit.PaletteColorStyle.RoundedTopLight;
+            kryptonButton4.StatePressed.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            kryptonButton4.StatePressed.Border.Rounding = 20F;
+            kryptonButton4.StatePressed.Border.Width = 4;
+            kryptonButton4.StatePressed.Content.ShortText.Color1 = Color.WhiteSmoke;
+            kryptonButton4.StatePressed.Content.ShortText.Color2 = Color.WhiteSmoke;
+            kryptonButton4.StatePressed.Content.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonButton4.StateTracking.Back.Color1 = Color.FromArgb(108, 91, 123);
+            kryptonButton4.StateTracking.Back.Color2 = Color.FromArgb(108, 91, 123);
+            kryptonButton4.StateTracking.Border.Color1 = Color.Thistle;
+            kryptonButton4.StateTracking.Border.Color2 = Color.SlateBlue;
+            kryptonButton4.StateTracking.Border.ColorAngle = 45F;
+            kryptonButton4.StateTracking.Border.ColorStyle = Krypton.Toolkit.PaletteColorStyle.RoundedTopLight;
+            kryptonButton4.StateTracking.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            kryptonButton4.StateTracking.Border.Rounding = 20F;
+            kryptonButton4.StateTracking.Border.Width = 4;
+            kryptonButton4.StateTracking.Content.ShortText.Color1 = Color.WhiteSmoke;
+            kryptonButton4.StateTracking.Content.ShortText.Color2 = Color.WhiteSmoke;
+            kryptonButton4.StateTracking.Content.ShortText.Font = new Font("Poppins Light", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonButton4.TabIndex = 82;
+            kryptonButton4.Values.Text = "Filtrele";
+            kryptonButton4.Click += kryptonButton4_Click;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label16.Location = new Point(83, 383);
+            label16.Name = "label16";
+            label16.Size = new Size(20, 28);
+            label16.TabIndex = 81;
+            label16.Text = "-";
+            // 
+            // textBoxMaliyetMax
+            // 
+            textBoxMaliyetMax.BackColor = SystemColors.InactiveCaptionText;
+            textBoxMaliyetMax.Location = new Point(106, 383);
+            textBoxMaliyetMax.Name = "textBoxMaliyetMax";
+            textBoxMaliyetMax.Size = new Size(66, 21);
+            textBoxMaliyetMax.TabIndex = 80;
+            // 
+            // textBoxMaliyetMin
+            // 
+            textBoxMaliyetMin.BackColor = SystemColors.InactiveCaptionText;
+            textBoxMaliyetMin.Location = new Point(8, 383);
+            textBoxMaliyetMin.Name = "textBoxMaliyetMin";
+            textBoxMaliyetMin.Size = new Size(69, 21);
+            textBoxMaliyetMin.TabIndex = 79;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Font = new Font("Poppins Light", 12F, FontStyle.Italic, GraphicsUnit.Point);
+            label17.Location = new Point(8, 352);
+            label17.Name = "label17";
+            label17.Size = new Size(191, 28);
+            label17.TabIndex = 78;
+            label17.Text = "Maliyet Aralığına Göre ";
+            // 
+            // kryptonButton3
+            // 
+            kryptonButton3.Location = new Point(178, 179);
+            kryptonButton3.Name = "kryptonButton3";
+            kryptonButton3.OverrideDefault.Back.Color1 = Color.FromArgb(108, 91, 123);
+            kryptonButton3.OverrideDefault.Back.Color2 = Color.FromArgb(108, 91, 123);
+            kryptonButton3.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            kryptonButton3.Size = new Size(79, 33);
+            kryptonButton3.StateCommon.Back.Color1 = Color.FromArgb(108, 91, 123);
+            kryptonButton3.StateCommon.Back.Color2 = Color.FromArgb(108, 91, 123);
+            kryptonButton3.StateCommon.Border.Color1 = Color.Thistle;
+            kryptonButton3.StateCommon.Border.Color2 = Color.SlateBlue;
+            kryptonButton3.StateCommon.Border.ColorAngle = 45F;
+            kryptonButton3.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            kryptonButton3.StateCommon.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            kryptonButton3.StateCommon.Border.Rounding = 20F;
+            kryptonButton3.StateCommon.Border.Width = 4;
+            kryptonButton3.StateCommon.Content.ShortText.Color1 = Color.WhiteSmoke;
+            kryptonButton3.StateCommon.Content.ShortText.Color2 = Color.WhiteSmoke;
+            kryptonButton3.StateCommon.Content.ShortText.Font = new Font("Poppins Light", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonButton3.StatePressed.Back.Color1 = Color.Thistle;
+            kryptonButton3.StatePressed.Back.Color2 = Color.Thistle;
+            kryptonButton3.StatePressed.Border.Color1 = Color.Thistle;
+            kryptonButton3.StatePressed.Border.Color2 = Color.SlateBlue;
+            kryptonButton3.StatePressed.Border.ColorAngle = 45F;
+            kryptonButton3.StatePressed.Border.ColorStyle = Krypton.Toolkit.PaletteColorStyle.RoundedTopLight;
+            kryptonButton3.StatePressed.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            kryptonButton3.StatePressed.Border.Rounding = 20F;
+            kryptonButton3.StatePressed.Border.Width = 4;
+            kryptonButton3.StatePressed.Content.ShortText.Color1 = Color.WhiteSmoke;
+            kryptonButton3.StatePressed.Content.ShortText.Color2 = Color.WhiteSmoke;
+            kryptonButton3.StatePressed.Content.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonButton3.StateTracking.Back.Color1 = Color.FromArgb(108, 91, 123);
+            kryptonButton3.StateTracking.Back.Color2 = Color.FromArgb(108, 91, 123);
+            kryptonButton3.StateTracking.Border.Color1 = Color.Thistle;
+            kryptonButton3.StateTracking.Border.Color2 = Color.SlateBlue;
+            kryptonButton3.StateTracking.Border.ColorAngle = 45F;
+            kryptonButton3.StateTracking.Border.ColorStyle = Krypton.Toolkit.PaletteColorStyle.RoundedTopLight;
+            kryptonButton3.StateTracking.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            kryptonButton3.StateTracking.Border.Rounding = 20F;
+            kryptonButton3.StateTracking.Border.Width = 4;
+            kryptonButton3.StateTracking.Content.ShortText.Color1 = Color.WhiteSmoke;
+            kryptonButton3.StateTracking.Content.ShortText.Color2 = Color.WhiteSmoke;
+            kryptonButton3.StateTracking.Content.ShortText.Font = new Font("Poppins Light", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonButton3.TabIndex = 77;
+            kryptonButton3.Values.Text = "Filtrele";
+            kryptonButton3.Click += kryptonButton3_Click;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label15.Location = new Point(83, 184);
+            label15.Name = "label15";
+            label15.Size = new Size(20, 28);
+            label15.TabIndex = 76;
+            label15.Text = "-";
+            // 
+            // textBoxMalzemeMax
+            // 
+            textBoxMalzemeMax.BackColor = SystemColors.InactiveCaptionText;
+            textBoxMalzemeMax.Location = new Point(106, 184);
+            textBoxMalzemeMax.Name = "textBoxMalzemeMax";
+            textBoxMalzemeMax.Size = new Size(66, 21);
+            textBoxMalzemeMax.TabIndex = 75;
+            // 
+            // textBoxMalzemeMin
+            // 
+            textBoxMalzemeMin.BackColor = SystemColors.InactiveCaptionText;
+            textBoxMalzemeMin.Location = new Point(8, 184);
+            textBoxMalzemeMin.Name = "textBoxMalzemeMin";
+            textBoxMalzemeMin.Size = new Size(69, 21);
+            textBoxMalzemeMin.TabIndex = 74;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Poppins Light", 12F, FontStyle.Italic, GraphicsUnit.Point);
+            label14.Location = new Point(8, 153);
+            label14.Name = "label14";
+            label14.Size = new Size(200, 28);
+            label14.TabIndex = 73;
+            label14.Text = "Malzeme Sayısına Göre ";
             // 
             // label13
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Poppins Light", 12F, FontStyle.Italic, GraphicsUnit.Point);
-            label13.Location = new Point(20, 118);
+            label13.Location = new Point(8, 81);
             label13.Name = "label13";
             label13.Size = new Size(69, 28);
             label13.TabIndex = 72;
@@ -538,7 +801,7 @@
             // 
             // kryptonButtonMaliyetAzalan
             // 
-            kryptonButtonMaliyetAzalan.Location = new Point(105, 149);
+            kryptonButtonMaliyetAzalan.Location = new Point(93, 112);
             kryptonButtonMaliyetAzalan.Name = "kryptonButtonMaliyetAzalan";
             kryptonButtonMaliyetAzalan.OverrideDefault.Back.Color1 = Color.FromArgb(108, 91, 123);
             kryptonButtonMaliyetAzalan.OverrideDefault.Back.Color2 = Color.FromArgb(108, 91, 123);
@@ -579,14 +842,14 @@
             kryptonButtonMaliyetAzalan.StateTracking.Border.Width = 4;
             kryptonButtonMaliyetAzalan.StateTracking.Content.ShortText.Color1 = Color.WhiteSmoke;
             kryptonButtonMaliyetAzalan.StateTracking.Content.ShortText.Color2 = Color.WhiteSmoke;
-            kryptonButtonMaliyetAzalan.StateTracking.Content.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonButtonMaliyetAzalan.StateTracking.Content.ShortText.Font = new Font("Poppins Light", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonButtonMaliyetAzalan.TabIndex = 71;
             kryptonButtonMaliyetAzalan.Values.Text = "Azalan";
             kryptonButtonMaliyetAzalan.Click += kryptonButtonMaliyetAzalan_Click;
             // 
             // kryptonButtonMaliyetArtan
             // 
-            kryptonButtonMaliyetArtan.Location = new Point(20, 149);
+            kryptonButtonMaliyetArtan.Location = new Point(8, 112);
             kryptonButtonMaliyetArtan.Name = "kryptonButtonMaliyetArtan";
             kryptonButtonMaliyetArtan.OverrideDefault.Back.Color1 = Color.FromArgb(108, 91, 123);
             kryptonButtonMaliyetArtan.OverrideDefault.Back.Color2 = Color.FromArgb(108, 91, 123);
@@ -627,7 +890,7 @@
             kryptonButtonMaliyetArtan.StateTracking.Border.Width = 4;
             kryptonButtonMaliyetArtan.StateTracking.Content.ShortText.Color1 = Color.WhiteSmoke;
             kryptonButtonMaliyetArtan.StateTracking.Content.ShortText.Color2 = Color.WhiteSmoke;
-            kryptonButtonMaliyetArtan.StateTracking.Content.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonButtonMaliyetArtan.StateTracking.Content.ShortText.Font = new Font("Poppins Light", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonButtonMaliyetArtan.TabIndex = 70;
             kryptonButtonMaliyetArtan.Values.Text = "Artan";
             kryptonButtonMaliyetArtan.Click += kryptonButtonMaliyetArtan_Click;
@@ -636,7 +899,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Poppins Light", 12F, FontStyle.Italic, GraphicsUnit.Point);
-            label12.Location = new Point(20, 33);
+            label12.Location = new Point(8, 9);
             label12.Name = "label12";
             label12.Size = new Size(154, 28);
             label12.TabIndex = 69;
@@ -644,7 +907,7 @@
             // 
             // kryptonButton2
             // 
-            kryptonButton2.Location = new Point(105, 64);
+            kryptonButton2.Location = new Point(93, 40);
             kryptonButton2.Name = "kryptonButton2";
             kryptonButton2.OverrideDefault.Back.Color1 = Color.FromArgb(108, 91, 123);
             kryptonButton2.OverrideDefault.Back.Color2 = Color.FromArgb(108, 91, 123);
@@ -685,14 +948,14 @@
             kryptonButton2.StateTracking.Border.Width = 4;
             kryptonButton2.StateTracking.Content.ShortText.Color1 = Color.WhiteSmoke;
             kryptonButton2.StateTracking.Content.ShortText.Color2 = Color.WhiteSmoke;
-            kryptonButton2.StateTracking.Content.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonButton2.StateTracking.Content.ShortText.Font = new Font("Poppins Light", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonButton2.TabIndex = 68;
             kryptonButton2.Values.Text = "Azalan";
             kryptonButton2.Click += kryptonButton2_Click;
             // 
             // kryptonButton1
             // 
-            kryptonButton1.Location = new Point(20, 64);
+            kryptonButton1.Location = new Point(8, 40);
             kryptonButton1.Name = "kryptonButton1";
             kryptonButton1.OverrideDefault.Back.Color1 = Color.FromArgb(108, 91, 123);
             kryptonButton1.OverrideDefault.Back.Color2 = Color.FromArgb(108, 91, 123);
@@ -733,7 +996,7 @@
             kryptonButton1.StateTracking.Border.Width = 4;
             kryptonButton1.StateTracking.Content.ShortText.Color1 = Color.WhiteSmoke;
             kryptonButton1.StateTracking.Content.ShortText.Color2 = Color.WhiteSmoke;
-            kryptonButton1.StateTracking.Content.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonButton1.StateTracking.Content.ShortText.Font = new Font("Poppins Light", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonButton1.TabIndex = 67;
             kryptonButton1.Values.Text = "Artan";
             kryptonButton1.Click += kryptonButton1_Click;
@@ -748,7 +1011,7 @@
             // 
             // buttonSayfa1
             // 
-            buttonSayfa1.Location = new Point(760, 576);
+            buttonSayfa1.Location = new Point(760, 573);
             buttonSayfa1.Name = "buttonSayfa1";
             buttonSayfa1.OverrideDefault.Back.Color1 = Color.FromArgb(108, 91, 123);
             buttonSayfa1.OverrideDefault.Back.Color2 = Color.FromArgb(108, 91, 123);
@@ -1599,10 +1862,10 @@
             Load += Form1_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox22).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox23).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox22).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             menuCubuk.ResumeLayout(false);
             panelAnaEkran.ResumeLayout(false);
@@ -1751,5 +2014,19 @@
         private Label label13;
         private Krypton.Toolkit.KryptonButton kryptonButtonMaliyetAzalan;
         private Krypton.Toolkit.KryptonButton kryptonButtonMaliyetArtan;
+        private Label label14;
+        private Label label18;
+        private Krypton.Toolkit.KryptonButton kryptonButton4;
+        private Label label16;
+        private TextBox textBoxMaliyetMax;
+        private TextBox textBoxMaliyetMin;
+        private Label label17;
+        private Krypton.Toolkit.KryptonButton kryptonButton3;
+        private Label label15;
+        private TextBox textBoxMalzemeMax;
+        private TextBox textBoxMalzemeMin;
+        private Krypton.Toolkit.KryptonContextMenu kryptonContextMenu1;
+        private CheckedListBox checkedListBoxKategori;
+        private Krypton.Toolkit.KryptonButton kryptonButton5;
     }
 }
