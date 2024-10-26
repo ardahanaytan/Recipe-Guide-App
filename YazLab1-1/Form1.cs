@@ -12,9 +12,9 @@ namespace YazLab1_1
 
     public partial class Form1 : Form
     {
-        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
+        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=Ardahan.123");
 
-        //MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
+        MySqlConnection con = new MySqlConnection("Server=localhost;Database=yazlab1;Uid=root;Pwd=123456789Sefa!");
         MySqlCommand cmd;
         MySqlDataAdapter adapter;
         DataTable dt;
@@ -1075,6 +1075,30 @@ namespace YazLab1_1
             else
             {
                 tarifEkleme.Activate();
+
+                //malzemeler içini güncelle
+
+                try
+                {
+                    
+                   DataTable dt = new DataTable();
+                   con.Open();
+                   string query_comboDoldur = @"SELECT MalzemeAdi from malzemeler";
+                   adapter = new MySqlDataAdapter(query_comboDoldur, con);
+                   adapter.Fill(dt);
+                   con.Close();
+
+                    tarifEkleme.comboBoxMalzemeSecimi1.Items.Clear(); //temizleme
+                   foreach (DataRow row in dt.Rows)
+                   {
+                        tarifEkleme.comboBoxMalzemeSecimi1.Items.Add(row["MalzemeAdi"].ToString());
+                   }                    
+                }
+                catch(Exception ex1)
+                {
+                    MessageBox.Show("malzeme combobox guncelleme hatası: " + ex1.Message);
+                }
+
             }
             panelAnaManu.Visible = false;
         }
@@ -1644,183 +1668,6 @@ namespace YazLab1_1
                 MessageBox.Show("sure azcok hatasi: " + ex1.Message);
             }
         }
-        /*
-        public Dictionary<int, float> getMaliyetDict()
-        {
-            DataTable table = new DataTable();
-            Dictionary<int, float> maaliyetler = new Dictionary<int, float>();
-            try
-            {
-                con.Open();
-                adapter = new MySqlDataAdapter(this.anaQuery, con);
-                adapter.Fill(table);
-                con.Close();
-            }
-            catch (Exception exx)
-            {
-                MessageBox.Show("tarifler alinirken hata: " + exx.Message);
-            }
-            foreach (DataRow row in table.Rows)
-            {
-
-
-                float maliyet = 0f;
-                string id = row["TarifID"].ToString();
-
-                DataTable malzemeler = new DataTable();
-                try
-                {
-                    con.Open();
-                    string query_malzemeleriAl = @"select MalzemeIDr from iliski where TarifIDr = @TarifIDr";
-                    adapter = new MySqlDataAdapter(query_malzemeleriAl, con);
-                    adapter.SelectCommand.Parameters.AddWithValue("@TarifIDR", int.Parse(id));
-                    adapter.Fill(malzemeler);
-                    con.Close();
-                }
-                catch (Exception ex2)
-                {
-                    MessageBox.Show("Malzemeleri Idleri Alinirken Hata:", ex2.Message);
-                    return maaliyetler;
-                }
-
-                string str_malzemeler = "";
-                foreach (DataRow row1 in malzemeler.Rows)
-                {
-                    string malzeme_id_ = row1["MalzemeIDr"].ToString();
-                    DataTable malzeme_name = new DataTable();
-                    try
-                    {
-                        con.Open();
-                        string query_MalzemeİsmiAl = @"SELECT * from malzemeler where MalzemeID = @MalzemeID";
-                        adapter = new MySqlDataAdapter(query_MalzemeİsmiAl, con);
-                        adapter.SelectCommand.Parameters.AddWithValue("@MalzemeID", malzeme_id_);
-                        adapter.Fill(malzeme_name);
-                        con.Close();
-                    }
-                    catch (Exception ex3)
-                    {
-                        MessageBox.Show("Malzeme İsmi Alinirken Hata Oluştu:", ex3.Message);
-                    }
-                    DataTable miktar_table = new DataTable();
-                    if (malzeme_name.Rows.Count == 1)
-                    {
-                        con.Open();
-                        string query_getMiktar = @"SELECT MalzemeMiktar from iliski where TarifIDR = @TarifIDR AND MalzemeIDr = @MalzemeIDr";
-                        adapter = new MySqlDataAdapter(query_getMiktar, con);
-                        adapter.SelectCommand.Parameters.AddWithValue("@MalzemeIDr", malzeme_id_);
-                        adapter.SelectCommand.Parameters.AddWithValue("@TarifIDR", int.Parse(id));
-                        adapter.Fill(miktar_table);
-                        con.Close();
-
-                        if (miktar_table.Rows.Count == 1)
-                        {
-                            foreach (DataRow row3 in miktar_table.Rows)
-                            {
-                                str_malzemeler += row3["MalzemeMiktar"].ToString() + " ";
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Birden fazla aynı idli malzeme bulundu");
-                        }
-
-                        foreach (DataRow row2 in malzeme_name.Rows)
-                        {
-                            str_malzemeler += row2["MalzemeBirim"].ToString() + " " + row2["MalzemeAdi"].ToString() + ", ";
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Birden fazla ayni isimde malzeme bulundu!");
-                        return maaliyetler;
-                    }
-                }
-
-                if (row["TarifAdi"] != DBNull.Value && row["Kategori"] != DBNull.Value && row["HazirlamaSuresi"] != DBNull.Value && row["Talimatlar"] != DBNull.Value)
-                {
-                    string ad = row["TarifAdi"]?.ToString() ?? string.Empty;
-                    string kategori = row["Kategori"]?.ToString() ?? string.Empty;
-                    string sure = row["HazirlamaSuresi"]?.ToString() ?? string.Empty;
-                    string talimatlar = row["Talimatlar"]?.ToString() ?? string.Empty;
-
-                    if (str_malzemeler.Length > 2)
-                    {
-                        string[] malzemeler_arr = str_malzemeler.Substring(0, str_malzemeler.Length - 2).Split(",").ToArray();
-                        foreach (string malzeme in malzemeler_arr)
-                        {
-                            //MessageBox.Show("-" + malzeme + "-");
-                            string malzeme_trim = malzeme.Trim();
-                            string[] malzeme_kelime = malzeme_trim.Split(" ").Select(part => part.Trim()).ToArray();
-                            float malzeme_miktar = float.Parse(malzeme_kelime[0]);
-                            string malzeme_isim = "";
-                            int gezen = 2;
-                            while (gezen < malzeme_kelime.Length)
-                            {
-                                if (gezen == 2)
-                                {
-                                    malzeme_isim += malzeme_kelime[gezen];
-                                }
-                                else
-                                {
-                                    malzeme_isim += " " + malzeme_kelime[gezen];
-                                }
-
-                                gezen++;
-                            }
-                            //malzeme_isim = malzeme_isim.Substring(0, malzeme_isim.Length - 1);
-                            //MessageBox.Show("malzeme kontrol:" + malzeme_isim);
-                            DataTable dt_mik = new DataTable();
-                            try
-                            {
-                                con.Open();
-                                string query_sahipOlunaniAlma = @"select * from malzemeler where MalzemeAdi = @MalzemeAdi";
-                                adapter = new MySqlDataAdapter(query_sahipOlunaniAlma, con);
-                                adapter.SelectCommand.Parameters.AddWithValue("@MalzemeAdi", malzeme_isim);
-                                adapter.Fill(dt_mik);
-                                con.Close();
-
-                            }
-                            catch (Exception ex1)
-                            {
-                                MessageBox.Show("Renklendirme hatası: " + ex1.Message);
-                                return maaliyetler;
-
-                            }
-
-                            if (dt_mik.Rows.Count == 1)
-                            {
-                                float neKadarVar = -1f;
-                                float birimFiyat = -1f;
-
-                                foreach (DataRow row_ in dt_mik.Rows)
-                                {
-                                    neKadarVar = float.Parse(row_["ToplamMiktar"]?.ToString() ?? string.Empty);
-                                    birimFiyat = float.Parse(row_["BirimFiyat"]?.ToString() ?? string.Empty);
-                                    maliyet += birimFiyat * malzeme_miktar;
-                                }
-
-
-                            }
-                            else
-                            {
-                                MessageBox.Show("Malzeme bulma hatasi!");
-                                return maaliyetler;
-                            }
-
-                        }
-
-                        //maliyet
-                        maaliyetler[int.Parse(row["TarifID"].ToString())] = maliyet;
-
-                    }
-
-                }
-
-
-            }
-            return maaliyetler;
-        }
-        */
 
         public void deneme2_MaliyetCokAz()
         {
@@ -1863,11 +1710,7 @@ namespace YazLab1_1
                 MessageBox.Show("sure azcok hatasi: " + ex1.Message);
             }
 
-
-
         }
-
-
         private void loadDetails()
         {
             foreach (Data data in Data.list)
@@ -1928,7 +1771,6 @@ namespace YazLab1_1
             this.deneme2_MaliyetCokAz();
         }
 
-        //deneme2_MaliyetAzCok - deneme2_MaliyetCokAz
 
 
 

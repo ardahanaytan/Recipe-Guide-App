@@ -614,7 +614,7 @@
         private CheckBox checkBoxFotograf;
         private System.Windows.Forms.Timer timerMalzeme;
         private Label labelMalzemeAdi;
-        private Krypton.Toolkit.KryptonComboBox comboBoxMalzemeSecimi1;
+        public Krypton.Toolkit.KryptonComboBox comboBoxMalzemeSecimi1;
         private Label label2;
         private Krypton.Toolkit.KryptonTextBox textBoxMiktar1;
         private Label label3;

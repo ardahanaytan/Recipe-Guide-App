@@ -70,20 +70,20 @@
             // kryptonLabel11
             // 
             kryptonLabel11.AutoSize = true;
-            kryptonLabel11.Font = new Font("Poppins Light", 12F, FontStyle.Italic, GraphicsUnit.Point);
+            kryptonLabel11.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Italic, GraphicsUnit.Point);
             kryptonLabel11.Location = new Point(51, 9);
             kryptonLabel11.Name = "kryptonLabel11";
-            kryptonLabel11.Size = new Size(65, 28);
+            kryptonLabel11.Size = new Size(61, 20);
             kryptonLabel11.TabIndex = 25;
             kryptonLabel11.Text = "Tarif ID";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("Poppins Light", 11.25F, FontStyle.Italic, GraphicsUnit.Point);
+            label8.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Italic, GraphicsUnit.Point);
             label8.Location = new Point(51, 191);
             label8.Name = "label8";
-            label8.Size = new Size(145, 26);
+            label8.Size = new Size(132, 18);
             label8.TabIndex = 26;
             label8.Text = "Tarifin Malzemeleri";
             // 
@@ -94,7 +94,7 @@
             kryptonComboBox11.IntegralHeight = false;
             kryptonComboBox11.Location = new Point(51, 232);
             kryptonComboBox11.Name = "kryptonComboBox11";
-            kryptonComboBox11.Size = new Size(276, 42);
+            kryptonComboBox11.Size = new Size(276, 38);
             kryptonComboBox11.StateCommon.ComboBox.Back.Color1 = Color.FromArgb(108, 91, 123);
             kryptonComboBox11.StateCommon.ComboBox.Border.Color1 = Color.Thistle;
             kryptonComboBox11.StateCommon.ComboBox.Border.Color2 = Color.SlateBlue;
@@ -104,7 +104,7 @@
             kryptonComboBox11.StateCommon.ComboBox.Border.Rounding = 20F;
             kryptonComboBox11.StateCommon.ComboBox.Border.Width = 4;
             kryptonComboBox11.StateCommon.ComboBox.Content.Color1 = Color.WhiteSmoke;
-            kryptonComboBox11.StateCommon.ComboBox.Content.Font = new Font("Poppins Light", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonComboBox11.StateCommon.ComboBox.Content.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonComboBox11.StateCommon.ComboBox.Content.Padding = new Padding(10, 0, 10, 0);
             kryptonComboBox11.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             kryptonComboBox11.StateCommon.DropBack.Color1 = Color.FromArgb(108, 91, 123);
@@ -114,16 +114,17 @@
             kryptonComboBox11.StateCommon.Item.Border.ColorStyle = Krypton.Toolkit.PaletteColorStyle.RoundedTopLight;
             kryptonComboBox11.StateCommon.Item.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             kryptonComboBox11.StateCommon.Item.Content.ShortText.Color1 = Color.WhiteSmoke;
-            kryptonComboBox11.StateCommon.Item.Content.ShortText.Font = new Font("Poppins Light", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonComboBox11.StateCommon.Item.Content.ShortText.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonComboBox11.StateTracking.Item.Back.Color1 = Color.SlateBlue;
             kryptonComboBox11.TabIndex = 27;
+            kryptonComboBox11.SelectedIndexChanged += kryptonComboBox11_SelectedIndexChanged_1;
             // 
             // kryptonTextBoxMalzemeMiktarı11
             // 
             kryptonTextBoxMalzemeMiktarı11.CornerRoundingRadius = 25F;
             kryptonTextBoxMalzemeMiktarı11.Location = new Point(51, 304);
             kryptonTextBoxMalzemeMiktarı11.Name = "kryptonTextBoxMalzemeMiktarı11";
-            kryptonTextBoxMalzemeMiktarı11.Size = new Size(276, 43);
+            kryptonTextBoxMalzemeMiktarı11.Size = new Size(276, 39);
             kryptonTextBoxMalzemeMiktarı11.StateCommon.Back.Color1 = Color.FromArgb(108, 91, 123);
             kryptonTextBoxMalzemeMiktarı11.StateCommon.Border.Color1 = Color.Thistle;
             kryptonTextBoxMalzemeMiktarı11.StateCommon.Border.Color2 = Color.SlateBlue;
@@ -134,26 +135,26 @@
             kryptonTextBoxMalzemeMiktarı11.StateCommon.Border.Rounding = 20F;
             kryptonTextBoxMalzemeMiktarı11.StateCommon.Border.Width = 4;
             kryptonTextBoxMalzemeMiktarı11.StateCommon.Content.Color1 = Color.WhiteSmoke;
-            kryptonTextBoxMalzemeMiktarı11.StateCommon.Content.Font = new Font("Poppins Light", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonTextBoxMalzemeMiktarı11.StateCommon.Content.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonTextBoxMalzemeMiktarı11.TabIndex = 28;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Poppins Light", 9.75F, FontStyle.Italic, GraphicsUnit.Point);
+            label1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Italic, GraphicsUnit.Point);
             label1.Location = new Point(51, 283);
             label1.Name = "label1";
-            label1.Size = new Size(114, 23);
+            label1.Size = new Size(104, 16);
             label1.TabIndex = 29;
             label1.Text = "Malzeme Miktarı";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Poppins Light", 11.25F, FontStyle.Italic, GraphicsUnit.Point);
+            label2.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Italic, GraphicsUnit.Point);
             label2.Location = new Point(51, 423);
             label2.Name = "label2";
-            label2.Size = new Size(109, 26);
+            label2.Size = new Size(102, 18);
             label2.TabIndex = 30;
             label2.Text = "Malzeme Ekle";
             // 
@@ -164,7 +165,7 @@
             kryptonComboBoxMalzemeler21.IntegralHeight = false;
             kryptonComboBoxMalzemeler21.Location = new Point(51, 458);
             kryptonComboBoxMalzemeler21.Name = "kryptonComboBoxMalzemeler21";
-            kryptonComboBoxMalzemeler21.Size = new Size(276, 42);
+            kryptonComboBoxMalzemeler21.Size = new Size(276, 38);
             kryptonComboBoxMalzemeler21.StateCommon.ComboBox.Back.Color1 = Color.FromArgb(108, 91, 123);
             kryptonComboBoxMalzemeler21.StateCommon.ComboBox.Border.Color1 = Color.Thistle;
             kryptonComboBoxMalzemeler21.StateCommon.ComboBox.Border.Color2 = Color.SlateBlue;
@@ -174,7 +175,7 @@
             kryptonComboBoxMalzemeler21.StateCommon.ComboBox.Border.Rounding = 20F;
             kryptonComboBoxMalzemeler21.StateCommon.ComboBox.Border.Width = 4;
             kryptonComboBoxMalzemeler21.StateCommon.ComboBox.Content.Color1 = Color.WhiteSmoke;
-            kryptonComboBoxMalzemeler21.StateCommon.ComboBox.Content.Font = new Font("Poppins Light", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonComboBoxMalzemeler21.StateCommon.ComboBox.Content.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonComboBoxMalzemeler21.StateCommon.ComboBox.Content.Padding = new Padding(10, 0, 10, 0);
             kryptonComboBoxMalzemeler21.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             kryptonComboBoxMalzemeler21.StateCommon.DropBack.Color1 = Color.FromArgb(108, 91, 123);
@@ -184,7 +185,7 @@
             kryptonComboBoxMalzemeler21.StateCommon.Item.Border.ColorStyle = Krypton.Toolkit.PaletteColorStyle.RoundedTopLight;
             kryptonComboBoxMalzemeler21.StateCommon.Item.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             kryptonComboBoxMalzemeler21.StateCommon.Item.Content.ShortText.Color1 = Color.WhiteSmoke;
-            kryptonComboBoxMalzemeler21.StateCommon.Item.Content.ShortText.Font = new Font("Poppins Light", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonComboBoxMalzemeler21.StateCommon.Item.Content.ShortText.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonComboBoxMalzemeler21.StateTracking.Item.Back.Color1 = Color.SlateBlue;
             kryptonComboBoxMalzemeler21.TabIndex = 31;
             // 
@@ -193,7 +194,7 @@
             kryptonTextBoxMalzemeMiktarı21.CornerRoundingRadius = 25F;
             kryptonTextBoxMalzemeMiktarı21.Location = new Point(51, 521);
             kryptonTextBoxMalzemeMiktarı21.Name = "kryptonTextBoxMalzemeMiktarı21";
-            kryptonTextBoxMalzemeMiktarı21.Size = new Size(276, 43);
+            kryptonTextBoxMalzemeMiktarı21.Size = new Size(276, 39);
             kryptonTextBoxMalzemeMiktarı21.StateCommon.Back.Color1 = Color.FromArgb(108, 91, 123);
             kryptonTextBoxMalzemeMiktarı21.StateCommon.Border.Color1 = Color.Thistle;
             kryptonTextBoxMalzemeMiktarı21.StateCommon.Border.Color2 = Color.SlateBlue;
@@ -204,16 +205,16 @@
             kryptonTextBoxMalzemeMiktarı21.StateCommon.Border.Rounding = 20F;
             kryptonTextBoxMalzemeMiktarı21.StateCommon.Border.Width = 4;
             kryptonTextBoxMalzemeMiktarı21.StateCommon.Content.Color1 = Color.WhiteSmoke;
-            kryptonTextBoxMalzemeMiktarı21.StateCommon.Content.Font = new Font("Poppins Light", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonTextBoxMalzemeMiktarı21.StateCommon.Content.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonTextBoxMalzemeMiktarı21.TabIndex = 32;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Poppins Light", 9.75F, FontStyle.Italic, GraphicsUnit.Point);
+            label3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Italic, GraphicsUnit.Point);
             label3.Location = new Point(51, 500);
             label3.Name = "label3";
-            label3.Size = new Size(114, 23);
+            label3.Size = new Size(104, 16);
             label3.TabIndex = 33;
             label3.Text = "Malzeme Miktarı";
             // 
@@ -222,7 +223,7 @@
             kryptonTextBoxPath1.CornerRoundingRadius = 25F;
             kryptonTextBoxPath1.Location = new Point(558, 53);
             kryptonTextBoxPath1.Name = "kryptonTextBoxPath1";
-            kryptonTextBoxPath1.Size = new Size(276, 43);
+            kryptonTextBoxPath1.Size = new Size(276, 39);
             kryptonTextBoxPath1.StateCommon.Back.Color1 = Color.FromArgb(108, 91, 123);
             kryptonTextBoxPath1.StateCommon.Border.Color1 = Color.Thistle;
             kryptonTextBoxPath1.StateCommon.Border.Color2 = Color.SlateBlue;
@@ -233,16 +234,16 @@
             kryptonTextBoxPath1.StateCommon.Border.Rounding = 20F;
             kryptonTextBoxPath1.StateCommon.Border.Width = 4;
             kryptonTextBoxPath1.StateCommon.Content.Color1 = Color.WhiteSmoke;
-            kryptonTextBoxPath1.StateCommon.Content.Font = new Font("Poppins Light", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonTextBoxPath1.StateCommon.Content.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonTextBoxPath1.TabIndex = 34;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Poppins Light", 9.75F, FontStyle.Italic, GraphicsUnit.Point);
+            label4.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Italic, GraphicsUnit.Point);
             label4.Location = new Point(558, 32);
             label4.Name = "label4";
-            label4.Size = new Size(100, 23);
+            label4.Size = new Size(90, 16);
             label4.TabIndex = 35;
             label4.Text = "Fotoğraf Pathi";
             // 
@@ -251,7 +252,7 @@
             kryptonTextBox11.CornerRoundingRadius = 25F;
             kryptonTextBox11.Location = new Point(558, 129);
             kryptonTextBox11.Name = "kryptonTextBox11";
-            kryptonTextBox11.Size = new Size(276, 43);
+            kryptonTextBox11.Size = new Size(276, 39);
             kryptonTextBox11.StateCommon.Back.Color1 = Color.FromArgb(108, 91, 123);
             kryptonTextBox11.StateCommon.Border.Color1 = Color.Thistle;
             kryptonTextBox11.StateCommon.Border.Color2 = Color.SlateBlue;
@@ -262,26 +263,26 @@
             kryptonTextBox11.StateCommon.Border.Rounding = 20F;
             kryptonTextBox11.StateCommon.Border.Width = 4;
             kryptonTextBox11.StateCommon.Content.Color1 = Color.WhiteSmoke;
-            kryptonTextBox11.StateCommon.Content.Font = new Font("Poppins Light", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonTextBox11.StateCommon.Content.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonTextBox11.TabIndex = 36;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Poppins Light", 9.75F, FontStyle.Italic, GraphicsUnit.Point);
+            label5.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Italic, GraphicsUnit.Point);
             label5.Location = new Point(558, 108);
             label5.Name = "label5";
-            label5.Size = new Size(62, 23);
+            label5.Size = new Size(57, 16);
             label5.TabIndex = 37;
             label5.Text = "Tarif Adı";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Poppins Light", 9.75F, FontStyle.Italic, GraphicsUnit.Point);
+            label6.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Italic, GraphicsUnit.Point);
             label6.Location = new Point(558, 184);
             label6.Name = "label6";
-            label6.Size = new Size(64, 23);
+            label6.Size = new Size(57, 16);
             label6.TabIndex = 38;
             label6.Text = "Kategori";
             // 
@@ -293,7 +294,7 @@
             kryptonComboBoxKategori1.Items.AddRange(new object[] { "Kahvaltı", "Yemek", "Çorba", "Tatlı", "İçecek" });
             kryptonComboBoxKategori1.Location = new Point(558, 205);
             kryptonComboBoxKategori1.Name = "kryptonComboBoxKategori1";
-            kryptonComboBoxKategori1.Size = new Size(276, 42);
+            kryptonComboBoxKategori1.Size = new Size(276, 38);
             kryptonComboBoxKategori1.StateCommon.ComboBox.Back.Color1 = Color.FromArgb(108, 91, 123);
             kryptonComboBoxKategori1.StateCommon.ComboBox.Border.Color1 = Color.Thistle;
             kryptonComboBoxKategori1.StateCommon.ComboBox.Border.Color2 = Color.SlateBlue;
@@ -303,7 +304,7 @@
             kryptonComboBoxKategori1.StateCommon.ComboBox.Border.Rounding = 20F;
             kryptonComboBoxKategori1.StateCommon.ComboBox.Border.Width = 4;
             kryptonComboBoxKategori1.StateCommon.ComboBox.Content.Color1 = Color.WhiteSmoke;
-            kryptonComboBoxKategori1.StateCommon.ComboBox.Content.Font = new Font("Poppins Light", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonComboBoxKategori1.StateCommon.ComboBox.Content.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonComboBoxKategori1.StateCommon.ComboBox.Content.Padding = new Padding(10, 0, 10, 0);
             kryptonComboBoxKategori1.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             kryptonComboBoxKategori1.StateCommon.DropBack.Color1 = Color.FromArgb(108, 91, 123);
@@ -313,17 +314,17 @@
             kryptonComboBoxKategori1.StateCommon.Item.Border.ColorStyle = Krypton.Toolkit.PaletteColorStyle.RoundedTopLight;
             kryptonComboBoxKategori1.StateCommon.Item.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             kryptonComboBoxKategori1.StateCommon.Item.Content.ShortText.Color1 = Color.WhiteSmoke;
-            kryptonComboBoxKategori1.StateCommon.Item.Content.ShortText.Font = new Font("Poppins Light", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonComboBoxKategori1.StateCommon.Item.Content.ShortText.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonComboBoxKategori1.StateTracking.Item.Back.Color1 = Color.SlateBlue;
             kryptonComboBoxKategori1.TabIndex = 39;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Poppins Light", 9.75F, FontStyle.Italic, GraphicsUnit.Point);
+            label7.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Italic, GraphicsUnit.Point);
             label7.Location = new Point(558, 255);
             label7.Name = "label7";
-            label7.Size = new Size(118, 23);
+            label7.Size = new Size(109, 16);
             label7.TabIndex = 40;
             label7.Text = "Hazırlama Süresi";
             // 
@@ -334,7 +335,7 @@
             kryptonNumericUpDown11.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
             kryptonNumericUpDown11.Minimum = new decimal(new int[] { 0, 0, 0, 0 });
             kryptonNumericUpDown11.Name = "kryptonNumericUpDown11";
-            kryptonNumericUpDown11.Size = new Size(276, 42);
+            kryptonNumericUpDown11.Size = new Size(276, 38);
             kryptonNumericUpDown11.StateCommon.Back.Color1 = Color.FromArgb(108, 91, 123);
             kryptonNumericUpDown11.StateCommon.Border.Color1 = Color.Thistle;
             kryptonNumericUpDown11.StateCommon.Border.Color2 = Color.SlateBlue;
@@ -344,7 +345,7 @@
             kryptonNumericUpDown11.StateCommon.Border.Rounding = 20F;
             kryptonNumericUpDown11.StateCommon.Border.Width = 4;
             kryptonNumericUpDown11.StateCommon.Content.Color1 = Color.WhiteSmoke;
-            kryptonNumericUpDown11.StateCommon.Content.Font = new Font("Poppins Light", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonNumericUpDown11.StateCommon.Content.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonNumericUpDown11.StateCommon.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             kryptonNumericUpDown11.TabIndex = 41;
             kryptonNumericUpDown11.Value = new decimal(new int[] { 0, 0, 0, 0 });
@@ -352,10 +353,10 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new Font("Poppins Light", 9.75F, FontStyle.Italic, GraphicsUnit.Point);
+            label9.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Italic, GraphicsUnit.Point);
             label9.Location = new Point(558, 326);
             label9.Name = "label9";
-            label9.Size = new Size(76, 23);
+            label9.Size = new Size(67, 16);
             label9.TabIndex = 42;
             label9.Text = "Talimatlar";
             // 
@@ -373,7 +374,7 @@
             richTextBoxTalimatlar1.StateCommon.Border.Rounding = 20F;
             richTextBoxTalimatlar1.StateCommon.Border.Width = 4;
             richTextBoxTalimatlar1.StateCommon.Content.Color1 = Color.WhiteSmoke;
-            richTextBoxTalimatlar1.StateCommon.Content.Font = new Font("Poppins Light", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            richTextBoxTalimatlar1.StateCommon.Content.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             richTextBoxTalimatlar1.TabIndex = 43;
             richTextBoxTalimatlar1.Text = "";
             // 
@@ -396,7 +397,7 @@
             kryptonButtonFotoGuncelle1.StateCommon.Border.Width = 4;
             kryptonButtonFotoGuncelle1.StateCommon.Content.ShortText.Color1 = Color.WhiteSmoke;
             kryptonButtonFotoGuncelle1.StateCommon.Content.ShortText.Color2 = Color.WhiteSmoke;
-            kryptonButtonFotoGuncelle1.StateCommon.Content.ShortText.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonButtonFotoGuncelle1.StateCommon.Content.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonButtonFotoGuncelle1.StatePressed.Back.Color1 = Color.Thistle;
             kryptonButtonFotoGuncelle1.StatePressed.Back.Color2 = Color.Thistle;
             kryptonButtonFotoGuncelle1.StatePressed.Border.Color1 = Color.Thistle;
@@ -408,7 +409,7 @@
             kryptonButtonFotoGuncelle1.StatePressed.Border.Width = 4;
             kryptonButtonFotoGuncelle1.StatePressed.Content.ShortText.Color1 = Color.WhiteSmoke;
             kryptonButtonFotoGuncelle1.StatePressed.Content.ShortText.Color2 = Color.WhiteSmoke;
-            kryptonButtonFotoGuncelle1.StatePressed.Content.ShortText.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonButtonFotoGuncelle1.StatePressed.Content.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonButtonFotoGuncelle1.StateTracking.Back.Color1 = Color.FromArgb(108, 91, 123);
             kryptonButtonFotoGuncelle1.StateTracking.Back.Color2 = Color.FromArgb(108, 91, 123);
             kryptonButtonFotoGuncelle1.StateTracking.Border.Color1 = Color.Thistle;
@@ -420,7 +421,7 @@
             kryptonButtonFotoGuncelle1.StateTracking.Border.Width = 4;
             kryptonButtonFotoGuncelle1.StateTracking.Content.ShortText.Color1 = Color.WhiteSmoke;
             kryptonButtonFotoGuncelle1.StateTracking.Content.ShortText.Color2 = Color.WhiteSmoke;
-            kryptonButtonFotoGuncelle1.StateTracking.Content.ShortText.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonButtonFotoGuncelle1.StateTracking.Content.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonButtonFotoGuncelle1.TabIndex = 44;
             kryptonButtonFotoGuncelle1.Values.Text = "Güncelle";
             kryptonButtonFotoGuncelle1.Click += kryptonButtonFotoGuncelle1_Click;
@@ -444,7 +445,7 @@
             kryptonButtonMalzemeSil1.StateCommon.Border.Width = 4;
             kryptonButtonMalzemeSil1.StateCommon.Content.ShortText.Color1 = Color.WhiteSmoke;
             kryptonButtonMalzemeSil1.StateCommon.Content.ShortText.Color2 = Color.WhiteSmoke;
-            kryptonButtonMalzemeSil1.StateCommon.Content.ShortText.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonButtonMalzemeSil1.StateCommon.Content.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonButtonMalzemeSil1.StatePressed.Back.Color1 = Color.Thistle;
             kryptonButtonMalzemeSil1.StatePressed.Back.Color2 = Color.Thistle;
             kryptonButtonMalzemeSil1.StatePressed.Border.Color1 = Color.Thistle;
@@ -456,7 +457,7 @@
             kryptonButtonMalzemeSil1.StatePressed.Border.Width = 4;
             kryptonButtonMalzemeSil1.StatePressed.Content.ShortText.Color1 = Color.WhiteSmoke;
             kryptonButtonMalzemeSil1.StatePressed.Content.ShortText.Color2 = Color.WhiteSmoke;
-            kryptonButtonMalzemeSil1.StatePressed.Content.ShortText.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonButtonMalzemeSil1.StatePressed.Content.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonButtonMalzemeSil1.StateTracking.Back.Color1 = Color.FromArgb(108, 91, 123);
             kryptonButtonMalzemeSil1.StateTracking.Back.Color2 = Color.FromArgb(108, 91, 123);
             kryptonButtonMalzemeSil1.StateTracking.Border.Color1 = Color.Thistle;
@@ -468,7 +469,7 @@
             kryptonButtonMalzemeSil1.StateTracking.Border.Width = 4;
             kryptonButtonMalzemeSil1.StateTracking.Content.ShortText.Color1 = Color.WhiteSmoke;
             kryptonButtonMalzemeSil1.StateTracking.Content.ShortText.Color2 = Color.WhiteSmoke;
-            kryptonButtonMalzemeSil1.StateTracking.Content.ShortText.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonButtonMalzemeSil1.StateTracking.Content.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonButtonMalzemeSil1.TabIndex = 45;
             kryptonButtonMalzemeSil1.Values.Text = "Malzeme Sil";
             kryptonButtonMalzemeSil1.Click += kryptonButtonMalzemeSil1_Click;
@@ -492,7 +493,7 @@
             kryptonButtonMalzemeMiktarDuzenleme1.StateCommon.Border.Width = 4;
             kryptonButtonMalzemeMiktarDuzenleme1.StateCommon.Content.ShortText.Color1 = Color.WhiteSmoke;
             kryptonButtonMalzemeMiktarDuzenleme1.StateCommon.Content.ShortText.Color2 = Color.WhiteSmoke;
-            kryptonButtonMalzemeMiktarDuzenleme1.StateCommon.Content.ShortText.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonButtonMalzemeMiktarDuzenleme1.StateCommon.Content.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonButtonMalzemeMiktarDuzenleme1.StatePressed.Back.Color1 = Color.Thistle;
             kryptonButtonMalzemeMiktarDuzenleme1.StatePressed.Back.Color2 = Color.Thistle;
             kryptonButtonMalzemeMiktarDuzenleme1.StatePressed.Border.Color1 = Color.Thistle;
@@ -504,7 +505,7 @@
             kryptonButtonMalzemeMiktarDuzenleme1.StatePressed.Border.Width = 4;
             kryptonButtonMalzemeMiktarDuzenleme1.StatePressed.Content.ShortText.Color1 = Color.WhiteSmoke;
             kryptonButtonMalzemeMiktarDuzenleme1.StatePressed.Content.ShortText.Color2 = Color.WhiteSmoke;
-            kryptonButtonMalzemeMiktarDuzenleme1.StatePressed.Content.ShortText.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonButtonMalzemeMiktarDuzenleme1.StatePressed.Content.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonButtonMalzemeMiktarDuzenleme1.StateTracking.Back.Color1 = Color.FromArgb(108, 91, 123);
             kryptonButtonMalzemeMiktarDuzenleme1.StateTracking.Back.Color2 = Color.FromArgb(108, 91, 123);
             kryptonButtonMalzemeMiktarDuzenleme1.StateTracking.Border.Color1 = Color.Thistle;
@@ -516,7 +517,7 @@
             kryptonButtonMalzemeMiktarDuzenleme1.StateTracking.Border.Width = 4;
             kryptonButtonMalzemeMiktarDuzenleme1.StateTracking.Content.ShortText.Color1 = Color.WhiteSmoke;
             kryptonButtonMalzemeMiktarDuzenleme1.StateTracking.Content.ShortText.Color2 = Color.WhiteSmoke;
-            kryptonButtonMalzemeMiktarDuzenleme1.StateTracking.Content.ShortText.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonButtonMalzemeMiktarDuzenleme1.StateTracking.Content.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonButtonMalzemeMiktarDuzenleme1.TabIndex = 46;
             kryptonButtonMalzemeMiktarDuzenleme1.Values.Text = "Miktar Güncelle";
             kryptonButtonMalzemeMiktarDuzenleme1.Click += kryptonButtonMalzemeMiktarDuzenleme1_Click;
@@ -540,7 +541,7 @@
             kryptonButtonMalzemeEkle1.StateCommon.Border.Width = 4;
             kryptonButtonMalzemeEkle1.StateCommon.Content.ShortText.Color1 = Color.WhiteSmoke;
             kryptonButtonMalzemeEkle1.StateCommon.Content.ShortText.Color2 = Color.WhiteSmoke;
-            kryptonButtonMalzemeEkle1.StateCommon.Content.ShortText.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonButtonMalzemeEkle1.StateCommon.Content.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonButtonMalzemeEkle1.StatePressed.Back.Color1 = Color.Thistle;
             kryptonButtonMalzemeEkle1.StatePressed.Back.Color2 = Color.Thistle;
             kryptonButtonMalzemeEkle1.StatePressed.Border.Color1 = Color.Thistle;
@@ -552,7 +553,7 @@
             kryptonButtonMalzemeEkle1.StatePressed.Border.Width = 4;
             kryptonButtonMalzemeEkle1.StatePressed.Content.ShortText.Color1 = Color.WhiteSmoke;
             kryptonButtonMalzemeEkle1.StatePressed.Content.ShortText.Color2 = Color.WhiteSmoke;
-            kryptonButtonMalzemeEkle1.StatePressed.Content.ShortText.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonButtonMalzemeEkle1.StatePressed.Content.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonButtonMalzemeEkle1.StateTracking.Back.Color1 = Color.FromArgb(108, 91, 123);
             kryptonButtonMalzemeEkle1.StateTracking.Back.Color2 = Color.FromArgb(108, 91, 123);
             kryptonButtonMalzemeEkle1.StateTracking.Border.Color1 = Color.Thistle;
@@ -564,7 +565,7 @@
             kryptonButtonMalzemeEkle1.StateTracking.Border.Width = 4;
             kryptonButtonMalzemeEkle1.StateTracking.Content.ShortText.Color1 = Color.WhiteSmoke;
             kryptonButtonMalzemeEkle1.StateTracking.Content.ShortText.Color2 = Color.WhiteSmoke;
-            kryptonButtonMalzemeEkle1.StateTracking.Content.ShortText.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonButtonMalzemeEkle1.StateTracking.Content.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonButtonMalzemeEkle1.TabIndex = 47;
             kryptonButtonMalzemeEkle1.Values.Text = "Malzeme Ekle";
             kryptonButtonMalzemeEkle1.Click += kryptonButtonMalzemeEkle1_Click;
@@ -588,7 +589,7 @@
             buttonDüzenle1.StateCommon.Border.Width = 4;
             buttonDüzenle1.StateCommon.Content.ShortText.Color1 = Color.WhiteSmoke;
             buttonDüzenle1.StateCommon.Content.ShortText.Color2 = Color.WhiteSmoke;
-            buttonDüzenle1.StateCommon.Content.ShortText.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonDüzenle1.StateCommon.Content.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttonDüzenle1.StatePressed.Back.Color1 = Color.Thistle;
             buttonDüzenle1.StatePressed.Back.Color2 = Color.Thistle;
             buttonDüzenle1.StatePressed.Border.Color1 = Color.Thistle;
@@ -600,7 +601,7 @@
             buttonDüzenle1.StatePressed.Border.Width = 4;
             buttonDüzenle1.StatePressed.Content.ShortText.Color1 = Color.WhiteSmoke;
             buttonDüzenle1.StatePressed.Content.ShortText.Color2 = Color.WhiteSmoke;
-            buttonDüzenle1.StatePressed.Content.ShortText.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonDüzenle1.StatePressed.Content.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttonDüzenle1.StateTracking.Back.Color1 = Color.FromArgb(108, 91, 123);
             buttonDüzenle1.StateTracking.Back.Color2 = Color.FromArgb(108, 91, 123);
             buttonDüzenle1.StateTracking.Border.Color1 = Color.Thistle;
@@ -612,7 +613,7 @@
             buttonDüzenle1.StateTracking.Border.Width = 4;
             buttonDüzenle1.StateTracking.Content.ShortText.Color1 = Color.WhiteSmoke;
             buttonDüzenle1.StateTracking.Content.ShortText.Color2 = Color.WhiteSmoke;
-            buttonDüzenle1.StateTracking.Content.ShortText.Font = new Font("Poppins Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonDüzenle1.StateTracking.Content.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttonDüzenle1.TabIndex = 48;
             buttonDüzenle1.Values.Text = "Düzenle";
             buttonDüzenle1.Click += buttonDüzenle1_Click;

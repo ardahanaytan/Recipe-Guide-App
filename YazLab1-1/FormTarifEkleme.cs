@@ -80,13 +80,14 @@ namespace YazLab1_1
                 try
                 {
                     con.Open();
-                    string query_tarifekle = @"INSERT INTO tarifler (TarifAdi, Kategori, HazirlamaSuresi, Talimatlar, Path) VALUES (@str_tarifAdi, @str_kategori, @sure_int, @talimatlar, @path)";
+                    string query_tarifekle = @"INSERT INTO tarifler (TarifAdi, Kategori, HazirlamaSuresi, Talimatlar, Path, Maliyet) VALUES (@str_tarifAdi, @str_kategori, @sure_int, @talimatlar, @path, @Maliyet)";
                     cmd = new MySqlCommand(query_tarifekle, con);
                     cmd.Parameters.AddWithValue("@str_tarifAdi", str_tarifAdi);
                     cmd.Parameters.AddWithValue("@str_kategori", str_kategori);
                     cmd.Parameters.AddWithValue("@sure_int", (int)numericUpDownSure1.Value);
                     cmd.Parameters.AddWithValue("@talimatlar", talimatlar);
                     cmd.Parameters.AddWithValue("@path", photoPath);
+                    cmd.Parameters.AddWithValue("@Maliyet", 0);
                     cmd.ExecuteNonQuery();
                     con.Close();
                 }

@@ -232,7 +232,7 @@ namespace YazLab1_1
 
         private void kryptonButtonFotoGuncelle1_Click(object sender, EventArgs e)
         {
-            string default_path = "C:/Users/ardah/Desktop/proje22/images/404.png";
+            string default_path = "C:/Users/ardah/Desktop/proje24/images/404.png";
             //string default_path = "C:\\Users\\sefat\\OneDrive\\Masaüstü\\Recipe-Guide-App\\images/404.png";
 
             string path = "";
@@ -243,7 +243,7 @@ namespace YazLab1_1
 
                 path = openFileDiaglog.FileName;
                 //path = photoPath.ToString();
-                MessageBox.Show("Resim Başarıyla seçildi!");
+
             }
             //path guncelle
 
@@ -283,6 +283,7 @@ namespace YazLab1_1
             {
                 MessageBox.Show("foto guncelleme hatasi: ", e1.Message);
             }
+            MessageBox.Show("Fotoğraf Başarıyla Güncellendi!");
         }
 
         private void buttonDüzenle1_Click(object sender, EventArgs e)
@@ -338,6 +339,8 @@ namespace YazLab1_1
             {
                 MessageBox.Show("tarif isim kontrol hatasi: ", ex2.Message);
             }
+
+            MessageBox.Show("Tarif başarıyla güncellendi.");
         }
 
         private void kryptonButtonMalzemeSil1_Click(object sender, EventArgs e)
@@ -411,6 +414,7 @@ namespace YazLab1_1
             {
                 MessageBox.Show("ilişiki malzeme silme hatasi: ", ex1.Message);
             }
+            MessageBox.Show("Malzeme Başarıyla Silindi!");
         }
 
         private void kryptonButtonMalzemeMiktarDuzenleme1_Click(object sender, EventArgs e)
@@ -464,6 +468,7 @@ namespace YazLab1_1
             {
                 MessageBox.Show("iliski guncelleme hatasi: " + ex.Message);
             }
+            MessageBox.Show("Malzeme Miktarı Güncellendi!");
         }
 
         private void kryptonButtonMalzemeEkle1_Click(object sender, EventArgs e)
@@ -530,11 +535,16 @@ namespace YazLab1_1
             {
                 MessageBox.Show("iliski guncelleme hatasi: " + ex.Message);
             }
+            MessageBox.Show("Malzeme Başarıyla Eklendi!");
         }
 
-        private void kryptonComboBox11_SelectedIndexChanged(object sender, EventArgs e)
+        private void FormTarifDuzenle_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void kryptonComboBox11_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
             try
             {
                 DataTable malzeme_table = new DataTable();
@@ -584,9 +594,6 @@ namespace YazLab1_1
             }
         }
 
-        private void FormTarifDuzenle_Load(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

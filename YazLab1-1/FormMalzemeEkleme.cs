@@ -28,7 +28,7 @@ namespace YazLab1_1
         private void buttonMalzemeEkle1_Click(object sender, EventArgs e)
         {
             string str_malzemeAdi = textBoxMalzemeAdi1.Text;
-            str_malzemeAdi = Regex.Replace(str_malzemeAdi, @"\s+", " ").Trim(); //birden fazla boşluğu temizleme
+            str_malzemeAdi = Regex.Replace(str_malzemeAdi, @"\s+", " ").Trim(); //birn fazla boşluğu temizleme
 
 
             string str_toplamMiktar = textBoxToplamMiktar1.Text;
