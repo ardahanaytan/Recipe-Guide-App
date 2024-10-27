@@ -35,7 +35,7 @@ namespace YazLab1_1
         public void search(string key)
         {
             con.Open();
-            string sql = "SELECT * FROM tarifler WHERE TarifAdi LIKE ?";
+            string sql = "SELECT * FROM tarifler WHERE TarifAdi LIKE '%' ? '%'";
             MySqlCommand cmd = con.CreateCommand();
             cmd.CommandText = sql;
             cmd.Parameters.AddWithValue("TarifAdi", key + "%");

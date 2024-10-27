@@ -380,7 +380,7 @@ namespace YazLab1_1
             try
             {
                 con.Open();
-                string query_tarif = @"select * from tarifler limit @offset, @sayfaBasinaTarif";
+                string query_tarif = @"select * from tarifler ORDER BY TarifAdi ASC limit @offset, @sayfaBasinaTarif";
                 adapter = new MySqlDataAdapter(query_tarif, con);
                 adapter.SelectCommand.Parameters.AddWithValue("@offset", offset);
                 adapter.SelectCommand.Parameters.AddWithValue("@sayfaBasinaTarif", sayfaBasinaTarif);
@@ -942,6 +942,7 @@ namespace YazLab1_1
 
 
                 this.elementDoldurma(dt_tarif);
+                this.dt = dt_tarif;
 
 
             }
@@ -996,6 +997,7 @@ namespace YazLab1_1
 
 
                 this.elementDoldurma(dt_tarif);
+                this.dt = dt_tarif;
 
 
             }
@@ -1011,6 +1013,14 @@ namespace YazLab1_1
             databaseDoldur();
             sayfayiDoldur(@"select * from tarifler ORDER BY TarifAdi ASC");
             this.anaQuery = @"select * from tarifler ORDER BY TarifAdi ASC";
+
+            DataTable tempTable = new DataTable();
+            con.Open();
+            adapter = new MySqlDataAdapter(this.anaQuery, con);
+            adapter.Fill(tempTable);
+            con.Close();
+
+            this.dt = tempTable;
         }
 
 
@@ -1231,58 +1241,7 @@ namespace YazLab1_1
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        private void label7_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            //sayfa sec
-            DataTable dt_tarif = new DataTable();
-            try
-            {
-                dt_tarif = queryTarif();
-                this.elementDoldurma(dt_tarif);
-            }
-            catch (Exception ex1)
-            {
-                MessageBox.Show("3Sayfa doldurma hatası: " + ex1.Message);
-            }
-
-        }
-
-        private void labelGereken1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelGereken2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelMaliyet3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void richTextBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
@@ -1298,6 +1257,7 @@ namespace YazLab1_1
 
             //bir azaltma
             comboBoxSayfa1.SelectedIndex -= 1;
+            /*
             DataTable table = new DataTable();
             try
             {
@@ -1310,6 +1270,7 @@ namespace YazLab1_1
             {
                 MessageBox.Show("table db doldurma hatası: " + ex2.Message);
             }
+            */
 
 
             DataTable dt_tarif = new DataTable();
@@ -1328,20 +1289,21 @@ namespace YazLab1_1
                 int ComboBoxNum_ = comboBoxSayfa1.SelectedIndex + 1;
                 int bas = (ComboBoxNum_ - 1) * sayfaBasinaTarif;
                 int son = bas + sayfaBasinaTarif - 1;
-                for (int i = bas; i <= son && i < table.Rows.Count; i++)
+                for (int i = bas; i <= son && i < this.dt.Rows.Count; i++)
                 {
                     dt_tarif.Rows.Add(
-                        int.Parse(table.Rows[i]["TarifID"].ToString()),
-                        table.Rows[i]["TarifAdi"].ToString(),
-                        table.Rows[i]["Kategori"].ToString(),
-                        int.Parse(table.Rows[i]["HazirlamaSuresi"].ToString()),
-                        table.Rows[i]["Talimatlar"].ToString(),
-                        float.Parse(table.Rows[i]["Maliyet"].ToString()),
-                        table.Rows[i]["Path"].ToString(),
-                        int.Parse(table.Rows[i]["MalzemeSayisi"].ToString())
+                        int.Parse(this.dt.Rows[i]["TarifID"].ToString()),
+                        this.dt.Rows[i]["TarifAdi"].ToString(),
+                        this.dt.Rows[i]["Kategori"].ToString(),
+                        int.Parse(this.dt.Rows[i]["HazirlamaSuresi"].ToString()),
+                        this.dt.Rows[i]["Talimatlar"].ToString(),
+                        float.Parse(this.dt.Rows[i]["Maliyet"].ToString()),
+                        this.dt.Rows[i]["Path"].ToString(),
+                        int.Parse(this.dt.Rows[i]["MalzemeSayisi"].ToString())
                         );
                 }
                 this.elementDoldurma(dt_tarif);
+                //this.dt = dt_tarif;
             }
             catch (Exception ex1)
             {
@@ -1364,6 +1326,7 @@ namespace YazLab1_1
 
             //bir arttirma
             comboBoxSayfa1.SelectedIndex += 1;
+            /*
             DataTable table = new DataTable();
             try
             {
@@ -1376,6 +1339,7 @@ namespace YazLab1_1
             {
                 MessageBox.Show("table db doldurma hatası: " + ex2.Message);
             }
+            */
 
             DataTable dt_tarif = new DataTable();
             dt_tarif.Columns.Add("TarifID", typeof(int));
@@ -1392,20 +1356,21 @@ namespace YazLab1_1
                 int ComboBoxNum_ = comboBoxSayfa1.SelectedIndex + 1;
                 int bas = (ComboBoxNum_ - 1) * sayfaBasinaTarif;
                 int son = bas + sayfaBasinaTarif - 1;
-                for (int i = bas; i <= son && i < table.Rows.Count; i++)
+                for (int i = bas; i <= son && i < this.dt.Rows.Count; i++)
                 {
                     dt_tarif.Rows.Add(
-                        int.Parse(table.Rows[i]["TarifID"].ToString()),
-                        table.Rows[i]["TarifAdi"].ToString(),
-                        table.Rows[i]["Kategori"].ToString(),
-                        int.Parse(table.Rows[i]["HazirlamaSuresi"].ToString()),
-                        table.Rows[i]["Talimatlar"].ToString(),
-                        float.Parse(table.Rows[i]["Maliyet"].ToString()),
-                        table.Rows[i]["Path"].ToString(),
-                        int.Parse(table.Rows[i]["MalzemeSayisi"].ToString())
+                        int.Parse(this.dt.Rows[i]["TarifID"].ToString()),
+                        this.dt.Rows[i]["TarifAdi"].ToString(),
+                        this.dt.Rows[i]["Kategori"].ToString(),
+                        int.Parse(this.dt.Rows[i]["HazirlamaSuresi"].ToString()),
+                        this.dt.Rows[i]["Talimatlar"].ToString(),
+                        float.Parse(this.dt.Rows[i]["Maliyet"].ToString()),
+                        this.dt.Rows[i]["Path"].ToString(),
+                        int.Parse(this.dt.Rows[i]["MalzemeSayisi"].ToString())
                         );
                 }
                 this.elementDoldurma(dt_tarif);
+                //this.dt = dt_tarif;
             }
             catch (Exception ex1)
             {
@@ -1426,6 +1391,15 @@ namespace YazLab1_1
             sayfayiDoldur(@"select * from tarifler ORDER BY TarifAdi ASC");
 
             this.anaQuery = @"select * from tarifler ORDER BY TarifAdi ASC";
+
+            DataTable tempTable = new DataTable();
+            con.Open();
+            adapter = new MySqlDataAdapter(this.anaQuery, con);
+            adapter.Fill(tempTable);
+            con.Close();
+
+            this.dt = tempTable;
+
             panel2.Visible = true;
             pictureBox22.Visible = true;
             pictureBox23.Visible = true;
@@ -1513,6 +1487,15 @@ namespace YazLab1_1
                 this.sayfayiDoldur(this.anaQuery);
 
 
+                DataTable tempTable = new DataTable();
+                con.Open();
+                adapter = new MySqlDataAdapter(this.anaQuery, con);
+                adapter.Fill(tempTable);
+                con.Close();
+
+                this.dt = tempTable;
+
+
             }
             catch (Exception e)
             {
@@ -1577,7 +1560,7 @@ namespace YazLab1_1
 
         private void buttonSayfa1_Click(object sender, EventArgs e)
         {
-
+            /*
             DataTable table = new DataTable();
             try
             {
@@ -1590,6 +1573,7 @@ namespace YazLab1_1
             {
                 MessageBox.Show("table db doldurma hatası: " + ex2.Message);
             }
+            */
 
             DataTable dt_tarif = new DataTable();
             dt_tarif.Columns.Add("TarifID", typeof(int));
@@ -1606,22 +1590,23 @@ namespace YazLab1_1
                 int ComboBoxNum_ = comboBoxSayfa1.SelectedIndex + 1;
                 int bas = (ComboBoxNum_ - 1) * sayfaBasinaTarif;
                 int son = bas + sayfaBasinaTarif - 1;
-                for (int i = bas; i <= son && i < table.Rows.Count; i++)
+                for (int i = bas; i <= son && i < this.dt.Rows.Count; i++)
                 {
                     dt_tarif.Rows.Add(
-                        int.Parse(table.Rows[i]["TarifID"].ToString()),
-                        table.Rows[i]["TarifAdi"].ToString(),
-                        table.Rows[i]["Kategori"].ToString(),
-                        int.Parse(table.Rows[i]["HazirlamaSuresi"].ToString()),
-                        table.Rows[i]["Talimatlar"].ToString(),
-                        float.Parse(table.Rows[i]["Maliyet"].ToString()),
-                        table.Rows[i]["Path"].ToString(),
-                        int.Parse(table.Rows[i]["MalzemeSayisi"].ToString())
+                        int.Parse(this.dt.Rows[i]["TarifID"].ToString()),
+                        this.dt.Rows[i]["TarifAdi"].ToString(),
+                        this.dt.Rows[i]["Kategori"].ToString(),
+                        int.Parse(this.dt.Rows[i]["HazirlamaSuresi"].ToString()),
+                        this.dt.Rows[i]["Talimatlar"].ToString(),
+                        float.Parse(this.dt.Rows[i]["Maliyet"].ToString()),
+                        this.dt.Rows[i]["Path"].ToString(),
+                        int.Parse(this.dt.Rows[i]["MalzemeSayisi"].ToString())
                         );
                 }
                 //MessageBox.Show("sayi:" + dt_tarif.Rows.Count);
 
                 this.elementDoldurma(dt_tarif);
+                //this.dt = dt_tarif;
             }
             catch (Exception ex1)
             {
@@ -1709,84 +1694,181 @@ namespace YazLab1_1
 
         public void deneme1_SureAzCok()
         {
-            DataTable sureAzCok = new DataTable();
-            try
-            {
-                con.Open();
-                string query_sureAzCok = "select * from tarifler ORDER BY HazirlamaSuresi  ASC";
-                this.anaQuery = @"select * from tarifler ORDER BY HazirlamaSuresi ASC";
-                adapter = new MySqlDataAdapter(anaQuery, con);
-                adapter.Fill(sureAzCok);
-                con.Close();
+            bool sureSecili = checkBoxSure.Checked;
 
-                this.table_ile_doldurma(sureAzCok);
-            }
-            catch (Exception ex1)
+            if (!sureSecili)
             {
-                MessageBox.Show("sure azcok hatasi: " + ex1.Message);
+                DataTable sureAzCok = new DataTable();
+                try
+                {
+                    con.Open();
+                    string query_sureAzCok = "select * from tarifler ORDER BY HazirlamaSuresi  ASC";
+                    this.anaQuery = @"select * from tarifler ORDER BY HazirlamaSuresi ASC";
+                    adapter = new MySqlDataAdapter(anaQuery, con);
+                    adapter.Fill(sureAzCok);
+                    con.Close();
+
+                    this.table_ile_doldurma(sureAzCok);
+                    this.dt = sureAzCok;
+                }
+                catch (Exception ex1)
+                {
+                    MessageBox.Show("sure azcok hatasi: " + ex1.Message);
+                }
             }
+            else
+            {
+                DataView dv = new DataView(this.dt);
+                dv.Sort = "HazirlamaSuresi ASC";
+
+                try
+                {
+                    DataTable sortedTable = dv.ToTable();
+
+                    // Sıralı tabloyu table_ile_doldurma metoduna gönder
+                    this.table_ile_doldurma(sortedTable);
+                    this.dt = sortedTable;
+                }
+                catch (Exception ex1)
+                {
+                    MessageBox.Show("Sıralama hatası: " + ex1.Message);
+                }
+            }
+
         }
 
         public void deneme1_SureCokAz()
         {
-            DataTable sureCokAz = new DataTable();
-            try
+            bool sureSecili = checkBoxSure.Checked;
+            if (!sureSecili)
             {
-                con.Open();
-                string query_sureCokAz = "select * from tarifler ORDER BY HazirlamaSuresi DESC";
-                this.anaQuery = @"select * from tarifler ORDER BY HazirlamaSuresi DESC";
-                adapter = new MySqlDataAdapter(query_sureCokAz, con);
-                adapter.Fill(sureCokAz);
-                con.Close();
+                DataTable sureCokAz = new DataTable();
+                try
+                {
+                    con.Open();
+                    string query_sureCokAz = "select * from tarifler ORDER BY HazirlamaSuresi DESC";
+                    this.anaQuery = @"select * from tarifler ORDER BY HazirlamaSuresi DESC";
+                    adapter = new MySqlDataAdapter(query_sureCokAz, con);
+                    adapter.Fill(sureCokAz);
+                    con.Close();
 
-                this.table_ile_doldurma(sureCokAz);
+                    this.table_ile_doldurma(sureCokAz);
+                    this.dt = sureCokAz;
+                }
+                catch (Exception ex1)
+                {
+                    MessageBox.Show("sure azcok hatasi: " + ex1.Message);
+                }
             }
-            catch (Exception ex1)
+            else
             {
-                MessageBox.Show("sure azcok hatasi: " + ex1.Message);
+                DataView dv = new DataView(this.dt);
+                dv.Sort = "HazirlamaSuresi DESC";
+
+                try
+                {
+                    DataTable sortedTable = dv.ToTable();
+
+                    // Sıralı tabloyu table_ile_doldurma metoduna gönder
+                    this.table_ile_doldurma(sortedTable);
+                    this.dt = sortedTable;
+                }
+                catch (Exception ex1)
+                {
+                    MessageBox.Show("Sıralama hatası: " + ex1.Message);
+                }
             }
+
         }
 
         public void deneme2_MaliyetCokAz()
         {
-            DataTable maliyetCokAz = new DataTable();
-            try
+            bool maliyetSecili = checkBoxMaliyeteGore.Checked;
+            if (!maliyetSecili)
             {
-                con.Open();
-                string query_maliyetCokAz = "select * from tarifler ORDER BY Maliyet DESC";
-                this.anaQuery = @"select * from tarifler ORDER BY Maliyet DESC";
-                adapter = new MySqlDataAdapter(query_maliyetCokAz, con);
-                adapter.Fill(maliyetCokAz);
-                con.Close();
+                DataTable maliyetCokAz = new DataTable();
+                try
+                {
+                    con.Open();
+                    string query_maliyetCokAz = "select * from tarifler ORDER BY Maliyet DESC";
+                    this.anaQuery = @"select * from tarifler ORDER BY Maliyet DESC";
+                    adapter = new MySqlDataAdapter(query_maliyetCokAz, con);
+                    adapter.Fill(maliyetCokAz);
+                    con.Close();
 
-                this.table_ile_doldurma(maliyetCokAz);
+                    this.table_ile_doldurma(maliyetCokAz);
+                    this.dt = maliyetCokAz;
+                }
+                catch (Exception ex1)
+                {
+                    MessageBox.Show("sure azcok hatasi: " + ex1.Message);
+                }
             }
-            catch (Exception ex1)
+            else
             {
-                MessageBox.Show("sure azcok hatasi: " + ex1.Message);
+                DataView dv = new DataView(this.dt);
+                dv.Sort = "Maliyet DESC";
+
+                try
+                {
+                    DataTable sortedTable = dv.ToTable();
+
+                    // Sıralı tabloyu table_ile_doldurma metoduna gönder
+                    this.table_ile_doldurma(sortedTable);
+                    this.dt = sortedTable;
+                }
+                catch (Exception ex1)
+                {
+                    MessageBox.Show("Sıralama hatası: " + ex1.Message);
+                }
             }
+
 
 
         }
 
         public void deneme2_MaliyetAzCok()
         {
-            DataTable maliyetAzCok = new DataTable();
-            try
+            bool maliyetSecili = checkBoxMaliyeteGore.Checked;
+            if (!maliyetSecili)
             {
-                con.Open();
-                string query_maliyetAzCok = "select * from tarifler ORDER BY Maliyet  ASC";
-                this.anaQuery = @"select * from tarifler ORDER BY Maliyet ASC";
-                adapter = new MySqlDataAdapter(query_maliyetAzCok, con);
-                adapter.Fill(maliyetAzCok);
-                con.Close();
+                DataTable maliyetAzCok = new DataTable();
+                try
+                {
+                    con.Open();
+                    string query_maliyetAzCok = "select * from tarifler ORDER BY Maliyet  ASC";
+                    this.anaQuery = @"select * from tarifler ORDER BY Maliyet ASC";
+                    adapter = new MySqlDataAdapter(query_maliyetAzCok, con);
+                    adapter.Fill(maliyetAzCok);
+                    con.Close();
 
-                this.table_ile_doldurma(maliyetAzCok);
+                    this.table_ile_doldurma(maliyetAzCok);
+                    this.dt = maliyetAzCok;
+                }
+                catch (Exception ex1)
+                {
+                    MessageBox.Show("sure azcok hatasi: " + ex1.Message);
+                }
             }
-            catch (Exception ex1)
+            else
             {
-                MessageBox.Show("sure azcok hatasi: " + ex1.Message);
+                DataView dv = new DataView(this.dt);
+                dv.Sort = "Maliyet ASC";
+
+                try
+                {
+                    DataTable sortedTable = dv.ToTable();
+
+                    // Sıralı tabloyu table_ile_doldurma metoduna gönder
+                    this.table_ile_doldurma(sortedTable);
+                    this.dt = sortedTable;
+                }
+                catch (Exception ex1)
+                {
+                    MessageBox.Show("Sıralama hatası: " + ex1.Message);
+                }
             }
+
 
         }
         private void loadDetails()
@@ -1806,6 +1888,7 @@ namespace YazLab1_1
                 resultContainer.Controls.Clear();
                 searchResultControl res = new searchResultControl(this, panelAnaManu);
                 res.searchResult(textBoxArama.Text);
+                resultContainer.Visible = true;
                 loadDetails();
                 resultContainer.Height = resultContainer.Controls.Count * 67;
             }
@@ -1902,6 +1985,7 @@ namespace YazLab1_1
                 {
                     this.table_ile_doldurma(malzemeSayisiTable);
                     this.anaQuery = query_maliyetAzCok;
+                    this.dt = malzemeSayisiTable;
                 }
                 else
                 {
@@ -1947,6 +2031,7 @@ namespace YazLab1_1
                 {
                     this.table_ile_doldurma(kategoriTable);
                     this.anaQuery = query_kategoriCheckList;
+                    this.dt = kategoriTable;
                 }
                 else
                 {
@@ -1956,7 +2041,7 @@ namespace YazLab1_1
             }
             catch (Exception ex1)
             {
-                MessageBox.Show("sure azcok hatasi: " + ex1.Message);
+                MessageBox.Show("kategori filter hatasi: " + ex1.Message);
             }
 
 
@@ -2017,6 +2102,7 @@ namespace YazLab1_1
                 {
                     this.table_ile_doldurma(maliyetSayisiTable);
                     this.anaQuery = query_maliyetAzCok;
+                    this.dt = maliyetSayisiTable;
                 }
                 else
                 {
@@ -2026,8 +2112,334 @@ namespace YazLab1_1
             }
             catch (Exception ex1)
             {
-                MessageBox.Show("sure azcok hatasi: " + ex1.Message);
+                MessageBox.Show("maliyet filter hatasi: " + ex1.Message);
             }
+        }
+
+        private void kryptonButton6_Click(object sender, EventArgs e)
+        {
+            bool checkboxMalzcemeSecili = checkBoxMalzeme.Checked;
+            bool checkboxKategoriSecili = checkBoxKategori.Checked;
+            bool checkboxMaliyetSecili = checkBoxMaliyet.Checked;
+
+            DataTable multi = new DataTable();
+            multi.Columns.Add("TarifID", typeof(int));
+            multi.Columns.Add("TarifAdi", typeof(string));
+            multi.Columns.Add("Kategori", typeof(string));
+            multi.Columns.Add("HazirlamaSuresi", typeof(int));
+            multi.Columns.Add("Talimatlar", typeof(string));
+            multi.Columns.Add("Maliyet", typeof(float));
+            multi.Columns.Add("Path", typeof(string));
+            multi.Columns.Add("MalzemeSayisi", typeof(int));
+
+
+            DataTable tum_tarfiler = new DataTable();
+            try
+            {
+                con.Open();
+                string query_tarifleriAl = "select * from tarifler";
+                adapter = new MySqlDataAdapter(query_tarifleriAl, con);
+                adapter.Fill(tum_tarfiler);
+                con.Close();
+
+                List<int> malzemeSayiID = new List<int>();
+                List<int> kategoriID = new List<int>();
+                List<int> maliyetID = new List<int>();
+
+                if (checkboxMalzcemeSecili)
+                {
+                    string minMalzemeSayisi = textBoxMalzemeMin.Text;
+                    string maxMalzemeSayisi = textBoxMalzemeMax.Text;
+
+                    int minMalzemeSayi_int = 0;
+                    int maxMalzemeSayi_int = 0;
+
+                    if (!int.TryParse(minMalzemeSayisi, out minMalzemeSayi_int))
+                    {
+                        Console.WriteLine("min malzeme geçerli bir int değil!");
+                        return;
+                    }
+
+                    if (!int.TryParse(maxMalzemeSayisi, out maxMalzemeSayi_int))
+                    {
+                        Console.WriteLine("max malzeme geçerli bir int değil!");
+                        return;
+                    }
+
+                    if (minMalzemeSayi_int <= 0)
+                    {
+                        Console.WriteLine("min malzeme sayisi 0 ve 0'dan küçük olmamali");
+                        return;
+                    }
+
+                    if (maxMalzemeSayi_int <= 0)
+                    {
+                        Console.WriteLine("max malzeme sayisi 0 ve 0'dan küçük olmamali");
+                        return;
+                    }
+
+                    if (minMalzemeSayi_int > maxMalzemeSayi_int)
+                    {
+                        Console.WriteLine("min maxdan büyük olmamai");
+                        return;
+                    }
+
+                    DataTable malzemeSayisiTable = new DataTable();
+                    try
+                    {
+
+                        con.Open();
+                        string query_maliyetAzCok = "SELECT * FROM tarifler WHERE MalzemeSayisi BETWEEN " + minMalzemeSayi_int + " AND " + maxMalzemeSayi_int + " ORDER BY MalzemeSayisi ASC";
+                        adapter = new MySqlDataAdapter(query_maliyetAzCok, con);
+                        adapter.Fill(malzemeSayisiTable);
+                        con.Close();
+
+                        if (malzemeSayisiTable.Rows.Count > 0)
+                        {
+                            foreach (DataRow row in malzemeSayisiTable.Rows)
+                            {
+                                malzemeSayiID.Add(int.Parse(row["TarifID"].ToString()));
+                            }
+                        }
+
+
+                    }
+                    catch (Exception ex1)
+                    {
+                        MessageBox.Show("sure azcok hatasi: " + ex1.Message);
+                    }
+
+
+
+
+                }
+                if (checkboxKategoriSecili)
+                {
+                    if (checkedListBoxKategori.CheckedItems.Count <= 0)
+                    {
+                        MessageBox.Show("Filtreleyeceğiniz kategorileri seçin.");
+                    }
+
+                    try
+                    {
+                        DataTable kategoriTable = new DataTable();
+
+                        List<string> selectedCategories = new List<string>();
+                        foreach (var item in checkedListBoxKategori.CheckedItems)
+                        {
+                            selectedCategories.Add("'" + item.ToString() + "'"); // Kategorileri tek tırnak içinde ekliyoruz
+                        }
+                        string categories = string.Join(", ", selectedCategories);
+                        //SELECT * FROM tarifler WHERE Kategori IN ('x1', 'x2', 'x3');
+                        con.Open();
+                        string query_kategoriCheckList = "SELECT * FROM tarifler WHERE Kategori IN (" + categories + ")";
+                        adapter = new MySqlDataAdapter(query_kategoriCheckList, con);
+                        adapter.Fill(kategoriTable);
+                        con.Close();
+
+                        if (kategoriTable.Rows.Count > 0)
+                        {
+                            foreach (DataRow row1 in kategoriTable.Rows)
+                            {
+                                kategoriID.Add(int.Parse(row1["TarifID"].ToString()));
+                            }
+                        }
+
+
+                    }
+                    catch (Exception ex1)
+                    {
+                        MessageBox.Show("kategori filter hatasi: " + ex1.Message);
+                    }
+                }
+                if (checkboxMaliyetSecili)
+                {
+                    string minMaliyetSayisi = textBoxMaliyetMin.Text;
+                    string maxMaliyetSayisi = textBoxMaliyetMax.Text;
+
+                    int minMaliyetSayi_int = 0;
+                    int maxMaliyetSayi_int = 0;
+
+                    if (!int.TryParse(minMaliyetSayisi, out minMaliyetSayi_int))
+                    {
+                        Console.WriteLine("min maliyet geçerli bir int değil!");
+                        return;
+                    }
+
+                    if (!int.TryParse(maxMaliyetSayisi, out maxMaliyetSayi_int))
+                    {
+                        Console.WriteLine("max maliyet geçerli bir int değil!");
+                        return;
+                    }
+
+                    if (minMaliyetSayi_int <= 0)
+                    {
+                        Console.WriteLine("min maliyet sayisi 0 ve 0'dan küçük olmamali");
+                        return;
+                    }
+
+                    if (maxMaliyetSayi_int <= 0)
+                    {
+                        Console.WriteLine("max maliyet sayisi 0 ve 0'dan küçük olmamali");
+                        return;
+                    }
+
+                    if (minMaliyetSayi_int > maxMaliyetSayi_int)
+                    {
+                        Console.WriteLine("min maxdan büyük olmamai");
+                        return;
+                    }
+
+                    DataTable maliyetSayisiTable = new DataTable();
+                    try
+                    {
+
+                        con.Open();
+                        string query_maliyetAzCok = "SELECT * FROM tarifler WHERE Maliyet BETWEEN " + minMaliyetSayi_int + " AND " + maxMaliyetSayi_int + " ORDER BY Maliyet ASC";
+                        adapter = new MySqlDataAdapter(query_maliyetAzCok, con);
+                        adapter.Fill(maliyetSayisiTable);
+                        con.Close();
+
+                        if (maliyetSayisiTable.Rows.Count > 0)
+                        {
+                            foreach (DataRow row2 in maliyetSayisiTable.Rows)
+                            {
+                                maliyetID.Add(int.Parse(row2["TarifID"].ToString()));
+                            }
+                        }
+
+
+                    }
+                    catch (Exception ex1)
+                    {
+                        MessageBox.Show("maliyet filter hatasi: " + ex1.Message);
+                    }
+                }
+
+
+                //boş olmayan listeleri alma
+                List<List<int>> nonEmptyLists = new List<List<int>>();
+                if (malzemeSayiID.Count > 0)
+                {
+                    nonEmptyLists.Add(malzemeSayiID);
+                }
+                if (kategoriID.Count > 0)
+                {
+                    nonEmptyLists.Add(kategoriID);
+                }
+                if (maliyetID.Count > 0)
+                {
+                    nonEmptyLists.Add(maliyetID);
+                }
+
+                //baslangic kumesi
+                List<int> ortakIDler = new List<int>();
+                if (nonEmptyLists.Count > 0)
+                {
+                    ortakIDler = new List<int>(nonEmptyLists[0]);
+                }
+                else
+                {
+                    MessageBox.Show("Uygun tarif bulunamadı!");
+                    return;
+                }
+
+                //diger listeleri gez
+                for (int i = 1; i < nonEmptyLists.Count; i++)
+                {
+                    List<int> currentList = nonEmptyLists[i];
+                    ortakIDler = ortakIDler.FindAll(id => currentList.Contains(id));
+                }
+
+                if (ortakIDler.Count <= 0)
+                {
+                    MessageBox.Show("Uygun tarif bulunamadı!");
+                    return;
+                }
+
+                DataTable dt_tarif = new DataTable();
+                dt_tarif.Columns.Add("TarifID", typeof(int));
+                dt_tarif.Columns.Add("TarifAdi", typeof(string));
+                dt_tarif.Columns.Add("Kategori", typeof(string));
+                dt_tarif.Columns.Add("HazirlamaSuresi", typeof(int));
+                dt_tarif.Columns.Add("Talimatlar", typeof(string));
+                dt_tarif.Columns.Add("Maliyet", typeof(float));
+                dt_tarif.Columns.Add("Path", typeof(string));
+                dt_tarif.Columns.Add("MalzemeSayisi", typeof(int));
+
+                foreach (var id in ortakIDler)
+                {
+                    DataTable idTarif = new DataTable();
+                    try
+                    {
+                        con.Open();
+                        string query_idDenTarif = "select * from tarifler where TarifID = @TarifID";
+                        adapter = new MySqlDataAdapter(query_idDenTarif, con);
+                        adapter.SelectCommand.Parameters.AddWithValue("@TarifID", id);
+                        idTarif.Clear();
+                        adapter.Fill(idTarif);
+                        con.Close();
+
+                        if (idTarif.Rows.Count != 1)
+                        {
+                            MessageBox.Show("Uygun tarif bulunamadı");
+                            return;
+                        }
+                        foreach (DataRow row8 in idTarif.Rows)
+                        {
+                            dt_tarif.Rows.Add(
+                                int.Parse(row8["TarifID"].ToString()),
+                                row8["TarifAdi"].ToString(),
+                                row8["Kategori"].ToString(),
+                                int.Parse(row8["HazirlamaSuresi"].ToString()),
+                                row8["Talimatlar"].ToString(),
+                                float.Parse(row8["Maliyet"].ToString()),
+                                row8["Path"].ToString(),
+                                int.Parse(row8["MalzemeSayisi"].ToString())
+                        );
+                        }
+
+
+                    }
+                    catch (Exception ex1)
+                    {
+                        MessageBox.Show("dt_tarif bulunamadi");
+                        return;
+                    }
+                    this.table_ile_doldurma(dt_tarif);
+                    this.dt = dt_tarif;
+                }
+
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("tarif doldurma hatasi: " + ex.Message);
+            }
+        }
+
+        private void panelAnaManu_Click(object sender, EventArgs e)
+        {
+            panelFiltre.Visible = false;
+            resultContainer.Visible = false;
+        }
+
+        private void kryptonButtonSifirla_Click(object sender, EventArgs e)
+        {
+            sayfayiDoldur(@"select * from tarifler ORDER BY TarifAdi ASC");
+
+            this.anaQuery = @"select * from tarifler ORDER BY TarifAdi ASC";
+
+            DataTable tempTable = new DataTable();
+            con.Open();
+            adapter = new MySqlDataAdapter(this.anaQuery, con);
+            adapter.Fill(tempTable);
+            con.Close();
+
+            this.dt = tempTable;
         }
     }
 }

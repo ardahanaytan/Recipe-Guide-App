@@ -456,6 +456,8 @@ namespace YazLab1_1
                             MessageBox.Show("yuzde label hatasi!");
                         }
 
+                        
+
                     }
 
                 }
@@ -511,17 +513,42 @@ namespace YazLab1_1
 
                 //eslesmeYuzdesi 
                 //string yuzde_ = sayi.ToString("F2") + '%';
+                float temp_yuzde = 0f;
                 string eslesmeYuzdesiName = "labelEslesmeYuzdesi" + num.ToString();
                 Label lbl_eslesmeYuzde = this.Controls.Find(eslesmeYuzdesiName, true).FirstOrDefault() as Label;
                 if (lbl_eslesmeYuzde != null)
                 {
                     float yuzde = float.Parse(row["EslesmeYuzdesi"].ToString());
+                    temp_yuzde = yuzde;
                     string raw_yuzde = yuzde.ToString("F2");
                     lbl_eslesmeYuzde.Text = raw_yuzde;
                 }
                 else
                 {
                     MessageBox.Show("label eslesme yuzdesi hatasi!");
+                }
+
+                labelName = "labelName" + num.ToString();
+                lbl_name = this.Controls.Find(labelName, true).FirstOrDefault() as Label;
+                if (lbl_name != null)
+                {
+                    if (temp_yuzde == 100.0f)
+                    {
+                        lbl_name.ForeColor = Color.Green;
+                    }
+                    else if (temp_yuzde < 100.0f && temp_yuzde > 0f)
+                    {
+                        lbl_name.ForeColor = Color.FromArgb(255, 165, 0);
+                    }
+                    else
+                    {
+                        lbl_name.ForeColor = Color.Red;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("label name hatasi!");
+
                 }
 
 
