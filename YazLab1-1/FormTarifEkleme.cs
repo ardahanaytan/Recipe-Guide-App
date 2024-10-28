@@ -169,11 +169,11 @@ namespace YazLab1_1
             {
                 return -4;
             }
-            int miktar_ = -1;
+            float miktar_ = -1f;
             try
             {
-                miktar_ = int.Parse(str_miktar);
-                if (miktar_ <= 0)
+                miktar_ = float.Parse(str_miktar);
+                if (miktar_ <= 0f)
                 {
                     MessageBox.Show("Miktar 0 veya negatif olamaz.");
                     return -41;
@@ -334,6 +334,29 @@ namespace YazLab1_1
             {
                 MessageBox.Show("Talimatlar uzunluğu 0'dan büyük 5001'den küçük olmalı!");
                 return;
+            }
+
+            //dup kontrol
+            try
+            {
+                DataTable dt_kontrol = new DataTable();
+                con.Open();
+                string query_comboDoldur = @"SELECT * from tarifler where TarifAdi = @TarifAdi";
+                adapter = new MySqlDataAdapter(query_comboDoldur, con);
+                adapter.SelectCommand.Parameters.AddWithValue("@TarifAdi", str_tarifAdi);
+                adapter.Fill(dt_kontrol);
+                con.Close();
+
+                if (dt_kontrol.Rows.Count > 0)
+                {
+                    MessageBox.Show("Bu isimde bir tarif bulunmakta");
+                    return;
+                }
+
+            }
+            catch (Exception ex3)
+            {
+                MessageBox.Show("tarif dup kontrol hatası: " + ex3.Message);
             }
 
             try

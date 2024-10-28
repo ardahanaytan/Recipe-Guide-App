@@ -129,7 +129,7 @@ namespace YazLab1_1
                 cmd.Parameters.AddWithValue("@MalzemeAdi", ad);
                 cmd.Parameters.AddWithValue("@ToplamMiktar", miktar);
                 cmd.Parameters.AddWithValue("@MalzemeBirim", birim);
-                cmd.Parameters.AddWithValue("@BirimFiyat", birim_fiyat);
+                cmd.Parameters.AddWithValue("@BirimFiyat", float.Parse(birim_fiyat));
                 cmd.Parameters.AddWithValue("@MalzemeID", this.malzeme_id);
                 int rowsAffected = cmd.ExecuteNonQuery();
                 if (rowsAffected != 1)
@@ -143,7 +143,7 @@ namespace YazLab1_1
             }
             catch (Exception ex)
             {
-                MessageBox.Show("tarif doldurma hatasi: ", ex.Message);
+                MessageBox.Show("malzeme doldurma hatasi: ", ex.Message);
             }
 
         }

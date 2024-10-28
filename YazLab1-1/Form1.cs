@@ -60,6 +60,8 @@ namespace YazLab1_1
                 cmd.Parameters.AddWithValue("@MalzemeMiktar", miktar_);
                 cmd.ExecuteNonQuery();
                 con.Close();
+
+                Iliski yeniIliski = new Iliski(malzemeID, tarifID, miktar_);
             }
             catch (Exception ex)
             {
@@ -93,6 +95,9 @@ namespace YazLab1_1
                 cmd.Parameters.AddWithValue("@fiyat", birimFiyat);
                 cmd.ExecuteNonQuery();
                 con.Close();
+
+
+                Malzeme yeniMalzeme = new Malzeme(malzeme_adi, toplam_miktar, malzeme_birim, birimFiyat);
 
             }
             catch (Exception ex)
@@ -135,6 +140,8 @@ namespace YazLab1_1
                 cmd.ExecuteNonQuery();
                 con.Close();
 
+                Tarif yeniTarif = new Tarif(tarif_adi, kategori, hazirlamaSuresi, talimatlar, maliyet, path, malzemeSayisi);
+
 
 
             }
@@ -151,23 +158,48 @@ namespace YazLab1_1
                 //string tarif_adi, string kategori, int hazirlamaSuresi, string talimatlar
                 //Kahvaltı
                 //1-10
-                tarif_ekle("Kahveli Yulaf Lapası", "Kahvaltı", 20, "1. Küçük bir tencereye yulaf ezmesini ve sütü ekliyoruz.\r\n2. Altını açarak kaynayana kadar ara ara karıştırarak pişiriyoruz.\r\n3. Kaynadıktan sonra altını kapatarak üzerine kahve ve tarçını ekliyoruz.\r\n4. Kahve eriyip yulaf lapasına iyice karışana kadar karıştırıyoruz.\r\n5. Üzerine muz dilimleri veya kuruyemiş ekleyebilirsiniz. \r\n(Bu eklemeler kalori değerini arttıracaktır!)\r\n", 0f, "", 0);
-                tarif_ekle("Unsuz Muzlu Pankek", "Kahvaltı", 12, "1. Muzu çatal yardımıyla ezerek püre kıvamına getiriyoruz.\r\n2. Yumurtaları muz püresinin üzerine kırarak iyice çırpıyoruz.\r\n3. Tavayı yağladıktan sonra harcımızdan her seferinde birer \r\nyemek kaşığı alarak tavaya ekliyoruz.\r\n4. Üst kısmında kabarcıklar oluştuğunda çevirip diğer \r\nyüzünü de pişiriyoruz.\r\n", 0f, "", 0);
-                tarif_ekle("Kahveli Pankek", "Kahvaltı", 15, "1. Yulaf ezmesini blender yardımıyla un haline getiriyoruz.\r\n2. Tüm malzemeleri karıştırıp iyice çırparak homojen bir \r\nkıvama getiriyoruz.\r\n3. Yapışmaz yüzeyli tavayı ısıttıktan sonra harcımızı birer \r\nkaşık birer kaşık olarak tavaya ekliyoruz.\r\n4. Üst kısmında kabarcıklar çıktığında pankekleri çevirerek \r\ndiğer yüzlerini de pişiriyoruz.\r\n", 0f, "", 0);
-                tarif_ekle("Lor Tava", "Kahvaltı", 8, "1. Tavada tereyağını eritiyoruz.\r\n2. Üzerine lor peynirini ekleyip 1 dakika kadar pişiriyoruz.\r\n3. Domates püresini ekleyip birkaç dakika karıştırarak pişiriyoruz.\r\n4. Son olarak üzerine istediğimiz baharatları ekleyerek lezzetlendiriyoruz.\r\n", 0f, "", 0);
-                tarif_ekle("Ev Yapımı Notella", "Kahvaltı", 15, "1. Fındıkları bir tavaya alarak birkaç dakika kavuruyoruz.\r\n2. Hurmaları 15 dakika kadar sıcak suda bekletip çekirdeklerini ayırıyoruz.\r\n3. Fındıkların üzerine 1 yemek kaşığı kadar hurma suyundan ekleyip blenderdan geçiriyoruz.\r\n4. Hurmaları, balı ve kakaoyu da blender kabına ekleyip tekrar blenderdan geçiriyoruz. Bu aşamada hurma suyundan ekleyerek fındık kremanızı istediğiniz kıvama getirebilirsiniz.\r\n", 0f, "", 0);
-                tarif_ekle("Mantarlı Fit Omlet", "Kahvaltı", 13, "1. Mantarların zarlarını soyup dilimliyoruz.\r\n2. Tavanın altını ısıtıp zeytinyağını da koyduktan sonra mantarları bir kaşık yardımıyla çevirerek birkaç dakika pişiriyoruz.\r\n3. Yumurtaları çırpıp mantarların üzerine döküyoruz ve tavanın üzerini kapatıyoruz.\r\n4. Tavadaki karışımın alt tabanı piştikten sonra üzerine lor peynirlerini de ekleyip kapağını tekrar kapatıyoruz ve üst kısmının da pişmesini sağlıyoruz.\r\n5. Son olarak üzerine pul biber veya istediğiniz farklı baharatları ekleyerek servis edebilirsiniz.\r\n", 0f, "", 0);
-                tarif_ekle("Ispanaklı ve Peynirli Omlet", "Kahvaltı", 13, "1. Ispanakları iyice yıkayıp ince ince doğruyoruz.\r\n2. Beyaz peyniri de küçük parçalar halinde doğrayıp ıspanakla karıştırıyoruz.\r\n3. Yapışmaz yüzeyli tavayı ısıttıktan sonra ıspanak ve peynir karışımını peynirler yumuşayana kadar pişiriyoruz. (Tereyağı kullanacaksanız bu aşamada ekleyebilirsiniz.)\r\n4. Üzerine yumurtaları da ekleyip karıştırarak pişiriyoruz.\r\n", 0f, "", 0);
-                tarif_ekle("Muzlu Yulaf Lapası", "Kahvaltı", 7, "1. Yulaf ezmesini bir kaseye alıp üzerine yulafları kaplayacak kadar sıcak su ekliyoruz. 5 dakika kadar yulafın yumuşamasını bekliyoruz. (Süreci hızlandırmak için kasenin üzerini bir tabak yardımıyla kapatabilirsiniz.)\r\n2. Yulaflar yumuşadıktan sonra üzerine tarçın ve keçiboynuzu unu (veya bal) ekliyoruz. İyice karıştırıyoruz.\r\n3. Muzları dilimleyerek kaseye alıyoruz.\r\n", 0f, "", 0);
-                tarif_ekle("Fıstık Ezmesi", "Kahvaltı", 15, "1. Fıstıkların kabukları soyulur ve tavada 5 dakika kadar kavrulur.\r\n2. Rondo veya blender yardımıyla iyice parçalanır.\r\n3. İsteğe göre bal ekleyerek tatlandırılır ve yağ ekleyerek akışkan kıvama getirilir.\r\n4. İyice karıştırılır, afiyet olsun!\r\n", 0f, "", 0);
-                tarif_ekle("Tahinli Unsuz Pankek", "Kahvaltı", 15, "1. Susamları tavada birkaç dakika ısıtıyoruz, rengi biraz karardıktan sonra ateşten alıp kenara koyuyoruz.\r\n2. Muzu çatal yardımıyla ezerek püre haline getiriyoruz.\r\n3. Muz püresinin üzerine yumurtaları kırıyoruz ve iyice çırpıyoruz. İyice çırptıktan sonra tarçın ve tahini de karışımın üzerine ekliyoruz.\r\n4. Tavayı yağlayıp biraz ısıtıyoruz. Daha sonra harcımızı tavaya alarak pişiriyoruz. (Tüm harcı tek pankek olarak pişirmeye çalışmayın, çevirmesi zor olacaktır. Bir yemek kaşıklık boyutlarda alarak pişirebilirsiniz.)\r\n5. Pişirirken pankeklerin üst kısmında kabarcıklar oluştuğunda çevirebilirsiniz.\r\n6. Pişen pankekleri tabağımıza aldıktan sonra üzerine bal ve kavurduğumuz susamları da ekliyoruz.\r\n", 0f, "", 0);
-                //11-20
-                tarif_ekle("Protein Bohçası", "Kahvaltı", 13, "1. Lor peynirini ufalıyoruz ve üzerine domates püresini de ekleyip karıştırıyoruz.\r\n2. Yumurtaları başka bir kabın içine kırarak iyice çırpıyoruz.\r\n3. Tavamızı ısıttıktan sonra yağı ekliyoruz ve çırptığımız yumurtaları tavaya döküyoruz.\r\n4. Yumurtaların altı piştikten sonra üzerinin orta kısmına lor karışımını ekliyoruz.\r\n5. Ardından yumurtanın sağ ve sol kısmını içe doğru, yani lor karışımının üzerine doğru katlıyoruz.\r\n6. İç kısmı da piştikten sonra tabağımıza alıp üzerine kekik serpiyoruz.\r\n", 0f, "", 0);
-                tarif_ekle("Tok Tutan Protein Tostu", "Kahvaltı", 8, "1. Kaşarları küçük küçük doğruyoruz.\r\n2. Lor peynirini domates suyuyla veya domates püresiyle biraz sulandırarak karıştırıyoruz.\r\n3. Ekmeği kestikten sonra alt ve üst katmana kaşarları, aralarına da lor peynirini koyuyoruz.\r\n4. Tost makinesinde pişirdikten sonra dilimliyoruz.\r\n", 0f, "", 0);
-                tarif_ekle("Akşamdan Hazırlamalık Kahvaltı", "Kahvaltı", 3, "1. Yulaf ve sütü bir kaba ekleyerek 15 dakika kadar buzdolabında bekletiyoruz.\r\n2. Meyveleri dilimliyoruz, isteğe bağlı eklenecek diğer malzemelerle birlikte (fıstık ezmesi, hindistan cevizi, bal) yulaf karışımına ekliyoruz.\r\n3. Üzerini kapatarak akşamdan buzdolabına atıyoruz. Sabah dolaptan çıkarıp karıştırıyoruz.\r\n", 0f, "", 0);
-                tarif_ekle("Fit Fransız Tostu", "Kahvaltı", 20, "1. Yumurtaları geniş bir kabın içine kırarak çırpıyoruz.\r\n2. Whey proteini sütle beraber iyice karıştırıyoruz.\r\n3. Tüm malzemeleri çırptığımız yumurtaların üzerine ekleyerek çırpıyoruz. (Bu aşamada blender da kullanabilirsiniz.)\r\n4. Tavayı ısıtıp yağlıyoruz.\r\n5. Tost ekmeklerini az önce hazırladığımız karışımın içine atarak ıslatıp iyice emdiriyoruz.\r\n6. Daha sonra tavaya alıyoruz ve çevirerek iki tarafını da kızartıyoruz.\r\n", 0f, "", 0);
-
-
+                tarif_ekle("Kahveli Yulaf Lapası", "Kahvaltı", 20, "1. Küçük bir tencereye yulaf ezmesini ve sütü ekliyoruz.\r\n2. Altını açarak kaynayana kadar ara ara karıştırarak pişiriyoruz.\r\n3. Kaynadıktan sonra altını kapatarak üzerine kahve ve tarçını ekliyoruz.\r\n4. Kahve eriyip yulaf lapasına iyice karışana kadar karıştırıyoruz.\r\n5. Üzerine muz dilimleri veya kuruyemiş ekleyebilirsiniz. \r\n(Bu eklemeler kalori değerini arttıracaktır!)\r\n", 0f, "C:/Users/ardah/Desktop/proje24/images/1.png", 0);
+                tarif_ekle("Unsuz Muzlu Pankek", "Kahvaltı", 12, "1. Muzu çatal yardımıyla ezerek püre kıvamına getiriyoruz.\r\n2. Yumurtaları muz püresinin üzerine kırarak iyice çırpıyoruz.\r\n3. Tavayı yağladıktan sonra harcımızdan her seferinde birer \r\nyemek kaşığı alarak tavaya ekliyoruz.\r\n4. Üst kısmında kabarcıklar oluştuğunda çevirip diğer \r\nyüzünü de pişiriyoruz.\r\n", 0f, "C:/Users/ardah/Desktop/proje24/images/2.png", 0);
+                tarif_ekle("Kahveli Pankek", "Kahvaltı", 15, "1. Yulaf ezmesini blender yardımıyla un haline getiriyoruz.\r\n2. Tüm malzemeleri karıştırıp iyice çırparak homojen bir \r\nkıvama getiriyoruz.\r\n3. Yapışmaz yüzeyli tavayı ısıttıktan sonra harcımızı birer \r\nkaşık birer kaşık olarak tavaya ekliyoruz.\r\n4. Üst kısmında kabarcıklar çıktığında pankekleri çevirerek \r\ndiğer yüzlerini de pişiriyoruz.\r\n", 0f, "C:/Users/ardah/Desktop/proje24/images/3.png", 0);
+                tarif_ekle("Lor Tava", "Kahvaltı", 8, "1. Tavada tereyağını eritiyoruz.\r\n2. Üzerine lor peynirini ekleyip 1 dakika kadar pişiriyoruz.\r\n3. Domates püresini ekleyip birkaç dakika karıştırarak pişiriyoruz.\r\n4. Son olarak üzerine istediğimiz baharatları ekleyerek lezzetlendiriyoruz.\r\n", 0f, "C:/Users/ardah/Desktop/proje24/images/4.png", 0);
+                tarif_ekle("Ev Yapımı Notella", "Kahvaltı", 15, "1. Fındıkları bir tavaya alarak birkaç dakika kavuruyoruz.\r\n2. Hurmaları 15 dakika kadar sıcak suda bekletip çekirdeklerini ayırıyoruz.\r\n3. Fındıkların üzerine 1 yemek kaşığı kadar hurma suyundan ekleyip blenderdan geçiriyoruz.\r\n4. Hurmaları, balı ve kakaoyu da blender kabına ekleyip tekrar blenderdan geçiriyoruz. Bu aşamada hurma suyundan ekleyerek fındık kremanızı istediğiniz kıvama getirebilirsiniz.\r\n", 0f, "C:/Users/ardah/Desktop/proje24/images/5.png", 0);
+                tarif_ekle("Mantarlı Fit Omlet", "Kahvaltı", 13, "1. Mantarların zarlarını soyup dilimliyoruz.\r\n2. Tavanın altını ısıtıp zeytinyağını da koyduktan sonra mantarları bir kaşık yardımıyla çevirerek birkaç dakika pişiriyoruz.\r\n3. Yumurtaları çırpıp mantarların üzerine döküyoruz ve tavanın üzerini kapatıyoruz.\r\n4. Tavadaki karışımın alt tabanı piştikten sonra üzerine lor peynirlerini de ekleyip kapağını tekrar kapatıyoruz ve üst kısmının da pişmesini sağlıyoruz.\r\n5. Son olarak üzerine pul biber veya istediğiniz farklı baharatları ekleyerek servis edebilirsiniz.\r\n", 0f, "C:/Users/ardah/Desktop/proje24/images/6.png", 0);
+                tarif_ekle("Ispanaklı ve Peynirli Omlet", "Kahvaltı", 13, "1. Ispanakları iyice yıkayıp ince ince doğruyoruz.\r\n2. Beyaz peyniri de küçük parçalar halinde doğrayıp ıspanakla karıştırıyoruz.\r\n3. Yapışmaz yüzeyli tavayı ısıttıktan sonra ıspanak ve peynir karışımını peynirler yumuşayana kadar pişiriyoruz. (Tereyağı kullanacaksanız bu aşamada ekleyebilirsiniz.)\r\n4. Üzerine yumurtaları da ekleyip karıştırarak pişiriyoruz.\r\n", 0f, "C:/Users/ardah/Desktop/proje24/images/7.png", 0);
+                tarif_ekle("Muzlu Yulaf Lapası", "Kahvaltı", 7, "1. Yulaf ezmesini bir kaseye alıp üzerine yulafları kaplayacak kadar sıcak su ekliyoruz. 5 dakika kadar yulafın yumuşamasını bekliyoruz. (Süreci hızlandırmak için kasenin üzerini bir tabak yardımıyla kapatabilirsiniz.)\r\n2. Yulaflar yumuşadıktan sonra üzerine tarçın ve keçiboynuzu unu (veya bal) ekliyoruz. İyice karıştırıyoruz.\r\n3. Muzları dilimleyerek kaseye alıyoruz.\r\n", 0f, "C:/Users/ardah/Desktop/proje24/images/8.png", 0);
+                tarif_ekle("Fıstık Ezmesi", "Kahvaltı", 15, "1. Fıstıkların kabukları soyulur ve tavada 5 dakika kadar kavrulur.\r\n2. Rondo veya blender yardımıyla iyice parçalanır.\r\n3. İsteğe göre bal ekleyerek tatlandırılır ve yağ ekleyerek akışkan kıvama getirilir.\r\n4. İyice karıştırılır, afiyet olsun!\r\n", 0f, "C:/Users/ardah/Desktop/proje24/images/9.png", 0);
+                tarif_ekle("Tahinli Unsuz Pankek", "Kahvaltı", 15, "1. Susamları tavada birkaç dakika ısıtıyoruz, rengi biraz karardıktan sonra ateşten alıp kenara koyuyoruz.\r\n2. Muzu çatal yardımıyla ezerek püre haline getiriyoruz.\r\n3. Muz püresinin üzerine yumurtaları kırıyoruz ve iyice çırpıyoruz. İyice çırptıktan sonra tarçın ve tahini de karışımın üzerine ekliyoruz.\r\n4. Tavayı yağlayıp biraz ısıtıyoruz. Daha sonra harcımızı tavaya alarak pişiriyoruz. (Tüm harcı tek pankek olarak pişirmeye çalışmayın, çevirmesi zor olacaktır. Bir yemek kaşıklık boyutlarda alarak pişirebilirsiniz.)\r\n5. Pişirirken pankeklerin üst kısmında kabarcıklar oluştuğunda çevirebilirsiniz.\r\n6. Pişen pankekleri tabağımıza aldıktan sonra üzerine bal ve kavurduğumuz susamları da ekliyoruz.\r\n", 0f, "C:/Users/ardah/Desktop/proje24/images/10.png", 0);
+                //11-14
+                tarif_ekle("Protein Bohçası", "Kahvaltı", 13, "1. Lor peynirini ufalıyoruz ve üzerine domates püresini de ekleyip karıştırıyoruz.\r\n2. Yumurtaları başka bir kabın içine kırarak iyice çırpıyoruz.\r\n3. Tavamızı ısıttıktan sonra yağı ekliyoruz ve çırptığımız yumurtaları tavaya döküyoruz.\r\n4. Yumurtaların altı piştikten sonra üzerinin orta kısmına lor karışımını ekliyoruz.\r\n5. Ardından yumurtanın sağ ve sol kısmını içe doğru, yani lor karışımının üzerine doğru katlıyoruz.\r\n6. İç kısmı da piştikten sonra tabağımıza alıp üzerine kekik serpiyoruz.\r\n", 0f, "C:/Users/ardah/Desktop/proje24/images/11.png", 0);
+                tarif_ekle("Tok Tutan Protein Tostu", "Kahvaltı", 8, "1. Kaşarları küçük küçük doğruyoruz.\r\n2. Lor peynirini domates suyuyla veya domates püresiyle biraz sulandırarak karıştırıyoruz.\r\n3. Ekmeği kestikten sonra alt ve üst katmana kaşarları, aralarına da lor peynirini koyuyoruz.\r\n4. Tost makinesinde pişirdikten sonra dilimliyoruz.\r\n", 0f, "C:/Users/ardah/Desktop/proje24/images/12.png", 0);
+                tarif_ekle("Akşamdan Hazırlamalık Kahvaltı", "Kahvaltı", 3, "1. Yulaf ve sütü bir kaba ekleyerek 15 dakika kadar buzdolabında bekletiyoruz.\r\n2. Meyveleri dilimliyoruz, isteğe bağlı eklenecek diğer malzemelerle birlikte (fıstık ezmesi, hindistan cevizi, bal) yulaf karışımına ekliyoruz.\r\n3. Üzerini kapatarak akşamdan buzdolabına atıyoruz. Sabah dolaptan çıkarıp karıştırıyoruz.\r\n", 0f, "C:/Users/ardah/Desktop/proje24/images/13.png", 0);
+                tarif_ekle("Fit Fransız Tostu", "Kahvaltı", 20, "1. Yumurtaları geniş bir kabın içine kırarak çırpıyoruz.\r\n2. Whey proteini sütle beraber iyice karıştırıyoruz.\r\n3. Tüm malzemeleri çırptığımız yumurtaların üzerine ekleyerek çırpıyoruz. (Bu aşamada blender da kullanabilirsiniz.)\r\n4. Tavayı ısıtıp yağlıyoruz.\r\n5. Tost ekmeklerini az önce hazırladığımız karışımın içine atarak ıslatıp iyice emdiriyoruz.\r\n6. Daha sonra tavaya alıyoruz ve çevirerek iki tarafını da kızartıyoruz.\r\n", 0f, "C:/Users/ardah/Desktop/proje24/images/14.png", 0);
+                
+                //Yemek
+                //1-10
+                tarif_ekle("Sarımsaklı Tavuk", "Yemek", 40, "1. Bir tabakta rendelenmiş kaşar peynirinin üzerine un haline getirilmiş yulaf ezmesi eklenir, karıştırılır.\r\n2. Sarımsaklar dövülür veya rendelenir.\r\n3. Bir tavaya bir kaşık zeytinyağı dökülür, üzerine sarımsaklar eklenir, birkaç dakika ısıtılır.\r\n4. Yağ biraz kızınca ocağın altı kapatılır.\r\n5. Tavuk göğüsleri önce yağa bandırılır, sonra kaşar ve yulaflı karışıma sürülür, fırın kabına koyulur.\r\n6. 220 derecede 30-35 dakika pişirilir.\r\n", 0f, "C:/Users/ardah/Desktop/proje24/images/15.png", 0);
+                tarif_ekle("Ton Balıklı Burger", "Yemek", 4, "1. Hamburger veya tost ekmeğine ton balığı koyulur.\r\n2. Üzerine makarna sosu sürülür.\r\n3. Kaşarlar küçük dilimler halinde üstüne koyulur, ekmek kapatılır.\r\n4. Tost makinesinde kaşarlar eriyene kadar ısıtılır.\r\n", 0f, "C:/Users/ardah/Desktop/proje24/images/16.png", 0);
+                tarif_ekle("Fit Tavuk Burger", "Yemek", 15, "1. Tavuk göğsü blender ile kıyma haline getirilir.\r\n2. Diğer malzemelerle birlikte karıştırılarak köfte şekli verilir.\r\n3. Tavada iki tarafı da pişirilip burger ekmeği arasına koyulur.\r\n", 0f, "C:/Users/ardah/Desktop/proje24/images/17.png", 0);
+                tarif_ekle("Diyet Pizza", "Yemek", 7, "1. Tavanın altı yakılır ve üzerine tortilla ekmeği koyulur.\r\n2. Üzerine sırayla salça, tavuk ve kaşar peyniri koyulur.\r\n3. Üzerine istenilen baharatlar eklenir.\r\n4. Tavanın üstü kapanır ve pişmesi beklenir.\r\n", 0f, "C:/Users/ardah/Desktop/proje24/images/18.png", 0);
+                tarif_ekle("Hindi Füme Dürüm", "Yemek", 3, "1. Tortilla ekmeğine makarna sosu veya salça sürülür.\r\n2. Hindi füme üzerine eklenir.\r\n3. Üzerine hardal ve sarımsak tozu eklenir.\r\n4. Dürüm haline getirilip afiyetle yenir.\r\n", 0f, "C:/Users/ardah/Desktop/proje24/images/19.png", 0);
+                tarif_ekle("Fırında Alabalık", "Yemek", 35, "1. Bir çay bardağında zeytinyağı, tuz, kekik, karabiber karıştırılır.\r\n2. Kapaklı bir kaba somon balığı fileto halinde koyulur.\r\n3. Üzerine çay bardağındaki karışım dökülür, kapağı kapatılıp buzdolabında 2 saat bekletilir.\r\n4. Önceden 180 dereceye ısıtılmış fırında 30 dakika pişirilir.\r\n", 0f, "C:/Users/ardah/Desktop/proje24/images/20.png", 0);
+                tarif_ekle("Yeşil Mercimek Yemeği", "Yemek", 35, "1. Mercimeklerimizi süzgeç yardımıyla yıkıyoruz. Yıkadığımız mercimekleri bir tencereye boşaltıp üzerine mercimekleri 2 parmak geçene kadar su dolduruyoruz.\r\n2. Mercimeklerimiz kaynarken soğan ve biberlerimizi küçük küçük doğruyoruz. (Domates de doğrayabilirsiniz.)\r\n3. 15 dakika kadar kaynattıktan sonra mercimeklerimizi süzüyoruz.\r\n4. Tenceremizi sudan geçiriyoruz veya yeni bir tencere alıyoruz. 1 yemek kaşığı tereyağ ekleyerek eritiyoruz.\r\n5. Bu arada 1 litre su kaynatıyoruz.\r\n6. Erittiğimiz tereyağının üzerine doğradığımız biber ve soğanı atıp, birkaç dakika kavuruyoruz. Daha sonra üzerine mercimeklerimizi de ekleyip karıştırıyoruz.\r\n7. Önceden kaynattığımız sıcak suyu tencereye döküyoruz, biraz karıştırıp 10 dakika kadar pişmeye bırakıyoruz.\r\n8. Son olarak ocağımızın altını kapatıp 1 yemek kaşığı nanemizi tencereye ekleyip karıştırıyoruz.\r\n", 0f, "C:/Users/ardah/Desktop/proje24/images/21.png", 0);
+                tarif_ekle("Mercimek Salatası", "Yemek", 25, "1. Yeşil mercimeğimizi bir gece öncesinden suya koyarak bekletiyoruz.\r\n2. Suyunu süzdükten sonra mercimeklerimizi bir tencereye koyup, üzerine mercimekleri bir parmak geçecek kadar kaynar su ekliyoruz. Bir tutam da tuz atıp altını yakıyoruz.\r\n3. İstediğimiz kıvama geldikten sonra altını kapatıp suyunu süzüyoruz.\r\n4. Domates, salatalık ve biberimizi doğruyoruz ve büyük bir kaseye alıyoruz. İsterseniz turşu ve mısır da ekleyebilirsiniz.\r\n5. Bunun üzerine mercimeğimizi de ekliyoruz.\r\n6. Üzerine nane ekleyip bir limon sıkıyoruz.\r\n7. Zeytinyağımızı ekleyip iyice karıştırıyoruz.\r\n", 0f, "C:/Users/ardah/Desktop/proje24/images/22.png", 0);
+                tarif_ekle("Domatesli Tavuk Sote", "Yemek", 25, "1. Tavuklar kuşbaşı, domatesler de küp küp doğranır.\r\n2. Yapışmaz yüzeyli tavaya zeytinyağı dökülür, ısıtılır.\r\n3. Isındıktan sonra domatesler tavaya eklenir ve pembeleşene kadar pişirilir.\r\n4. Son olarak da tavuklar eklenir ve karıştırarak pişirilir.\r\n", 0f, "C:/Users/ardah/Desktop/proje24/images/23.png", 0);
+                tarif_ekle("Brokolili Tavuk Yemeği", "Yemek", 40, "1. Tavuk göğsü kuşbaşı dilimlenir.\r\n2. Brokolilerin sapları kesilip parça parça ayrılır.\r\n3. Brokoliler iyice yıkanır, hatta bir süre sirkeli suda bekletilebilir.\r\n4. Tavuklar tencereye koyulur, üzerine 2-3 parmak geçecek kadar su eklenir.\r\n5. 2 yemek kaşığı kadar zeytinyağı ve 1 çay kaşığı tuz eklenip karıştırılır. Tencerenin altı yakılır.\r\n6. Suyun üzerine brokoliler koyulur ve tencerenin kapağı yarım kapatılır.\r\n7. 20 dakika sonra kapağı tam kapatılarak 5-10 dakika kadar daha pişirilir. Brokolilere limon, sirke eklenebilir. Tavuklara da karabiber, kekik, pul biber gibi baharatlar eklenebilir.\r\n", 0f, "", 0);
+                //11-12
+                tarif_ekle("Lor Köftesi", "Yemek", 15, "1. Lor peyniri, yulaf ezmesi, baharatlar ve yumurtalar bir kapta iyice yoğurulur.\r\n2. Tavanın altı ısıtılır, 1 yemek kaşığı zeytinyağı dökülür.\r\n3. Karışım köfte şekline getirilerek tavaya dizilir. Arkalı önlü pişirilir.\r\n", 0f, "", 0);
+                tarif_ekle("Bulgur Pilavı", "Yemek", 20, "1. Soğan ince ince doğranır ve tencereye eklenen zeytinyağında pembeleşene kadar kavrulur.\r\n2. Üzerine domates salçası eklenir ve karıştırılır.\r\n3. Yıkanmış bulgur eklenir, 1-2 dakika kavrulur.\r\n4. Üzerine sıcak su eklenir ve kısık ateşte suyunu çekene kadar pişirilir.\r\n5. Altı kapatıldıktan sonra 10 dakika demlenmeye bırakılır.\r\n", 0f, "", 0);
+                
+                //Tatlı
+                //1-10
+                tarif_ekle("Mozaik Pasta", "Tatlı", 20, "1. Bisküviler iri parçalar halinde kırılır.\r\n2. Eritilmiş tereyağı, süt, kakao ve şekeri bir kapta karıştırılır.\r\n3. Bisküvilerin üzerine karışım dökülüp karıştırılır.\r\n4. Streç filme sarılarak buzlukta en az 2 saat bekletilir.\r\n", 0f, "", 0);
+                tarif_ekle("Fit Waffle", "Tatlı", 15, "1. Yumurta çırpılır, süt ve un eklenip iyice karıştırılır.\r\n2. Waffle makinesinde pişirilir.\r\n3. Üzerine istediğiniz meyve ve fıstık ezmesi ekleyebilirsiniz.\r\n", 0f, "", 0);
+                /*tarif_ekle("Protein Dondurması", "Tatlı", 10, "1. Tüm malzemeler blenderda pürüzsüz bir kıvama gelene kadar karıştırılır.\r\n2. Karışım dondurma kalıplarına dökülüp buzlukta 2-3 saat bekletilir.\r\n", 0f, "", 0);
+                tarif_ekle("Proteinli Kek", "Tatlı", 25, "1. Yumurta ve süt iyice çırpılır.\r\n2. Un, protein tozu ve kabartma tozu eklenip karıştırılır.\r\n3. Karışım kalıba dökülüp önceden ısıtılmış 180 derece fırında 20 dakika pişirilir.\r\n", 0f, "", 0);
+                tarif_ekle("Yulaf Topları", "Tatlı", 15, "1. Yulaf ezmesi, fıstık ezmesi ve bal bir kapta karıştırılır.\r\n2. Karışımdan küçük toplar yapılarak buzdolabında 30 dakika bekletilir.\r\n", 0f, "", 0);
+                tarif_ekle("Yulaflı Kurabiye", "Tatlı", 20, "1. Yulaf ezmesi, muz, bal ve fındık karıştırılır.\r\n2. Küçük toplar yapılarak fırın tepsisine dizilir.\r\n3. 180 derecede 15 dakika pişirilir.\r\n", 0f, "", 0);
+                tarif_ekle("Meyve Pastası", "Tatlı", 30, "1. Kek kalıbına ince dilimlenmiş meyveler dizilir.\r\n2. Üzerine yoğurt ve bal karıştırılıp dökülür.\r\n3. Buzdolabında 2 saat bekletilir ve soğuk servis edilir.\r\n", 0f, "", 0);
+                */
 
 
 
@@ -190,7 +222,7 @@ namespace YazLab1_1
                 malzeme_ekle("Domates Püresi", "0", "Gram", 0.75f);
                 malzeme_ekle("Fındık", "0", "Gram", 0.4f);
                 malzeme_ekle("Kakao", "0", "Gram", 0.35f);
-                malzeme_ekle("Hurma", "0", "Adet", 6.3f);
+                malzeme_ekle("Hurma", "0", "Tane", 6.3f);
                 malzeme_ekle("Bal", "0", "Gram", 0.65f);
                 malzeme_ekle("Kültür Mantarı", "0", "Gram", 0.15f);
                 malzeme_ekle("Pul Biber", "0", "Gram", 0.7f);
@@ -204,15 +236,41 @@ namespace YazLab1_1
                 malzeme_ekle("Susam", "0", "Gram", 0.4f);
                 malzeme_ekle("Tahin", "0", "Gram", 0.3f);
                 malzeme_ekle("Kaşar Peyniri", "0", "Gram", 0.3f);
-                malzeme_ekle("Tam Tahıllı Ekmek Dilimi", "0", "Adet", 3.0f);
+                malzeme_ekle("Tam Tahıllı Ekmek Dilimi", "0", "Tane", 3.0f);
                 malzeme_ekle("Domates Suyu", "0", "Mililitre", 0.07f);
                 malzeme_ekle("Fıstık Ezmesi", "0", "Gram", 0.45f);
                 //31-40
-                malzeme_ekle("Whey Protein", "0", "Ölçek", 1.15f);
-
-
-
-
+                malzeme_ekle("Whey Protein", "0", "Gram", 1.15f);
+                malzeme_ekle("Tavuk Göğsü", "0", "Gram", 0.29f);
+                malzeme_ekle("Sarımsak", "0", "Tane",  0.20f);
+                malzeme_ekle("Ton Balığı", "0", "Gram", 0.96f);
+                malzeme_ekle("Makarna Sosu", "0", "Gram", 0.63f);
+                malzeme_ekle("Soğan", "0", "Tane", 4f);
+                malzeme_ekle("Galeta Unu", "0", "Gram", 0.07f);
+                malzeme_ekle("Karabiber", "0", "Gram", 1.38f);
+                malzeme_ekle("Kimyon", "0", "Gram", 0.6f);
+                malzeme_ekle("Domates", "0", "Tane", 5f);
+                //41-50
+                malzeme_ekle("Marul", "0", "Tane", 25f);
+                malzeme_ekle("Tortilla Ekmeği", "0", "Tane", 11f);
+                malzeme_ekle("Hindi Füme", "0", "Gram", 0.38f);
+                malzeme_ekle("Hardal", "0", "Gram", 0.26f);
+                malzeme_ekle("Sarımsak Tozu", "0", "Gram", 1.28f);
+                malzeme_ekle("Somon Balığı", "0", "Tane", 70f);
+                malzeme_ekle("Tuz", "0", "Gram", 0.04f);
+                malzeme_ekle("Kekik", "0", "Gram", 0.96f);
+                malzeme_ekle("Yeşil Mercimek", "0", "Gram", 0.1f);
+                malzeme_ekle("Yeşil Biber", "0", "Tane", 1.3f);
+                //51-60
+                malzeme_ekle("Domates Salçası", "0", "Gram", 0.06f);
+                malzeme_ekle("Nane", "0", "Gram", 0.4f);
+                malzeme_ekle("Salatalık", "0", "Tane", 10f);
+                malzeme_ekle("Limon", "0", "Tane", 0.4f);
+                malzeme_ekle("Brokoli", "0", "Gram", 0.2f);
+                malzeme_ekle("Bulgur", "0", "Gram", 0.12f);
+                malzeme_ekle("Sıcak Su", "0", "Mililitre", 0.01f);
+                malzeme_ekle("Ceviz", "0", "Gram", 0.3f);
+                malzeme_ekle("Vanilya", "0", "Tane", 0.25f); //59
 
                 // ilki malzeme id, 2. tarif id, 3. miktar
                 iliski_ekle(1, 1, 200);
@@ -278,6 +336,78 @@ namespace YazLab1_1
                 iliski_ekle(28, 14, 4);
                 iliski_ekle(24, 14, 20);
                 iliski_ekle(31, 14, 20);
+                iliski_ekle(32, 15, 1000);
+                iliski_ekle(1, 15, 50);
+                iliski_ekle(27, 15, 50);
+                iliski_ekle(33, 15, 6);
+                iliski_ekle(19, 15, 20);
+                iliski_ekle(34, 16, 52); 
+                iliski_ekle(35, 16, 20);  
+                iliski_ekle(27, 16, 40);  
+                iliski_ekle(28, 16, 2);   
+                iliski_ekle(32, 17, 300);  
+                iliski_ekle(33, 17, 1);   
+                iliski_ekle(36, 17, 1);   
+                iliski_ekle(37, 17, 40);   
+                iliski_ekle(6, 17, 2);   
+                iliski_ekle(38, 17, 6);  
+                iliski_ekle(39, 17, 6);   
+                iliski_ekle(28, 17, 2);    
+                iliski_ekle(40, 17, 1);
+                iliski_ekle(41, 17, 1);   
+                iliski_ekle(42, 18, 1);   
+                iliski_ekle(32, 18, 70); 
+                iliski_ekle(27, 18, 30); 
+                iliski_ekle(12, 18, 20);   
+                iliski_ekle(42, 19, 1);  
+                iliski_ekle(43, 19, 100); 
+                iliski_ekle(35, 19, 20); 
+                iliski_ekle(44, 19, 20);  
+                iliski_ekle(45, 19, 6); 
+                iliski_ekle(46, 20, 1); 
+                iliski_ekle(19, 20, 40); 
+                iliski_ekle(47, 20, 6); 
+                iliski_ekle(48, 20, 6);  
+                iliski_ekle(38, 20, 6);  
+                iliski_ekle(49, 21, 300); 
+                iliski_ekle(36, 21, 1);  
+                iliski_ekle(50, 21, 1);   
+                iliski_ekle(51, 21, 20); 
+                iliski_ekle(11, 21, 20);  
+                iliski_ekle(52, 21, 20);   
+                iliski_ekle(49, 22, 220); 
+                iliski_ekle(40, 22, 1);  
+                iliski_ekle(53, 22, 1); 
+                iliski_ekle(50, 22, 1);  
+                iliski_ekle(19, 22, 3);   
+                iliski_ekle(54, 22, 1);
+                iliski_ekle(52, 22, 1);  
+                iliski_ekle(32, 23, 200); 
+                iliski_ekle(40, 23, 1);   
+                iliski_ekle(19, 23, 20); 
+                iliski_ekle(32, 24, 600); 
+                iliski_ekle(55, 24, 500); 
+                iliski_ekle(19, 24, 40);  
+                iliski_ekle(47, 24, 6);   
+                iliski_ekle(10, 25, 200); 
+                iliski_ekle(1, 25, 100);  
+                iliski_ekle(6, 25, 2);  
+                iliski_ekle(19, 25, 20);  
+                iliski_ekle(19, 26, 20);  
+                iliski_ekle(36, 26, 1);  
+                iliski_ekle(51, 26, 30);   
+                iliski_ekle(56, 26, 150);  
+                iliski_ekle(1, 27, 100);  
+                iliski_ekle(57, 27, 200); 
+                iliski_ekle(14, 27, 10);  
+                iliski_ekle(16, 27, 20);  
+                iliski_ekle(31, 27, 30);  
+                iliski_ekle(58, 27, 4);    
+                iliski_ekle(1, 28, 200);  
+                iliski_ekle(6, 28, 1);   
+                iliski_ekle(2, 28, 100);   
+                iliski_ekle(8, 28, 1);   
+                iliski_ekle(59, 28, 1);    
             }
             catch (Exception ex)
             {
@@ -1056,17 +1186,13 @@ namespace YazLab1_1
 
         private void button7_Click(object sender, EventArgs e)
         {
-            if (arama == null)
-            {
-                arama = new FormArama(this);
-                arama.FormClosed += Arama_FormClosed;
-                arama.MdiParent = this;
-                arama.Show();
-            }
-            else
-            {
-                arama.Activate();
-            }
+            
+            arama = new FormArama(this);
+            arama.FormClosed += Arama_FormClosed;
+            arama.MdiParent = this;
+            arama.Dock = DockStyle.Fill;
+            arama.Show();
+            
             panelAnaManu.Visible = false;
             panel2.Visible = false;
             pictureBox22.Visible = false;
@@ -1080,18 +1206,14 @@ namespace YazLab1_1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (tarifOnerme == null)
-            {
-                tarifOnerme = new FormTarifOnerme(this);
-                tarifOnerme.FormClosed += TarifOnerme_FormClosed;
-                tarifOnerme.MdiParent = this;
-                tarifOnerme.Dock = DockStyle.Fill;
-                tarifOnerme.Show();
-            }
-            else
-            {
-                tarifOnerme.Activate();
-            }
+            
+            tarifOnerme = new FormTarifOnerme(this);
+            tarifOnerme.FormClosed += TarifOnerme_FormClosed;
+            tarifOnerme.MdiParent = this;
+            tarifOnerme.Dock = DockStyle.Fill;
+            tarifOnerme.Show();
+            
+            
             panelAnaManu.Visible = false;
             panel2.Visible = false;
             pictureBox22.Visible = false;
@@ -1207,18 +1329,15 @@ namespace YazLab1_1
 
         private void button8_Click(object sender, EventArgs e)
         {
-            if (malzemeEkleme == null)
-            {
-                malzemeEkleme = new FormMalzemeEkleme();
-                malzemeEkleme.FormClosed += malzemeEkleme_FormClosed;
-                malzemeEkleme.MdiParent = this;
-                malzemeEkleme.Dock = DockStyle.Fill;
-                malzemeEkleme.Show();
-            }
-            else
-            {
-                malzemeEkleme.Activate();
-            }
+            
+            malzemeEkleme = new FormMalzemeEkleme();
+            malzemeEkleme.FormClosed += malzemeEkleme_FormClosed;
+            malzemeEkleme.MdiParent = this;
+            malzemeEkleme.Dock = DockStyle.Fill;
+            malzemeEkleme.Show();
+            
+            malzemeEkleme.Activate();
+            
             panelAnaManu.Visible = false;
             panel2.Visible = false;
             pictureBox22.Visible = false;

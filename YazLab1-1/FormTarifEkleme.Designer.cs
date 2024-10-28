@@ -486,9 +486,9 @@
             label10.Font = new Font("Poppins Light", 12F, FontStyle.Italic, GraphicsUnit.Point);
             label10.Location = new Point(115, 282);
             label10.Name = "label10";
-            label10.Size = new Size(79, 28);
+            label10.Size = new Size(93, 28);
             label10.TabIndex = 22;
-            label10.Text = "Kategori";
+            label10.Text = "Talimatlar";
             // 
             // label9
             // 
